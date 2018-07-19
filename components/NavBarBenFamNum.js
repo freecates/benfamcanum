@@ -36,15 +36,6 @@ export default class NavBarBenFamNum extends React.Component {
                 <NavItem><Link prefetch href="/contacto">
                   <a title='Contacta con nosotros'>Contacto</a>
                 </Link></NavItem>
-                <NavItem><Link href="http://www.familiasnumerosas.org/conocenos/quienes-somos/">
-                  <a target='_blank' title='enlace externo' rel='noopener'>La Federación</a>
-                </Link></NavItem>
-                <NavItem><Link href="http://www.familiasnumerosas.org/conocenos/nuestras-asociaciones/">
-                  <a target='_blank' title='enlace externo' rel='noopener'>Las Asociaciones</a>
-                </Link></NavItem>
-                <NavItem><Link href="http://www.familiasnumerosas.org/hazte-socio/">
-                  <a target='_blank' title='enlace externo' rel='noopener'>Hazte socio</a>
-                </Link></NavItem>
                 <NavItem><Link prefetch href="/buscador">
                   <a title='Buscador'><FontAwesome
                 name='search'

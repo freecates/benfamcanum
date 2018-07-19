@@ -31,7 +31,7 @@ export default () => (
         <p>FANOC asegura la más estricta confidencialidad en la recogida y tratamiento de los datos facilitados por sus usuarios a través de Internet o cualquier otro medio. Los datos facilitados por los usuarios serán empleados únicamente para las finalidades descritas en el propio formulario de suscripción y determinadas por cada usuario.</p>
 
         <p><strong>Associació de Famílies Nombroses de Catalunya - FANOC</strong><br/> 
-        C/ Balmes, 92m 4t 1ªB<br/>
+        C/ Balmes, 92 4t 1ªB<br/>
         08008 Barcelona<br/>
         Tel.: +34 93 351 10 00<br/>
         Fax: +34 93 467 32 98<br/>

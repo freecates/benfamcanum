@@ -21,10 +21,10 @@ const Contacto = () => (
       </ul>
     </nav>
       <h1>Associació de Famílies Nombroses de Catalunya - FANOC</h1>
-      <p>Campomanes, 6 - 4º derecha<br/>
-      28013 - Madrid<br/>
+      <p>C/ Balmes, 92 4t 1ªB<br/>
+        08008 Barcelona<br/>
       <Link href='mailto:info@fanoc.org'><a>info@fanoc.org</a></Link></p>
-      <MapaDeGoogle lat="40.418931" lng="-3.709144" />
+      <MapaDeGoogle lat="41.3914434" lng="2.1578962" />
 
     <style jsx>{`
       .breadcrumbs {
