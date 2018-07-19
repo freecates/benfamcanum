@@ -1,0 +1,55 @@
+{
+  "name": "beneficios-familias-numerosas",
+  "version": "1.3.8",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server.js",
+    "build:next": "chmod -R u+x node_modules/next/dist/bin && next build && node generate-json.js && node generate-sw.js",
+    "build": "npm run build:next",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "keywords": [
+    "js",
+    "isomorphic",
+    "WP-API",
+    "beneficios",
+    "familias",
+    "numerosas"
+  ],
+  "author": "Ramon Gil",
+  "license": "ISC",
+  "dependencies": {
+    "async-reactor": "1.2.0",
+    "bootstrap": "4.0.0-alpha.6",
+    "btoa": "^1.1.2",
+    "compression": "1.7.0",
+    "create-react-class": "^15.6.2",
+    "express": "4.15.2",
+    "google-map-react": "1.0.4",
+    "google-maps-react": "^1.1.0",
+    "isomorphic-unfetch": "1.0.0",
+    "next": "6.1.1",
+    "nprogress": "0.2.0",
+    "react": "16.2.0",
+    "react-addons-css-transition-group": "15.6.0",
+    "react-addons-transition-group": "15.6.0",
+    "react-disqus-comments": "^1.1.1",
+    "react-disqus-thread": "^0.4.0",
+    "react-dom": "16.2.0",
+    "react-fontawesome": "^1.6.1",
+    "react-ga": "^2.4.1",
+    "react-google-maps": "9.4.5",
+    "react-intersection-observer": "1.0.0",
+    "react-intl": "^2.4.0",
+    "react-share": "^1.17.0",
+    "reactstrap": "5.0.0-alpha.3"
+  },
+  "devDependencies": {
+    "globby": "6.1.0",
+    "load-json-file": "2.0.0",
+    "workbox-build": "1.0.1",
+    "workbox-webpack-plugin": "1.0.1"
+  }
+}

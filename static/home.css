@@ -1,0 +1,9 @@
+body {
+  background: url('/static/bg-body-familias-numerosas.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+header {
+  background: none!important;
+}
