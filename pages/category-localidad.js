@@ -18,7 +18,12 @@ const PostsByCategoryLocalidad = (props) => (
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
         <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
         <li><Link prefetch as={`/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`} href={`/category?id=${props.posts[0].categoria_de_la_prestacion.term_id}`}><a>{props.posts[0].categoria_de_la_prestacion.name}</a></Link></li>
-        <li><Link prefetch as={`/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].comunidad_autonoma}/${props.marcasofertas[0].comunidad_autonoma.term_id}`} href={`/category-comunidad?sid=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=${props.posts[0].comunidad_autonoma}&caid=${props.marcasofertas[0].comunidad_autonoma.term_id}`}><a>{props.posts[0].comunidad_autonoma}</a></Link></li>
+        {props.marcacasofertas >= 1 
+          ?
+          <li><Link prefetch as={`/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].comunidad_autonoma}/${props.marcasofertas[0].comunidad_autonoma.term_id}`} href={`/category-comunidad?sid=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=${props.posts[0].comunidad_autonoma}&caid=${props.marcasofertas[0].comunidad_autonoma.term_id}`}><a>{props.posts[0].comunidad_autonoma}</a></Link></li>
+           :
+           <li><Link prefetch as={`/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].comunidad_autonoma}/8143`} href={`/category-comunidad?sid=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=${props.posts[0].comunidad_autonoma}&caid=8143`}><a>{props.posts[0].comunidad_autonoma}</a></Link></li> }
+        
         <li>
           <span className="show-for-sr">Actual: </span> {props.posts[0].localidad_del_beneficio.name} 
         </li>

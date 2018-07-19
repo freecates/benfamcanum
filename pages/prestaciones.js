@@ -18,7 +18,7 @@ export default () => (
        <section className='call-to-action'>
             <p className='icones-prestacions'>
                 <Link prefetch href="/municipios-prestaciones"><a><img src='/static/icona-prestacions-municipals-familias-numerosas.png'/></a></Link> 
-                <Link prefetch href="/comunidades-prestaciones"><a><img src='/static/icona-prestacions-autonomiques-familias-numerosas.png'/></a></Link> 
+                <Link prefetch href="/prestaciones-comunidad?comunidad=8143" as='/p-c/8143/cataluna'><a><img src='/static/icona-prestacions-autonomiques-familias-numerosas.png'/></a></Link> 
                 <Link prefetch href="/prestaciones-estatales"><a><img src='/static/icona-prestacions-estatals-familias-numerosas.png'/></a></Link>
             </p>
         </section>

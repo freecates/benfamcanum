@@ -13,7 +13,6 @@ const PrestacionesByComunidad = (props) => (
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
         <li><Link prefetch href="/prestaciones"><a>Prestaciones</a></Link></li>
-        <li><Link prefetch href="/comunidades-prestaciones"><a>Comunidades</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> Comunidad: {props.prestaciones[0].comunidad_autonoma.name} 
         </li>
