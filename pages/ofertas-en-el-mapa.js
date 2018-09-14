@@ -102,7 +102,7 @@ const Localidades = (props) => (
             text-decoration:underline;
           }
           a.blue {
-            color:#3f3fff;
+            color:#00add9;
             text-decoration:underline;
           }
           p {

@@ -176,7 +176,7 @@ class IsMember extends React.Component {
                               margin-top:-1rem;
                             }
                             .file-label {
-                                background:#cc0033!important;
+                                background:#f18903!important;
                                 color:#ffffff;
                                 font-weight:bold;
                                 padding:1em;
@@ -277,7 +277,7 @@ class IsMember extends React.Component {
                                   margin-top:-1rem;
                                 }
                                 .file-label {
-                                    background:#cc0033!important;
+                                    background:#f18903!important;
                                     color:#ffffff;
                                     font-weight:bold;
                                     padding:1em;

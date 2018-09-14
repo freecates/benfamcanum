@@ -98,7 +98,7 @@ const Localidades = props => (
     </div>
     <style jsx>{`
       h2 {
-        color: #391f92;
+        color: #cb5599;
         text-align: center;
       }
       .align-center {
@@ -108,11 +108,15 @@ const Localidades = props => (
       li {
         color: #ffffff !important;
       }
+      .breadcrumbs a,
+      .breadcrumbs li {
+        color: #000000 !important;
+      }
       .promo {
         margin-top: 2em;
       }
       .file-label {
-        background: #cc0033 !important;
+        background: #f18903 !important;
         color: #ffffff;
         font-weight: 400;
         font-size: 1.25rem;

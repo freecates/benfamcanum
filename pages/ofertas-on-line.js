@@ -38,7 +38,7 @@ const OfertasOnLine = (props) => (
     </IntlProvider>
         <style jsx>{`
           h1 {
-            color:#391f92;
+            color:#cb5599;
             text-align:center;
           }
           .align-center {
@@ -63,7 +63,7 @@ const OfertasOnLine = (props) => (
             text-decoration:underline;
           }
           a.blue {
-            color:#3f3fff;
+            color:#00add9;
             text-decoration:underline;
           }
           p {

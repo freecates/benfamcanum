@@ -68,19 +68,19 @@ const Prestacion =  (props) => (
           margin:0 auto;
         }
         h1 {
-          color:#391f92;
+          color:#cb5599;
         }
         h1 small {
           color:#ffffff;
         }
         a {
-          color:#3f3fff!important;
+          color:#00add9!important;
         }
         .align-center {
           text-align:center;
         }
         .file-label {
-          background:#cc0033!important;
+          background:#f18903!important;
         }
         @media screen and (min-width: 768px) {              
           .file-data {

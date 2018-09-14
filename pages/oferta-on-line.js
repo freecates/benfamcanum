@@ -151,17 +151,17 @@ const OfertaOnLine =  (props) => (
           margin:0 auto;
         }
         h1 {
-          color:#391f92;
+          color:#cb5599;
         }
         h1 small {
           color:#ffffff;
           font-weight:bold;
         }
         a {
-          color:#3f3fff!important;
+          color:#00add9!important;
         }
         .file-label {
-          background:#cc0033!important;
+          background:#f18903!important;
           color:#ffffff;
           font-weight:bold;
           font-size:1rem;

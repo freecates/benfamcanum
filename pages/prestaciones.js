@@ -23,9 +23,6 @@ export default () => (
             </p>
         </section>
         <style jsx>{`
-            a, li {
-                color:#ffffff!important;
-            }
             .breadcrumbs {
                 margin:-2rem 0 1rem 0;
             }

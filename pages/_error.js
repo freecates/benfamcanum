@@ -34,7 +34,7 @@ export default class Error extends React.Component {
             margin-bottom:1em;
           }
           a {
-            color:#3f3fff!important;
+            color:#00add9!important;
           }
           h1, h2 {
             text-align:center;

@@ -28,9 +28,10 @@ const Header = (props) => (
             width:100%;
           }
           header.withbg {
-            background: url('/static/bg-body-familias-numerosas.jpg');
+            /*background: url('/static/bg-body-familias-numerosas.jpg');
             background-size: cover;
-            background-repeat: no-repeat;
+            background-position:center;
+            background-repeat: no-repeat;*/
           }
           @media screen and (min-width: 320px) {
           header {

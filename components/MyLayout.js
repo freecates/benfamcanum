@@ -57,9 +57,9 @@ export default class Layout extends React.Component {
           </main>
           <style jsx>{`
             .layout {
-              background: url('/static/bg-body-familias-numerosas.jpg');
-              background-size: cover;
-              background-repeat: no-repeat;
+              /*background: url('/static/bg-body-familias-numerosas.jpg');
+              background-size: contain;
+              background-repeat: no-repeat;*/
               animation-name: fadeIn;
               animation-duration: 1.3s;
               animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
@@ -83,8 +83,8 @@ export default class Layout extends React.Component {
         </main>
         <style jsx>{`
           .bgmapa {
-            background: url(/static/bg-mapa.jpg) no-repeat center center;
-            background-size: cover;
+            /*background: url(/static/bg-mapa.jpg) no-repeat center center;
+            background-size: contain;*/
             padding:2em;
             animation-name: fadeIn;
             animation-duration: 1.3s;

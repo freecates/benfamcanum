@@ -50,7 +50,7 @@ export default () => (
                 margin-bottom:1em;
             }
             a {
-                color:#3f3fff!important;
+                color:#00add9!important;
             }
             .call-to-action {
                 text-align:center;
@@ -60,7 +60,7 @@ export default () => (
                 text-align:left;
             }
             h1, h2 {
-                color:#391f92;
+                color:#cb5599;
             }
             @media screen and (min-width: 320px) {   
                 .call-to-action {

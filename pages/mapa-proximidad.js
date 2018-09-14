@@ -127,7 +127,7 @@ const MapByCategory = (props) => (
           text-align:center;
         }
         h1 {
-          color:#391f92;
+          color:#cb5599;
         }
         .gallery {
           display: -ms-flexbox;
@@ -164,7 +164,7 @@ const MapByCategory = (props) => (
           text-decoration:none;
         }
         nav a {
-          color:#3f3fff;
+          color:#00add9;
         }
         .benefit {
           width: 150px;
@@ -175,7 +175,7 @@ const MapByCategory = (props) => (
           margin-right:10px;
           float:right;
           text-align:center;
-          background:#cc0033!important;
+          background:#f18903!important;
         }
         .titulo-oferta {
           color:#ff0000;

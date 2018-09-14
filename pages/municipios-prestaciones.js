@@ -75,7 +75,7 @@ const MunicipiosPrestaciones = (props) => (
             }
         }
         h1 {
-          color:#391f92;
+          color:#cb5599;
           text-align:center;
         }
         .gallery {

@@ -127,13 +127,13 @@ const PostsByCategoryComunidad = props => (
             text-align: center;
           }
           h1 {
-            color: #391f92;
+            color: #cb5599;
           }
           a:hover {
             text-decoration: underline;
           }
           nav a {
-            color: #3f3fff;
+            color: #00add9;
           }
           .gallery {
             display: -ms-flexbox;
@@ -148,7 +148,7 @@ const PostsByCategoryComunidad = props => (
             margin: 0 auto !important;
           }
           nav a {
-            color: #3f3fff;
+            color: #00add9;
           }
           .benefit {
             width: 150px;
@@ -159,7 +159,7 @@ const PostsByCategoryComunidad = props => (
             margin-right: 5px;
             float: right;
             text-align: center;
-            background: #cc0033 !important;
+            background: #f18903 !important;
           }
           .titulo-oferta {
             color: #ff0000;
@@ -624,7 +624,7 @@ const PostsByCategoryComunidad = props => (
               margin-top: 1em;
             }
             h1 {
-              color: #391f92;
+              color: #cb5599;
             }
             .gallery {
               display: -ms-flexbox;
@@ -645,7 +645,7 @@ const PostsByCategoryComunidad = props => (
               text-decoration: underline;
             }
             nav a {
-              color: #3f3fff;
+              color: #00add9;
             }
             .benefit {
               width: 150px;
@@ -656,7 +656,7 @@ const PostsByCategoryComunidad = props => (
               margin-right: 5px;
               float: right;
               text-align: center;
-              background: #cc0033 !important;
+              background: #f18903 !important;
             }
             .titulo-oferta {
               color: #ff0000;
@@ -743,7 +743,7 @@ const PostsByCategoryComunidad = props => (
               text-align: center;
             }
             h1 {
-              color: #391f92;
+              color: #cb5599;
             }
             .gallery {
               display: -ms-flexbox;
@@ -764,7 +764,7 @@ const PostsByCategoryComunidad = props => (
               text-decoration: underline;
             }
             nav a {
-              color: #3f3fff;
+              color: #00add9;
             }
             .benefit {
               width: 150px;
@@ -775,7 +775,7 @@ const PostsByCategoryComunidad = props => (
               margin-right: 5px;
               float: right;
               text-align: center;
-              background: #cc0033 !important;
+              background: #f18903 !important;
             }
             .titulo-oferta {
               color: #ff0000;

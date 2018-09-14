@@ -168,7 +168,7 @@ class IsSearch extends React.Component {
                         text-decoration:underline;
                     }
                     nav a {
-                        color:#3f3fff;
+                        color:#00add9;
                     }
                     .benefit {
                         width: 150px;
@@ -182,7 +182,7 @@ class IsSearch extends React.Component {
                         margin-right:5px;
                         float:right;
                         text-align:center;
-                        background:#cc0033!important;
+                        background:#f18903!important;
                     }
                     .titulo-oferta {
                         color:#ff0000;
@@ -290,7 +290,7 @@ class IsSearch extends React.Component {
                         margin-bottom:0;
                     }
                     .file-label {
-                        background:#cc0033!important;
+                        background:#f18903!important;
                         color:#ffffff;
                         font-weight:bold;
                         padding:1em;
@@ -381,7 +381,7 @@ class IsSearch extends React.Component {
                                 margin-bottom:0;
                             }
                             .file-label {
-                                background:#cc0033!important;
+                                background:#f18903!important;
                                 color:#ffffff;
                                 font-weight:bold;
                                 padding:1em;
@@ -472,7 +472,7 @@ class IsSearch extends React.Component {
                                     margin-bottom:0;
                                 }
                                 .file-label {
-                                    background:#cc0033!important;
+                                    background:#f18903!important;
                                     color:#ffffff;
                                     font-weight:bold;
                                     padding:1em;

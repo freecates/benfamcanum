@@ -23,18 +23,18 @@ export default class NavBarBenFamNum extends React.Component {
         <Navbar inverse toggleable expand='lg'>
           <NavbarToggler title='Commutador' className='ml-2' onClick={this.toggle} />
           <Link prefetch href="/"><NavbarBrand title='Inicio' className='ml-auto'>
-            <img src='/static/logo-familias-numerosas.png' alt='Inicio' />
+            <img src='/static/logo-families-nombroses.png' alt='Inicio' />
           </NavbarBrand></Link>
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
-                <NavItem><Link prefetch href="/prestaciones">
-                  <a title='Prestaciones para familias numerosas'>Prestaciones oficiales</a>
-                </Link></NavItem>
                 <NavItem><Link prefetch href="/beneficios">
-                  <a title='Ofertas comerciales para familias numerosas'>Ofertas para familias</a>
+                  <a title='Ofertas comerciales para familias numerosas'><strong>Ofertas y descuentos</strong></a>
+                </Link></NavItem>
+                <NavItem><Link prefetch href="/prestaciones">
+                  <a title='Prestaciones para familias numerosas'><strong>Ayudas públicas</strong></a>
                 </Link></NavItem>
                 <NavItem><Link prefetch href="/contacto">
-                  <a title='Contacta con nosotros'>Contacto</a>
+                  <a title='Contacta con nosotros'><strong>Contacto</strong></a>
                 </Link></NavItem>
                 <NavItem><Link prefetch href="/buscador">
                   <a title='Buscador'><FontAwesome
@@ -48,12 +48,15 @@ export default class NavBarBenFamNum extends React.Component {
         </Navbar>
         <style jsx>{`
           a {
-            color:#ffffff;
+            color:#000000;
             margin:0 1em;
           }
           a:hover {
-            color:#ffffff;
+            color:#000000;
             text-decoration:underline;
+          }
+          a strong {
+            text-transform:uppercase;
           }
           @media screen and (min-width: 768px) {
             .align-nav {

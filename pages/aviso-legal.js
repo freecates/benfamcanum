@@ -42,7 +42,7 @@ export default () => (
           margin-bottom:1em;
         }
         a {
-          color:#3f3fff!important;
+          color:#00add9!important;
         }
       `}</style>
     </Layout>

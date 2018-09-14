@@ -36,10 +36,10 @@ const OfertasPorSectores = (props) => (
     </IntlProvider>
         <style jsx>{`
           a, li {
-              color:#ffffff!important;
+              color:#000000!important;
           }
           h1 {
-            color:#391f92;
+            color:#cb5599;
             text-align:center;
           }
           .align-center {
@@ -90,7 +90,7 @@ const OfertasPorSectores = (props) => (
               width: 100%;
             } 
           .item {
-              width: 255px;
+              width: 300px;
             }
           }
         `}</style>

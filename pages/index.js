@@ -10,23 +10,22 @@ export default () => (
     </Head>
         <section className='call-to-action'>
                 <h1><img alt='Icono conseguir beneficios familias numerosas' src='/static/icona-conseguir-beneficios-familias-numerosas.png'/><br/>¿No eres socio aún? ¿Quieres conseguir estos descuentos?</h1>
-                <p><img alt='Carnet de socio familias numerosas' src='/static/carnet-familias-numerosas.jpg'/></p>
-                <p><Link href="http://www.familiasnumerosas.org/hazte-socio/"><a className='hollow button' target='_blank' title='Enlace externo' rel='noopener'>Quiero participar de estas ventajas</a></Link></p>
+                <p><Link href="https://fanoc.org/hazte-socio/tipos-de-socio/"><a className='hollow button' target='_blank' title='Enlace externo' rel='noopener'>Quiero participar de estas ventajas</a></Link></p>
                 <style jsx>{`
                     .call-to-action {
                         text-align:center;
                         margin:0 auto;
                     }
                     h1 {
-                        color:#391f92;
+                        color:#cb5599;
                     }
                     .button {
                         color:inherit;
                         text-transform:uppercase;
-                        border-color:#391f92;
+                        border-color:#cb5599;
                     }
                     .button:hover {
-                        color:#391f92;
+                        color:#cb5599;
                     }
                     @media screen and (min-width: 320px) {   
                         .call-to-action {

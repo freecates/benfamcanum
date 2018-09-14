@@ -67,7 +67,7 @@ const PrestacionesByMunicipio = (props) => (
             text-align:center;
           }
           h1, h2, h3 {
-            color:#391f92;
+            color:#cb5599;
           }
           table thead {
             background:none;
@@ -95,7 +95,7 @@ const PrestacionesByMunicipio = (props) => (
             }
           }
           nav a {
-            color:#3f3fff!important;
+            color:#00add9!important;
           }
         `}</style>
   </Layout>

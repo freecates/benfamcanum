@@ -298,7 +298,7 @@ const PostsByCategory = props => (
         margin-top: 1em;
       }
       .file-label {
-        background: #cc0033 !important;
+        background: #f18903 !important;
         color: #ffffff;
         font-weight: 400;
         font-size: 0.9rem;
@@ -317,7 +317,7 @@ const PostsByCategory = props => (
         text-align: center;
       }
       h1 {
-        color: #391f92;
+        color: #cb5599;
       }
       .gallery {
         display: -ms-flexbox;
@@ -338,7 +338,7 @@ const PostsByCategory = props => (
         text-decoration: underline;
       }
       nav a {
-        color: #3f3fff;
+        color: #00add9;
       }
       .benefit {
         width: 150px;
@@ -349,7 +349,7 @@ const PostsByCategory = props => (
         margin-right: 5px;
         float: right;
         text-align: center;
-        background: #cc0033 !important;
+        background: #f18903 !important;
       }
       .titulo-oferta {
         color: #ff0000;

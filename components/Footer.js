@@ -1,55 +1,65 @@
 import React from 'react'
 import Link from 'next/link'
+import FontAwesome from 'react-fontawesome'
 
 const linkStyle = {
   marginLeft: 15
 }
 
 const footerStyle = {
-  margin: '20px auto',
-  textAlign: 'center',
-  maxWidth: '100%'
+  margin: '0 auto',
+  maxWidth: '100%',
+  backgroundColor: '#434343',
+  padding: '1em',
+  color: '#ffffff'
 }
 
 const Footer = () => (
   <footer style={footerStyle}>
-        <p><Link href="https://www.facebook.com/AssociacioFANOC/"><a title='Enlace externo' target="_blank" rel='noopener'><img alt='Logo de Facebook' src='/static/logo-facebook-familias-numerosas.png' /></a></Link> <Link href="https://twitter.com/familianombrosa?lang=ca"><a title='Enlace externo' target="_blank" rel='noopener'><img alt='Logo de Twiter' src='/static/logo-twitter-familias-numerosas.png' /></a></Link></p>
-
         <section>
           <div className='wrapper'>
               <div className='first'>
-                <p className='purple'>Miembros de:<br/><Link href="http://www.elfac.org/"><a title='Enlace externo' target="_blank" rel='noopener'><img alt='Logo European Large Families Confederation' src='/static/logo-european-large-families-confederation-familias-numerosas.jpg' /></a></Link></p>
+                <p><img src='/static/fanoc-logo-footer.png'/></p>
               </div>
               <div className='second'>
-                 <p className='purple'>Con el apoyo de:<br/><Link href="https://www.msssi.gob.es/"><a title='Enlace externo' target="_blank" rel='noopener'><img alt='Loog Ministerio de Sanidad, Servicios Sociales e Igualdad' src='/static/logo-ministerio-familias-numerosas.png' /></a></Link></p>
+                 <p>Asociación de Familias numerosas de Cataluña</p>
+                 <p><small>Balmes, 92, 3r 2a<br/>08008 Barcelona<br/>Teléfono: 933511000</small></p>
+                 <p><small>Horario: de Lunes a Viernes de 9h a 18h /el mes de julio de 9 a 15h / agosto cerrado.</small></p>
               </div>
               <div className='third'>
-                 <p className='purple'>Certificación<br/><Link href="http://www.masfamilia.org/que-es-2"><a title='Enlace externo' target="_blank" rel='noopener'><img alt='Logo familiarmente responsable' src='/static/logo-familiarmente-responsable-familias-numerosas.png' /></a></Link>
-                </p>
+                 <p>¡Síguenos!</p>
+                 <p><span><a href='https://www.facebook.com/AssociacioFANOC/'><FontAwesome
+                name='facebook'
+                size='2x'
+                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#ffffff' }}
+              /></a></span> <span><a href='https://twitter.com/familianombrosa?lang=ca'><FontAwesome
+                name='twitter'
+                size='2x'
+                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#ffffff' }}
+              /></a></span> <span><a href='https://www.youtube.com/user/FANOCAssFamNom'><FontAwesome
+              name='youtube'
+              size='2x'
+              style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#ffffff' }}
+            /></a></span></p>
+            <p><small><Link prefetch href="/aviso-legal">
+              <a title='Aviso legal'>Aviso Legal</a>
+            </Link><br/>
+            <Link prefetch href="/politica-de-cookies">
+              <a title='Enlace externo'>Política de Cookies</a>
+            </Link>
+            </small>        
+            </p>
               </div>
           </div>
-          <p className='grey'>Associació de Famílies Nombroses de Catalunya - FANOC &#169; 2018
-          <Link prefetch href="/aviso-legal">
-            <a title='Aviso legal' style={linkStyle}>Aviso Legal</a>
-          </Link>
-          <Link prefetch href="/politica-de-cookies">
-            <a title='Enlace externo' style={linkStyle}>Política de Cookies</a>
-          </Link>        
-          </p>
           
           <style jsx>{`
-            .purple {
-              color:#3a2092;
-            }
             a {
               color:inherit;
             }
             a:hover {
+              color:#ffffff;
               text-decoration:underline;
-            }
-            .grey {
-              background-color:#e0e4e8;
-            }           
+            }          
             @media screen and (min-width: 768px) {                          
               .wrapper {
                 display: -ms-flexbox;

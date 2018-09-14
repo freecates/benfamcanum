@@ -16,34 +16,42 @@ Router.onRouteChangeError = () => NProgress.done()
 const HeaderHome = () => (
   <div style={{ marginBottom: 20 }}>
       <GlobalHead />
-      <header className='fade-in'>
-        <section>
-          <NavBarBenFamNum />
-        </section>
-        <section className='section-data'>
-          <div className='section-a'>
-            <p className='icones-prestacions align-center'>
-                <Link prefetch href="/prestaciones"><a title='Prestaciones para familias numerosas'><img alt='Icono prestaciones públicas para familias numerosas' src='/static/icona-prestacions-publiques-familias-numerosas.png'/></a></Link>
-            </p>
-            <p>Desde este apartado podrás acceder a toda la información sobre las prestaciones que como familia numerosa te ofrece el gobierno central, autonómico o municipal</p>
-          </div>
-          <div className='section-b'>
-            <p className='icones-prestacions align-center'>
-                <Link prefetch href="/beneficios"><a title='Ofertas comerciales para familias numerosas'><img alt='Icono ofertas comerciales para familias numerosas' src='/static/icona-ofertas-familias-numerosas.png'/></a></Link>
-            </p>
-            <p>Ser familia numerosa te ofrece muchos descuentos y servicios exclusivos, en este apartado podrás seleccionar el tipo de servicio que necesitas y las ventajas que te ofrecen las empresas</p>
-          </div>
-        </section>
-      </header>
+      <div className='fade-in'>
+        <div className='bg-white'>
+          <section>
+            <NavBarBenFamNum />
+          </section>
+        </div>
+        <div>
+          <img src='/static/bg-body-familias-numerosas.jpg' />
+        </div>
+          <section className='section-data'>
+            <div className='section-a'>
+              <h1 className='icones-prestacions align-center'>
+                  <Link prefetch href="/beneficios"><a title='Ofertas comerciales para familias numerosas'><strong>Ofertas y descuentos</strong></a></Link>
+              </h1>
+            </div>
+            <div className='section-b'>
+              <h1 className='icones-prestacions align-center'>
+                  <Link prefetch href="/prestaciones"><a title='Prestaciones para familias numerosas'><strong>Ayudas públicas</strong></a></Link>
+              </h1>
+            </div>
+          </section>
+      </div>
 
       
         <style jsx>{`
           a {
-            color:#ffffff;
+            color:#000000;
+            text-transform:uppercase;
+            transition: all 0.5s ease-in-out;
           }
           a:hover {
-            color:#ffffff;
-            text-decoration:underline;
+            color:#333333;
+            text-decoration:none;
+          }
+          .bg-white {
+            background:#ffffff;
           }
           ul,section {
             max-width:70rem;
@@ -54,18 +62,13 @@ const HeaderHome = () => (
             text-align:center;
           }
           p {
-            color:#ffffff;
+            color:#000000;
           }
           .align-center {
             text-align:center;
           }
           .menu>li {
             vertical-align:bottom;
-          }
-          header {
-            background: url('/static/bg-body-familias-numerosas.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
           }
           .fade-in {
             animation-name: fadeIn;
@@ -83,10 +86,12 @@ const HeaderHome = () => (
           }
           .section-a, .section-b {
             padding: 1rem;
+            background:#cb5599;
+            margin:1em;
           }
           @media screen and (min-width: 320px) {
           header {
-              padding:.25em;
+              padding:0;
             }
             .icones-prestacions img {
                 padding:0 0 1em 0;
@@ -94,7 +99,7 @@ const HeaderHome = () => (
           }
           @media screen and (min-width: 768px) {
           header {
-              padding:.5em;
+              padding:0;
             }
             .icones-prestacions img {
                 padding:4rem 2em 1em 0;
@@ -104,10 +109,10 @@ const HeaderHome = () => (
               display: flex;
               -ms-flex-wrap: wrap;
                   flex-wrap: wrap;
-              align-items:start;
+              align-items:center;
             }
             .section-a, .section-b {
-              width: 50%;
+              width: 45%;
               max-width:42rem;
             }
           }

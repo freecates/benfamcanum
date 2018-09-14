@@ -79,7 +79,7 @@ const MapByCategory = (props) => (
           text-align:center;
         }
         h1 {
-          color:#391f92;
+          color:#cb5599;
         }
         .gallery {
           display: -ms-flexbox;
@@ -100,7 +100,7 @@ const MapByCategory = (props) => (
           text-decoration:underline;
         }
         nav a {
-          color:#3f3fff;
+          color:#00add9;
         }
         .benefit {/c-l/8/moda/Talavera%20de%20la%20Reina
           width: 150px;
@@ -111,7 +111,7 @@ const MapByCategory = (props) => (
           margin-right:10px;
           float:right;
           text-align:center;
-          background:#cc0033!important;
+          background:#f18903!important;
         }
         .titulo-oferta {
           color:#ff0000;
