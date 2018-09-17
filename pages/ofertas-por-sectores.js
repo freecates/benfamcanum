@@ -23,9 +23,9 @@ const OfertasPorSectores = (props) => (
         <section>
           <ul className='gallery'>
           {props.ofertasporsectores.map((ofertasporsectore, index) => (           
-            <li className='item' key={index}>
+            <li className='item align-center' key={index}>
               <Link prefetch as={`/c/${ofertasporsectore.term_id}/${ofertasporsectore.slug}`} href={`/category?sid=${ofertasporsectore.term_id}`}>
-                <h3><a title={'Clica aquí para ver todas las ofertas de ' + ofertasporsectore.name}><img src={'/static/' + ofertasporsectore.slug +'-familias-numerosas.png'} width='64'/> <span dangerouslySetInnerHTML={ {__html: ofertasporsectore.name} } /></a></h3>
+                <a title={'Clica aquí para ver todas las ofertas de ' + ofertasporsectore.name}><img src={'/static/' + ofertasporsectore.slug +'-familias-numerosas.png'} width='96'/><br/><span dangerouslySetInnerHTML={ {__html: ofertasporsectore.name} } /></a>
               </Link>
             </li>
             ))}
@@ -57,7 +57,14 @@ const OfertasPorSectores = (props) => (
             margin-left:0;
             margin:0 auto!important;
           }
+          a {
+            color:inherit;
+          }
           a:hover {
+            text-decoration:underline;
+          }
+          a.blue {
+            color:#00add9;
             text-decoration:underline;
           }
           p {
@@ -72,25 +79,25 @@ const OfertasPorSectores = (props) => (
             }              
             .item {
               margin: 5px;
-              width:280px;
+            }
+          }
+          @media screen and (max-width: 375px) {              
+            .item {
+              width: 124px;
             }
           }
           @media screen and (min-width: 360px) {   
             .gallery {
-              width: 70%;
+              width: 90%;
             }
           }
           @media screen and (min-width: 768px) {   
             .gallery {
-              width: 90%;
+              max-width: 70%;
+              width:500px;
             }
-          }
-          @media screen and (min-width: 1360px) {  
-            .gallery {
-              width: 100%;
-            } 
           .item {
-              width: 300px;
+              width: 150px;
             }
           }
         `}</style>
