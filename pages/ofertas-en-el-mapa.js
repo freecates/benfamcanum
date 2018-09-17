@@ -27,7 +27,7 @@ const Localidades = (props) => (
     </ul>
     </nav>
     <IntlProvider defaultLocale='ca'>
-      <main>
+      <main className='bgmapa'>
         <section className='padding-4x'>
           <div className='wrapper wrapper-top'>
             <div className='left'>
@@ -63,6 +63,23 @@ const Localidades = (props) => (
       </main>
     </IntlProvider>
         <style jsx>{`
+          .bgmapa {
+            background: url(/static/bg-mapa.jpg) no-repeat center center;
+            background-size: contain;
+            padding:2em;
+            animation-name: fadeIn;
+            animation-duration: 1.3s;
+            animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+            animation-fill-mode: forwards;
+          }
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
           .align-center {
             text-align:center;
           }

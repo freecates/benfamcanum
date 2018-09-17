@@ -82,23 +82,6 @@ export default class Layout extends React.Component {
           {this.props.children}
         </main>
         <style jsx>{`
-          .bgmapa {
-            /*background: url(/static/bg-mapa.jpg) no-repeat center center;
-            background-size: contain;*/
-            padding:2em;
-            animation-name: fadeIn;
-            animation-duration: 1.3s;
-            animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-            animation-fill-mode: forwards;
-          }
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
           `}</style>
       </div>}
       <Footer />
