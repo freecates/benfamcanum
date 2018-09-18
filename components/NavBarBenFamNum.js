@@ -22,9 +22,9 @@ export default class NavBarBenFamNum extends React.Component {
       <div>
         <Navbar inverse toggleable expand='lg'>
           <NavbarToggler title='Commutador' className='ml-2' onClick={this.toggle} />
-          <Link prefetch href="/"><NavbarBrand title='Inicio' className='ml-auto'>
-            <img src='/static/logo-families-nombroses.png' alt='Inicio' />
-          </NavbarBrand></Link>
+          <Link href="https://fanoc.org/"><a target='_blank'><NavbarBrand title='Web Corporativa FANOC' className='ml-auto'>
+            <img src='/static/logo-families-nombroses.png' alt='Web Corporativa FANOC' />
+          </NavbarBrand></a></Link>
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem><Link prefetch href="/beneficios">

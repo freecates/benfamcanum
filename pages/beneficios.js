@@ -178,11 +178,9 @@ const Localidades = props => (
           width: 71%;
         }
         .call-to-action .text-icona {
-          font-size: 1.15em;
           top: 100px;
         }
         .call-to-action .text-icona.city-text {
-          font-size: 1.1em;
           top: 85px;
         }
         .icones-prestacions img {
