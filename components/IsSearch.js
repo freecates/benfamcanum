@@ -32,9 +32,9 @@ class IsSearch extends React.Component {
         
         const title = this.state.Title
 
-        const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?title=${title}`)
+        const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?title=${title}&comunidad=catalu`)
         const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_online?title=${title}`)
-        const res3 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?title=${title}`)
+        const res3 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?title=${title}&comunidad=catalu`)
         const PostResults = await res.json()
         const OfertasResults = await res2.json()
         const OfertasGrandeMarcasResults = await res3.json()
