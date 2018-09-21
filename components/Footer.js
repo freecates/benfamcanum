@@ -29,18 +29,23 @@ const Footer = () => (
               <div className='third'>
                  <p>¡Síguenos!</p>
                  <p><span><a href='https://www.facebook.com/AssociacioFANOC/'><FontAwesome
-                name='facebook'
+                name='facebook-square'
                 size='2x'
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#ffffff' }}
               /></a></span> <span><a href='https://twitter.com/familianombrosa?lang=ca'><FontAwesome
-                name='twitter'
+                name='twitter-square'
                 size='2x'
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#ffffff' }}
               /></a></span> <span><a href='https://www.youtube.com/user/FANOCAssFamNom'><FontAwesome
-              name='youtube'
+              name='youtube-square'
               size='2x'
               style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#ffffff' }}
-            /></a></span></p>
+              /></a></span> <span><a href='https://www.instagram.com/p/BkKP0-znVo8/
+              '><FontAwesome
+              name='instagram'
+              size='2x'
+              style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#ffffff' }}
+          /></a></span></p>
             <p><small><Link prefetch href="/aviso-legal">
               <a title='Aviso legal'>Aviso Legal</a>
             </Link><br/>
@@ -49,6 +54,8 @@ const Footer = () => (
             </Link>
             </small>        
             </p>
+              </div>
+              <div className='four'><p><Link href='https://fanoc.org/hazte-amigo/'><a className='button'>¡Suscríbete a nuestra newsletter!</a></Link></p>
               </div>
           </div>
           
@@ -59,7 +66,12 @@ const Footer = () => (
             a:hover {
               color:#ffffff;
               text-decoration:underline;
-            }          
+            }
+            a.button {
+              color:#ffffff!important;
+              background:#00add9!important;
+              border-radius:3px;
+            }           
             @media screen and (min-width: 768px) {                          
               .wrapper {
                 display: -ms-flexbox;
@@ -74,15 +86,19 @@ const Footer = () => (
                 align-items:baseline;
               }
               .first {
-                width: 33%;
-                padding:0 0 0 0;
+                width: 25%;
+                padding:0 1em 0 0;
               }
               .second {
-                width: 33%;
-                padding:0 0 0 0;
+                width: 25%;
+                padding:0 1em 0 0;
               }
               .third {
-                width: 33%;
+                width: 25%;
+                padding:0 1em 0 0;
+              }
+              .four {
+                width: 25%;
                 padding:0 0 0 0;
               }
             }

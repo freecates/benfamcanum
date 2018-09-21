@@ -22,7 +22,7 @@ export default class NavBarBenFamNum extends React.Component {
       <div>
         <Navbar inverse toggleable expand='lg'>
           <NavbarToggler title='Commutador' className='ml-2' onClick={this.toggle} />
-          <Link href="https://fanoc.org/"><a target='_blank'><NavbarBrand title='Web Corporativa FANOC' className='ml-auto'>
+          <Link href="https://fanoc.org/"><a><NavbarBrand title='Ir a la Web Corporativa FANOC' className='ml-auto'>
             <img src='/static/logo-families-nombroses.png' alt='Web Corporativa FANOC' />
           </NavbarBrand></a></Link>
             <Collapse isOpen={this.state.isOpen} navbar>
@@ -32,9 +32,6 @@ export default class NavBarBenFamNum extends React.Component {
                 </Link></NavItem>
                 <NavItem><Link prefetch href="/prestaciones">
                   <a title='Prestaciones para familias numerosas'><strong>Ayudas públicas</strong></a>
-                </Link></NavItem>
-                <NavItem><Link prefetch href="/contacto">
-                  <a title='Contacta con nosotros'><strong>Contacto</strong></a>
                 </Link></NavItem>
                 <NavItem><Link prefetch href="/buscador">
                   <a title='Buscador'><FontAwesome

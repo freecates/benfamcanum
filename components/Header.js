@@ -1,10 +1,10 @@
 import React from 'react'
-import Head from 'next/head'
-import Link from 'next/link'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 import GlobalHead from './GlobalHead'
 import NavBarBenFamNum from './NavBarBenFamNum'
+import NavBarExternal from './NavBarExternal'
+import MediaQuery from 'react-responsive'
 
 Router.onRouteChangeStart = (url) => {
   console.log(`Loading: ${url}`)
@@ -14,8 +14,12 @@ Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
 const Header = (props) => (
+  <React.Fragment>
+  <GlobalHead />
+  <MediaQuery minDeviceWidth={768}>
+  <NavBarExternal/>
+  </MediaQuery>
   <div style={{ marginBottom: 20 }}>
-    <GlobalHead />
     <header className={ 'withbg' in props && 'withbg'}>
       <section>
         <NavBarBenFamNum />
@@ -45,7 +49,7 @@ const Header = (props) => (
           }
         `}</style>
 
-    </div>
+    </div></React.Fragment>
 )
 
 export default Header

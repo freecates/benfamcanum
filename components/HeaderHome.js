@@ -1,10 +1,11 @@
 import React from 'react'
-import Head from 'next/head'
 import Link from 'next/link'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 import GlobalHead from './GlobalHead'
 import NavBarBenFamNum from './NavBarBenFamNum'
+import NavBarExternal from './NavBarExternal'
+import MediaQuery from 'react-responsive'
 
 Router.onRouteChangeStart = (url) => {
   console.log(`Loading: ${url}`)
@@ -14,8 +15,12 @@ Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
 const HeaderHome = () => (
+  <React.Fragment>
+  <GlobalHead />
+  <MediaQuery minDeviceWidth={768}>
+  <NavBarExternal/>
+  </MediaQuery>
   <div style={{ marginBottom: 20 }}>
-      <GlobalHead />
       <div className='fade-in'>
         <div className='bg-white'>
           <section>
@@ -27,14 +32,14 @@ const HeaderHome = () => (
         </div>
           <section className='section-data'>
             <div className='section-a'>
-              <h1 className='icones-prestacions align-center'>
-                  <Link prefetch href="/beneficios"><a title='Ofertas comerciales para familias numerosas'><strong>Ofertas y descuentos</strong></a></Link>
-              </h1>
+              <h4 className='icones-prestacions align-center'>
+                  <Link prefetch href="/beneficios"><a title='Ofertas comerciales para familias numerosas'><img src='/static/icono-menu-fanoc-oferta.png'/><br/><strong>Ofertas y descuentos</strong></a></Link>
+              </h4>
             </div>
             <div className='section-b'>
-              <h1 className='icones-prestacions align-center'>
-                  <Link prefetch href="/prestaciones"><a title='Prestaciones para familias numerosas'><strong>Ayudas públicas</strong></a></Link>
-              </h1>
+              <h4 className='icones-prestacions align-center'>
+                  <Link prefetch href="/prestaciones"><a title='Prestaciones para familias numerosas'><img src='/static/icono-menu-fanoc-prestaciones.png'/><br/><strong>Ayudas públicas</strong></a></Link>
+              </h4>
             </div>
           </section>
       </div>
@@ -101,9 +106,6 @@ const HeaderHome = () => (
           header {
               padding:0;
             }
-            .icones-prestacions img {
-                padding:4rem 2em 1em 0;
-            }              
             .section-data {
               display: -ms-flexbox;
               display: flex;
@@ -124,6 +126,7 @@ const HeaderHome = () => (
         `}</style>
 
     </div>
+    </React.Fragment>
 )
 
 export default HeaderHome

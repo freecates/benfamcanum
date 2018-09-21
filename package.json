@@ -43,6 +43,7 @@
     "react-google-maps": "9.4.5",
     "react-intersection-observer": "1.0.0",
     "react-intl": "^2.4.0",
+    "react-responsive": "^5.0.0",
     "react-share": "^1.17.0",
     "reactstrap": "5.0.0-alpha.3"
   },
