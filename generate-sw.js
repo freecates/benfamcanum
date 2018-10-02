@@ -9,13 +9,13 @@ const staticFiles = path.resolve(__dirname, './static')
 
 function bundles(app) {
 	return new Promise((resolve, reject) => {
-		fs.readdir(`${dotNext}/bundles/pages`, (err, files) => {
+		fs.readdir(`${dotNext}/static/${app.buildId}/pages`, (err, files) => {
 			if (err) {
 				resolve(app)
 			}
 
 			if (files) {
-				const root = `/_next/${app.buildId}/page`
+				const root = `/_next/static/${app.buildId}/pages`
 				app.precaches = app.precaches.concat(files
 					.filter(file => file !== 'index.js')
 					.map(file => {
@@ -32,13 +32,13 @@ function bundles(app) {
 
 function chunks(app) {
 	return new Promise((resolve, reject) => {
-		fs.readdir(`${dotNext}/chunks`, (err, files) => {
+		fs.readdir(`${dotNext}/static/chunks`, (err, files) => {
 			if (err) {
 				resolve(app)
 			}
 
 			if (files) {
-				const root = `/_next/webpack/chunks`
+				const root = `/_next/static/chunks`
 				app.precaches = app.precaches.concat(files
 					.filter(file => /\.js$/.test(file))
 					.map(file => {

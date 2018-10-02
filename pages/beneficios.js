@@ -42,23 +42,11 @@ const Localidades = props => (
             </Link>
           </div>
           <div className="icona">
+            <Link prefetch as={`/ca/Catalu/8143`} href={`/comunidad?comunidad=Catalu&caid=8143`}><a>
             <img src="/static/icona-ofertas-por-poblacion-familias-numerosas.png" />
-            <div className="text-icona city-text">
-              Ofertas por población<br />
-              <SelectCity
-                inputClass="comunidad"
-                inputClass2="green"
-                inputValue="Ver"
-                options={[
-                  {
-                    slug: 'catalunya',
-                    key: 7,
-                    value: '/comunidad?comunidad=Catalu&caid=8143',
-                    label: 'Cataluña'
-                  }
-                ]}
-              />
-            </div>
+            <div className="text-icona">
+              Ofertas por población
+              </div></a></Link>
           </div>
           <div className="icona">
             <Link prefetch href="/ofertas-on-line">

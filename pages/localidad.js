@@ -17,7 +17,7 @@ const PostsByLocalidad = (props) => (
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
         <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
-        <li><Link prefetch as={`/ca/${props.posts[0].comunidad_autonoma}`} href={`/comunidad?comunidad=${props.posts[0].comunidad_autonoma}`}><a>{props.posts[0].comunidad_autonoma}</a></Link></li>
+        <li><Link prefetch as={`/ca/${props.posts[0].comunidad_autonoma}/${props.marcasofertas[0].comunidad_autonoma.term_id}`} href={`/comunidad?comunidad=${props.posts[0].comunidad_autonoma}&caid=${props.marcasofertas[0].comunidad_autonoma.term_id}`}><a>{props.posts[0].comunidad_autonoma}</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> Localidad: {props.posts[0].localidad_del_beneficio.name} 
         </li>
