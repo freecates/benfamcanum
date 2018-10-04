@@ -20,7 +20,7 @@ export default class NavBarBenFamNum extends React.Component {
   render() {
     return (
       <div>
-        <Navbar inverse toggleable expand='lg'>
+        <Navbar style={{padding: '0 1rem 1rem 1rem'}} inverse toggleable expand='lg'>
           <NavbarToggler title='Commutador' className='ml-2' onClick={this.toggle} />
           <Link href="https://fanoc.org/"><a><NavbarBrand title='Ir a la Web Corporativa FANOC' className='ml-auto'>
             <img src='/static/logo-families-nombroses.png' alt='Web Corporativa FANOC' />

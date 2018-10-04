@@ -44,7 +44,7 @@ const Header = (props) => (
           }
           @media screen and (min-width: 768px) {
           header {
-              padding:.5em;
+              padding:0 .5em;
             }
           }
         `}</style>

@@ -10,7 +10,7 @@ const navStyle = {
   margin: '0 auto',
   maxWidth: '100%',
   backgroundColor: '#f6f5f2',
-  padding: '1em 1em .5em 1em',
+  padding: '1em 1em 0 1em',
   color: '#000000'
 }
 
@@ -18,7 +18,7 @@ const NavBarExternal = () => (
   <nav style={navStyle}>
         <section>
           <div className='wrapper'>
-                <p><span className='first'><Link href='https://fanoc.org/zona-socio/'><a className='button'>Acceso socios</a></Link></span><span className='second'><span><a href='https://www.facebook.com/AssociacioFANOC/'><FontAwesome
+                <p><span className='first'><Link href='https://fanoc.org/zona-socio/'><a className='button'>Zona socios</a></Link></span><span className='second'><span><a href='https://www.facebook.com/AssociacioFANOC/'><FontAwesome
                 name='facebook-square'
                 size='2x'
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#000000' }}
@@ -36,7 +36,7 @@ const NavBarExternal = () => (
               size='2x'
               style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#000000' }}
           /></a></span></span> <span className='third'><Link href="https://fanoc.org/contacto/">
-              <a title='Contacto'>Contacto</a>
+              <a title='Contacto'>Contacta</a>
             </Link></span>      
             </p>
           </div>
@@ -53,17 +53,17 @@ const NavBarExternal = () => (
               color:#ffffff!important;
               background:#00add9!important;
               border-radius:3px;
-              padding:.25em 1.5em;
+              padding:.25em 1em;
             } 
             .wrapper {
-              text-align:right;
+              text-align:left;
             }
             .wrapper p {
               margin-bottom:0;
             }         
             @media screen and (min-width: 768px) {                          
               .wrapper {
-                max-width: 70rem;
+                max-width: 60rem;
                 margin:0 auto;
               }
               .wrapper-top {
@@ -80,6 +80,7 @@ const NavBarExternal = () => (
               .third {
                 width: 33%;
                 padding:0 1em 0 0;
+                font-size:.9rem;
               }
               .four {
                 width: 33%;
