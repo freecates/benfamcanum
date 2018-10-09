@@ -425,7 +425,7 @@ const OfertaGranMarca = props => (
             )}
 
             {props.ofertagranmarca.acf.titulo_de_la_oferta ? (
-              <h4>{props.ofertagranmarca.acf.titulo_de_la_oferta}</h4>
+              <h4 dangerouslySetInnerHTML={{ __html: props.ofertagranmarca.acf.titulo_de_la_oferta }} />
             ) : (
               ''
             )}
