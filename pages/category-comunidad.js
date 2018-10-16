@@ -234,21 +234,13 @@ const PostsByCategoryComunidad = props => (
               </Link>
             </li>
             <li>
-              <Link
-                prefetch
-                as={`/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${
-                  props.posts[0].categoria_de_la_prestacion.slug
-                }`}
-                href={`/category?sid=${
-                  props.posts[0].categoria_de_la_prestacion.term_id
-                }`}
-              >
-                <a>{props.posts[0].categoria_de_la_prestacion.name}</a>
+              <Link prefetch href="/ofertas-por-sectores">
+                <a>Ofertas por sectores</a>
               </Link>
             </li>
             <li>
               <span className="show-for-sr">Actual: </span>{' '}
-              {props.posts[0].comunidad_autonoma}
+              {props.posts[0].categoria_de_la_prestacion.name} - {props.posts[0].comunidad_autonoma}
             </li>
           </ul>
         </nav>
@@ -481,7 +473,7 @@ const PostsByCategoryComunidad = props => (
                 ''
               )}
 
-              <p className="align-center">
+              <p className="align-center clear">
                 ... O si lo prefieres accede directamente a cualquiera de las
                 fichas
               </p>
@@ -594,6 +586,9 @@ const PostsByCategoryComunidad = props => (
         </section>
         {props.uniquemarcas.length >= 2 ? (
           <style jsx>{`
+            .clear {
+              clear:both;
+            }
             .national-gallery {
               background: #eeeeee;
               margin-top: 1em !important;
@@ -843,9 +838,10 @@ const PostsByCategoryComunidad = props => (
 PostsByCategoryComunidad.getInitialProps = async function(context) {
   const { sid } = context.query
   const { comunidad } = context.query
+  const comunidadEncoded = encodeURI(comunidad)
   const { caid } = context.query
   const res = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&comunidad=${comunidad}`
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&comunidad=${comunidadEncoded}`
   )
   const posts = await res.json()
   const res2 = await fetch(

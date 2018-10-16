@@ -97,7 +97,7 @@ const Post =  (props) => (
         <ul className="breadcrumbs">
           <li><Link prefetch href="/"><a>Inicio</a></Link></li>
           <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
-          <li><Link prefetch as={`/c/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}`} href={`/category?sid=${props.post.categoria_del_beneficio}`}><a>{props.post._embedded['wp:term'][0][0].name}</a></Link></li>
+          <li><Link prefetch as={`/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`} href={`/category-comunidad?sid=${props.post.categoria_del_beneficio}&comunidad=${props.post.acf.comunidad_autonoma}&caid=8143`}><a>{props.post._embedded['wp:term'][0][0].name}</a></Link></li>
           <li>
             <span className="show-for-sr">Actual: </span> <span dangerouslySetInnerHTML={ {__html: props.post.acf.nombre_del_establecimiento} } />
           </li>
@@ -131,7 +131,7 @@ const Post =  (props) => (
             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#666666' }}
           /></a></Link></span> : '' }</span></h4>
 
-            <p className='category'><strong>Categoria</strong>: <Link prefetch as={`/c/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}`} href={`/category?sid=${props.post.categoria_del_beneficio}`}><a title={'Ver todos los beneficios de la categoría ' + props.post._embedded['wp:term'][0][0].name}>{props.post._embedded['wp:term'][0][0].name}</a></Link></p>
+            <p className='category'><strong>Categoria</strong>: <Link prefetch as={`/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`} href={`/category-comunidad?sid=${props.post.categoria_del_beneficio}&comunidad=${props.post.acf.comunidad_autonoma}&caid=8143`}><a title={'Ver todos los beneficios de la categoría ' + props.post._embedded['wp:term'][0][0].name}>{props.post._embedded['wp:term'][0][0].name}</a></Link></p>
 
             {props.post.acf.lat ? <MapaDeGoogle lat={props.post.acf.lat} lng={props.post.acf.lon} /> : '' }
 
