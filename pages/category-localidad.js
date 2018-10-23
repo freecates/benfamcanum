@@ -136,7 +136,7 @@ const PostsByCategoryLocalidad = (props) => (
         </section>
       </IntlProvider>
     </section>
-        {props.uniquemarcas.length >= 2 ?
+        {props.uniquemarcas.length >= 2 && props.uniquecamarcas.length >= 1 ?
           <style jsx>{`
           .national-gallery {
             background:#eeeeee;
@@ -397,8 +397,9 @@ PostsByCategoryLocalidad.getInitialProps = async function(context) {
 
   console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcacasofertas.length}, ${sid}, ${caid}`)
   const uniquemarcas = [...(new Set(marcasofertas.map(({ marca }) => marca.name)))];
+  const uniquecamarcas = [...(new Set(marcacasofertas.map(({ marca }) => marca.name)))];
 
-  return { posts, marcasofertas, marcacasofertas, uniquemarcas, banners, sid }
+  return { posts, marcasofertas, marcacasofertas, uniquemarcas, uniquecamarcas, banners, sid }
 }
 
 export default PostsByCategoryLocalidad
