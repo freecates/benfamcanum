@@ -584,7 +584,7 @@ const PostsByCategoryComunidad = props => (
             </section>
           </IntlProvider>
         </section>
-        {props.uniquemarcas.length >= 2 ? (
+        {props.uniquemarcas.length >= 2 && props.uniquecamarcas.length >= 1 ? (
           <style jsx>{`
             .clear {
               clear:both;
@@ -866,8 +866,11 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   const uniquemarcas = [
     ...new Set(marcasofertas.map(({ marca }) => marca.name))
   ]
+  const uniquecamarcas = [
+    ...new Set(marcascaofertas.map(({ marca }) => marca.name))
+  ]
 
-  return { posts, marcasofertas, marcascaofertas, uniquemarcas, banners, caid, sid }
+  return { posts, marcasofertas, marcascaofertas, uniquemarcas, uniquecamarcas, banners, caid, sid }
 }
 
 export default PostsByCategoryComunidad
