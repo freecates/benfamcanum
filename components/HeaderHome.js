@@ -38,7 +38,10 @@ const HeaderHome = () => (
             <h4 className="icones-prestacions align-center">
               <Link prefetch href="/beneficios">
                 <a title="Ofertas comerciales para familias numerosas">
-                  <img src="/static/icono-menu-fanoc-oferta.png" />
+                  <img
+                    src="/static/icono-menu-fanoc-oferta.png"
+                    alt="Icono Ofertas comerciales para familias numerosas"
+                  />
                   <br />
                   <strong>Ofertas y descuentos</strong>
                 </a>
@@ -49,7 +52,10 @@ const HeaderHome = () => (
             <h4 className="icones-prestacions align-center">
               <Link prefetch href="/prestaciones">
                 <a title="Prestaciones para familias numerosas">
-                  <img src="/static/icono-menu-fanoc-prestaciones.png" />
+                  <img
+                    src="/static/icono-menu-fanoc-prestaciones.png"
+                    alt="Icono Prestaciones para familias numerosas"
+                  />
                   <br />
                   <strong>Ayudas públicas</strong>
                 </a>
