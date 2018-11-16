@@ -177,12 +177,12 @@ const PostsByCategoryLocalidad = (props) => (
             padding: 5px;
           }
           ul {
-            list-style-type:none;
+            list-style-type:none!important;
             margin-left:0;
             margin:0 auto!important;
           }
           a {
-            color:inherit;
+            color:inherit!important;
           }
           a:hover {
             text-decoration:underline;
@@ -295,12 +295,12 @@ const PostsByCategoryLocalidad = (props) => (
           padding: 5px;
         }
         ul {
-          list-style-type:none;
+          list-style-type:none!important;
           margin-left:0;
           margin:0 auto!important;
         }
         a {
-          color:inherit;
+          color:inherit!important;
         }
         a:hover {
           text-decoration:underline;

@@ -20,7 +20,7 @@ export default () => (
                         color:#cb5599;
                     }
                     .button {
-                        color:inherit;
+                        color:inherit!important;
                         text-transform:uppercase;
                         border-color:#cb5599;
                     }

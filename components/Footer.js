@@ -61,7 +61,7 @@ const Footer = () => (
           
           <style jsx>{`
             a {
-              color:inherit;
+              color:inherit!important;
             }
             a:hover {
               color:#ffffff;

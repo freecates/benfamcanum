@@ -113,7 +113,7 @@ const Localidades = (props) => (
             padding:4em 2em;
           }
           a {
-            color:inherit;
+            color:inherit!important;
           }
           a:hover {
             text-decoration:underline;

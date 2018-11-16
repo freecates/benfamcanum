@@ -43,7 +43,7 @@ const NavBarExternal = () => (
           
           <style jsx>{`
             a {
-              color:inherit;
+              color:inherit!important;
             }
             a:hover {
               color:#000000;
