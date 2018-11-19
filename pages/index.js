@@ -5,7 +5,11 @@ import LayoutHome from '../components/LayoutHome.js';
 export default () => (
   <LayoutHome>
     <Head>
-      <title>Beneficios Familias Numerosas</title>
+      <title>Beneficios FAmilies NOmbroses de Catalunya</title>
+      <meta
+        name="description"
+        content="Directorio del conjunto de beneficios y prestaciones para familias numererosas"
+      />
     </Head>
     <section className="call-to-action">
       <h1>
