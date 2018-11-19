@@ -1,38 +1,55 @@
 @font-face {
-	font-family: 'Gotham';
-	font-style: normal;
-	font-weight: 300;
-	src: url('/static/fonts/Gotham-Book.ttf') format('truetype');
+  font-family: 'Gotham';
+  font-style: normal;
+  font-display: auto;
+  font-weight: 300;
+  src: url('/static/fonts/Gotham-Book.ttf') format('truetype');
 }
 @font-face {
-	font-family: 'Gotham';
-	font-style: normal;
-	font-weight: bold;
-	src: url('/static/fonts/Gotham-Bold.ttf') format('truetype');
+  font-family: 'Gotham';
+  font-style: normal;
+  font-display: auto;
+  font-weight: bold;
+  src: url('/static/fonts/Gotham-Bold.ttf') format('truetype');
 }
 
-body {font-family: 'Gotham', sans-serif;color: #3a3a3a;}
-h1, h2, h3, h4, h5, h6 {font-family: 'Gotham', sans-serif; font-weight: 100;}
-h1 {font-size: 1.75rem;}
+body {
+  font-family: 'Gotham', sans-serif;
+  color: #3a3a3a;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Gotham', sans-serif;
+  font-weight: 100;
+}
+h1 {
+  font-size: 1.75rem;
+}
 @media screen and (min-width: 768px) {
-  h1 {font-size: 2.5rem;}
+  h1 {
+    font-size: 2.5rem;
+  }
 }
 
 .navbar-toggler {
-    background:#f1ca00;
-  }
+  background: #f1ca00;
+}
 .navbar-dark .navbar-toggler-icon {
-background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
-li.nav-item, 
+li.nav-item,
 .breadcrumbs li {
-  font-size:.8rem;
+  font-size: 0.8rem;
 }
 .breadcrumbs li {
-  text-transform: none!important;
+  text-transform: none !important;
 }
 .breadcrumbs li:not(:last-child)::after {
-  margin:0 .25rem;
+  margin: 0 0.25rem;
 }
 @media screen and (min-width: 1024px) {
   .navbar-nav {
