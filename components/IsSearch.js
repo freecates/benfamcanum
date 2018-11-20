@@ -730,6 +730,7 @@ class IsSearch extends React.Component {
                 />
               </div>
             </form>
+            <div onChange={this.handleChange}>{this.state.ActionButton}</div>
           </div>
           <style jsx>{`
             @media screen and (min-width: 768px) {
