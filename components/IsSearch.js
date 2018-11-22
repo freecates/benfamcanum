@@ -3,45 +3,41 @@ import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
 import Observer from 'react-intersection-observer';
 
-class B extends React.Component {
-  render() {
-    return (
-      <div>
-        <p className="fade-in file-label align-center">
-          <small>
-            Para que la búsqueda funcione <strong>debes clicar en el cuadro verde de Buscar</strong>
-          </small>
-        </p>
-        <style jsx>{`
-          .file-label {
-            margin-top: 1em;
-            background: #eeeeee !important;
-            color: #000000;
-            padding: 1em;
-            white-space: normal;
-          }
-          .align-center {
-            text-align: center;
-          }
-          .fade-in {
-            animation-name: fadeIn;
-            animation-duration: 1.3s;
-            animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-            animation-fill-mode: forwards;
-          }
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-        `}</style>
-      </div>
-    );
-  }
-}
+const B = () => (
+  <div>
+    <p className="fade-in file-label align-center">
+      <small>
+        Para que la búsqueda funcione <strong>debes clicar en el cuadro verde de Buscar</strong>
+      </small>
+    </p>
+    <style jsx>{`
+      .file-label {
+        margin-top: 1em;
+        background: rgba(241, 137, 3, 0.2) !important;
+        color: #000000;
+        padding: 1em;
+        white-space: normal;
+      }
+      .align-center {
+        text-align: center;
+      }
+      .fade-in {
+        animation-name: fadeIn;
+        animation-duration: 1.3s;
+        animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+        animation-fill-mode: forwards;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    `}</style>
+  </div>
+);
 
 class IsSearch extends React.Component {
   constructor(props) {
@@ -65,9 +61,17 @@ class IsSearch extends React.Component {
     const name = target.name;
 
     this.setState({
-      [name]: value,
-      ActionButton: <B />
+      [name]: value
     });
+    if (value != '') {
+      this.setState({
+        ActionButton: <B />
+      });
+    } else {
+      this.setState({
+        ActionButton: null
+      });
+    }
   }
 
   handleSubmit = async function(event) {
