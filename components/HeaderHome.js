@@ -29,8 +29,8 @@ const HeaderHome = () => (
         </div>
         <div>
           <picture>
-            <source type="image/webp" srcSet="/static/bg-body-familias-numerosas.webp" />
-            <img src="/static/bg-body-familias-numerosas.jpg" alt="més és més" />
+            <source type="image/webp" srcSet="/static/02-bg-body-familias-numerosas.webp" />
+            <img src="/static/02-bg-body-familias-numerosas.jpg" alt="més és més" />
           </picture>
         </div>
         <section className="section-data">

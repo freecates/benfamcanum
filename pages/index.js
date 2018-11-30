@@ -18,7 +18,7 @@ export default () => (
           src="/static/icona-conseguir-beneficios-familias-numerosas.png"
         />
         <br />
-        ¿No eres socio aún? ¿Quieres conseguir estos descuentos?
+        Hazte socio ahora y el 50% de la cuota anual del primer año te saldrá gratis *
       </h1>
       <p>
         <Link href="https://www.familias-numerosas.org">
@@ -26,6 +26,11 @@ export default () => (
             Quiero participar de estas ventajas
           </a>
         </Link>
+        <br />
+        <small>
+          (*) Válido desde el 11/10/18 al 31/12/18. La cuota es de 45 € por familia, con la
+          promoción será de 22,5 €
+        </small>
       </p>
       <style jsx>{`
         .call-to-action {
@@ -33,7 +38,7 @@ export default () => (
           margin: 0 auto;
         }
         h1 {
-          color: #cb5599;
+          color: #cb5599 !important;
         }
         .button {
           color: inherit !important;
