@@ -1,2 +1,2 @@
-User-agent: *
-Disallow: /m-p/ 
+user-agent: *
+disallow: /m-p/
