@@ -3,7 +3,7 @@ import Layout from '../components/MyLayout.js';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import { IntlProvider } from 'react-intl';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => <p>cargando ...</p>
@@ -194,7 +194,7 @@ const MapByCategory = props => (
       }
       .button {
         background: #0066ff;
-        color: #ffffff;
+        color: #ffffff !important;
         text-deocration: none;
       }
       .button:hover {
