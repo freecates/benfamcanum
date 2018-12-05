@@ -29,7 +29,16 @@ const HeaderHome = () => (
         </div>
         <div>
           <picture>
-            <source type="image/webp" srcSet="/static/02-bg-body-familias-numerosas.webp" />
+            <source
+              type="image/webp"
+              srcSet="/static/02-bg-body-familias-numerosas-480w.webp"
+              media="(max-width: 420px)"
+            />
+            <source
+              type="image/webp"
+              srcSet="/static/02-bg-body-familias-numerosas.webp"
+              media="(min-width: 568px)"
+            />
             <img src="/static/02-bg-body-familias-numerosas.jpg" alt="més és més" />
           </picture>
         </div>
