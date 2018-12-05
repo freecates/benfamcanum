@@ -7,7 +7,7 @@ const Styles = () => (
       rel="preload"
       href="/static/bootstrap.min.css"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onLoad="this.onLoad=null;this.rel='stylesheet'"
     />
     <noscript>
       <link rel="stylesheet" href="/static/bootstrap.min.css" />
@@ -16,7 +16,7 @@ const Styles = () => (
       rel="preload"
       href="/static/foundation.min.css"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onLoad="this.onLoad=null;this.rel='stylesheet'"
     />
     <noscript>
       <link rel="stylesheet" href="/static/foundation.min.css" />
@@ -24,7 +24,7 @@ const Styles = () => (
     <link
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onLoad="this.onLoad=null;this.rel='stylesheet'"
       rel="preload"
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossOrigin="anonymous"
@@ -41,7 +41,7 @@ const Styles = () => (
       rel="preload"
       href="/static/global.css"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onLoad="this.onLoad=null;this.rel='stylesheet'"
     />
     <noscript>
       <link rel="stylesheet" href="/static/global.css" />
