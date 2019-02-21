@@ -17,8 +17,6 @@ export default () => (
           alt="Icono conseguir beneficios familias numerosas"
           src="/static/icona-conseguir-beneficios-familias-numerosas.png"
         />
-        <br />
-        Hazte socio ahora y el 50% de la cuota anual del primer año te saldrá gratis *
       </h1>
       <p>
         <Link href="https://www.familias-numerosas.org">
@@ -26,11 +24,6 @@ export default () => (
             Quiero participar de estas ventajas
           </a>
         </Link>
-        <br />
-        <small>
-          (*) Válido desde el 11/10/18 al 31/12/18. La cuota es de 45 € por familia, con la
-          promoción será de 22,5 €
-        </small>
       </p>
       <style jsx>{`
         .call-to-action {
