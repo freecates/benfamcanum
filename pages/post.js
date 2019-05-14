@@ -690,7 +690,7 @@ const Post = props => (
 Post.getInitialProps = async function(context) {
   const { id } = context.query;
   const res = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/beneficios/${id}?_embed`
+    `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/beneficios/${id}?_embed`
   );
   const post = await res.json();
 

@@ -127,7 +127,7 @@ const OfertasPorSectores = props => (
 
 OfertasPorSectores.getInitialProps = async function() {
   const res = await fetch(
-    'https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/categoria_del_beneficio'
+    'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/categoria_del_beneficio'
   );
   const ofertasporsectores = await res.json();
 

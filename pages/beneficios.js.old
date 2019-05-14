@@ -178,8 +178,8 @@ const Localidades = (props) => (
 )
 
 Localidades.getInitialProps = async function() {
-  const res = await fetch('https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?sim-model=localidad-categoria')
-  const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/promociones`)
+  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?sim-model=localidad-categoria')
+  const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`)
   const beneficios = await res.json()
   const promociones = await res2.json()
 

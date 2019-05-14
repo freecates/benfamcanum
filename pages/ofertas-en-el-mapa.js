@@ -230,7 +230,7 @@ const Localidades = props => (
 
 Localidades.getInitialProps = async function() {
   const res = await fetch(
-    'https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?comunidad=Catalu%C3%B1a&sim-model=localidad'
+    'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?comunidad=Catalu%C3%B1a&sim-model=localidad'
   );
   const beneficios = await res.json();
 

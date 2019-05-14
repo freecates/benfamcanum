@@ -260,7 +260,7 @@ const MapByCategory = props => (
 
 MapByCategory.getInitialProps = async function() {
   const res = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?sim-model=name-id-slug-lat-lon-categoria`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?sim-model=name-id-slug-lat-lon-categoria`
   );
   const markers = await res.json();
   const CENTER = await centerLatLng;

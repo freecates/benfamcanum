@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
-import Link from 'next/link'
-import dynamic from 'next/dynamic'
-import fetch from 'isomorphic-unfetch'
-import Observer from 'react-intersection-observer'
-import { IntlProvider, FormattedDate } from 'react-intl'
+import Head from 'next/head';
+import Layout from '../components/MyLayout.js';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import fetch from 'isomorphic-unfetch';
+import Observer from 'react-intersection-observer';
+import { IntlProvider, FormattedDate } from 'react-intl';
 
 const SelectCity = dynamic(import('../components/SelectCity'), {
   loading: () => (
@@ -14,17 +14,16 @@ const SelectCity = dynamic(import('../components/SelectCity'), {
       </p>
     </div>
   )
-})
+});
 
-const today = Date.now()
-const todayISO = new Date(today).toISOString()
+const today = Date.now();
+const todayISO = new Date(today).toISOString();
 
 const PostsByCategory = props => (
   <Layout>
     <Head>
       <title>
-        Beneficios Familias Numerosas -{' '}
-        {props.posts[0].categoria_de_la_prestacion.name}
+        Beneficios Familias Numerosas - {props.posts[0].categoria_de_la_prestacion.name}
       </title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
@@ -82,9 +81,7 @@ const PostsByCategory = props => (
       <h1>
         <img
           src={
-            '/static/' +
-            props.posts[0].categoria_de_la_prestacion.slug +
-            '-familias-numerosas.png'
+            '/static/' + props.posts[0].categoria_de_la_prestacion.slug + '-familias-numerosas.png'
           }
         />
         <br />
@@ -97,13 +94,10 @@ const PostsByCategory = props => (
             as={`/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${
               props.posts[0].categoria_de_la_prestacion.slug
             }`}
-            href={`/mapa?id=${
-              props.posts[0].categoria_de_la_prestacion.term_id
-            }`}
+            href={`/mapa?id=${props.posts[0].categoria_de_la_prestacion.term_id}`}
           >
             <a>
-              <img src="/static/icona-mapa-familias-numerosas.png" /> ver en el
-              mapa
+              <img src="/static/icona-mapa-familias-numerosas.png" /> ver en el mapa
             </a>
           </Link>
         </small>
@@ -111,9 +105,7 @@ const PostsByCategory = props => (
 
       <section id="select-city">
         <div className="wrapper">
-          <p className="align-center">
-            ¿Dónde quieres disfrutar del beneficio? Selecciona la CA
-          </p>
+          <p className="align-center">¿Dónde quieres disfrutar del beneficio? Selecciona la CA</p>
 
           <SelectCity
             inputClass="comunidad"
@@ -188,32 +180,19 @@ const PostsByCategory = props => (
             <ul className="gallery national-gallery">
               {props.marcasofertas.reduce((marcas, marcasoferta) => {
                 if (marcasoferta.marca == false) {
-                  return marcas
+                  return marcas;
                 }
                 marcas[marcasoferta.marca.term_id] = (
                   <span key={marcasoferta.marca.term_id}>
                     <li className="benefit align-center">
                       <Link
                         prefetch
-                        as={`/m-o-g-m/${marcasoferta.marca.term_id}/${
-                          marcasoferta.marca.slug
-                        }`}
-                        href={`/ofertas-de-la-marca?id=${
-                          marcasoferta.marca.term_id
-                        }`}
+                        as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
+                        href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                       >
-                        <a
-                          title={
-                            'Ver todas las ofertas de ' +
-                            marcasoferta.marca.name
-                          }
-                        >
+                        <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
                           <img
-                            src={
-                              '/static/' +
-                              marcasoferta.marca.slug +
-                              '-familias-numerosas.png'
-                            }
+                            src={'/static/' + marcasoferta.marca.slug + '-familias-numerosas.png'}
                           />
                           <br />{' '}
                           <span
@@ -225,8 +204,8 @@ const PostsByCategory = props => (
                       </Link>
                     </li>
                   </span>
-                )
-                return marcas
+                );
+                return marcas;
               }, [])}
             </ul>
           ) : (
@@ -242,9 +221,9 @@ const PostsByCategory = props => (
               Si lo prefiere, también puede ver las{' '}
               <Link
                 prefetch
-                as={`/c-o-o/${
-                  props.ofertasonlines[0].categoria_de_la_oferta.term_id
-                }/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
+                as={`/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${
+                  props.ofertasonlines[0].categoria_de_la_oferta.slug
+                }`}
                 href={`/category-ofertas-on-line?id=${
                   props.ofertasonlines[0].categoria_de_la_oferta.term_id
                 }`}
@@ -256,8 +235,7 @@ const PostsByCategory = props => (
                     props.ofertasonlines[0].categoria_de_la_oferta.name
                   }
                 >
-                  ofertas on line de{' '}
-                  {props.ofertasonlines[0].categoria_de_la_oferta.name}
+                  ofertas on line de {props.ofertasonlines[0].categoria_de_la_oferta.name}
                 </a>
               </Link>
             </p>
@@ -327,12 +305,12 @@ const PostsByCategory = props => (
         padding: 5px;
       }
       ul {
-        list-style-type: none!important;
+        list-style-type: none !important;
         margin-left: 0;
         margin: 0 auto !important;
       }
       a {
-        color: inherit!important;
+        color: inherit !important;
       }
       a:hover {
         text-decoration: underline;
@@ -411,37 +389,35 @@ const PostsByCategory = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 PostsByCategory.getInitialProps = async function(context) {
-  const { sid } = context.query
+  const { sid } = context.query;
   const res = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}`
-  )
-  const posts = await res.json()
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}`
+  );
+  const posts = await res.json();
 
   const res2 = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&sim-model=id-marca`
-  )
-  const marcasofertas = await res2.json()
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&sim-model=id-marca`
+  );
+  const marcasofertas = await res2.json();
 
   const res3 = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${sid}`
-  )
-  const ofertasonlines = await res3.json()
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${sid}`
+  );
+  const ofertasonlines = await res3.json();
 
-  const res4 = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/banners_sectoriales`
-  )
-  const banners = await res4.json()
+  const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales`);
+  const banners = await res4.json();
 
   console.log(
     `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${
       ofertasonlines.length
     }, ${banners.length}`
-  )
+  );
 
-  return { posts, marcasofertas, ofertasonlines, banners, sid }
-}
+  return { posts, marcasofertas, ofertasonlines, banners, sid };
+};
 
-export default PostsByCategory
+export default PostsByCategory;

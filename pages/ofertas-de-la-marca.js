@@ -176,9 +176,7 @@ const OfertasGrandesMarcasByMarca = props => (
 
 OfertasGrandesMarcasByMarca.getInitialProps = async function(context) {
   const { id } = context.query;
-  const res = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/marca/${id}`
-  );
+  const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca/${id}`);
   const granmarcaofertas = await res.json();
 
   console.log(`Ofertas de la Marca data fetched. Count: ${granmarcaofertas.length}`);

@@ -1,16 +1,16 @@
-import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
-import Link from 'next/link'
-import dynamic from 'next/dynamic'
-import fetch from 'isomorphic-unfetch'
-import { IntlProvider, FormattedDate } from 'react-intl'
+import Head from 'next/head';
+import Layout from '../components/MyLayout.js';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import fetch from 'isomorphic-unfetch';
+import { IntlProvider, FormattedDate } from 'react-intl';
 
 const SelectCity = dynamic(import('../components/SelectCity'), {
   loading: () => <p>cargando ...</p>
-})
+});
 
-const today = Date.now()
-const todayISO = new Date(today).toISOString()
+const today = Date.now();
+const todayISO = new Date(today).toISOString();
 
 const Localidades = props => (
   <Layout layout>
@@ -26,8 +26,7 @@ const Localidades = props => (
             </Link>
           </li>
           <li>
-            <span className="show-for-sr">Actual: </span> Ofertas para familias
-            numerosas
+            <span className="show-for-sr">Actual: </span> Ofertas para familias numerosas
           </li>
         </ul>
       </nav>
@@ -42,11 +41,12 @@ const Localidades = props => (
             </Link>
           </div>
           <div className="icona">
-            <Link prefetch as={`/ca/Catalu/8143`} href={`/comunidad?comunidad=Catalu&caid=8143`}><a>
-            <img src="/static/icona-ofertas-por-poblacion-familias-numerosas.png" />
-            <div className="text-icona">
-              Ofertas por población
-              </div></a></Link>
+            <Link prefetch as={`/ca/Catalu/8143`} href={`/comunidad?comunidad=Catalu&caid=8143`}>
+              <a>
+                <img src="/static/icona-ofertas-por-poblacion-familias-numerosas.png" />
+                <div className="text-icona">Ofertas por población</div>
+              </a>
+            </Link>
           </div>
           <div className="icona">
             <Link prefetch href="/ofertas-on-line">
@@ -65,14 +65,15 @@ const Localidades = props => (
             </Link>
           </div>
           <br className="clear" />
-          {props.promociones[0].acf.fecha_de_finalizaciion_de_la_promocion >
-          todayISO ? (
+          {props.promociones[0].acf.fecha_de_finalizaciion_de_la_promocion > todayISO ? (
             <div className="promo">
               <h4 className="align-center">
                 <span className="label alert file-label">
                   <Link prefetch href="/promociones">
                     <a>
-                      Mira aquí promociones que te<br />pueden interesar
+                      Mira aquí promociones que te
+                      <br />
+                      pueden interesar
                     </a>
                   </Link>
                 </span>
@@ -187,17 +188,15 @@ const Localidades = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 Localidades.getInitialProps = async function() {
-  const res2 = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/promociones`
-  )
-  const promociones = await res2.json()
+  const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`);
+  const promociones = await res2.json();
 
-  console.log(`Ofertas data fetched. Count: ${promociones.length}`)
+  console.log(`Ofertas data fetched. Count: ${promociones.length}`);
 
-  return { promociones }
-}
+  return { promociones };
+};
 
-export default Localidades
+export default Localidades;

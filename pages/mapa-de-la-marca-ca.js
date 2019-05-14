@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
-import Link from 'next/link'
-import dynamic from 'next/dynamic'
-import fetch from 'isomorphic-unfetch'
-import { IntlProvider, FormattedDate } from 'react-intl'
+import Head from 'next/head';
+import Layout from '../components/MyLayout.js';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import fetch from 'isomorphic-unfetch';
+import { IntlProvider, FormattedDate } from 'react-intl';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => (
@@ -13,7 +13,7 @@ const GoogleMapReact = dynamic(import('google-map-react'), {
       </p>
     </div>
   )
-})
+});
 
 const markerStyle = {
   backgroundColor: '#ffffff',
@@ -24,18 +24,15 @@ const markerStyle = {
   right: 25,
   bottom: 25,
   borderRadius: '50%'
-}
+};
 
-const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>
-const ZOOM = 8
+const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
+const ZOOM = 8;
 
 const MapByMarcaCa = props => (
   <Layout>
     <Head>
-      <title>
-        Ofertas de la Marca {props.markers[0].marca.name} para familias
-        numerosas
-      </title>
+      <title>Ofertas de la Marca {props.markers[0].marca.name} para familias numerosas</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
@@ -50,18 +47,13 @@ const MapByMarcaCa = props => (
           </Link>
         </li>
         <li>
-          <span className="show-for-sr">Actual: </span>{' '}
-          {props.markers[0].marca.name}
+          <span className="show-for-sr">Actual: </span> {props.markers[0].marca.name}
         </li>
       </ul>
     </nav>
     <section>
       <h1>
-        <img
-          src={
-            '/static/' + props.markers[0].marca.slug + '-familias-numerosas.png'
-          }
-        />
+        <img src={'/static/' + props.markers[0].marca.slug + '-familias-numerosas.png'} />
         <br />
         {props.markers[0].marca.name}
       </h1>
@@ -69,12 +61,8 @@ const MapByMarcaCa = props => (
         <small>
           <Link
             prefetch
-            as={`/m-o-g-m-ca/${props.markers[0].marca.term_id}/${
-              props.markers[0].marca.slug
-            }`}
-            href={`/ofertas-de-la-marca-ca?id=${
-              props.markers[0].marca.term_id
-            }`}
+            as={`/m-o-g-m-ca/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
+            href={`/ofertas-de-la-marca-ca?id=${props.markers[0].marca.term_id}`}
           >
             <a>ver listado</a>
           </Link>
@@ -86,10 +74,7 @@ const MapByMarcaCa = props => (
             bootstrapURLKeys={{
               key: 'AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90'
             }}
-            center={[
-              parseFloat(`${props.markers[0].lat}`),
-              parseFloat(`${props.markers[0].lon}`)
-            ]}
+            center={[parseFloat(`${props.markers[0].lat}`), parseFloat(`${props.markers[0].lon}`)]}
             zoom={ZOOM}
           >
             {props.markers.map((marker, index) => (
@@ -115,9 +100,7 @@ const MapByMarcaCa = props => (
                       <span>
                         <img
                           src={
-                            '/static/32/' +
-                            props.markers[0].marca.slug +
-                            '-familias-numerosas.png'
+                            '/static/32/' + props.markers[0].marca.slug + '-familias-numerosas.png'
                           }
                         />
                       </span>
@@ -149,12 +132,12 @@ const MapByMarcaCa = props => (
         padding: 5px;
       }
       ul {
-        list-style-type: none!important;
+        list-style-type: none !important;
         margin-left: 0;
         margin: 0 auto !important;
       }
       a {
-        color: inherit!important;
+        color: inherit !important;
       }
       a:hover {
         text-decoration: underline;
@@ -214,18 +197,18 @@ const MapByMarcaCa = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 MapByMarcaCa.getInitialProps = async function(context) {
-  const { id } = context.query
+  const { id } = context.query;
   const res = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/of_gr_m_ca?marca=${id}&sim-model=name-id-slug-lat-lon-marca`
-  )
-  const markers = await res.json()
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?marca=${id}&sim-model=name-id-slug-lat-lon-marca`
+  );
+  const markers = await res.json();
 
-  console.log(`Markers data fetched. Count: ${markers.length}`)
+  console.log(`Markers data fetched. Count: ${markers.length}`);
 
-  return { markers }
-}
+  return { markers };
+};
 
-export default MapByMarcaCa
+export default MapByMarcaCa;

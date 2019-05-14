@@ -646,7 +646,7 @@ const OfertaGranMarca = props => (
 OfertaGranMarca.getInitialProps = async function(context) {
   const { id } = context.query;
   const res = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/ofertas_grandes_marc/${id}?_embed`
+    `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/ofertas_grandes_marc/${id}?_embed`
   );
   const ofertagranmarca = await res.json();
 
