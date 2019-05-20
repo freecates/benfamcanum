@@ -22,8 +22,8 @@ const markerStyle = {
 
 const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 
-const CENTER = [40.1301508, -1.8518527];
-const ZOOM = 6;
+const CENTER = [41.3948976, 2.0787282];
+const ZOOM = 7;
 
 const MapByCategory = props => (
   <Layout>
@@ -99,7 +99,7 @@ const MapByCategory = props => (
                       <span>
                         <img
                           src={
-                            '/static/32/' +
+                            'https://benfamcanumpics.famnum.now.sh/static/32/' +
                             props.markers[0].categoria_de_la_prestacion.slug +
                             '-familias-numerosas.png'
                           }

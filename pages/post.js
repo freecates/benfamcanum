@@ -176,7 +176,9 @@ const Post = props => (
         <h1>
           <img
             src={
-              '/static/' + props.post._embedded['wp:term'][0][0].slug + '-familias-numerosas.png'
+              'https://benfamcanumpics.famnum.now.sh/static/96/' +
+              props.post._embedded['wp:term'][0][0].slug +
+              '-familias-numerosas.png'
             }
           />
           <br />

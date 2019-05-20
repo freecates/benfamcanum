@@ -53,7 +53,13 @@ const MapByMarcaCa = props => (
     </nav>
     <section>
       <h1>
-        <img src={'/static/' + props.markers[0].marca.slug + '-familias-numerosas.png'} />
+        <img
+          src={
+            'https://benfamcanumpics.famnum.now.sh/static/96/' +
+            props.markers[0].marca.slug +
+            '-familias-numerosas.png'
+          }
+        />
         <br />
         {props.markers[0].marca.name}
       </h1>
@@ -100,7 +106,9 @@ const MapByMarcaCa = props => (
                       <span>
                         <img
                           src={
-                            '/static/32/' + props.markers[0].marca.slug + '-familias-numerosas.png'
+                            'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                            props.markers[0].marca.slug +
+                            '-familias-numerosas.png'
                           }
                         />
                       </span>

@@ -115,7 +115,9 @@ const PostsByLocalidad = props => (
                               <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
                                 <img
                                   src={
-                                    '/static/' + marcasoferta.marca.slug + '-familias-numerosas.png'
+                                    'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                                    marcasoferta.marca.slug +
+                                    '-familias-numerosas.png'
                                   }
                                 />
                                 <br />{' '}

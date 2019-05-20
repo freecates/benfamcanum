@@ -192,7 +192,11 @@ const PostsByCategory = props => (
                       >
                         <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
                           <img
-                            src={'/static/' + marcasoferta.marca.slug + '-familias-numerosas.png'}
+                            src={
+                              'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                              marcasoferta.marca.slug +
+                              '-familias-numerosas.png'
+                            }
                           />
                           <br />{' '}
                           <span

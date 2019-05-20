@@ -22,7 +22,13 @@ const GRandesMarcas = props => (
                   href={`/ofertas-de-la-marca?id=${grandesmarca.id}`}
                 >
                   <a title={'Clica aquí para ver las ofertas de ' + grandesmarca.name}>
-                    <img src={'/static/' + grandesmarca.slug + '-familias-numerosas.png'} />
+                    <img
+                      src={
+                        'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                        grandesmarca.slug +
+                        '-familias-numerosas.png'
+                      }
+                    />
                     <br />
                     <span dangerouslySetInnerHTML={{ __html: grandesmarca.name }} />
                   </a>

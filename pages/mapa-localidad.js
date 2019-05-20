@@ -74,10 +74,10 @@ const MapByLocalidad = props => (
             }}
             center={[
               props.markers[0].lat.includes(',') || props.markers[0].lat.includes('!')
-                ? 40.1301508
+                ? 41.3948976
                 : Number(props.markers[0].lat),
               props.markers[0].lon.includes(',') || props.markers[0].lon.includes('!')
-                ? -1.8518527
+                ? 2.0787282
                 : Number(props.markers[0].lon)
             ]}
             zoom={ZOOM}
@@ -105,7 +105,7 @@ const MapByLocalidad = props => (
                       <span>
                         <img
                           src={
-                            '/static/32/' + nationalmarker.marca.slug + '-familias-numerosas.png'
+                            'https://benfamcanumpics.famnum.now.sh/static/32/' + nationalmarker.marca.slug + '-familias-numerosas.png'
                           }
                         />
                       </span>
@@ -129,7 +129,7 @@ const MapByLocalidad = props => (
                       <span>
                         <img
                           src={
-                            '/static/32/' +
+                            'https://benfamcanumpics.famnum.now.sh/static/32/' +
                             marker.categoria_de_la_prestacion.slug +
                             '-familias-numerosas.png'
                           }

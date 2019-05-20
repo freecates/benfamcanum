@@ -75,7 +75,7 @@ const PrestacionesByMunicipio = props => (
                     <td width="64">
                       <img
                         src={
-                          '/static/32/' +
+                          'https://benfamcanumpics.famnum.now.sh/static/32/' +
                           prestacion.categoria_de_la_prestacion_publica.slug +
                           '-prestaciones-familias-numerosas.png'
                         }

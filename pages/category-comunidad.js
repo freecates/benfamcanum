@@ -81,7 +81,11 @@ const PostsByCategoryComunidad = props => (
                         >
                           <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
                             <img
-                              src={'/static/' + marcasoferta.marca.slug + '-familias-numerosas.png'}
+                              src={
+                                'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                                marcasoferta.marca.slug +
+                                '-familias-numerosas.png'
+                              }
                             />
                             <br />{' '}
                             <span
@@ -269,7 +273,7 @@ const PostsByCategoryComunidad = props => (
           <h1>
             <img
               src={
-                '/static/' +
+                'https://benfamcanumpics.famnum.now.sh/static/96/' +
                 props.posts[0].categoria_de_la_prestacion.slug +
                 '-familias-numerosas.png'
               }
@@ -385,7 +389,9 @@ const PostsByCategoryComunidad = props => (
                             <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
                               <img
                                 src={
-                                  '/static/' + marcasoferta.marca.slug + '-familias-numerosas.png'
+                                  'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                                  marcasoferta.marca.slug +
+                                  '-familias-numerosas.png'
                                 }
                               />
                               <br />{' '}
@@ -426,7 +432,9 @@ const PostsByCategoryComunidad = props => (
                             <a title={'Ver todas las ofertas de ' + marcascaoferta.marca.name}>
                               <img
                                 src={
-                                  '/static/' + marcascaoferta.marca.slug + '-familias-numerosas.png'
+                                  'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                                  marcascaoferta.marca.slug +
+                                  '-familias-numerosas.png'
                                 }
                               />
                               <br />{' '}

@@ -41,7 +41,7 @@ const OfertasPorSectores = props => (
                 >
                   <a title={'Clica aquí para ver todas las ofertas de ' + ofertasporsectore.name}>
                     <img
-                      src={'/static/' + ofertasporsectore.slug + '-familias-numerosas.png'}
+                      src={'https://benfamcanumpics.famnum.now.sh/static/96/' + ofertasporsectore.slug + '-familias-numerosas.png'}
                       width="96"
                     />
                     <br />

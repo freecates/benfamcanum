@@ -141,7 +141,7 @@ const OfertaGranMarca = props => (
         <h1>
           <img
             src={
-              '/static/' +
+              'https://benfamcanumpics.famnum.now.sh/static/96/' +
               props.ofertagranmarca._embedded['wp:term'][3][0].slug +
               '-familias-numerosas.png'
             }

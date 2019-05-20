@@ -114,7 +114,7 @@ const OfertaOnLine = props => (
         <h1>
           <img
             src={
-              '/static/' +
+              'https://benfamcanumpics.famnum.now.sh/static/96/' +
               props.ofertaonline._embedded['wp:term'][0][0].slug +
               '-familias-numerosas.png'
             }

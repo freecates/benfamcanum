@@ -39,7 +39,7 @@ const OfertasOnLine = props => (
                       >
                         <img
                           src={
-                            '/static/' +
+                            'https://benfamcanumpics.famnum.now.sh/static/96/' +
                             ofertasonline.categoria_de_la_oferta.slug +
                             '-familias-numerosas.png'
                           }

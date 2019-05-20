@@ -42,7 +42,11 @@ const OfertasGrandesMarcasByMarcaCa = props => (
                 <td>
                   <p className="align-center">
                     <img
-                      src={'/static/' + props.granmarcacaofertas.slug + '-familias-numerosas.png'}
+                      src={
+                        'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                        props.granmarcacaofertas.slug +
+                        '-familias-numerosas.png'
+                      }
                     />
                   </p>
                 </td>

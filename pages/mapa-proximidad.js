@@ -121,7 +121,7 @@ const MapByCategory = props => (
                           <span>
                             <img
                               src={
-                                '/static/32/' +
+                                'https://benfamcanumpics.famnum.now.sh/static/32/' +
                                 marker.categoria_de_la_prestacion.slug +
                                 '-familias-numerosas.png'
                               }

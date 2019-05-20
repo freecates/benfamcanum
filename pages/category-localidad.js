@@ -158,7 +158,9 @@ const PostsByCategoryLocalidad = props => (
                               <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
                                 <img
                                   src={
-                                    '/static/' + marcasoferta.marca.slug + '-familias-numerosas.png'
+                                    'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                                    marcasoferta.marca.slug +
+                                    '-familias-numerosas.png'
                                   }
                                 />
                                 <br />{' '}
@@ -203,7 +205,7 @@ const PostsByCategoryLocalidad = props => (
                               <a title={'Ver todas las ofertas de ' + marcacasoferta.marca.name}>
                                 <img
                                   src={
-                                    '/static/' +
+                                    'https://benfamcanumpics.famnum.now.sh/static/96/' +
                                     marcacasoferta.marca.slug +
                                     '-familias-numerosas.png'
                                   }

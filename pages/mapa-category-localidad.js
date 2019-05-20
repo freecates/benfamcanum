@@ -65,7 +65,7 @@ const MapByCategoryLocalidad = props => (
       <h1>
         <img
           src={
-            '/static/' +
+            'https://benfamcanumpics.famnum.now.sh/static/96/' +
             props.markers[0].categoria_de_la_prestacion.slug +
             '-familias-numerosas.png'
           }
@@ -108,10 +108,10 @@ const MapByCategoryLocalidad = props => (
             }}
             center={[
               props.markers[0].lat.includes(',') || props.markers[0].lat.includes('!')
-                ? 40.1301508
+                ? 41.3948976
                 : Number(props.markers[0].lat),
               props.markers[0].lon.includes(',') || props.markers[0].lon.includes('!')
-                ? -1.8518527
+                ? 2.0787282
                 : Number(props.markers[0].lon)
             ]}
             zoom={ZOOM}
@@ -131,7 +131,7 @@ const MapByCategoryLocalidad = props => (
                       <span>
                         <img
                           src={
-                            '/static/32/' +
+                            'https://benfamcanumpics.famnum.now.sh/static/32/' +
                             props.markers[0].categoria_de_la_prestacion.slug +
                             '-familias-numerosas.png'
                           }

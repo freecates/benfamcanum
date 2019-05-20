@@ -28,8 +28,8 @@ const markerStyle = {
 
 const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 
-const CENTER = [40.1301508, -1.8518527];
-const ZOOM = 6;
+const CENTER = [41.3948976, 2.0787282];
+const ZOOM = 7;
 
 const MapByMarca = props => (
   <Layout>
@@ -62,7 +62,13 @@ const MapByMarca = props => (
       {props.markers.length >= 1 ? (
         <div>
           <h1>
-            <img src={'/static/' + props.markers[0].marca.slug + '-familias-numerosas.png'} />
+            <img
+              src={
+                'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                props.markers[0].marca.slug +
+                '-familias-numerosas.png'
+              }
+            />
             <br />
             {props.markers[0].marca.name}
           </h1>
@@ -84,7 +90,13 @@ const MapByMarca = props => (
       {props.camarkers.length >= 1 ? (
         <div>
           <h1>
-            <img src={'/static/' + props.camarkers[0].marca.slug + '-familias-numerosas.png'} />
+            <img
+              src={
+                'https://benfamcanumpics.famnum.now.sh/static/' +
+                props.camarkers[0].marca.slug +
+                '-familias-numerosas.png'
+              }
+            />
             <br />
             {props.camarkers[0].marca.name}
           </h1>
@@ -136,7 +148,7 @@ const MapByMarca = props => (
                           <span>
                             <img
                               src={
-                                '/static/32/' +
+                                'https://benfamcanumpics.famnum.now.sh/static/32/' +
                                 props.markers[0].marca.slug +
                                 '-familias-numerosas.png'
                               }
@@ -173,7 +185,7 @@ const MapByMarca = props => (
                           <span>
                             <img
                               src={
-                                '/static/32/' +
+                                'https://benfamcanumpics.famnum.now.sh/static/32/' +
                                 props.camarkers[0].marca.slug +
                                 '-familias-numerosas.png'
                               }
