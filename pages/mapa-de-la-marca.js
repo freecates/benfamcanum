@@ -92,7 +92,7 @@ const MapByMarca = props => (
           <h1>
             <img
               src={
-                'https://benfamcanumpics.famnum.now.sh/static/' +
+                'https://benfamcanumpics.famnum.now.sh/static/96/' +
                 props.camarkers[0].marca.slug +
                 '-familias-numerosas.png'
               }
