@@ -99,7 +99,7 @@ workboxSW.strategies.cacheFirst({
   }
 })
 )
-workboxSW.router.registerRoute('https://benfamcanumpics.famnum.now.sh/(.*)',
+workboxSW.router.registerRoute(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/,
 workboxSW.strategies.cacheFirst({
   cacheName: 'pics-cache',
   cacheExpiration: {
