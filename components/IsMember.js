@@ -1,7 +1,7 @@
-import btoa from 'btoa'
-import fetch from 'isomorphic-unfetch'
-import Link from 'next/link'
-import ReactDisqusComments from 'react-disqus-comments'
+import btoa from 'btoa';
+import fetch from 'isomorphic-unfetch';
+import Link from 'next/link';
+import ReactDisqusComments from 'react-disqus-comments';
 
 class IsMember extends React.Component {
     constructor(props) {
@@ -13,7 +13,8 @@ class IsMember extends React.Component {
           HowTo: this.props.dataOK,
           Identifier: this.props.ID,
           Title: this.props.Title,
-          URL: this.props.URL
+          URL: this.props.URL,
+          ruta: ''
 
     };
       this.handleChange = this.handleChange.bind(this);
@@ -67,6 +68,7 @@ class IsMember extends React.Component {
     }
   
     render() {
+        const ruta = this.props.ruta;
         console.log(`Hola: ${this.state.isRegistered}`)
         if (typeof window != 'undefined') {
             if (this.state.isRegistered == true || sessionStorage.getItem('isMember') == "MTV0cnVlNDU=") { 
@@ -74,7 +76,8 @@ class IsMember extends React.Component {
                     <section>
                     <p>Hola {sessionStorage.getItem('email')}</p>
                         <div className='callout large alert fade-in'>
-                            <p>¡ATENCIÓN!: <span>{this.state.HowTo}</span></p>
+                        {ruta.includes('/ca-ES') && (<p>ATENCIÓ!: <span>{this.state.HowTo}</span></p>)}
+                        {ruta.indexOf('/ca-ES') == -1 && (<p>¡ATENCIÓN!: <span>{this.state.HowTo}</span></p>)}
                         </div>
                         <ReactDisqusComments
                             shortname="beneficios-familias-numerosas"
@@ -113,11 +116,13 @@ class IsMember extends React.Component {
                                 <input placeholder='Contraseña' type="password" name='isPassword' value={this.state.isPassword} onChange={this.handleChange}required />
                             </label>
                             <div className='wrapper-input'><input type="button" className='button' onClick={this.handleSubmit} value="Enviar" /></div>
-                            <p className='yellow margin-inverse'>¿Quieres participar de estos beneficios? Ahora te puedes hacer socio. ¡Fácil y rápido!</p>
-                            <div className='wrapper-input'><Link href='http://www.familiasnumerosas.org/hazte-socio/' ><a target='_blank'className='button button-pink' >Sí, quiero hacerme socio</a></Link></div>
+                            {ruta.includes('/ca-ES') && (<p className='yellow margin-inverse'>Vols participar d'aquests beneficis? Ara et pots fer soci. Fàcil i ràpid!</p>)}
+                            {ruta.indexOf('/ca-ES') == -1 && (<p className='yellow margin-inverse'>¿Quieres participar de estos beneficios? Ahora te puedes hacer socio. ¡Fácil y rápido!</p>)}
+                            <div className='wrapper-input'><Link href='http://www.familiasnumerosas.org/hazte-socio/' ><a target='_blank'className='button button-pink' >{ruta.includes('/ca-ES') && (<>Sí, vull fer-me soci</>)}{ruta.indexOf('/ca-ES') == -1 && (<>Sí, quiero hacerme socio</>)}</a></Link></div>
                             </form>
-                            <p className='align-left'><small><strong>COMENTARIOS</strong>: Para poder leer o escribir opiniones sobre esta oferta, debes introducir tu usuario y contraseña de asociado</small></p>
-                            <p className='margin-invert align-center'><small><Link href='https://www.familias-numerosas.org/ingreso.php'><a className='button button-green' target='_blank'>Recuperar contraseña</a></Link></small></p>
+                            {ruta.includes('/ca-ES') && (<p className='align-left'><small><strong>COMENTARIS</strong>: Per poder llegir o escriure opinions sobre aquesta oferta, has d'introduir el teu usuari i la teva contrasenya d'associat</small></p>)}
+                            {ruta.indexOf('/ca-ES') == -1 && (<p className='align-left'><small><strong>COMENTARIOS</strong>: Para poder leer o escribir opiniones sobre esta oferta, debes introducir tu usuario y contraseña de asociado</small></p>)}
+                            <p className='margin-invert align-center'><small><Link href='https://www.familias-numerosas.org/ingreso.php'><a className='button button-green' target='_blank'>{ruta.includes('/ca-ES') && (<>Recuperar contrasenya</>)}{ruta.indexOf('/ca-ES') == -1 && (<>Recuperar contraseña</>)}</a></Link></small></p>
                         </div>
                         <style jsx>{`
                             form {

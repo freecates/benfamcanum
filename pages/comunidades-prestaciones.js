@@ -1,16 +1,16 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const SelectCity = dynamic(import('../components/SelectCity'), {
   loading: () => <p>cargando ...</p>
 });
 
 const ComunidadesPrestaciones = props => (
-  <Layout layout>
+  <Layout layout ruta={props.ruta}>
     <Head>
       <title>Prestaciones Familias Numerosas - Comunidades</title>
     </Head>
@@ -36,6 +36,7 @@ const ComunidadesPrestaciones = props => (
       <IntlProvider defaultLocale="ca">
         <SelectCity
           inputClass="benefit"
+          ruta={props.ruta}
           options={props.comunidades
             .reduce((autonomies, comunidad) => {
               if (comunidad.comunidad_autonoma == false) {

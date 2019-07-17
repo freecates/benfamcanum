@@ -30,7 +30,11 @@ export default function SelectCity(props) {
               setSelectedValue(event.target.options[event.target.selectedIndex].value)
             }
           >
-            <option>Elige población</option>
+            {' '}
+            <React.Fragment>
+              {props.ruta.includes('/ca-ES') && <option>Escull població</option>}
+              {props.ruta.indexOf('/ca-ES') == -1 && <option>Escoge población</option>}
+            </React.Fragment>
             {renderedElements}
           </select>
         </label>
@@ -45,7 +49,10 @@ export default function SelectCity(props) {
               setSelectedValue(event.target.options[event.target.selectedIndex].value)
             }
           >
-            <option>Elige CA</option>
+            <React.Fragment>
+              {props.ruta.includes('/ca-ES') && <option>Escull CA</option>}
+              {props.ruta.indexOf('/ca-ES') == -1 && <option>Elige CA</option>}
+            </React.Fragment>
             {renderedElements}
           </select>
         </label>
@@ -69,9 +76,15 @@ export default function SelectCity(props) {
       {inputClass == 'benefit' ? (
         <label className="benefit">
           {localBenefit == true ? (
-            <h4>Selecciona el municipio</h4>
+            <React.Fragment>
+              {props.ruta.includes('/ca-ES') && <h4>Selecciona el municipi</h4>}
+              {props.ruta.indexOf('/ca-ES') == -1 && <h4>Selecciona el municipio</h4>}
+            </React.Fragment>
           ) : (
-            <h4>Selecciona la comunidad</h4>
+            <React.Fragment>
+              {props.ruta.includes('/ca-ES') && <h4>Selecciona la comunitat municipi</h4>}
+              {props.ruta.indexOf('/ca-ES') == -1 && <h4>Selecciona la comunidad</h4>}
+            </React.Fragment>
           )}
           <select
             className="benefit"
@@ -108,7 +121,7 @@ export default function SelectCity(props) {
           ''
         )}
         {inputClass == 'benefit' ? (
-          <input className="button benefit" type="submit" value="Buscar la prestación" />
+          <input className="button benefit" type="submit" value={inputValue} />
         ) : (
           ''
         )}

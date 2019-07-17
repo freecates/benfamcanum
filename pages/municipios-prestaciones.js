@@ -1,16 +1,16 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const SelectCity = dynamic(import('../components/SelectCity'), {
   loading: () => <p>cargando ...</p>
 });
 
 const MunicipiosPrestaciones = props => (
-  <Layout layout>
+  <Layout layout ruta={props.ruta}>
     <Head>
       <title>Prestaciones Familias Numerosas - Municipios</title>
     </Head>
@@ -36,6 +36,8 @@ const MunicipiosPrestaciones = props => (
       <IntlProvider defaultLocale="ca">
         <SelectCity
           inputClass="benefit"
+          inputValue="Buscar la prestación"
+          ruta={props.ruta}
           localBenefit={true}
           options={props.municipios
             .reduce((ciutats, municipio) => {
@@ -61,10 +63,6 @@ const MunicipiosPrestaciones = props => (
       </IntlProvider>
     </div>
     <style jsx>{`
-      a,
-      li {
-        color: #ffffff !important;
-      }
       .breadcrumbs {
         margin: -2rem 0 1rem 0 !important;
       }

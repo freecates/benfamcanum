@@ -1,11 +1,11 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const OfertasPorSectores = props => (
-  <Layout layout>
+  <Layout layout ruta={props.ruta}>
     <Head>
       <title>Ofertas para familias numerosas por sectores</title>
     </Head>
@@ -41,7 +41,11 @@ const OfertasPorSectores = props => (
                 >
                   <a title={'Clica aquí para ver todas las ofertas de ' + ofertasporsectore.name}>
                     <img
-                      src={'https://benfamcanumpics.famnum.now.sh/static/96/' + ofertasporsectore.slug + '-familias-numerosas.png'}
+                      src={
+                        'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                        ofertasporsectore.slug +
+                        '-familias-numerosas.png'
+                      }
                       width="96"
                     />
                     <br />

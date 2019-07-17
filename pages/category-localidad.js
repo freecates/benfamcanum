@@ -1,15 +1,15 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import Link from 'next/link';
 import Observer from 'react-intersection-observer';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
 const PostsByCategoryLocalidad = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       <title>
         Beneficios - {props.posts[0].categoria_de_la_prestacion.name} -{' '}
@@ -34,7 +34,7 @@ const PostsByCategoryLocalidad = props => (
             as={`/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${
               props.posts[0].categoria_de_la_prestacion.slug
             }`}
-            href={`/category?id=${props.posts[0].categoria_de_la_prestacion.term_id}`}
+            href={`/category?sid=${props.posts[0].categoria_de_la_prestacion.term_id}`}
           >
             <a>{props.posts[0].categoria_de_la_prestacion.name}</a>
           </Link>

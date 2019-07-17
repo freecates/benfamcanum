@@ -5,7 +5,7 @@ import fetch from 'isomorphic-unfetch';
 import { IntlProvider, FormattedDate } from 'react-intl';
 
 const OfertasGrandesMarcasByMarcaCa = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       <title>Ofertas de la Marca {props.granmarcacaofertas.name} para familias numerosas</title>
     </Head>

@@ -1,15 +1,15 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import Link from 'next/link';
 import Observer from 'react-intersection-observer';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
 const PostsByLocalidad = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       <title>Beneficios Familias Numerosas - {props.posts[0].localidad_del_beneficio.name}</title>
     </Head>
@@ -123,6 +123,55 @@ const PostsByLocalidad = props => (
                                 <br />{' '}
                                 <span
                                   dangerouslySetInnerHTML={{ __html: marcasoferta.marca.name }}
+                                />
+                              </a>
+                            </Link>
+                          </p>
+                        )}
+                      />
+                    </li>
+                  </span>
+                );
+                return marcas;
+              }, [])}
+            </ul>
+          ) : (
+            ''
+          )}
+          {props.marcascaofertas.length >= 1 ? (
+            <ul className="gallery national-gallery">
+              {props.marcascaofertas.reduce((marcas, marcascaoferta) => {
+                if (marcascaoferta.marca == false) {
+                  return marcas;
+                }
+                marcas[marcascaoferta.marca.term_id] = (
+                  <span key={marcascaoferta.marca.term_id}>
+                    <li className="benefit align-center">
+                      <Observer
+                        threshold={1}
+                        triggerOnce={true}
+                        render={() => (
+                          <p className="fade-in">
+                            <Link
+                              prefetch
+                              as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${
+                                marcascaoferta.marca.slug
+                              }`}
+                              href={`/ofertas-de-la-marca-ca?id=${marcascaoferta.marca.term_id}`}
+                            >
+                              <a title={'Ver todas la oferta de ' + marcascaoferta.marca.name}>
+                                <img
+                                  src={
+                                    'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                                    marcascaoferta.marca.slug +
+                                    '-familias-numerosas.png'
+                                  }
+                                />
+                                <br />{' '}
+                                <span
+                                  dangerouslySetInnerHTML={{
+                                    __html: marcascaoferta.marca.name
+                                  }}
                                 />
                               </a>
                             </Link>
@@ -361,11 +410,18 @@ PostsByLocalidad.getInitialProps = async function(context) {
   const res3 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners`);
   const banners = await res3.json();
 
+  const res4 = await fetch(
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&localidad=${localidad}`
+  );
+  const marcascaofertas = await res4.json();
+
   console.log(
-    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${banners.length}`
+    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${banners.length}, ${
+      marcascaofertas.length
+    }`
   );
 
-  return { posts, marcasofertas, banners };
+  return { posts, marcasofertas, banners, marcascaofertas };
 };
 
 export default PostsByLocalidad;

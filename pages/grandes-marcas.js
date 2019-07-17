@@ -1,17 +1,17 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const GRandesMarcas = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
-      <title>Ofertas nacionales - Familias Numerosas</title>
+      <title>Ofertas grandes marcas - Familias Numerosas</title>
     </Head>
     <IntlProvider defaultLocale="ca">
       <main>
-        <h1>Ofertas nacionales</h1>
+        <h1>Ofertas grandes marcas</h1>
         <section>
           <ul className="gallery">
             {props.grandesmarcas.map((grandesmarca, index) => (

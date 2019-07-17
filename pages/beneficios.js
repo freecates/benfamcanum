@@ -1,9 +1,8 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import Layout from '../components/MyLayout.js';
 
 const SelectCity = dynamic(import('../components/SelectCity'), {
   loading: () => <p>cargando ...</p>
@@ -13,7 +12,7 @@ const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
 const Localidades = props => (
-  <Layout layout>
+  <Layout layout ruta={props.ruta}>
     <Head>
       <title>Ofertas para familias numerosas</title>
     </Head>

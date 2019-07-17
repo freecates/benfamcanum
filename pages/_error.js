@@ -9,7 +9,7 @@ export default class Error extends React.Component {
 
   render() {
     return (
-      <Layout>
+      <Layout ruta={this.props.ruta}>
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>

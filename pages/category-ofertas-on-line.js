@@ -5,7 +5,7 @@ import fetch from 'isomorphic-unfetch';
 import { IntlProvider, FormattedDate } from 'react-intl';
 
 const OfertasOnLineByCategory = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       <title>Ofertas On Line - {props.ofertasonlines[0].categoria_de_la_oferta.name}</title>
     </Head>

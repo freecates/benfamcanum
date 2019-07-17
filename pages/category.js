@@ -1,10 +1,10 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
 import Observer from 'react-intersection-observer';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const SelectCity = dynamic(import('../components/SelectCity'), {
   loading: () => (
@@ -20,7 +20,7 @@ const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
 const PostsByCategory = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       <title>
         Beneficios Familias Numerosas - {props.posts[0].categoria_de_la_prestacion.name}
@@ -81,7 +81,9 @@ const PostsByCategory = props => (
       <h1>
         <img
           src={
-            '/static/' + props.posts[0].categoria_de_la_prestacion.slug + '-familias-numerosas.png'
+            'https://benfamcanumpics.famnum.now.sh/static/96/' +
+            props.posts[0].categoria_de_la_prestacion.slug +
+            '-familias-numerosas.png'
           }
         />
         <br />
@@ -109,6 +111,7 @@ const PostsByCategory = props => (
 
           <SelectCity
             inputClass="comunidad"
+            ruta={props.ruta}
             inputValue="Buscar el mejor descuento"
             options={[
               {

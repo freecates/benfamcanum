@@ -14,17 +14,17 @@ Router.onRouteChangeStart = url => {
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
-const HeaderHome = () => (
+const HeaderHome = props => (
   <React.Fragment>
     <GlobalHead />
     <MediaQuery minDeviceWidth={768}>
-      <NavBarExternal />
+      <NavBarExternal ruta={props.ruta} />
     </MediaQuery>
     <div style={{ marginBottom: 20 }}>
       <div className="fade-in">
         <div className="bg-white">
           <section>
-            <NavBarBenFamNum />
+            <NavBarBenFamNum ruta={props.ruta} />
           </section>
         </div>
         <div>
@@ -42,36 +42,71 @@ const HeaderHome = () => (
             <img src="/static/02-bg-body-familias-numerosas.jpg" alt="més és més" />
           </picture>
         </div>
-        <section className="section-data">
-          <div className="section-a">
-            <h4 className="icones-prestacions align-center">
-              <Link prefetch href="/beneficios">
-                <a title="Ofertas comerciales para familias numerosas">
-                  <img
-                    src="/static/icono-menu-fanoc-oferta.png"
-                    alt="Icono Ofertas comerciales para familias numerosas"
-                  />
-                  <br />
-                  <strong>Ofertas y descuentos</strong>
-                </a>
-              </Link>
-            </h4>
-          </div>
-          <div className="section-b">
-            <h4 className="icones-prestacions align-center">
-              <Link prefetch href="/prestaciones">
-                <a title="Prestaciones para familias numerosas">
-                  <img
-                    src="/static/icono-menu-fanoc-prestaciones.png"
-                    alt="Icono Prestaciones para familias numerosas"
-                  />
-                  <br />
-                  <strong>Ayudas públicas</strong>
-                </a>
-              </Link>
-            </h4>
-          </div>
-        </section>
+        {props.ruta.includes('/ca-ES') && (
+          <section className="section-data">
+            <div className="section-a">
+              <h4 className="icones-prestacions align-center">
+                <Link prefetch href="/ca-ES/beneficis">
+                  <a title="Ofertes comercials per a famílies nombroses">
+                    <img
+                      src="/static/icono-menu-fanoc-oferta.png"
+                      alt="Icona Ofertes comercials per a famílies nombroses"
+                    />
+                    <br />
+                    <strong>Ofertes i descomptes</strong>
+                  </a>
+                </Link>
+              </h4>
+            </div>
+            <div className="section-b">
+              <h4 className="icones-prestacions align-center">
+                <Link prefetch href="/ca-ES/prestacions">
+                  <a title="Prestacions per a famílies nombroses">
+                    <img
+                      src="/static/icono-menu-fanoc-prestaciones.png"
+                      alt="Icona Prestacions per a famílies nombroses"
+                    />
+                    <br />
+                    <strong>Ajudes públiques</strong>
+                  </a>
+                </Link>
+              </h4>
+            </div>
+          </section>
+        )}
+
+        {props.ruta.indexOf('/ca-ES') == -1 && (
+          <section className="section-data">
+            <div className="section-a">
+              <h4 className="icones-prestacions align-center">
+                <Link prefetch href="/beneficios">
+                  <a title="Ofertas comerciales para familias numerosas">
+                    <img
+                      src="/static/icono-menu-fanoc-oferta.png"
+                      alt="Icono Ofertas comerciales para familias numerosas"
+                    />
+                    <br />
+                    <strong>Ofertas y descuentos</strong>
+                  </a>
+                </Link>
+              </h4>
+            </div>
+            <div className="section-b">
+              <h4 className="icones-prestacions align-center">
+                <Link prefetch href="/prestaciones">
+                  <a title="Prestaciones para familias numerosas">
+                    <img
+                      src="/static/icono-menu-fanoc-prestaciones.png"
+                      alt="Icono Prestaciones para familias numerosas"
+                    />
+                    <br />
+                    <strong>Ayudas públicas</strong>
+                  </a>
+                </Link>
+              </h4>
+            </div>
+          </section>
+        )}
       </div>
 
       <style jsx>{`

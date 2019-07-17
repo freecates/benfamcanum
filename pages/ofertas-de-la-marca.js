@@ -1,11 +1,11 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const OfertasGrandesMarcasByMarca = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       <title>Ofertas de la Marca {props.granmarcaofertas.name} para familias numerosas</title>
     </Head>
@@ -18,7 +18,7 @@ const OfertasGrandesMarcasByMarca = props => (
         </li>
         <li>
           <Link prefetch href="/grandes-marcas">
-            <a>Ofertas nacionales</a>
+            <a>Ofertas grandes marcas</a>
           </Link>
         </li>
         <li>

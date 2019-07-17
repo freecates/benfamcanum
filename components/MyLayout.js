@@ -1,7 +1,7 @@
-import Header from './Header';
-import Footer from './Footer';
-import ServiceWorker from '../pages/service-worker';
+import { useEffect } from 'react';
 import { initGA, logPageView } from '../utils/analytics';
+import Footer from './Footer';
+import Header from './Header';
 import Styles from './Styles';
 
 const layoutStyle = {
@@ -15,50 +15,25 @@ const mainStyle = {
   margin: '0 auto'
 };
 
-export default class Layout extends React.Component {
-  componentDidMount() {
+export default function Layout(props) {
+  useEffect(() => {
     if (!window.GA_INITIALIZED) {
       initGA();
       window.GA_INITIALIZED = true;
     }
     logPageView();
-  }
-  render() {
-    return (
+  });
+
+  return (
+    <React.Fragment>
       <React.Fragment>
-        <React.Fragment>
-          {this.props.layout ||
-            (this.props.bgmapa !== true && (
-              <div style={layoutStyle} className="fade-in">
-                <Header withbg />
-                <main style={mainStyle}>{this.props.children}</main>
-                <style jsx>{`
-                  .fade-in {
-                    animation-name: fadeIn;
-                    animation-duration: 1.3s;
-                    animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-                    animation-fill-mode: forwards;
-                  }
-                  @keyframes fadeIn {
-                    from {
-                      opacity: 0;
-                    }
-                    to {
-                      opacity: 1;
-                    }
-                  }
-                `}</style>
-              </div>
-            ))}
-          {this.props.layout && (
-            <div style={layoutStyle} className={'layout' in this.props && 'layout'}>
-              <Header />
-              <main style={mainStyle}>{this.props.children}</main>
+        {props.layout ||
+          (props.bgmapa !== true && (
+            <div style={layoutStyle} className="fade-in">
+              <Header withbg ruta={props.ruta} />
+              <main style={mainStyle}>{props.children}</main>
               <style jsx>{`
-                .layout {
-                  /*background: url('/static/bg-body-familias-numerosas.jpg');
-              background-size: contain;
-              background-repeat: no-repeat;*/
+                .fade-in {
                   animation-name: fadeIn;
                   animation-duration: 1.3s;
                   animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
@@ -74,20 +49,43 @@ export default class Layout extends React.Component {
                 }
               `}</style>
             </div>
-          )}
-          {this.props.bgmapa && (
-            <div style={layoutStyle} className={'bgmapa' in this.props && 'bgmapa'}>
-              <Header withbg />
-              <main style={mainStyle}>{this.props.children}</main>
-            </div>
-          )}
-          <Footer />
-          <ServiceWorker />
-        </React.Fragment>
-        <React.Fragment>
-          <Styles />
-        </React.Fragment>
+          ))}
+        {props.layout && (
+          <div style={layoutStyle} className={'layout' in props && 'layout'}>
+            <Header ruta={props.ruta} />
+            <main style={mainStyle}>{props.children}</main>
+            <style jsx>{`
+              .layout {
+                /*background: url('/static/bg-body-familias-numerosas.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;*/
+                animation-name: fadeIn;
+                animation-duration: 1.3s;
+                animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+                animation-fill-mode: forwards;
+              }
+              @keyframes fadeIn {
+                from {
+                  opacity: 0;
+                }
+                to {
+                  opacity: 1;
+                }
+              }
+            `}</style>
+          </div>
+        )}
+        {props.bgmapa && (
+          <div style={layoutStyle} className={'bgmapa' in props && 'bgmapa'}>
+            <Header withbg ruta={props.ruta} />
+            <main style={mainStyle}>{props.children}</main>
+          </div>
+        )}
+        <Footer ruta={props.ruta} />
       </React.Fragment>
-    );
-  }
+      <React.Fragment>
+        <Styles />
+      </React.Fragment>
+    </React.Fragment>
+  );
 }

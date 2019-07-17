@@ -19,7 +19,7 @@ const LinkedinIcon = generateShareIcon('linkedin');
 const EmailIcon = generateShareIcon('email');
 
 const OfertaOnLine = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       {props.ofertaonline.acf.nombre_del_establecimiento ? (
         <title

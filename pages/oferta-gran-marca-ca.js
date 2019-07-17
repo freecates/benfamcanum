@@ -1,10 +1,10 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
 import FontAwesome from 'react-fontawesome';
-import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
+import { generateShareIcon, ShareButtons } from 'react-share';
+import Layout from '../components/MyLayout.js';
 
 const MapaDeGoogle = dynamic(import('../components/MapaDeGoogle'), {
   loading: () => (
@@ -39,7 +39,7 @@ const LinkedinIcon = generateShareIcon('linkedin');
 const EmailIcon = generateShareIcon('email');
 
 const OfertaGranMarca = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       {props.ofertagranmarca.acf.nombre_del_establecimiento ? (
         <title
@@ -111,7 +111,7 @@ const OfertaGranMarca = props => (
         </li>
         <li>
           <Link prefetch href="/grandes-marcas">
-            <a>Ofertas nacionales</a>
+            <a>Ofertas grandes marcas</a>
           </Link>
         </li>
         <li>

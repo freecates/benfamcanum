@@ -1,14 +1,20 @@
-import btoa from 'btoa';
 import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
 import Observer from 'react-intersection-observer';
 
-const B = () => (
+const B = props => (
   <div>
     <p className="fade-in file-label align-center">
-      <small>
-        Para que la búsqueda funcione <strong>debes clicar en el cuadro verde de Buscar</strong>
-      </small>
+      {props.ruta.includes('/ca-ES') && (
+        <small>
+          Per a que la cerca funcioni <strong>has de fer clic al quadre verd de Cercar</strong>
+        </small>
+      )}
+      {props.ruta.indexOf('/ca-ES') == -1 && (
+        <small>
+          Para que la búsqueda funcione <strong>debes clicar en el cuadro verde de Buscar</strong>
+        </small>
+      )}
     </p>
     <style jsx>{`
       .file-label {
@@ -48,7 +54,8 @@ class IsSearch extends React.Component {
       OfertasResults: {},
       OfertasGrandeMarcasResults: {},
       OfertasGrandeMarcasCAResults: {},
-      ActionButton: null
+      ActionButton: null,
+      ruta: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -65,7 +72,7 @@ class IsSearch extends React.Component {
     });
     if (value != '') {
       this.setState({
-        ActionButton: <B />
+        ActionButton: <B ruta={this.props.ruta} />
       });
     } else {
       this.setState({
@@ -110,6 +117,7 @@ class IsSearch extends React.Component {
   };
 
   render() {
+    const ruta = this.props.ruta;
     console.log(
       `Post count: ${this.state.PostResults.length}, ${this.state.OfertasResults.length}, ${
         this.state.OfertasGrandeMarcasResults.length
@@ -127,7 +135,16 @@ class IsSearch extends React.Component {
             <section className="section-padding">
               <div className="fade-in">
                 <p>
-                  Resultados de <strong>Beneficios</strong> con la búsqueda{' '}
+                  {ruta.includes('/ca-ES') && (
+                    <>
+                      Resultats de <strong>Beneficis</strong> amb la cerca
+                    </>
+                  )}
+                  {ruta.indexOf('/ca-ES') == -1 && (
+                    <>
+                      Resultados de <strong>Beneficios</strong> con la búsqueda
+                    </>
+                  )}{' '}
                   <strong>"{this.state.Title}"</strong>
                 </p>
                 <ul className="gallery results">
@@ -139,23 +156,44 @@ class IsSearch extends React.Component {
                           triggerOnce={true}
                           render={() => (
                             <p className="fade-in">
-                              <Link
-                                prefetch
-                                as={`/p/${PostResult.ID}/${PostResult.slug}`}
-                                href={`/post?id=${PostResult.ID}`}
-                              >
-                                <a title={'Ver la ficha de ' + PostResult.name}>
-                                  <img
-                                    className="fade-in"
-                                    width="250"
-                                    src={
-                                      PostResult.imagen_destacada_de_la_oferta_general_thumb.sizes
-                                        .thumbnail
-                                    }
-                                    alt={PostResult.titulo_de_la_oferta_oferta_general}
-                                  />
-                                </a>
-                              </Link>
+                              {ruta.includes('/ca-ES') && (
+                                <Link
+                                  prefetch
+                                  as={`/ca-ES/p/${PostResult.ID}/${PostResult.slug}`}
+                                  href={`/ca-ES/post?id=${PostResult.ID}`}
+                                >
+                                  <a title={'Veure la fitxa de ' + PostResult.name}>
+                                    <img
+                                      className="fade-in"
+                                      width="250"
+                                      src={
+                                        PostResult.imagen_destacada_de_la_oferta_general_thumb.sizes
+                                          .thumbnail
+                                      }
+                                      alt={PostResult.titulo_de_la_oferta_oferta_general}
+                                    />
+                                  </a>
+                                </Link>
+                              )}
+                              {ruta.indexOf('/ca-ES') == -1 && (
+                                <Link
+                                  prefetch
+                                  as={`/p/${PostResult.ID}/${PostResult.slug}`}
+                                  href={`/post?id=${PostResult.ID}`}
+                                >
+                                  <a title={'Ver la ficha de ' + PostResult.name}>
+                                    <img
+                                      className="fade-in"
+                                      width="250"
+                                      src={
+                                        PostResult.imagen_destacada_de_la_oferta_general_thumb.sizes
+                                          .thumbnail
+                                      }
+                                      alt={PostResult.titulo_de_la_oferta_oferta_general}
+                                    />
+                                  </a>
+                                </Link>
+                              )}
                             </p>
                           )}
                         />
@@ -169,29 +207,56 @@ class IsSearch extends React.Component {
                           triggerOnce={true}
                           render={() => (
                             <p className="fade-in">
-                              <Link
-                                prefetch
-                                as={`/p/${PostResult.ID}/${PostResult.slug}`}
-                                href={`/post?id=${PostResult.ID}`}
-                              >
-                                <a title={'Ver la ficha de ' + PostResult.name}>
-                                  <img
-                                    className="fade-in"
-                                    width="250"
-                                    src={
-                                      PostResult.imagen_destacada_de_la_oferta_socios_thumb.sizes
-                                        .thumbnail
-                                    }
-                                    alt={PostResult.titulo_de_la_oferta_oferta_socios}
-                                  />
-                                  <span className="label alert gallery-label">
-                                    <small>
-                                      EXCLUSIVO
-                                      <br /> SOCIOS
-                                    </small>
-                                  </span>
-                                </a>
-                              </Link>
+                              {ruta.includes('/ca-ES') && (
+                                <Link
+                                  prefetch
+                                  as={`/ca-ES/p/${PostResult.ID}/${PostResult.slug}`}
+                                  href={`/ca-ES/post?id=${PostResult.ID}`}
+                                >
+                                  <a title={'Veure la fitxa de ' + PostResult.name}>
+                                    <img
+                                      className="fade-in"
+                                      width="250"
+                                      src={
+                                        PostResult.imagen_destacada_de_la_oferta_socios_thumb.sizes
+                                          .thumbnail
+                                      }
+                                      alt={PostResult.titulo_de_la_oferta_oferta_socios}
+                                    />
+                                    <span className="label alert gallery-label">
+                                      <small>
+                                        EXCLUSIU
+                                        <br /> SOCIS
+                                      </small>
+                                    </span>
+                                  </a>
+                                </Link>
+                              )}
+                              {ruta.indexOf('/ca-ES') == -1 && (
+                                <Link
+                                  prefetch
+                                  as={`/p/${PostResult.ID}/${PostResult.slug}`}
+                                  href={`/post?id=${PostResult.ID}`}
+                                >
+                                  <a title={'Ver la ficha de ' + PostResult.name}>
+                                    <img
+                                      className="fade-in"
+                                      width="250"
+                                      src={
+                                        PostResult.imagen_destacada_de_la_oferta_socios_thumb.sizes
+                                          .thumbnail
+                                      }
+                                      alt={PostResult.titulo_de_la_oferta_oferta_socios}
+                                    />
+                                    <span className="label alert gallery-label">
+                                      <small>
+                                        EXCLUSIVO
+                                        <br /> SOCIOS
+                                      </small>
+                                    </span>
+                                  </a>
+                                </Link>
+                              )}
                             </p>
                           )}
                         />
@@ -200,45 +265,89 @@ class IsSearch extends React.Component {
                       )}
 
                       <p>
-                        <Link
-                          prefetch
-                          as={`/p/${PostResult.ID}/${PostResult.slug}`}
-                          href={`/post?id=${PostResult.ID}`}
-                        >
-                          <a
-                            title={'Ver la ficha de ' + PostResult.name}
-                            dangerouslySetInnerHTML={{ __html: PostResult.name }}
-                          />
-                        </Link>
+                        {ruta.includes('/ca-ES') && (
+                          <Link
+                            prefetch
+                            as={`/ca-ES/p/${PostResult.ID}/${PostResult.slug}`}
+                            href={`/ca-ES/post?id=${PostResult.ID}`}
+                          >
+                            <a
+                              title={'Veure la fitxa de ' + PostResult.name}
+                              dangerouslySetInnerHTML={{ __html: PostResult.name }}
+                            />
+                          </Link>
+                        )}
+                        {ruta.indexOf('/ca-ES') == -1 && (
+                          <Link
+                            prefetch
+                            as={`/p/${PostResult.ID}/${PostResult.slug}`}
+                            href={`/post?id=${PostResult.ID}`}
+                          >
+                            <a
+                              title={'Ver la ficha de ' + PostResult.name}
+                              dangerouslySetInnerHTML={{ __html: PostResult.name }}
+                            />
+                          </Link>
+                        )}
                         <br />
                         {PostResult.categoria_de_la_prestacion ? (
                           <small>
-                            <Link
-                              prefetch
-                              as={`/c-l/${PostResult.categoria_de_la_prestacion.term_id}/${
-                                PostResult.categoria_de_la_prestacion.slug
-                              }/${PostResult.localidad_del_beneficio.term_id}/${
-                                PostResult.localidad_del_beneficio.slug
-                              }`}
-                              href={`/category-localidad?id=${
-                                PostResult.categoria_de_la_prestacion.term_id
-                              }&localidad=${PostResult.localidad_del_beneficio.term_id}`}
-                            >
-                              <a
-                                title={
-                                  'Ver todos los beneficios de ' +
-                                  PostResult.categoria_de_la_prestacion.name +
-                                  ' en ' +
-                                  PostResult.localidad_del_beneficio.name
-                                }
+                            {ruta.includes('/ca-ES') && (
+                              <Link
+                                prefetch
+                                as={`/ca-ES/c-l/${PostResult.categoria_de_la_prestacion.term_id}/${
+                                  PostResult.categoria_de_la_prestacion.slug
+                                }/${PostResult.localidad_del_beneficio.term_id}/${
+                                  PostResult.localidad_del_beneficio.slug
+                                }`}
+                                href={`/ca-ES/category-localidad?id=${
+                                  PostResult.categoria_de_la_prestacion.term_id
+                                }&localidad=${PostResult.localidad_del_beneficio.term_id}`}
                               >
-                                <span
-                                  dangerouslySetInnerHTML={{
-                                    __html: PostResult.localidad_del_beneficio.name
-                                  }}
-                                />
-                              </a>
-                            </Link>
+                                <a
+                                  title={
+                                    'Veure tots els resultats dels beneficis de ' +
+                                    PostResult.categoria_de_la_prestacion.name +
+                                    ' a ' +
+                                    PostResult.localidad_del_beneficio.name
+                                  }
+                                >
+                                  <span
+                                    dangerouslySetInnerHTML={{
+                                      __html: PostResult.localidad_del_beneficio.name
+                                    }}
+                                  />
+                                </a>
+                              </Link>
+                            )}
+                            {ruta.indexOf('/ca-ES') == -1 && (
+                              <Link
+                                prefetch
+                                as={`/c-l/${PostResult.categoria_de_la_prestacion.term_id}/${
+                                  PostResult.categoria_de_la_prestacion.slug
+                                }/${PostResult.localidad_del_beneficio.term_id}/${
+                                  PostResult.localidad_del_beneficio.slug
+                                }`}
+                                href={`/category-localidad?id=${
+                                  PostResult.categoria_de_la_prestacion.term_id
+                                }&localidad=${PostResult.localidad_del_beneficio.term_id}`}
+                              >
+                                <a
+                                  title={
+                                    'Ver todos los beneficios de ' +
+                                    PostResult.categoria_de_la_prestacion.name +
+                                    ' en ' +
+                                    PostResult.localidad_del_beneficio.name
+                                  }
+                                >
+                                  <span
+                                    dangerouslySetInnerHTML={{
+                                      __html: PostResult.localidad_del_beneficio.name
+                                    }}
+                                  />
+                                </a>
+                              </Link>
+                            )}
                           </small>
                         ) : (
                           <small>{PostResult.localidad_del_beneficio.name}</small>
@@ -272,7 +381,16 @@ class IsSearch extends React.Component {
             <section className="section-padding">
               <div className="fade-in">
                 <p>
-                  Resultados de <strong>Ofertas Online</strong> con la búsqueda{' '}
+                  {ruta.includes('/ca-ES') && (
+                    <>
+                      Resultats d'<strong>Ofertes Online</strong> amb la cerca
+                    </>
+                  )}
+                  {ruta.indexOf('/ca-ES') == -1 && (
+                    <>
+                      Resultados de <strong>Ofertas Online</strong> con la búsqueda
+                    </>
+                  )}{' '}
                   <strong>"{this.state.Title}"</strong>
                 </p>
                 <ul className="gallery results">
@@ -284,23 +402,44 @@ class IsSearch extends React.Component {
                           triggerOnce={true}
                           render={() => (
                             <p className="fade-in">
-                              <Link
-                                prefetch
-                                as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
-                                href={`/oferta-on-line?id=${OfertasResult.ID}`}
-                              >
-                                <a title={'Ver la ficha de ' + OfertasResult.name}>
-                                  <img
-                                    className="fade-in"
-                                    width="250"
-                                    src={
-                                      OfertasResult.imagen_destacada_de_la_oferta_general.sizes
-                                        .medium
-                                    }
-                                    alt={OfertasResult.titulo_de_la_oferta_oferta_general}
-                                  />
-                                </a>
-                              </Link>
+                              {ruta.includes('/ca-ES') && (
+                                <Link
+                                  prefetch
+                                  as={`/ca-ES/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
+                                  href={`/ca-ES/oferta-on-line?id=${OfertasResult.ID}`}
+                                >
+                                  <a title={'Veure la fitxa de ' + OfertasResult.name}>
+                                    <img
+                                      className="fade-in"
+                                      width="250"
+                                      src={
+                                        OfertasResult.imagen_destacada_de_la_oferta_general.sizes
+                                          .medium
+                                      }
+                                      alt={OfertasResult.titulo_de_la_oferta_oferta_general}
+                                    />
+                                  </a>
+                                </Link>
+                              )}
+                              {ruta.indexOf('/ca-ES') == -1 && (
+                                <Link
+                                  prefetch
+                                  as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
+                                  href={`/oferta-on-line?id=${OfertasResult.ID}`}
+                                >
+                                  <a title={'Ver la ficha de ' + OfertasResult.name}>
+                                    <img
+                                      className="fade-in"
+                                      width="250"
+                                      src={
+                                        OfertasResult.imagen_destacada_de_la_oferta_general.sizes
+                                          .medium
+                                      }
+                                      alt={OfertasResult.titulo_de_la_oferta_oferta_general}
+                                    />
+                                  </a>
+                                </Link>
+                              )}
                             </p>
                           )}
                         />
@@ -314,29 +453,56 @@ class IsSearch extends React.Component {
                           triggerOnce={true}
                           render={() => (
                             <p className="fade-in">
-                              <Link
-                                prefetch
-                                as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
-                                href={`/oferta-on-line?id=${OfertasResult.ID}`}
-                              >
-                                <a title={'Ver la ficha de ' + OfertasResult.name}>
-                                  <img
-                                    className="fade-in"
-                                    width="250"
-                                    src={
-                                      OfertasResult.imagen_destacada_de_la_oferta_socios.sizes
-                                        .medium
-                                    }
-                                    alt={OfertasResult.titulo_de_la_oferta_oferta_socios}
-                                  />
-                                  <span className="label alert gallery-label">
-                                    <small>
-                                      EXCLUSIVO
-                                      <br /> SOCIOS
-                                    </small>
-                                  </span>
-                                </a>
-                              </Link>
+                              {ruta.includes('/ca-ES') && (
+                                <Link
+                                  prefetch
+                                  as={`/ca-ES/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
+                                  href={`/ca-ES/oferta-on-line?id=${OfertasResult.ID}`}
+                                >
+                                  <a title={'Veure la fitxa de ' + OfertasResult.name}>
+                                    <img
+                                      className="fade-in"
+                                      width="250"
+                                      src={
+                                        OfertasResult.imagen_destacada_de_la_oferta_socios.sizes
+                                          .medium
+                                      }
+                                      alt={OfertasResult.titulo_de_la_oferta_oferta_socios}
+                                    />
+                                    <span className="label alert gallery-label">
+                                      <small>
+                                        EXCLUSIU
+                                        <br /> SOCIS
+                                      </small>
+                                    </span>
+                                  </a>
+                                </Link>
+                              )}
+                              {ruta.indexOf('/ca-ES') == -1 && (
+                                <Link
+                                  prefetch
+                                  as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
+                                  href={`/oferta-on-line?id=${OfertasResult.ID}`}
+                                >
+                                  <a title={'Ver la ficha de ' + OfertasResult.name}>
+                                    <img
+                                      className="fade-in"
+                                      width="250"
+                                      src={
+                                        OfertasResult.imagen_destacada_de_la_oferta_socios.sizes
+                                          .medium
+                                      }
+                                      alt={OfertasResult.titulo_de_la_oferta_oferta_socios}
+                                    />
+                                    <span className="label alert gallery-label">
+                                      <small>
+                                        EXCLUSIVO
+                                        <br /> SOCIOS
+                                      </small>
+                                    </span>
+                                  </a>
+                                </Link>
+                              )}
                             </p>
                           )}
                         />
@@ -345,41 +511,81 @@ class IsSearch extends React.Component {
                       )}
 
                       <p>
-                        <Link
-                          prefetch
-                          as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
-                          href={`/oferta-on-line?id=${OfertasResult.ID}`}
-                        >
-                          <a
-                            title={'Ver la ficha de ' + OfertasResult.name}
-                            dangerouslySetInnerHTML={{ __html: OfertasResult.name }}
-                          />
-                        </Link>
+                        {ruta.includes('/ca-ES') && (
+                          <Link
+                            prefetch
+                            as={`/ca-ES/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
+                            href={`/ca-ES/oferta-on-line?id=${OfertasResult.ID}`}
+                          >
+                            <a
+                              title={'Veure la fitxa de ' + OfertasResult.name}
+                              dangerouslySetInnerHTML={{ __html: OfertasResult.name }}
+                            />
+                          </Link>
+                        )}
+                        {ruta.indexOf('/ca-ES') == -1 && (
+                          <Link
+                            prefetch
+                            as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
+                            href={`/oferta-on-line?id=${OfertasResult.ID}`}
+                          >
+                            <a
+                              title={'Ver la ficha de ' + OfertasResult.name}
+                              dangerouslySetInnerHTML={{ __html: OfertasResult.name }}
+                            />
+                          </Link>
+                        )}
                         <br />
                         {OfertasResult.categoria_de_la_oferta ? (
                           <small>
-                            <Link
-                              prefetch
-                              as={`/c-o-o/${OfertasResult.categoria_de_la_oferta.term_id}/${
-                                OfertasResult.categoria_de_la_oferta.slug
-                              }`}
-                              href={`/category-ofertas-on-line?id=${
-                                OfertasResult.categoria_de_la_oferta.term_id
-                              }`}
-                            >
-                              <a
-                                title={
-                                  'Ver todos los beneficios de ' +
-                                  OfertasResult.categoria_de_la_oferta.name
-                                }
+                            {ruta.includes('/ca-ES') && (
+                              <Link
+                                prefetch
+                                as={`/ca-ES/c-o-o/${OfertasResult.categoria_de_la_oferta.term_id}/${
+                                  OfertasResult.categoria_de_la_oferta.slug
+                                }`}
+                                href={`/ca-ES/category-ofertas-on-line?id=${
+                                  OfertasResult.categoria_de_la_oferta.term_id
+                                }`}
                               >
-                                <span
-                                  dangerouslySetInnerHTML={{
-                                    __html: OfertasResult.categoria_de_la_oferta.name
-                                  }}
-                                />
-                              </a>
-                            </Link>
+                                <a
+                                  title={
+                                    'Veure tots els beneficis de ' +
+                                    OfertasResult.categoria_de_la_oferta.name
+                                  }
+                                >
+                                  <span
+                                    dangerouslySetInnerHTML={{
+                                      __html: OfertasResult.categoria_de_la_oferta.name
+                                    }}
+                                  />
+                                </a>
+                              </Link>
+                            )}
+                            {ruta.indexOf('/ca-ES') == -1 && (
+                              <Link
+                                prefetch
+                                as={`/c-o-o/${OfertasResult.categoria_de_la_oferta.term_id}/${
+                                  OfertasResult.categoria_de_la_oferta.slug
+                                }`}
+                                href={`/category-ofertas-on-line?id=${
+                                  OfertasResult.categoria_de_la_oferta.term_id
+                                }`}
+                              >
+                                <a
+                                  title={
+                                    'Ver todos los beneficios de ' +
+                                    OfertasResult.categoria_de_la_oferta.name
+                                  }
+                                >
+                                  <span
+                                    dangerouslySetInnerHTML={{
+                                      __html: OfertasResult.categoria_de_la_oferta.name
+                                    }}
+                                  />
+                                </a>
+                              </Link>
+                            )}
                           </small>
                         ) : (
                           <small>{OfertasResult.categoria_de_la_oferta.name}</small>
@@ -413,25 +619,50 @@ class IsSearch extends React.Component {
             <section className="section-padding">
               <div className="fade-in">
                 <p>
-                  Resultados de <strong>Ofertas Grandes Marcas</strong> con la búsqueda{' '}
+                  {ruta.includes('/ca-ES') && (
+                    <>
+                      Resultats d'<strong>Ofertes Grans Marques</strong> amb la cerca
+                    </>
+                  )}
+                  {ruta.indexOf('/ca-ES') == -1 && (
+                    <>
+                      Resultados de <strong>Ofertas Grandes Marcas</strong> con la búsqueda
+                    </>
+                  )}{' '}
                   <strong>"{this.state.Title}"</strong>
                 </p>
                 <ul className="gallery results">
                   {this.state.OfertasGrandeMarcasResults.map((OfertasGrandeMarcasResult, index) => (
                     <li className="benefit-simple" key={index}>
                       <p className="align-left">
-                        <Link
-                          prefetch
-                          as={`/ogm/${OfertasGrandeMarcasResult.ID}/${
-                            OfertasGrandeMarcasResult.slug
-                          }`}
-                          href={`/oferta-gran-marca?id=${OfertasGrandeMarcasResult.ID}`}
-                        >
-                          <a
-                            title={'Ver la ficha de ' + OfertasGrandeMarcasResult.name}
-                            dangerouslySetInnerHTML={{ __html: OfertasGrandeMarcasResult.name }}
-                          />
-                        </Link>
+                        {ruta.includes('/ca-ES') && (
+                          <Link
+                            prefetch
+                            as={`/ca-ES/ogm/${OfertasGrandeMarcasResult.ID}/${
+                              OfertasGrandeMarcasResult.slug
+                            }`}
+                            href={`/ca-ES/oferta-gran-marca?id=${OfertasGrandeMarcasResult.ID}`}
+                          >
+                            <a
+                              title={'Veure la fitxa de ' + OfertasGrandeMarcasResult.name}
+                              dangerouslySetInnerHTML={{ __html: OfertasGrandeMarcasResult.name }}
+                            />
+                          </Link>
+                        )}
+                        {ruta.indexOf('/ca-ES') == -1 && (
+                          <Link
+                            prefetch
+                            as={`/ogm/${OfertasGrandeMarcasResult.ID}/${
+                              OfertasGrandeMarcasResult.slug
+                            }`}
+                            href={`/oferta-gran-marca?id=${OfertasGrandeMarcasResult.ID}`}
+                          >
+                            <a
+                              title={'Ver la ficha de ' + OfertasGrandeMarcasResult.name}
+                              dangerouslySetInnerHTML={{ __html: OfertasGrandeMarcasResult.name }}
+                            />
+                          </Link>
+                        )}
                         .
                         {OfertasGrandeMarcasResult.localidad_del_beneficio !== null ? (
                           <small>{OfertasGrandeMarcasResult.localidad_del_beneficio.name}.</small>
@@ -459,7 +690,16 @@ class IsSearch extends React.Component {
             <section className="section-padding">
               <div className="fade-in">
                 <p>
-                  Resultados de <strong>Ofertas Grandes Marcas </strong> con la búsqueda{' '}
+                  {ruta.includes('/ca-ES') && (
+                    <>
+                      Resultats d'<strong>Ofertes Grans Marques</strong> amb la cerca
+                    </>
+                  )}
+                  {ruta.indexOf('/ca-ES') == -1 && (
+                    <>
+                      Resultados de <strong>Ofertas Grandes Marcas</strong> con la búsqueda
+                    </>
+                  )}{' '}
                   <strong>"{this.state.Title}"</strong>
                 </p>
                 <ul className="gallery results">
@@ -467,18 +707,40 @@ class IsSearch extends React.Component {
                     (OfertasGrandeMarcasCAResult, index) => (
                       <li className="benefit-simple" key={index}>
                         <p className="align-left">
-                          <Link
-                            prefetch
-                            as={`/ogmca/${OfertasGrandeMarcasCAResult.ID}/${
-                              OfertasGrandeMarcasCAResult.slug
-                            }`}
-                            href={`/oferta-gran-marca-ca?id=${OfertasGrandeMarcasCAResult.ID}`}
-                          >
-                            <a
-                              title={'Ver la ficha de ' + OfertasGrandeMarcasCAResult.name}
-                              dangerouslySetInnerHTML={{ __html: OfertasGrandeMarcasCAResult.name }}
-                            />
-                          </Link>
+                          {ruta.includes('/ca-ES') && (
+                            <Link
+                              prefetch
+                              as={`/ca-ES/ogmca/${OfertasGrandeMarcasCAResult.ID}/${
+                                OfertasGrandeMarcasCAResult.slug
+                              }`}
+                              href={`/ca-ES/oferta-gran-marca-ca?id=${
+                                OfertasGrandeMarcasCAResult.ID
+                              }`}
+                            >
+                              <a
+                                title={'Veure la fitxa de ' + OfertasGrandeMarcasCAResult.name}
+                                dangerouslySetInnerHTML={{
+                                  __html: OfertasGrandeMarcasCAResult.name
+                                }}
+                              />
+                            </Link>
+                          )}
+                          {ruta.indexOf('/ca-ES') == -1 && (
+                            <Link
+                              prefetch
+                              as={`/ogmca/${OfertasGrandeMarcasCAResult.ID}/${
+                                OfertasGrandeMarcasCAResult.slug
+                              }`}
+                              href={`/oferta-gran-marca-ca?id=${OfertasGrandeMarcasCAResult.ID}`}
+                            >
+                              <a
+                                title={'Ver la ficha de ' + OfertasGrandeMarcasCAResult.name}
+                                dangerouslySetInnerHTML={{
+                                  __html: OfertasGrandeMarcasCAResult.name
+                                }}
+                              />
+                            </Link>
+                          )}
                           .{' '}
                           <small>{OfertasGrandeMarcasCAResult.localidad_del_beneficio.name}</small>.{' '}
                           {OfertasGrandeMarcasCAResult.titulo_de_la_oferta ? (
@@ -500,27 +762,59 @@ class IsSearch extends React.Component {
           )}
 
           <section>
-            <p>¿No es lo que estabas buscando? Prueba con una búsqueda diferente</p>
+            <p>
+              {ruta.includes('/ca-ES') && (
+                <>¿No és el que estaves buscant? Prova amb una altra cerca</>
+              )}
+              {ruta.indexOf('/ca-ES') == -1 && (
+                <>¿No es lo que estabas buscando? Prueba con una búsqueda diferente</>
+              )}
+            </p>
             <div className="wrapper">
               <form>
-                <label>
-                  <h4>Introduce una nueva búsqueda</h4>
-                  <input
-                    placeholder="Mi Busqueda"
-                    type="search"
-                    name="Title"
-                    value={this.state.Title}
-                    onChange={this.handleChange}
-                    required
-                  />
-                </label>
+                {ruta.includes('/ca-ES') && (
+                  <label>
+                    <h4>Introdueix una nova cerca</h4>
+                    <input
+                      placeholder="La meva cerca"
+                      type="search"
+                      name="Title"
+                      value={this.state.Title}
+                      onChange={this.handleChange}
+                      required
+                    />
+                  </label>
+                )}
+                {ruta.indexOf('/ca-ES') == -1 && (
+                  <label>
+                    <h4>Introduce una nueva búsqueda</h4>
+                    <input
+                      placeholder="Mi Busqueda"
+                      type="search"
+                      name="Title"
+                      value={this.state.Title}
+                      onChange={this.handleChange}
+                      required
+                    />
+                  </label>
+                )}
                 <div className="wrapper-input">
-                  <input
-                    type="button"
-                    className="button"
-                    onClick={this.handleSubmit}
-                    value="Buscar"
-                  />
+                  {ruta.includes('/ca-ES') && (
+                    <input
+                      type="button"
+                      className="button"
+                      onClick={this.handleSubmit}
+                      value="Cercar"
+                    />
+                  )}
+                  {ruta.indexOf('/ca-ES') == -1 && (
+                    <input
+                      type="button"
+                      className="button"
+                      onClick={this.handleSubmit}
+                      value="Buscar"
+                    />
+                  )}
                 </div>
               </form>
               <div onChange={this.handleChange}>{this.state.ActionButton}</div>
@@ -711,27 +1005,57 @@ class IsSearch extends React.Component {
     ) {
       return (
         <section>
-          <p>No hay resultados para tu búsqueda. Prueba con una búsqueda diferente</p>
+          {ruta.includes('/ca-ES') && (
+            <p>No hi ha resultats per la teva cerca. Prova amb una altra cerca</p>
+          )}
+          {ruta.indexOf('/ca-ES') == -1 && (
+            <p>No hay resultados para tu búsqueda. Prueba con una búsqueda diferente</p>
+          )}
           <div className="wrapper">
             <form>
-              <label>
-                <h4>Introduce una búsqueda</h4>
-                <input
-                  placeholder="Mi Busqueda"
-                  type="search"
-                  name="Title"
-                  value={this.state.Title}
-                  onChange={this.handleChange}
-                  required
-                />
-              </label>
+              {ruta.includes('/ca-ES') && (
+                <label>
+                  <h4>Introdueix una cerca</h4>
+                  <input
+                    placeholder="La meva cerca"
+                    type="search"
+                    name="Title"
+                    value={this.state.Title}
+                    onChange={this.handleChange}
+                    required
+                  />
+                </label>
+              )}
+              {ruta.indexOf('/ca-ES') == -1 && (
+                <label>
+                  <h4>Introduce una búsqueda</h4>
+                  <input
+                    placeholder="Mi Busqueda"
+                    type="search"
+                    name="Title"
+                    value={this.state.Title}
+                    onChange={this.handleChange}
+                    required
+                  />
+                </label>
+              )}
               <div className="wrapper-input">
-                <input
-                  type="button"
-                  className="button"
-                  onClick={this.handleSubmit}
-                  value="Buscar"
-                />
+                {ruta.includes('/ca-ES') && (
+                  <input
+                    type="button"
+                    className="button"
+                    onClick={this.handleSubmit}
+                    value="Cercar"
+                  />
+                )}
+                {ruta.indexOf('/ca-ES') == -1 && (
+                  <input
+                    type="button"
+                    className="button"
+                    onClick={this.handleSubmit}
+                    value="Buscar"
+                  />
+                )}
               </div>
             </form>
             <div onChange={this.handleChange}>{this.state.ActionButton}</div>
@@ -820,24 +1144,49 @@ class IsSearch extends React.Component {
         <section>
           <div className="wrapper">
             <form>
-              <label>
-                <h4>Introduce una búsqueda</h4>
-                <input
-                  placeholder="Mi Busqueda"
-                  type="search"
-                  name="Title"
-                  value={this.state.Title}
-                  onChange={this.handleChange}
-                  required
-                />
-              </label>
+              {ruta.includes('/ca-ES') && (
+                <label>
+                  <h4>Introdueix una cerca</h4>
+                  <input
+                    placeholder="La meva cerca"
+                    type="search"
+                    name="Title"
+                    value={this.state.Title}
+                    onChange={this.handleChange}
+                    required
+                  />
+                </label>
+              )}
+              {ruta.indexOf('/ca-ES') == -1 && (
+                <label>
+                  <h4>Introduce una búsqueda</h4>
+                  <input
+                    placeholder="Mi Busqueda"
+                    type="search"
+                    name="Title"
+                    value={this.state.Title}
+                    onChange={this.handleChange}
+                    required
+                  />
+                </label>
+              )}
               <div className="wrapper-input">
-                <input
-                  type="button"
-                  className="button"
-                  onClick={this.handleSubmit}
-                  value="Buscar"
-                />
+                {ruta.includes('/ca-ES') && (
+                  <input
+                    type="button"
+                    className="button"
+                    onClick={this.handleSubmit}
+                    value="Cercar"
+                  />
+                )}
+                {ruta.indexOf('/ca-ES') == -1 && (
+                  <input
+                    type="button"
+                    className="button"
+                    onClick={this.handleSubmit}
+                    value="Buscar"
+                  />
+                )}
               </div>
             </form>
             <div onChange={this.handleChange}>{this.state.ActionButton}</div>

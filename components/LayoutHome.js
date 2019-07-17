@@ -1,6 +1,5 @@
-import HeaderHome from './HeaderHome';
 import Footer from './Footer';
-import ServiceWorker from '../pages/service-worker';
+import HeaderHome from './HeaderHome';
 import Styles from './Styles';
 
 const layoutStyle = {
@@ -11,10 +10,9 @@ const layoutStyle = {
 
 const LayoutHome = props => (
   <div style={layoutStyle}>
-    <HeaderHome />
+    <HeaderHome ruta={props.ruta} />
     <main>{props.children}</main>
-    <Footer />
-    <ServiceWorker />
+    <Footer ruta={props.ruta} />
     <Styles />
   </div>
 );

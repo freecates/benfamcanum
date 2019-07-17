@@ -1,11 +1,11 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import Observer from 'react-intersection-observer';
 import fetch from 'isomorphic-unfetch';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
 import FontAwesome from 'react-fontawesome';
-import { ShareButtons, generateShareIcon } from 'react-share';
+import Observer from 'react-intersection-observer';
+import { generateShareIcon, ShareButtons } from 'react-share';
+import Layout from '../components/MyLayout.js';
 
 const MapaDeGoogle = dynamic(import('../components/MapaDeGoogle'), {
   loading: () => (
@@ -40,7 +40,7 @@ const LinkedinIcon = generateShareIcon('linkedin');
 const EmailIcon = generateShareIcon('email');
 
 const Post = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       {props.post.acf.nombre_del_establecimiento ? (
         <title
@@ -536,6 +536,7 @@ const Post = props => (
             {props.post.acf.como_conseguir_la_oferta_oferta_socios ? (
               <div id="how-to-get-it">
                 <IsMember
+                  ruta={props.ruta}
                   dataOK={
                     <div
                       dangerouslySetInnerHTML={{

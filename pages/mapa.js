@@ -26,7 +26,7 @@ const CENTER = [41.3948976, 2.0787282];
 const ZOOM = 7;
 
 const MapByCategory = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       <title>
         Beneficios Familias Numerosas - {props.markers[0].categoria_de_la_prestacion.name}

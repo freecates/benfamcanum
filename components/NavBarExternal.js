@@ -1,5 +1,5 @@
-import React from 'react';
 import Link from 'next/link';
+import React from 'react';
 import FontAwesome from 'react-fontawesome';
 
 const linkStyle = {
@@ -14,77 +14,178 @@ const navStyle = {
   color: '#000000'
 };
 
-const NavBarExternal = () => (
-  <nav style={navStyle}>
+const NavBarExternal = props => (
+  <nav style={navStyle} ruta={props.ruta}>
     <section>
       <div className="wrapper">
-        <p>
-          <span className="first">
-            <Link href="https://fanoc.org/zona-socio/">
-              <a className="button">Zona socios</a>
-            </Link>
-          </span>
-          <span className="second">
-            <span>
-              <a
-                href="https://www.facebook.com/AssociacioFANOC/"
-                aria-label="Enlace al perfil de Facebook"
-              >
-                <FontAwesome
-                  name="facebook-square"
-                  size="2x"
-                  aria-hidden
-                  style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#000000' }}
-                />
-              </a>
-            </span>{' '}
-            <span>
-              <a
-                href="https://twitter.com/familianombrosa?lang=ca"
-                aria-label="Enlace al perfil de Twitter"
-              >
-                <FontAwesome
-                  name="twitter-square"
-                  size="2x"
-                  aria-hidden
-                  style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#000000' }}
-                />
-              </a>
-            </span>{' '}
-            <span>
-              <a
-                href="https://www.youtube.com/user/FANOCAssFamNom"
-                aria-label="Enlace al perfil de Youtube"
-              >
-                <FontAwesome
-                  name="youtube-square"
-                  size="2x"
-                  aria-hidden
-                  style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#000000' }}
-                />
-              </a>
-            </span>{' '}
-            <span>
-              <a
-                href="https://www.instagram.com/p/BkKP0-znVo8/
-              "
-                aria-label="Enlace al perfil de Instragram"
-              >
-                <FontAwesome
-                  name="instagram"
-                  size="2x"
-                  aria-hidden
-                  style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#000000' }}
-                />
-              </a>
+        {props.ruta.includes('/ca-ES') && (
+          <p>
+            <span className="first">
+              <Link href="https://fanoc.org/zona-soci/">
+                <a target="_blank" className="button">
+                  Zona socis
+                </a>
+              </Link>
             </span>
-          </span>{' '}
-          <span className="third">
-            <Link href="https://fanoc.org/contacto/">
-              <a title="Contacto">Contacta</a>
-            </Link>
-          </span>
-        </p>
+            <span className="first">
+              <Link href="/">
+                <a prefetch title="ir a la página de inicio en castellano" className="lang">
+                  es
+                </a>
+              </Link>
+            </span>
+            <span className="second">
+              <span>
+                <a
+                  target="_blank"
+                  href="https://www.facebook.com/AssociacioFANOC/"
+                  aria-label="Enllaç al perfil de Facebook"
+                >
+                  <FontAwesome
+                    name="facebook-square"
+                    size="2x"
+                    aria-hidden
+                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#000000' }}
+                  />
+                </a>
+              </span>{' '}
+              <span>
+                <a
+                  target="_blank"
+                  href="https://twitter.com/familianombrosa?lang=ca"
+                  aria-label="Enllaç al perfil de Twitter"
+                >
+                  <FontAwesome
+                    name="twitter-square"
+                    size="2x"
+                    aria-hidden
+                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#000000' }}
+                  />
+                </a>
+              </span>{' '}
+              <span>
+                <a
+                  target="_blank"
+                  href="https://www.youtube.com/user/FANOCAssFamNom"
+                  aria-label="Enlaç al perfil de Youtube"
+                >
+                  <FontAwesome
+                    name="youtube-square"
+                    size="2x"
+                    aria-hidden
+                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#000000' }}
+                  />
+                </a>
+              </span>{' '}
+              <span>
+                <a
+                  target="_blank"
+                  href="https://www.instagram.com/p/BkKP0-znVo8/
+              "
+                  aria-label="Enllaç al perfil d'Instragram"
+                >
+                  <FontAwesome
+                    name="instagram"
+                    size="2x"
+                    aria-hidden
+                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#000000' }}
+                  />
+                </a>
+              </span>
+            </span>{' '}
+            <span className="third">
+              <Link href="https://fanoc.org/contacte/">
+                <a target="_blank" title="Contacte">
+                  Contacta
+                </a>
+              </Link>
+            </span>
+          </p>
+        )}
+        {props.ruta.indexOf('/ca-ES') == -1 && (
+          <p>
+            <span className="first">
+              <Link href="https://fanoc.org/es/zona-socio/">
+                <a target="_blank" className="button">
+                  Zona socios
+                </a>
+              </Link>
+            </span>
+            <span className="first">
+              <Link prefetch href="/ca-ES">
+                <a title="anar a la pàgina d'inici en català" className="lang">
+                  ca
+                </a>
+              </Link>
+            </span>
+            <span className="second">
+              <span>
+                <a
+                  target="_blank"
+                  href="https://www.facebook.com/AssociacioFANOC/"
+                  aria-label="Enlace al perfil de Facebook"
+                >
+                  <FontAwesome
+                    name="facebook-square"
+                    size="2x"
+                    aria-hidden
+                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#000000' }}
+                  />
+                </a>
+              </span>{' '}
+              <span>
+                <a
+                  target="_blank"
+                  href="https://twitter.com/familianombrosa?lang=ca"
+                  aria-label="Enlace al perfil de Twitter"
+                >
+                  <FontAwesome
+                    name="twitter-square"
+                    size="2x"
+                    aria-hidden
+                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#000000' }}
+                  />
+                </a>
+              </span>{' '}
+              <span>
+                <a
+                  target="_blank"
+                  href="https://www.youtube.com/user/FANOCAssFamNom"
+                  aria-label="Enlace al perfil de Youtube"
+                >
+                  <FontAwesome
+                    name="youtube-square"
+                    size="2x"
+                    aria-hidden
+                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#000000' }}
+                  />
+                </a>
+              </span>{' '}
+              <span>
+                <a
+                  target="_blank"
+                  href="https://www.instagram.com/p/BkKP0-znVo8/
+                "
+                  aria-label="Enlace al perfil de Instragram"
+                >
+                  <FontAwesome
+                    name="instagram"
+                    size="2x"
+                    aria-hidden
+                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#000000' }}
+                  />
+                </a>
+              </span>
+            </span>{' '}
+            <span className="third">
+              <Link href="https://fanoc.org/es/contacto/">
+                <a target="_blank" title="Contacto">
+                  Contacta
+                </a>
+              </Link>
+            </span>
+          </p>
+        )}
       </div>
 
       <style jsx>{`
@@ -100,6 +201,13 @@ const NavBarExternal = () => (
           background: #00add9 !important;
           border-radius: 3px;
           padding: 0.25em 1em;
+        }
+        a.lang {
+          padding: 0.25em 1em;
+          margin: 0 0 1rem 0;
+          display: inline-block;
+          vertical-align: middle;
+          text-transform: uppercase;
         }
         .wrapper {
           text-align: left;

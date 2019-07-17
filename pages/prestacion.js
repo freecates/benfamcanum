@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
 
 const Prestacion = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       {props.prestacion.acf.nombre_de_la_prestacion ? (
         <title

@@ -1,10 +1,10 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
 import Observer from 'react-intersection-observer';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const SelectCity = dynamic(import('../components/SelectCity'), {
   loading: () => (
@@ -22,7 +22,7 @@ const todayISO = new Date(today).toISOString();
 const PostsByCategoryComunidad = props => (
   <section>
     {props.posts.length == 0 ? (
-      <Layout>
+      <Layout ruta={props.ruta}>
         <Head>
           <title>Beneficios - Ofertas por sectores - Comunidad</title>
         </Head>
@@ -210,7 +210,7 @@ const PostsByCategoryComunidad = props => (
         `}</style>
       </Layout>
     ) : (
-      <Layout>
+      <Layout ruta={props.ruta}>
         <Head>
           <title>
             Beneficios - {props.posts[0].categoria_de_la_prestacion.name} -{' '}
@@ -290,6 +290,7 @@ const PostsByCategoryComunidad = props => (
               </p>
 
               <SelectCity
+                ruta={props.ruta}
                 inputClass="city"
                 inputValue="Buscar el mejor descuento"
                 options={props.posts

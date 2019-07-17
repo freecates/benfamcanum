@@ -17,12 +17,12 @@ const Header = props => (
   <React.Fragment>
     <GlobalHead />
     <MediaQuery minDeviceWidth={768}>
-      <NavBarExternal />
+      <NavBarExternal ruta={props.ruta} />
     </MediaQuery>
     <div style={{ marginBottom: 20 }}>
       <header className={'withbg' in props && 'withbg'}>
         <section>
-          <NavBarBenFamNum />
+          <NavBarBenFamNum ruta={props.ruta} />
         </section>
       </header>
       <style jsx>{`

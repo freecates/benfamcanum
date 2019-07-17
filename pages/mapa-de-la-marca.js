@@ -32,7 +32,7 @@ const CENTER = [41.3948976, 2.0787282];
 const ZOOM = 7;
 
 const MapByMarca = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       <title>
         Ofertas de la Marca {props.markers.length >= 1 ? props.markers[0].marca.name : ''}

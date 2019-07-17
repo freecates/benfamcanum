@@ -2,8 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import LayoutHome from '../components/LayoutHome.js';
 
-export default () => (
-  <LayoutHome>
+export default props => (
+  <LayoutHome ruta={props.ruta}>
     <Head>
       <title>Beneficios FAmilies NOmbroses de Catalunya</title>
       <meta

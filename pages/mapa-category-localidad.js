@@ -25,7 +25,7 @@ const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 const ZOOM = 12;
 
 const MapByCategoryLocalidad = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       <title>
         Beneficios Familias Numerosas - {props.markers[0].categoria_de_la_prestacion.name} -{' '}

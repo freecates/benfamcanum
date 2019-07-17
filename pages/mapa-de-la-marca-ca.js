@@ -30,7 +30,7 @@ const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 const ZOOM = 8;
 
 const MapByMarcaCa = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       <title>Ofertas de la Marca {props.markers[0].marca.name} para familias numerosas</title>
     </Head>

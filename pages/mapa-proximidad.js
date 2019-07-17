@@ -59,7 +59,7 @@ const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 const ZOOM = 14;
 
 const MapByCategory = props => (
-  <Layout>
+  <Layout ruta={props.ruta}>
     <Head>
       <title>Beneficios para familias numerosas cerca de tí</title>
     </Head>

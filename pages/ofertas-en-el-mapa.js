@@ -1,16 +1,16 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const SelectCity = dynamic(import('../components/SelectCity'), {
   loading: () => <p>cargando ...</p>
 });
 
 const Localidades = props => (
-  <Layout bgmapa>
+  <Layout bgmapa ruta={props.ruta}>
     <Head>
       <title>Ofertas geolocalizadas para familias numerosas</title>
     </Head>
