@@ -1,22 +1,22 @@
-import fetch from 'isomorphic-unfetch'
-import Head from 'next/head'
-import Link from 'next/link'
-import FontAwesome from 'react-fontawesome'
-import { generateShareIcon, ShareButtons } from 'react-share'
-import IsMember from '../../components/IsMember.js'
-import Layout from '../../components/MyLayout.js'
+import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import Link from 'next/link';
+import FontAwesome from 'react-fontawesome';
+import { generateShareIcon, ShareButtons } from 'react-share';
+import IsMember from '../../components/IsMember.js';
+import Layout from '../../components/MyLayout.js';
 
 const {
   FacebookShareButton,
   LinkedinShareButton,
   TwitterShareButton,
   EmailShareButton
-} = ShareButtons
+} = ShareButtons;
 
-const FacebookIcon = generateShareIcon('facebook')
-const TwitterIcon = generateShareIcon('twitter')
-const LinkedinIcon = generateShareIcon('linkedin')
-const EmailIcon = generateShareIcon('email')
+const FacebookIcon = generateShareIcon('facebook');
+const TwitterIcon = generateShareIcon('twitter');
+const LinkedinIcon = generateShareIcon('linkedin');
+const EmailIcon = generateShareIcon('email');
 
 const OfertaOnLine = props => (
   <Layout ruta={props.ruta}>
@@ -24,37 +24,21 @@ const OfertaOnLine = props => (
       {props.ofertaonline.acf.nombre_del_establecimiento ? (
         <title
           dangerouslySetInnerHTML={{
-            __html:
-              props.ofertaonline.acf.nombre_del_establecimiento +
-              ' - Famílies Nombroses'
+            __html: props.ofertaonline.acf.nombre_del_establecimiento + ' - Famílies Nombroses'
           }}
         />
       ) : (
         ''
       )}
-      {props.ofertaonline.acf.telefono ? (
-        <link rel="stylesheet" href="/static/custom.css" />
-      ) : (
-        ''
-      )}
+      {props.ofertaonline.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : ''}
 
-      <meta
-        property="og:url"
-        content={`/oo/${props.ofertaonline.id}/${props.ofertaonline.slug}`}
-      />
+      <meta property="og:url" content={`/oo/${props.ofertaonline.id}/${props.ofertaonline.slug}`} />
       <meta property="og:type" content="article" />
-      <meta
-        property="og:title"
-        content={props.ofertaonline.acf.nombre_del_establecimiento}
-      />
-      {props.ofertaonline.acf
-        .descripcion_de_la_oferta_online_exclusiva_socios ? (
+      <meta property="og:title" content={props.ofertaonline.acf.nombre_del_establecimiento} />
+      {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? (
         <meta
           property="og:description"
-          content={
-            props.ofertaonline.acf
-              .descripcion_de_la_oferta_online_exclusiva_socios
-          }
+          content={props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios}
         />
       ) : (
         ''
@@ -62,9 +46,7 @@ const OfertaOnLine = props => (
       {props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general ? (
         <meta
           property="og:description"
-          content={
-            props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general
-          }
+          content={props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general}
         />
       ) : (
         ''
@@ -72,10 +54,7 @@ const OfertaOnLine = props => (
       {props.ofertaonline.acf.imagen_destacada_de_la_oferta_socios_large ? (
         <meta
           property="og:image"
-          content={
-            props.ofertaonline.acf.imagen_destacada_de_la_oferta_socios_large
-              .sizes.large
-          }
+          content={props.ofertaonline.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large}
         />
       ) : (
         ''
@@ -83,10 +62,7 @@ const OfertaOnLine = props => (
       {props.ofertaonline.acf.imagen_destacada_de_la_oferta_general_large ? (
         <meta
           property="og:image"
-          content={
-            props.ofertaonline.acf.imagen_destacada_de_la_oferta_general_large
-              .sizes.large
-          }
+          content={props.ofertaonline.acf.imagen_destacada_de_la_oferta_general_large.sizes.large}
         />
       ) : (
         ''
@@ -114,12 +90,8 @@ const OfertaOnLine = props => (
         <li>
           <Link
             prefetch
-            as={`/ca-ES/c-o-o/${
-              props.ofertaonline.acf.categoria_de_la_oferta.term_id
-            }/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
-            href={`/ca-ES/category-ofertas-on-line?id=${
-              props.ofertaonline.acf.categoria_de_la_oferta.term_id
-            }`}
+            as={`/ca-ES/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
+            href={`/ca-ES/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}
           >
             <a>{props.ofertaonline._embedded['wp:term'][0][0].name}</a>
           </Link>
@@ -151,8 +123,7 @@ const OfertaOnLine = props => (
               __html: props.ofertaonline.acf.nombre_del_establecimiento
             }}
           />{' '}
-          {props.ofertaonline.acf
-            .descripcion_de_la_oferta_online_exclusiva_socios ? (
+          {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? (
             <span className="label alert file-label">
               <small>
                 ESCLUSIU
@@ -183,12 +154,8 @@ const OfertaOnLine = props => (
             <strong>Categoria</strong>:{' '}
             <Link
               prefetch
-              as={`/ca-ES/c-o-o/${
-                props.ofertaonline.acf.categoria_de_la_oferta.term_id
-              }/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
-              href={`/ca-ES/category-ofertas-on-line?id=${
-                props.ofertaonline.acf.categoria_de_la_oferta.term_id
-              }`}
+              as={`/ca-ES/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
+              href={`/ca-ES/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}
             >
               <a
                 title={
@@ -204,35 +171,28 @@ const OfertaOnLine = props => (
 
         <div className="file-data">
           <div className="file-img">
-            {props.ofertaonline.acf
-              .imagen_destacada_de_la_oferta_socios_large ? (
+            {props.ofertaonline.acf.imagen_destacada_de_la_oferta_socios_large ? (
               <p>
                 <img
                   className="img-file"
                   width="1024"
                   src={
-                    props.ofertaonline.acf
-                      .imagen_destacada_de_la_oferta_socios_large.sizes.large
+                    props.ofertaonline.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large
                   }
-                  alt={
-                    props.ofertaonline.acf
-                      .titulo_de_la_oferta_online_exclusiva_socios
-                  }
+                  alt={props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios}
                 />
               </p>
             ) : (
               ''
             )}
 
-            {props.ofertaonline.acf
-              .imagen_destacada_de_la_oferta_general_large ? (
+            {props.ofertaonline.acf.imagen_destacada_de_la_oferta_general_large ? (
               <p>
                 <img
                   className="img-file"
                   width="1024"
                   src={
-                    props.ofertaonline.acf
-                      .imagen_destacada_de_la_oferta_general_large.sizes.large
+                    props.ofertaonline.acf.imagen_destacada_de_la_oferta_general_large.sizes.large
                   }
                   alt={props.ofertaonline.acf.titulo_de_la_oferta_general}
                 />
@@ -243,8 +203,7 @@ const OfertaOnLine = props => (
           </div>
 
           <div className="file-content">
-            {props.ofertaonline.acf
-              .como_conseguir_la_oferta_online_exclusiva_socios ? (
+            {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ? (
               <h1>
                 <span className="label alert file-label">
                   <Link href="#how-to-get-it">
@@ -266,26 +225,17 @@ const OfertaOnLine = props => (
               ''
             )}
 
-            {props.ofertaonline.acf
-              .titulo_de_la_oferta_online_exclusiva_socios ? (
-              <h4>
-                {
-                  props.ofertaonline.acf
-                    .titulo_de_la_oferta_online_exclusiva_socios
-                }
-              </h4>
+            {props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios ? (
+              <h4>{props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios}</h4>
             ) : (
               ''
             )}
 
-            {props.ofertaonline.acf
-              .descripcion_de_la_oferta_online_exclusiva_socios ? (
+            {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? (
               <p
                 className="dont-break-out"
                 dangerouslySetInnerHTML={{
-                  __html:
-                    props.ofertaonline.acf
-                      .descripcion_de_la_oferta_online_exclusiva_socios
+                  __html: props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios
                 }}
               />
             ) : (
@@ -293,9 +243,7 @@ const OfertaOnLine = props => (
             )}
 
             {props.ofertaonline.acf.titulo_de_la_oferta_general_online ? (
-              <h4>
-                {props.ofertaonline.acf.titulo_de_la_oferta_general_online}
-              </h4>
+              <h4>{props.ofertaonline.acf.titulo_de_la_oferta_general_online}</h4>
             ) : (
               ''
             )}
@@ -304,9 +252,7 @@ const OfertaOnLine = props => (
               <p
                 className="dont-break-out"
                 dangerouslySetInnerHTML={{
-                  __html:
-                    props.ofertaonline.acf
-                      .descripcion_de_la_oferta_general_online
+                  __html: props.ofertaonline.acf.descripcion_de_la_oferta_general_online
                 }}
               />
             ) : (
@@ -408,27 +354,21 @@ const OfertaOnLine = props => (
                 </EmailShareButton>
               </div>
             </div>
-            {props.ofertaonline.acf
-              .como_conseguir_la_oferta_online_exclusiva_socios ? (
+            {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ? (
               <div id="how-to-get-it">
                 <IsMember
+                  ruta={props.ruta}
                   dataOK={
                     <div
                       dangerouslySetInnerHTML={{
                         __html:
-                          props.ofertaonline.acf
-                            .como_conseguir_la_oferta_online_exclusiva_socios
+                          props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios
                       }}
                     />
                   }
                   ID={props.ofertaonline.slug + '-' + props.ofertaonline.id}
                   Title={props.ofertaonline.title.rendered}
-                  URL={
-                    'oo/' +
-                    props.ofertaonline.id +
-                    '/' +
-                    props.ofertaonline.slug
-                  }
+                  URL={'oo/' + props.ofertaonline.id + '/' + props.ofertaonline.slug}
                 />
               </div>
             ) : (
@@ -542,18 +482,18 @@ const OfertaOnLine = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 OfertaOnLine.getInitialProps = async function(context) {
-  const { id } = context.query
+  const { id } = context.query;
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/ofertas_online/${id}?_embed`
-  )
-  const ofertaonline = await res.json()
+  );
+  const ofertaonline = await res.json();
 
-  console.log(`Fetched ofertaonline: ${ofertaonline.title.rendered}`)
+  console.log(`Fetched ofertaonline: ${ofertaonline.title.rendered}`);
 
-  return { ofertaonline }
-}
+  return { ofertaonline };
+};
 
-export default OfertaOnLine
+export default OfertaOnLine;

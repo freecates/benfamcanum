@@ -17,59 +17,56 @@ export default props => (
     </nav>
     <h1>Política de cookies</h1>
     <p>
-      Las cookies son breves informaciones que se envían y almacenan en el disco duro del ordenador
-      del usuario a través de su navegador cuando éste se conecta a una web. Las cookies se pueden
-      utilizar para recabar y almacenar datos del usuario mientras está conectado para facilitarle
-      los servicios solicitados y que no se suelen conservar (cookies de sesión), o para conservar
-      los datos del usuario para otro tipo de servicios futuros y que se pueden conservar por tiempo
-      indefinido (cookies persistentes). Las cookies pueden ser propias o de terceros.
+      Les cookies són breus informacions que s'envien i s'emmagatzemen en el disc dur de l'ordinador
+      de l'usuari a través del seu navegador quan aquest es connecta a un web. Les galetes es poden
+      utilitzar per demanar i emmagatzemar dades de l'usuari mentre està connectat per facilitar-li
+      els serveis sol·licitats i que no es solen conservar (cookies de sessió), o per conservar les
+      dades de l'usuari per a un altre tipus de serveis futurs i que es poden conservar per temps
+      indefinit (galetes persistents). Les galetes poden ser pròpies o de tercers.
     </p>
 
-    <p>Existen varios tipos de cookies:</p>
+    <p>Hi ha diversos tipus de cookies:</p>
 
     <ul>
       <li>
-        Cookies técnicas que facilitan la navegación del usuario y la utilización de las diferentes
-        opciones o servicios que ofrece la web como identificar la sesión, permitir el acceso a
-        determinadas áreas, facilitar pedidos, compras, cumplimentación de formularios,
-        inscripciones, seguridad, facilitar funcionalidades (vídeos, redes sociales, etc.).
+        Galetes tècniques que faciliten la navegació de l'usuari i la utilització de les diferents
+        opcions o serveis que ofereix la web com identificar la sessió, permetre l'accés a
+        determinades àrees, facilitar comandes, compres, emplenament de formularis, inscripcions,
+        seguretat, facilitar funcionalitats (vídeos , xarxes socials, etc.).
       </li>
       <li>
-        Cookies de personalización que permiten al usuario acceder a los servicios según sus
-        preferencias (idioma, navegador, configuración, etc.).
+        Galetes de personalització que permeten a l'usuari accedir als serveis segons les seves
+        preferències (idioma, navegador, configuració, etc.).
       </li>
       <li>
-        Cookies de análisis que permiten el análisis anónimo del comportamiento de los usuarios de
-        la web y que permiten medir la actividad del usuario y elaborar perfiles de navegación con
-        el fin objetivo de mejorar los sitios web.
+        Galetes d'anàlisi que permeten l'anàlisi anònim del comportament dels usuaris del web i que
+        permeten mesurar l'activitat de l'usuari i elaborar perfils de navegació per tal objectiu de
+        millorar els llocs web.
       </li>
+      <li>Galetes publicitàries que permeten la gestió dels espais publicitaris del web.</li>
       <li>
-        Cookies publicitarias que permiten la gestión de los espacios publicitarios de la web.
-      </li>
-      <li>
-        Cookies de publicidad personalizada que permiten la gestión de los espacios publicitarios de
-        la web en base al comportamiento y hábitos de navegación del usuario, de donde se obtiene su
-        perfil y este hecho permite personalizar la publicidad que se muestra en el navegador del
-        usuario.
+        Galetes de publicitat personalitzada que permeten la gestió dels espais publicitaris del web
+        sobre la base del comportament i hàbits de navegació de l'usuari, d'on s'obté el seu perfil
+        i aquest fet permet personalitzar la publicitat que es mostra en el navegador de l'usuari.
       </li>
     </ul>
 
     <p>
-      FANOC únicamente utiliza cookies técnicas, de personalización y análisis, propias y de
-      terceros, que en ningún caso tratan datos de carácter personal ni captan hábitos de navegación
-      para fines publicitarios.
+      FANOC únicament utilitza cookies tècniques, de personalització i anàlisi, pròpies i de
+      tercers, que en cap cas tracten dades de caràcter personal ni capten hàbits de navegació per a
+      fins publicitaris.
     </p>
 
     <p>
-      Por ello, al acceder a nuestra web, en cumplimiento del artículo 22 de la Ley de Servicios de
-      la Sociedad de la Información, al tratar cookies de análisis, le hemos solicitado su
-      consentimiento para su uso, que en todo caso se instalarán pasado un plazo de tiempo
-      prudencial para que el usuario tenga tiempo de decidir prestar su consentimiento o no.
+      Per això, en accedir a la nostra web, en compliment de l'article 22 de la Llei de Serveis de
+      la Societat de la Informació, en tractar galetes d'anàlisi, li hem sol·licitat el seu
+      consentiment per al seu ús, que en tot cas s'instal·laran passat un termini de temps
+      prudencial perquè l'usuari tingui temps de decidir prestar el seu consentiment o no.
     </p>
 
     <p>
-      De todas formas, le informamos que puede activar o desactivar estas cookies siguiendo las
-      instrucciones de su navegador de Internet.
+      De tota manera, l'informem que pot activar o desactivar aquestes cookies seguint les
+      instruccions del seu navegador d'Internet.
     </p>
 
     <style jsx>{`

@@ -1,10 +1,10 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import IsMember from '../components/IsMember.js';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import Link from 'next/link';
 import FontAwesome from 'react-fontawesome';
-import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
+import { generateShareIcon, ShareButtons } from 'react-share';
+import IsMember from '../components/IsMember.js';
+import Layout from '../components/MyLayout.js';
 
 const {
   FacebookShareButton,
@@ -90,12 +90,8 @@ const OfertaOnLine = props => (
         <li>
           <Link
             prefetch
-            as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${
-              props.ofertaonline._embedded['wp:term'][0][0].slug
-            }`}
-            href={`/category-ofertas-on-line?id=${
-              props.ofertaonline.acf.categoria_de_la_oferta.term_id
-            }`}
+            as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
+            href={`/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}
           >
             <a>{props.ofertaonline._embedded['wp:term'][0][0].name}</a>
           </Link>
@@ -154,12 +150,8 @@ const OfertaOnLine = props => (
             <strong>Categoria</strong>:{' '}
             <Link
               prefetch
-              as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${
-                props.ofertaonline._embedded['wp:term'][0][0].slug
-              }`}
-              href={`/category-ofertas-on-line?id=${
-                props.ofertaonline.acf.categoria_de_la_oferta.term_id
-              }`}
+              as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
+              href={`/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}
             >
               <a
                 title={
@@ -361,6 +353,7 @@ const OfertaOnLine = props => (
             {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ? (
               <div id="how-to-get-it">
                 <IsMember
+                  ruta={props.ruta}
                   dataOK={
                     <div
                       dangerouslySetInnerHTML={{

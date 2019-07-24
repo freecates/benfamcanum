@@ -1,9 +1,8 @@
-import Link from 'next/link'
-import Layout from '../../components/MyLayout.js'
+import Link from 'next/link';
+import Layout from '../../components/MyLayout.js';
 
 export default props => (
   <Layout ruta={props.ruta}>
-    >
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
@@ -18,68 +17,58 @@ export default props => (
     </nav>
     <h1>Avís Legal</h1>
     <p>
-      Los derechos de propiedad intelectual de los servicios on-line de FANOC y
-      de su contenido pertenecen a dicha sociedad o, en su caso, a terceras
-      personas.
+      Els drets de propietat intel·lectual dels serveis on-line de FANOC i del seu contingut
+      pertanyen a aquesta societat o, si escau, a terceres persones.
     </p>
     <p>
-      El usuario puede visualizar todos los elementos, imprimirlos, copiarlos y
-      almacenarlos en el disco duro de su ordenador o en cualquier otro soporte
-      físico siempre y cuando sea, única y exclusivamente, para su uso personal
-      y privado. Para la utilización con fines comercials de los contenidos de
-      la web, su distribución, así como su modificación, alteración o
-      descompilación, se requiere un permiso previo de FANOC.
+      L'usuari pot visualitzar tots els elements, imprimir-los, copiar-los i emmagatzemar-los al
+      disc dur del seu ordinador o en qualsevol altre suport físic sempre que sigui, única i
+      exclusivament, per al seu ús personal i privat. Per a la utilització amb fins comercials dels
+      continguts del web, la seva distribució, així com la seva modificació, alteració o
+      descompilació, es requereix un permís previ de FANOC.
     </p>
     <p>
-      El usuario se compromete a hacer un uso adecuado de los contenidos y
-      servicios que FANOC pueda ofrecer en su sede web y a no emplearlos para
-      incurrir en actividades ilícitas o contrarias a la buena fe y al
-      ordenamiento legal.
+      L'usuari es compromet a fer un ús adequat dels continguts i serveis que FANOC pugui oferir a
+      la seva seu web ia no emprar-los per incórrer en activitats il·lícites o contràries a la bona
+      fe ia l'ordenament legal.
     </p>
     <p>
-      Con la voluntad de mejorar la página web, FANOC se reserva el derecho de
-      efectuar las modificaciones que considere oportunas, pudiendo cambiar,
-      suprimir o añadir tanto los contenidos y servicios que presta como la
-      forma en la que éstos aparezcan presentados o localizados.
+      Amb la voluntat de millorar la pàgina web, FANOC es reserva el dret d'efectuar les
+      modificacions que consideri oportunes, podent canviar, suprimir o afegir tant els continguts i
+      serveis que presta com la forma en què aquests apareguin presentats o localitzats.
     </p>
     <p>
-      FANOC autoriza menciones a sus contenidos en otras webs, siempre que no
-      reproduzcan los contenidos presentes en la página web de FANOC. En el caso
-      de disponer de un enlace hipertexto a alguna de sus páginas, el usuario
-      debe saber que está entrando en la página web de FANOC y debe percibir en
-      su navegador su dirección URL. Si FANOC detecta el incumplimiento de las
-      anteriores condiciones, así como cualquier utilización indebida de los
-      contenidos presentados en su página web, se reserva el derecho de ejercer
-      todas las acciones civiles y penales necesarias.
+      FANOC autoritza mencions als seus continguts en altres webs, sempre que no reprodueixin els
+      continguts presents a la pàgina web de FANOC. En el cas de disposar d'un enllaç hipertext a
+      alguna de les seves pàgines, l'usuari ha de saber que està entrant a la pàgina web de FANOC i
+      ha de percebre en el seu navegador la seva adreça URL. Si FANOC detecta l'incompliment de les
+      anteriors condicions, així com qualsevol utilització indeguda dels continguts presentats a la
+      seva pàgina web, es reserva el dret d'exercir totes les accions civils i penals necessàries.
     </p>
-    <h2>Protección de datos</h2>
+    <h2>Protecció de dades</h2>
     <p>
-      En relación a los servicios a disposición de los usuarios a través de
-      registro previo, todos los datos se mantienen en la más estricta
-      privacidad de acuerdo con la legislación vigente. FANOC cumple esta
-      legislación respecto a la protección de datos personales de sus usuarios y
-      los mantiene en la más estricta confidencialidad de acuerdo con lo
-      dispuesto en la Ley Orgánica 15/99 del 13 de diciembre de 1999 sobre
-      Protección de Datos de Carácter Personal (LOPD), así como en lo dispuesto
-      en la Ley de Servicios de la Sociedad de la Información y del Comercio
-      Electrónico (SSICE) ley 34/2002 de 11 de julio.
+      En relació als serveis a disposició dels usuaris a través de registre previ, totes les dades
+      es mantenen en la més estricta privacitat d'acord amb la legislació vigent. FANOC compleix
+      aquesta legislació respecte a la protecció de dades personals dels seus usuaris i els manté en
+      la més estricta confidencialitat d'acord amb el que disposa la Llei Orgànica 15/99 del 13 de
+      desembre de 1999 sobre Protecció de Dades de Caràcter Personal (LOPD) , així com en el que
+      disposa la Llei de Serveis de la Societat de la Informació i del Comerç Electrònic (SSICE)
+      llei 34/2002 d'11 de juliol.
     </p>
     <p>
-      El usuario registrado en los servicios de la sede web de FANOC puede en
-      todo momento ejercitar los derechos de acceso, rectificación y cancelación
-      en los términos previstos en la LOPD y demás normas que la desarrollan.
-      Puede hacerlo por correo electrónico{' '}
+      L'usuari registrat en els serveis de la seu web de FANOC pot en tot moment exercitar els drets
+      d'accés, rectificació i cancel·lació en els termes previstos en la LOPD i altres normes que la
+      desenvolupen. Pot fer-ho per correu electrònicelectrónico{' '}
       <Link href="mailto:info@fanoc.org">
         <a>info@fanoc.org</a>
       </Link>{' '}
-      solicitando el acceso, cancelación o rectificación de sus datos.
+      sol·licitant l'accés, cancel·lació o rectificació de les seves dades.
     </p>
     <p>
-      FANOC asegura la más estricta confidencialidad en la recogida y
-      tratamiento de los datos facilitados por sus usuarios a través de Internet
-      o cualquier otro medio. Los datos facilitados por los usuarios serán
-      empleados únicamente para las finalidades descritas en el propio
-      formulario de suscripción y determinadas por cada usuario.
+      FANOC assegura la més estricta confidencialitat en la recollida i tractament de les dades
+      facilitades pels seus usuaris a través d'Internet o qualsevol altre mitjà. Les dades
+      facilitades pels usuaris seran emprades únicament per a les finalitats descrites en el propi
+      formulari de subscripció i determinades per cada usuari.
     </p>
     <p>
       <strong>Associació de Famílies Nombroses de Catalunya - FANOC</strong>
@@ -103,4 +92,4 @@ export default props => (
       }
     `}</style>
   </Layout>
-)
+);
