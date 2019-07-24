@@ -154,12 +154,8 @@ const Post = props => (
         <li>
           <Link
             prefetch
-            as={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${
-              props.post._embedded['wp:term'][0][0].slug
-            }/${props.post.acf.comunidad_autonoma}/8143`}
-            href={`/ca-ES/category-comunidad?sid=${props.post.categoria_del_beneficio}&comunidad=${
-              props.post.acf.comunidad_autonoma
-            }&caid=8143`}
+            as={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`}
+            href={`/ca-ES/category-comunidad?sid=${props.post.categoria_del_beneficio}&comunidad=${props.post.acf.comunidad_autonoma}&caid=8143`}
           >
             <a>{props.post._embedded['wp:term'][0][0].name}</a>
           </Link>
@@ -203,9 +199,7 @@ const Post = props => (
             <span>{props.post.acf.codigo_postal}</span>,{' '}
             <Link
               prefetch
-              as={`/ca-ES/l/${props.post.acf.localidad_del_beneficio.term_id}/${
-                props.post.acf.localidad_del_beneficio.slug
-              }`}
+              as={`/ca-ES/l/${props.post.acf.localidad_del_beneficio.term_id}/${props.post.acf.localidad_del_beneficio.slug}`}
               href={`/ca-ES/localidad?localidad=${props.post.acf.localidad_del_beneficio.term_id}`}
             >
               <a
@@ -300,12 +294,8 @@ const Post = props => (
           <strong>Categoria</strong>:{' '}
           <Link
             prefetch
-            as={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${
-              props.post._embedded['wp:term'][0][0].slug
-            }/${props.post.acf.comunidad_autonoma}/8143`}
-            href={`/ca-ES/category-comunidad?sid=${props.post.categoria_del_beneficio}&comunidad=${
-              props.post.acf.comunidad_autonoma
-            }&caid=8143`}
+            as={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`}
+            href={`/ca-ES/category-comunidad?sid=${props.post.categoria_del_beneficio}&comunidad=${props.post.acf.comunidad_autonoma}&caid=8143`}
           >
             <a
               title={
@@ -446,12 +436,7 @@ const Post = props => (
 
               <div className="Post__some-network">
                 <FacebookShareButton
-                  url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
-                    props.post.id +
-                    '/' +
-                    props.post.slug
-                  }
+                  url={'https://beneficios.fanoc.org/p/' + props.post.id + '/' + props.post.slug}
                   className="Post__some-network__share-button"
                 >
                   <FacebookIcon size={32} round />
@@ -460,12 +445,7 @@ const Post = props => (
 
               <div className="Post__some-network">
                 <TwitterShareButton
-                  url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
-                    props.post.id +
-                    '/' +
-                    props.post.slug
-                  }
+                  url={'https://beneficios.fanoc.org/p/' + props.post.id + '/' + props.post.slug}
                   title={
                     props.post.acf.nombre_del_establecimiento +
                     ':' +
@@ -473,7 +453,7 @@ const Post = props => (
                     props.post.acf.titulo_de_la_oferta_oferta_socios
                   }
                   hashtags={['beneficiosfamiliasnumerosas']}
-                  via="famnumerosas"
+                  via="familianombrosa"
                   className="Post__some-network__share-button"
                 >
                   <TwitterIcon size={32} round />
@@ -482,12 +462,7 @@ const Post = props => (
 
               <div className="Post__some-network">
                 <LinkedinShareButton
-                  url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
-                    props.post.id +
-                    '/' +
-                    props.post.slug
-                  }
+                  url={'https://beneficios.fanoc.org/p/' + props.post.id + '/' + props.post.slug}
                   title={
                     props.post.acf.nombre_del_establecimiento +
                     ':' +
@@ -502,12 +477,7 @@ const Post = props => (
 
               <div className="Post__some-network">
                 <EmailShareButton
-                  url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
-                    props.post.id +
-                    '/' +
-                    props.post.slug
-                  }
+                  url={'https://beneficios.fanoc.org/p/' + props.post.id + '/' + props.post.slug}
                   subject={
                     props.post.acf.nombre_del_establecimiento +
                     ':' +
@@ -521,7 +491,7 @@ const Post = props => (
                     ' ' +
                     props.post.acf.titulo_de_la_oferta_oferta_socios +
                     ' ' +
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.post.id +
                     '/' +
                     props.post.slug

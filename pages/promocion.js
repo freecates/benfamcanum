@@ -1,10 +1,9 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
-import FontAwesome from 'react-fontawesome';
-import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import Head from 'next/head';
+import Link from 'next/link';
+import { FormattedDate, IntlProvider } from 'react-intl';
+import { generateShareIcon, ShareButtons } from 'react-share';
+import Layout from '../components/MyLayout.js';
 
 const {
   FacebookShareButton,
@@ -133,7 +132,7 @@ const Promocion = props => (
               <div className="Post__some-network">
                 <FacebookShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.promocion.id +
                     '/' +
                     props.promocion.slug
@@ -147,7 +146,7 @@ const Promocion = props => (
               <div className="Post__some-network">
                 <TwitterShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.promocion.id +
                     '/' +
                     props.promocion.slug
@@ -159,7 +158,7 @@ const Promocion = props => (
                     props.promocion.acf.titulo_de_la_oferta_oferta_socios
                   }
                   hashtags={['beneficiosfamiliasnumerosas']}
-                  via="famnumerosas"
+                  via="familianombrosa"
                   className="Post__some-network__share-button"
                 >
                   <TwitterIcon size={32} round />
@@ -169,7 +168,7 @@ const Promocion = props => (
               <div className="Post__some-network">
                 <LinkedinShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.promocion.id +
                     '/' +
                     props.promocion.slug
@@ -189,7 +188,7 @@ const Promocion = props => (
               <div className="Post__some-network">
                 <EmailShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.promocion.id +
                     '/' +
                     props.promocion.slug
@@ -207,7 +206,7 @@ const Promocion = props => (
                     ' ' +
                     props.promocion.acf.titulo_de_la_oferta_oferta_socios +
                     ' ' +
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.promocion.id +
                     '/' +
                     props.promocion.slug

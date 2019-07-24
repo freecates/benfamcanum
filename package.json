@@ -20,6 +20,7 @@
   "author": "Ramon Gil",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "7.5.5",
     "async-reactor": "1.2.0",
     "bootstrap": "4.3.1",
     "btoa": "^1.1.2",

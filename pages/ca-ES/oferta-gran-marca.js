@@ -14,7 +14,7 @@ const MapaDeGoogle = dynamic(import('../../components/MapaDeGoogle'), {
       </p>
     </div>
   )
-})
+});
 
 const IsMember = dynamic(import('../../components/IsMember'), {
   loading: () => (
@@ -24,19 +24,19 @@ const IsMember = dynamic(import('../../components/IsMember'), {
       </p>
     </div>
   )
-})
+});
 
 const {
   FacebookShareButton,
   LinkedinShareButton,
   TwitterShareButton,
   EmailShareButton
-} = ShareButtons
+} = ShareButtons;
 
-const FacebookIcon = generateShareIcon('facebook')
-const TwitterIcon = generateShareIcon('twitter')
-const LinkedinIcon = generateShareIcon('linkedin')
-const EmailIcon = generateShareIcon('email')
+const FacebookIcon = generateShareIcon('facebook');
+const TwitterIcon = generateShareIcon('twitter');
+const LinkedinIcon = generateShareIcon('linkedin');
+const EmailIcon = generateShareIcon('email');
 
 const OfertaGranMarca = props => (
   <Layout ruta={props.ruta}>
@@ -62,15 +62,10 @@ const OfertaGranMarca = props => (
 
       <meta
         property="og:url"
-        content={`/ogm/${props.ofertagranmarca.id}/${
-          props.ofertagranmarca.slug
-        }`}
+        content={`/ogm/${props.ofertagranmarca.id}/${props.ofertagranmarca.slug}`}
       />
       <meta property="og:type" content="article" />
-      <meta
-        property="og:title"
-        content={props.ofertagranmarca.acf.nombre_del_establecimiento}
-      />
+      <meta property="og:title" content={props.ofertagranmarca.acf.nombre_del_establecimiento} />
       {props.ofertagranmarca.acf.descripcion_de_la_oferta ? (
         <meta
           content="og:description"
@@ -79,10 +74,7 @@ const OfertaGranMarca = props => (
       ) : (
         ''
       )}
-      <meta
-        property="og:image"
-        content="/static/logo-familias-numerosas-og.png"
-      />
+      <meta property="og:image" content="/static/logo-familias-numerosas-og.png" />
       <meta property="og:image:width" content="1024" />
       <meta property="og:image:height" content="1024" />
 
@@ -94,9 +86,7 @@ const OfertaGranMarca = props => (
         {
           "@context": "http://schema.org",
           "@type": "Product",
-          "description": "${
-            props.ofertagranmarca.acf.descripcion_de_la_oferta
-          }",
+          "description": "${props.ofertagranmarca.acf.descripcion_de_la_oferta}",
           "name": "${props.ofertagranmarca.acf.nombre_del_establecimiento}",
           "image": "/static/logo-familias-numerosas-og.png",
           "offers": {
@@ -127,9 +117,7 @@ const OfertaGranMarca = props => (
         <li>
           <Link
             prefetch
-            as={`/ca-ES/mm/${props.ofertagranmarca.marca}/${
-              props.ofertagranmarca._embedded['wp:term'][3][0].slug
-            }`}
+            as={`/ca-ES/mm/${props.ofertagranmarca.marca}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
             href={`/ca-ES/mapa-de-la-marca?id=${props.ofertagranmarca.marca}`}
           >
             <a>{props.ofertagranmarca._embedded['wp:term'][3][0].name}</a>
@@ -200,15 +188,12 @@ const OfertaGranMarca = props => (
             ) : (
               ''
             )}
-            {props.ofertagranmarca.acf
-              .correo_electronico_del_establecimiento ? (
+            {props.ofertagranmarca.acf.correo_electronico_del_establecimiento ? (
               <span>
                 .{' '}
                 <a
                   href={
-                    'mailto:' +
-                    props.ofertagranmarca.acf
-                      .correo_electronico_del_establecimiento
+                    'mailto:' + props.ofertagranmarca.acf.correo_electronico_del_establecimiento
                   }
                 >
                   <FontAwesome
@@ -242,16 +227,10 @@ const OfertaGranMarca = props => (
               ''
             )}{' '}
             {props.ofertagranmarca.acf.facebook_del_establecimiento ? (
-              props.ofertagranmarca.acf.facebook_del_establecimiento.includes(
-                'facebook.com'
-              ) ? (
+              props.ofertagranmarca.acf.facebook_del_establecimiento.includes('facebook.com') ? (
                 <span>
                   |{' '}
-                  <a
-                    href={
-                      props.ofertagranmarca.acf.facebook_del_establecimiento
-                    }
-                  >
+                  <a href={props.ofertagranmarca.acf.facebook_del_establecimiento}>
                     <FontAwesome
                       name="facebook-square"
                       size="1x"
@@ -288,9 +267,7 @@ const OfertaGranMarca = props => (
             {props.ofertagranmarca.acf.sitio_web_del_establecimiento ? (
               <span>
                 |{' '}
-                <Link
-                  href={props.ofertagranmarca.acf.sitio_web_del_establecimiento}
-                >
+                <Link href={props.ofertagranmarca.acf.sitio_web_del_establecimiento}>
                   <a>
                     <FontAwesome
                       name="external-link-square"
@@ -312,9 +289,7 @@ const OfertaGranMarca = props => (
         <p className="category">
           <Link
             prefetch
-            as={`/ca-ES/c/${props.ofertagranmarca.categoria_del_beneficio}/${
-              props.ofertagranmarca._embedded['wp:term'][3][0].slug
-            }`}
+            as={`/ca-ES/c/${props.ofertagranmarca.categoria_del_beneficio}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
             href={`/ca-ES/mapa-de-la-marca?id=${props.ofertagranmarca.marca}`}
           >
             <a
@@ -351,8 +326,7 @@ const OfertaGranMarca = props => (
 
         <div className="file-data">
           <div className="file-img">
-            {props.ofertagranmarca.acf
-              .imagen_destacada_de_la_oferta_socios_large ? (
+            {props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_socios_large ? (
               <Observer
                 threshold={1}
                 triggerOnce={true}
@@ -362,14 +336,10 @@ const OfertaGranMarca = props => (
                       className="img-file"
                       width="1024"
                       src={
-                        props.ofertagranmarca.acf
-                          .imagen_destacada_de_la_oferta_socios_large.sizes
+                        props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_socios_large.sizes
                           .large
                       }
-                      alt={
-                        props.ofertagranmarca.acf
-                          .titulo_de_la_oferta_oferta_socios
-                      }
+                      alt={props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios}
                     />
                   </p>
                 )}
@@ -378,8 +348,7 @@ const OfertaGranMarca = props => (
               ''
             )}
 
-            {props.ofertagranmarca.acf
-              .imagen_destacada_de_la_oferta_general_large ? (
+            {props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_general_large ? (
               <Observer
                 threshold={1}
                 triggerOnce={true}
@@ -389,13 +358,10 @@ const OfertaGranMarca = props => (
                       className="img-file"
                       width="1024"
                       src={
-                        props.ofertagranmarca.acf
-                          .imagen_destacada_de_la_oferta_general_large.sizes
+                        props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_general_large.sizes
                           .large
                       }
-                      alt={
-                        props.ofertagranmarca.acf.titulo_de_la_oferta_general
-                      }
+                      alt={props.ofertagranmarca.acf.titulo_de_la_oferta_general}
                     />
                   </p>
                 )}
@@ -412,8 +378,8 @@ const OfertaGranMarca = props => (
                   <a>
                     <span className="label alert file-label">
                       ESCLUSIU SOCIS.
-                      <br /> Introdueix el teu usuari i contrasenya d'associat
-                      per saber com obtenir aquesta oferta
+                      <br /> Introdueix el teu usuari i contrasenya d'associat per saber com obtenir
+                      aquesta oferta
                       <br />
                       <FontAwesome
                         name="check-circle-o"
@@ -436,15 +402,13 @@ const OfertaGranMarca = props => (
 
             {props.ofertagranmarca.acf.marca.description ? (
               <div>
-                {props.ofertagranmarca.acf.marca.description
-                  .split('\n')
-                  .map((item, key) => {
-                    return (
-                      <p key={key}>
-                        <span dangerouslySetInnerHTML={{ __html: item }} />
-                      </p>
-                    )
-                  })}
+                {props.ofertagranmarca.acf.marca.description.split('\n').map((item, key) => {
+                  return (
+                    <p key={key}>
+                      <span dangerouslySetInnerHTML={{ __html: item }} />
+                    </p>
+                  );
+                })}
               </div>
             ) : (
               ''
@@ -460,7 +424,7 @@ const OfertaGranMarca = props => (
               <div className="Post__some-network">
                 <FacebookShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/ogm/' +
+                    'https://beneficios.fanoc.org/ogm/' +
                     props.ofertagranmarca.id +
                     '/' +
                     props.ofertagranmarca.slug
@@ -474,7 +438,7 @@ const OfertaGranMarca = props => (
               <div className="Post__some-network">
                 <TwitterShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/ogm/' +
+                    'https://beneficios.fanoc.org/ogm/' +
                     props.ofertagranmarca.id +
                     '/' +
                     props.ofertagranmarca.slug
@@ -486,7 +450,7 @@ const OfertaGranMarca = props => (
                     props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios
                   }
                   hashtags={['beneficiosfamiliasnumerosas']}
-                  via="famnumerosas"
+                  via="familianombrosa"
                   className="Post__some-network__share-button"
                 >
                   <TwitterIcon size={32} round />
@@ -496,7 +460,7 @@ const OfertaGranMarca = props => (
               <div className="Post__some-network">
                 <LinkedinShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/pgm/' +
+                    'https://beneficios.fanoc.org/pgm/' +
                     props.ofertagranmarca.id +
                     '/' +
                     props.ofertagranmarca.slug
@@ -516,7 +480,7 @@ const OfertaGranMarca = props => (
               <div className="Post__some-network">
                 <EmailShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/ogm/' +
+                    'https://beneficios.fanoc.org/ogm/' +
                     props.ofertagranmarca.id +
                     '/' +
                     props.ofertagranmarca.slug
@@ -532,10 +496,9 @@ const OfertaGranMarca = props => (
                     props.ofertagranmarca.acf.nombre_del_establecimiento +
                     ':' +
                     ' ' +
-                    props.ofertagranmarca.acf
-                      .titulo_de_la_oferta_oferta_socios +
+                    props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios +
                     ' ' +
-                    'https://beneficiosfamiliasnumerosas.org/ogm/' +
+                    'https://beneficios.fanoc.org/ogm/' +
                     props.ofertagranmarca.id +
                     '/' +
                     props.ofertagranmarca.slug
@@ -553,22 +516,13 @@ const OfertaGranMarca = props => (
                   dataOK={
                     <div
                       dangerouslySetInnerHTML={{
-                        __html:
-                          props.ofertagranmarca.acf
-                            .como_conseguir_la_oferta_exclusica_socios
+                        __html: props.ofertagranmarca.acf.como_conseguir_la_oferta_exclusica_socios
                       }}
                     />
                   }
-                  ID={
-                    props.ofertagranmarca.slug + '-' + props.ofertagranmarca.id
-                  }
+                  ID={props.ofertagranmarca.slug + '-' + props.ofertagranmarca.id}
                   Title={props.ofertagranmarca.title.rendered}
-                  URL={
-                    'ogm/' +
-                    props.ofertagranmarca.id +
-                    '/' +
-                    props.ofertagranmarca.slug
-                  }
+                  URL={'ogm/' + props.ofertagranmarca.id + '/' + props.ofertagranmarca.slug}
                 />
               </div>
             ) : (
@@ -702,18 +656,18 @@ const OfertaGranMarca = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 OfertaGranMarca.getInitialProps = async function(context) {
-  const { id } = context.query
+  const { id } = context.query;
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/ofertas_grandes_marc/${id}?_embed`
-  )
-  const ofertagranmarca = await res.json()
+  );
+  const ofertagranmarca = await res.json();
 
-  console.log(`Fetched ofertagranmarca: ${ofertagranmarca.title.rendered}`)
+  console.log(`Fetched ofertagranmarca: ${ofertagranmarca.title.rendered}`);
 
-  return { ofertagranmarca }
-}
+  return { ofertagranmarca };
+};
 
-export default OfertaGranMarca
+export default OfertaGranMarca;

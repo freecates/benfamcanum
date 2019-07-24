@@ -269,7 +269,7 @@ const OfertaOnLine = props => (
               <div className="Post__some-network">
                 <FacebookShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.ofertaonline.id +
                     '/' +
                     props.ofertaonline.slug
@@ -283,7 +283,7 @@ const OfertaOnLine = props => (
               <div className="Post__some-network">
                 <TwitterShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.ofertaonline.id +
                     '/' +
                     props.ofertaonline.slug
@@ -295,7 +295,7 @@ const OfertaOnLine = props => (
                     props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios
                   }
                   hashtags={['beneficiosfamiliasnumerosas']}
-                  via="famnumerosas"
+                  via="familianombrosa"
                   className="Post__some-network__share-button"
                 >
                   <TwitterIcon size={32} round />
@@ -305,7 +305,7 @@ const OfertaOnLine = props => (
               <div className="Post__some-network">
                 <LinkedinShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.ofertaonline.id +
                     '/' +
                     props.ofertaonline.slug
@@ -325,7 +325,7 @@ const OfertaOnLine = props => (
               <div className="Post__some-network">
                 <EmailShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.ofertaonline.id +
                     '/' +
                     props.ofertaonline.slug
@@ -343,7 +343,7 @@ const OfertaOnLine = props => (
                     ' ' +
                     props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios +
                     ' ' +
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.ofertaonline.id +
                     '/' +
                     props.ofertaonline.slug

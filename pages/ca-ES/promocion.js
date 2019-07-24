@@ -1,22 +1,21 @@
-import Head from 'next/head'
-import Layout from '../../components/MyLayout.js'
-import Link from 'next/link'
-import fetch from 'isomorphic-unfetch'
-import FontAwesome from 'react-fontawesome'
-import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share'
-import { IntlProvider, FormattedDate } from 'react-intl'
+import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import Link from 'next/link';
+import { FormattedDate, IntlProvider } from 'react-intl';
+import { generateShareIcon, ShareButtons } from 'react-share';
+import Layout from '../../components/MyLayout.js';
 
 const {
   FacebookShareButton,
   LinkedinShareButton,
   TwitterShareButton,
   EmailShareButton
-} = ShareButtons
+} = ShareButtons;
 
-const FacebookIcon = generateShareIcon('facebook')
-const TwitterIcon = generateShareIcon('twitter')
-const LinkedinIcon = generateShareIcon('linkedin')
-const EmailIcon = generateShareIcon('email')
+const FacebookIcon = generateShareIcon('facebook');
+const TwitterIcon = generateShareIcon('twitter');
+const LinkedinIcon = generateShareIcon('linkedin');
+const EmailIcon = generateShareIcon('email');
 
 const Promocion = props => (
   <Layout ruta={props.ruta}>
@@ -24,28 +23,18 @@ const Promocion = props => (
       {props.promocion.acf.nombre_de_la_empresa ? (
         <title
           dangerouslySetInnerHTML={{
-            __html:
-              props.promocion.acf.nombre_de_la_empresa + ' - Famílies Nombroses'
+            __html: props.promocion.acf.nombre_de_la_empresa + ' - Famílies Nombroses'
           }}
         />
       ) : (
         ''
       )}
 
-      <meta
-        property="og:url"
-        content={`/oo/${props.promocion.id}/${props.promocion.slug}`}
-      />
+      <meta property="og:url" content={`/oo/${props.promocion.id}/${props.promocion.slug}`} />
       <meta property="og:type" content="article" />
-      <meta
-        property="og:title"
-        content={props.promocion.acf.nombre_de_la_empresa}
-      />
+      <meta property="og:title" content={props.promocion.acf.nombre_de_la_empresa} />
       {props.promocion.acf.descripcion_de_la_promocion ? (
-        <meta
-          property="og:description"
-          content={props.promocion.acf.descripcion_de_la_promocion}
-        />
+        <meta property="og:description" content={props.promocion.acf.descripcion_de_la_promocion} />
       ) : (
         ''
       )}
@@ -132,9 +121,7 @@ const Promocion = props => (
               <IntlProvider defaultLocale="ca">
                 <strong>
                   <FormattedDate
-                    value={
-                      props.promocion.acf.fecha_de_finalizaciion_de_la_promocion
-                    }
+                    value={props.promocion.acf.fecha_de_finalizaciion_de_la_promocion}
                     day="numeric"
                     month="long"
                     year="numeric"
@@ -153,7 +140,7 @@ const Promocion = props => (
               <div className="Post__some-network">
                 <FacebookShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.promocion.id +
                     '/' +
                     props.promocion.slug
@@ -167,7 +154,7 @@ const Promocion = props => (
               <div className="Post__some-network">
                 <TwitterShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.promocion.id +
                     '/' +
                     props.promocion.slug
@@ -179,7 +166,7 @@ const Promocion = props => (
                     props.promocion.acf.titulo_de_la_oferta_oferta_socios
                   }
                   hashtags={['beneficiosfamiliasnumerosas']}
-                  via="famnumerosas"
+                  via="familianombrosa"
                   className="Post__some-network__share-button"
                 >
                   <TwitterIcon size={32} round />
@@ -189,7 +176,7 @@ const Promocion = props => (
               <div className="Post__some-network">
                 <LinkedinShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.promocion.id +
                     '/' +
                     props.promocion.slug
@@ -209,7 +196,7 @@ const Promocion = props => (
               <div className="Post__some-network">
                 <EmailShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.promocion.id +
                     '/' +
                     props.promocion.slug
@@ -227,7 +214,7 @@ const Promocion = props => (
                     ' ' +
                     props.promocion.acf.titulo_de_la_oferta_oferta_socios +
                     ' ' +
-                    'https://beneficiosfamiliasnumerosas.org/p/' +
+                    'https://beneficios.fanoc.org/p/' +
                     props.promocion.id +
                     '/' +
                     props.promocion.slug
@@ -327,18 +314,18 @@ const Promocion = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 Promocion.getInitialProps = async function(context) {
-  const { id } = context.query
+  const { id } = context.query;
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones/${id}?_embed`
-  )
-  const promocion = await res.json()
+  );
+  const promocion = await res.json();
 
-  console.log(`Fetched promocion: ${promocion.title.rendered}`)
+  console.log(`Fetched promocion: ${promocion.title.rendered}`);
 
-  return { promocion }
-}
+  return { promocion };
+};
 
-export default Promocion
+export default Promocion;

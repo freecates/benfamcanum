@@ -117,9 +117,7 @@ const OfertaGranMarca = props => (
         <li>
           <Link
             prefetch
-            as={`/mm/${props.ofertagranmarca.marca}/${
-              props.ofertagranmarca._embedded['wp:term'][3][0].slug
-            }`}
+            as={`/mm/${props.ofertagranmarca.marca}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
             href={`/mapa-de-la-marca?id=${props.ofertagranmarca.marca}`}
           >
             <a>{props.ofertagranmarca._embedded['wp:term'][3][0].name}</a>
@@ -272,9 +270,7 @@ const OfertaGranMarca = props => (
         <p className="category">
           <Link
             prefetch
-            as={`/c/${props.ofertagranmarca.categoria_del_beneficio}/${
-              props.ofertagranmarca._embedded['wp:term'][3][0].slug
-            }`}
+            as={`/c/${props.ofertagranmarca.categoria_del_beneficio}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
             href={`/mapa-de-la-marca?id=${props.ofertagranmarca.marca}`}
           >
             <a
@@ -409,7 +405,7 @@ const OfertaGranMarca = props => (
               <div className="Post__some-network">
                 <FacebookShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/ogm/' +
+                    'https://beneficios.fanoc.org/ogm/' +
                     props.ofertagranmarca.id +
                     '/' +
                     props.ofertagranmarca.slug
@@ -423,7 +419,7 @@ const OfertaGranMarca = props => (
               <div className="Post__some-network">
                 <TwitterShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/ogm/' +
+                    'https://beneficios.fanoc.org/ogm/' +
                     props.ofertagranmarca.id +
                     '/' +
                     props.ofertagranmarca.slug
@@ -435,7 +431,7 @@ const OfertaGranMarca = props => (
                     props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios
                   }
                   hashtags={['beneficiosfamiliasnumerosas']}
-                  via="famnumerosas"
+                  via="familianombrosa"
                   className="Post__some-network__share-button"
                 >
                   <TwitterIcon size={32} round />
@@ -445,7 +441,7 @@ const OfertaGranMarca = props => (
               <div className="Post__some-network">
                 <LinkedinShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/pgm/' +
+                    'https://beneficios.fanoc.org/pgm/' +
                     props.ofertagranmarca.id +
                     '/' +
                     props.ofertagranmarca.slug
@@ -465,7 +461,7 @@ const OfertaGranMarca = props => (
               <div className="Post__some-network">
                 <EmailShareButton
                   url={
-                    'https://beneficiosfamiliasnumerosas.org/ogm/' +
+                    'https://beneficios.fanoc.org/ogm/' +
                     props.ofertagranmarca.id +
                     '/' +
                     props.ofertagranmarca.slug
@@ -483,7 +479,7 @@ const OfertaGranMarca = props => (
                     ' ' +
                     props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios +
                     ' ' +
-                    'https://beneficiosfamiliasnumerosas.org/ogm/' +
+                    'https://beneficios.fanoc.org/ogm/' +
                     props.ofertagranmarca.id +
                     '/' +
                     props.ofertagranmarca.slug
