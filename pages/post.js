@@ -309,7 +309,7 @@ const Post = props => (
         </p>
 
         {props.post.acf.lat ? (
-          <MapaDeGoogle lat={props.post.acf.lat} lng={props.post.acf.lon} />
+          <MapaDeGoogle lat={props.post.acf.lat} lng={props.post.acf.lon} ruta={props.ruta} />
         ) : (
           ''
         )}

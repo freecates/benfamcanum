@@ -307,6 +307,7 @@ const OfertaGranMarca = props => (
 
         {props.ofertagranmarca.acf.lat ? (
           <MapaDeGoogle
+            ruta={props.ruta}
             lat={
               props.ofertagranmarca.acf.lat.includes(',') ||
               props.ofertagranmarca.acf.lat.includes('!')

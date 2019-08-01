@@ -1,11 +1,10 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import Layout from '../../components/MyLayout.js'
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import Layout from '../../components/MyLayout.js';
 
 const MapaDeGoogle = dynamic(import('../../components/MapaDeGoogle'), {
   loading: () => <p>carregant ...</p>
-})
+});
 
 const Contacto = () => (
   <Layout ruta={props.ruta}>
@@ -31,7 +30,7 @@ const Contacto = () => (
         <a>info@fanoc.org</a>
       </Link>
     </p>
-    <MapaDeGoogle lat="41.3914434" lng="2.1578962" />
+    <MapaDeGoogle lat="41.3914434" lng="2.1578962" ruta={props.ruta} />
 
     <style jsx>{`
       .breadcrumbs {
@@ -42,6 +41,6 @@ const Contacto = () => (
       }
     `}</style>
   </Layout>
-)
+);
 
-export default Contacto
+export default Contacto;
