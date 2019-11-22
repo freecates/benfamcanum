@@ -153,7 +153,7 @@ const OfertaGranMarca = props => (
           {props.ofertagranmarca.acf.oferta_exclusiva_socios == true ? (
             <span className="label alert file-label">
               <small>
-                ESCLUSIU
+                EXCLUSIU
                 <br /> SOCIS
               </small>
             </span>
@@ -378,7 +378,7 @@ const OfertaGranMarca = props => (
                 <Link href="#how-to-get-it">
                   <a>
                     <span className="label alert file-label">
-                      ESCLUSIU SOCIS.
+                      EXCLUSIU SOCIS.
                       <br /> Introdueix el teu usuari i contrasenya d'associat per saber com obtenir
                       aquesta oferta
                       <br />

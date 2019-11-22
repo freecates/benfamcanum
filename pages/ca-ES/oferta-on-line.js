@@ -126,7 +126,7 @@ const OfertaOnLine = props => (
           {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? (
             <span className="label alert file-label">
               <small>
-                ESCLUSIU
+                EXCLUSIU
                 <br /> SOCIS
               </small>
             </span>
@@ -208,7 +208,7 @@ const OfertaOnLine = props => (
                 <span className="label alert file-label">
                   <Link href="#how-to-get-it">
                     <a>
-                      ESCLUSIU SOCIS.
+                      EXCLUSIU SOCIS.
                       <br />
                       MIRA COM ACONSEGUIR AQUESTA OFERTA
                     </a>

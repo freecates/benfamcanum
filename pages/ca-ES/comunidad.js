@@ -315,7 +315,7 @@ const PostByComunidad = props => (
                                 />
                                 <span className="label alert gallery-label">
                                   <small>
-                                    ESCLUSIU
+                                    EXCLUSIU
                                     <br /> SOCIS
                                   </small>
                                 </span>
