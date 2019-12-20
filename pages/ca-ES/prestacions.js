@@ -10,7 +10,7 @@ export default props => (
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
@@ -21,21 +21,17 @@ export default props => (
     </nav>
     <section className="call-to-action">
       <p className="icones-prestacions">
-        <Link prefetch href="/ca-ES/municipis-prestacions">
+        <Link href="/ca-ES/municipis-prestacions">
           <a>
             <img src="/static/icona-prestacions-municipals-familias-numerosas.png" />
           </a>
         </Link>
-        <Link
-          prefetch
-          href="/ca-ES/prestaciones-comunidad?comunidad=8143"
-          as="/ca-ES/p-c/8143/cataluna"
-        >
+        <Link href="/ca-ES/prestaciones-comunidad?comunidad=8143" as="/ca-ES/p-c/8143/cataluna">
           <a>
             <img src="/static/icona-prestacions-autonomiques-familias-numerosas.png" />
           </a>
         </Link>
-        <Link prefetch href="/ca-ES/prestacions-estatals">
+        <Link href="/ca-ES/prestacions-estatals">
           <a>
             <img src="/static/icona-prestacions-estatals-familias-numerosas.png" />
           </a>

@@ -1,8 +1,8 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const OfertasOnLineByCategory = props => (
   <Layout ruta={props.ruta}>
@@ -12,17 +12,17 @@ const OfertasOnLineByCategory = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link  href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/beneficios">
+          <Link  href="/beneficios">
             <a>Ofertas para familias</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ofertas-on-line">
+          <Link  href="/ofertas-on-line">
             <a>Ofertas On Line</a>
           </Link>
         </li>
@@ -77,7 +77,7 @@ const OfertasOnLineByCategory = props => (
                     </td>
                     <td width="150">
                       <Link
-                        prefetch
+                        
                         as={`/oo/${ofertasonline.ID}/${ofertasonline.slug}`}
                         href={`/oferta-on-line?id=${ofertasonline.ID}`}
                       >

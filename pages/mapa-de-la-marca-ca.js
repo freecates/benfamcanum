@@ -1,9 +1,9 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => (
@@ -37,12 +37,12 @@ const MapByMarcaCa = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/grandes-marcas">
+          <Link href="/grandes-marcas">
             <a>Grandes Marcas</a>
           </Link>
         </li>
@@ -66,7 +66,6 @@ const MapByMarcaCa = props => (
       <p className="align-center">
         <small>
           <Link
-            prefetch
             as={`/m-o-g-m-ca/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
             href={`/ofertas-de-la-marca-ca?id=${props.markers[0].marca.term_id}`}
           >
@@ -98,7 +97,6 @@ const MapByMarcaCa = props => (
                 }
                 text={
                   <Link
-                    prefetch
                     as={`/ogmca/${marker.ID}/${marker.slug}`}
                     href={`/oferta-gran-marca-ca?id=${marker.ID}`}
                   >

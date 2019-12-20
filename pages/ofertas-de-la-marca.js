@@ -12,12 +12,12 @@ const OfertasGrandesMarcasByMarca = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/grandes-marcas">
+          <Link href="/grandes-marcas">
             <a>Ofertas grandes marcas</a>
           </Link>
         </li>
@@ -69,7 +69,6 @@ const OfertasGrandesMarcasByMarca = props => (
                 <td>
                   <p className="align-center">
                     <Link
-                      prefetch
                       as={`/mm/${props.granmarcaofertas.term_id}/${props.granmarcaofertas.slug}`}
                       href={`/mapa-de-la-marca?id=${props.granmarcaofertas.term_id}`}
                     >

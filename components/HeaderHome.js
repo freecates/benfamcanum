@@ -1,11 +1,11 @@
-import React from 'react';
 import Link from 'next/link';
-import NProgress from 'nprogress';
 import Router from 'next/router';
+import NProgress from 'nprogress';
+import React from 'react';
+import MediaQuery from 'react-responsive';
 import GlobalHead from './GlobalHead';
 import NavBarBenFamNum from './NavBarBenFamNum';
 import NavBarExternal from './NavBarExternal';
-import MediaQuery from 'react-responsive';
 
 Router.onRouteChangeStart = url => {
   console.log(`Loading: ${url}`);
@@ -46,7 +46,7 @@ const HeaderHome = props => (
           <section className="section-data">
             <div className="section-a">
               <h4 className="icones-prestacions align-center">
-                <Link prefetch href="/ca-ES/beneficis">
+                <Link href="/ca-ES/beneficis">
                   <a title="Ofertes comercials per a famílies nombroses">
                     <img
                       src="/static/icono-menu-fanoc-oferta.png"
@@ -60,7 +60,7 @@ const HeaderHome = props => (
             </div>
             <div className="section-b">
               <h4 className="icones-prestacions align-center">
-                <Link prefetch href="/ca-ES/prestacions">
+                <Link href="/ca-ES/prestacions">
                   <a title="Prestacions per a famílies nombroses">
                     <img
                       src="/static/icono-menu-fanoc-prestaciones.png"
@@ -79,7 +79,7 @@ const HeaderHome = props => (
           <section className="section-data">
             <div className="section-a">
               <h4 className="icones-prestacions align-center">
-                <Link prefetch href="/beneficios">
+                <Link href="/beneficios">
                   <a title="Ofertas comerciales para familias numerosas">
                     <img
                       src="/static/icono-menu-fanoc-oferta.png"
@@ -93,7 +93,7 @@ const HeaderHome = props => (
             </div>
             <div className="section-b">
               <h4 className="icones-prestacions align-center">
-                <Link prefetch href="/prestaciones">
+                <Link href="/prestaciones">
                   <a title="Prestaciones para familias numerosas">
                     <img
                       src="/static/icono-menu-fanoc-prestaciones.png"

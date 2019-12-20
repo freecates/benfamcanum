@@ -1,21 +1,18 @@
-import fetch from 'isomorphic-unfetch'
-import Head from 'next/head'
-import Link from 'next/link'
-import { IntlProvider } from 'react-intl'
-import Layout from '../../components/MyLayout.js'
+import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../../components/MyLayout.js';
 
 const OfertasGrandesMarcasByMarcaCa = props => (
   <Layout ruta={props.ruta}>
     <Head>
-      <title>
-        Ofertes de la Marca {props.granmarcacaofertas.name} per a famílies
-        nombroses
-      </title>
+      <title>Ofertes de la Marca {props.granmarcacaofertas.name} per a famílies nombroses</title>
     </Head>
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
@@ -23,8 +20,7 @@ const OfertasGrandesMarcasByMarcaCa = props => (
           <a href="javascript:history.back()">Ofertes</a>
         </li>
         <li>
-          <span className="show-for-sr">Actual: </span>{' '}
-          {props.granmarcacaofertas.name}
+          <span className="show-for-sr">Actual: </span> {props.granmarcacaofertas.name}
         </li>
       </ul>
     </nav>
@@ -55,38 +51,27 @@ const OfertasGrandesMarcasByMarcaCa = props => (
                   </p>
                 </td>
                 <td>
-                  <p className="align-center">
-                    {props.granmarcacaofertas.name}
-                  </p>
+                  <p className="align-center">{props.granmarcacaofertas.name}</p>
                 </td>
                 <td>
                   <div>
-                    {props.granmarcacaofertas.description
-                      .split('\n')
-                      .map((item, key) => {
-                        return (
-                          <p key={key}>
-                            <span dangerouslySetInnerHTML={{ __html: item }} />
-                          </p>
-                        )
-                      })}
+                    {props.granmarcacaofertas.description.split('\n').map((item, key) => {
+                      return (
+                        <p key={key}>
+                          <span dangerouslySetInnerHTML={{ __html: item }} />
+                        </p>
+                      );
+                    })}
                   </div>
                 </td>
                 <td>
                   <p className="align-center">
                     <Link
-                      prefetch
-                      as={`/ca-ES/mmca/${props.granmarcacaofertas.term_id}/${
-                        props.granmarcacaofertas.slug
-                      }`}
-                      href={`/ca-ES/mapa-de-la-marca-ca?id=${
-                        props.granmarcacaofertas.term_id
-                      }`}
+                      as={`/ca-ES/mmca/${props.granmarcacaofertas.term_id}/${props.granmarcacaofertas.slug}`}
+                      href={`/ca-ES/mapa-de-la-marca-ca?id=${props.granmarcacaofertas.term_id}`}
                     >
                       <a
-                        title={
-                          'Ver ' + props.granmarcacaofertas.name + ' en el mapa'
-                        }
+                        title={'Ver ' + props.granmarcacaofertas.name + ' en el mapa'}
                         className="button small"
                       >
                         {'Ver ' + props.granmarcacaofertas.name + ' en el mapa'}
@@ -188,20 +173,16 @@ const OfertasGrandesMarcasByMarcaCa = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 OfertasGrandesMarcasByMarcaCa.getInitialProps = async function(context) {
-  const { id } = context.query
-  const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca/${id}`
-  )
-  const granmarcacaofertas = await res.json()
+  const { id } = context.query;
+  const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca/${id}`);
+  const granmarcacaofertas = await res.json();
 
-  console.log(
-    `Ofertes de la Marca data fetched. Count: ${granmarcacaofertas.length}`
-  )
+  console.log(`Ofertes de la Marca data fetched. Count: ${granmarcacaofertas.length}`);
 
-  return { granmarcacaofertas }
-}
+  return { granmarcacaofertas };
+};
 
-export default OfertasGrandesMarcasByMarcaCa
+export default OfertasGrandesMarcasByMarcaCa;

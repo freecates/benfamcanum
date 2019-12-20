@@ -20,7 +20,7 @@ const Localidades = props => (
       <nav aria-label="Ets aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>
-            <Link prefetch href="/ca-ES">
+            <Link  href="/ca-ES">
               <a>Inici</a>
             </Link>
           </li>
@@ -32,7 +32,7 @@ const Localidades = props => (
       <section className="call-to-action">
         <div className="icones-prestacions">
           <div className="icona">
-            <Link prefetch href="/ca-ES/ofertes-per-sectors">
+            <Link  href="/ca-ES/ofertes-per-sectors">
               <a>
                 <img src="/static/icona-ofertas-por-sectores-familias-numerosas.png" />
                 <div className="text-icona">Ofertes per sectors</div>
@@ -41,7 +41,7 @@ const Localidades = props => (
           </div>
           <div className="icona">
             <Link
-              prefetch
+              
               as={`/ca-ES/ca/Catalu/8143`}
               href={`/ca-ES/comunidad?comunidad=Catalu&caid=8143`}
             >
@@ -52,7 +52,7 @@ const Localidades = props => (
             </Link>
           </div>
           <div className="icona">
-            <Link prefetch href="/ca-ES/ofertes-on-line">
+            <Link  href="/ca-ES/ofertes-on-line">
               <a>
                 <img src="/static/icona-ofertas-online-familias-numerosas.png" />
                 <div className="text-icona">Ofertes online</div>
@@ -60,7 +60,7 @@ const Localidades = props => (
             </Link>
           </div>
           <div className="icona">
-            <Link prefetch href="/ca-ES/ofertes-al-mapa">
+            <Link  href="/ca-ES/ofertes-al-mapa">
               <a>
                 <img src="/static/icona-ofertas-en-el-mapa-familias-numerosas.png" />
                 <div className="text-icona">Ofertes al mapa</div>
@@ -72,7 +72,7 @@ const Localidades = props => (
             <div className="promo">
               <h4 className="align-center">
                 <span className="label alert file-label">
-                  <Link prefetch href="/ca/promociones">
+                  <Link  href="/ca-ES/promocions">
                     <a>
                       Mira aquí promocions que et
                       <br />

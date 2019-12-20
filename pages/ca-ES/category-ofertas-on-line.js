@@ -1,30 +1,28 @@
-import fetch from 'isomorphic-unfetch'
-import Head from 'next/head'
-import Link from 'next/link'
-import { IntlProvider } from 'react-intl'
-import Layout from '../../components/MyLayout.js'
+import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../../components/MyLayout.js';
 
 const OfertasOnLineByCategory = props => (
   <Layout ruta={props.ruta}>
     <Head>
-      <title>
-        Ofertes On Line - {props.ofertasonlines[0].categoria_de_la_oferta.name}
-      </title>
+      <title>Ofertes On Line - {props.ofertasonlines[0].categoria_de_la_oferta.name}</title>
     </Head>
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/beneficis">
+          <Link href="/ca-ES/beneficis">
             <a>Ofertes per a famílies</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/ofertes-on-line">
+          <Link href="/ca-ES/ofertes-on-line">
             <a>Ofertes On Line</a>
           </Link>
         </li>
@@ -35,9 +33,7 @@ const OfertasOnLineByCategory = props => (
       </ul>
     </nav>
     <section>
-      <h1>
-        Ofertes On Line a {props.ofertasonlines[0].categoria_de_la_oferta.name}
-      </h1>
+      <h1>Ofertes On Line a {props.ofertasonlines[0].categoria_de_la_oferta.name}</h1>
       <IntlProvider defaultLocale="ca">
         <div className="table-scroll">
           <table>
@@ -52,12 +48,12 @@ const OfertasOnLineByCategory = props => (
             {props.ofertasonlines
               .sort((a, b) => {
                 if (a.slug < b.slug) {
-                  return -1
+                  return -1;
                 }
                 if (a.slug > b.slug) {
-                  return 1
+                  return 1;
                 }
-                return 0
+                return 0;
               })
               .map((ofertasonline, index) => (
                 <tbody key={index}>
@@ -71,9 +67,7 @@ const OfertasOnLineByCategory = props => (
                         }
                       />
                     </td>
-                    <td width="200">
-                      {ofertasonline.categoria_de_la_oferta.name}
-                    </td>
+                    <td width="200">{ofertasonline.categoria_de_la_oferta.name}</td>
                     <td>
                       <span
                         dangerouslySetInnerHTML={{
@@ -83,16 +77,12 @@ const OfertasOnLineByCategory = props => (
                     </td>
                     <td width="150">
                       <Link
-                        prefetch
-                        as={`/ca-ES/oo/${ofertasonline.ID}/${
-                          ofertasonline.slug
-                        }`}
+                        as={`/ca-ES/oo/${ofertasonline.ID}/${ofertasonline.slug}`}
                         href={`/ca-ES/oferta-on-line?id=${ofertasonline.ID}`}
                       >
                         <a
                           title={
-                            'Accedir a la fitxa de ' +
-                            ofertasonline.nombre_del_establecimiento
+                            'Accedir a la fitxa de ' + ofertasonline.nombre_del_establecimiento
                           }
                           className="button small"
                         >
@@ -150,18 +140,18 @@ const OfertasOnLineByCategory = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 OfertasOnLineByCategory.getInitialProps = async function(context) {
-  const { id } = context.query
+  const { id } = context.query;
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${id}`
-  )
-  const ofertasonlines = await res.json()
+  );
+  const ofertasonlines = await res.json();
 
-  console.log(`Ofertes On Line data fetched. Count: ${ofertasonlines.length}`)
+  console.log(`Ofertes On Line data fetched. Count: ${ofertasonlines.length}`);
 
-  return { ofertasonlines }
-}
+  return { ofertasonlines };
+};
 
-export default OfertasOnLineByCategory
+export default OfertasOnLineByCategory;

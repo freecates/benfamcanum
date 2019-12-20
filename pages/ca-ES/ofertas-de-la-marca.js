@@ -7,26 +7,22 @@ import Layout from '../../components/MyLayout.js';
 const OfertasGrandesMarcasByMarca = props => (
   <Layout ruta={props.ruta}>
     <Head>
-      <title>
-        Ofertes de la Marca {props.granmarcaofertas.name} per a famílies
-        nombroses
-      </title>
+      <title>Ofertes de la Marca {props.granmarcaofertas.name} per a famílies nombroses</title>
     </Head>
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/grans-marques">
+          <Link href="/ca-ES/grans-marques">
             <a>Ofertes grans marques</a>
           </Link>
         </li>
         <li>
-          <span className="show-for-sr">Actual: </span>{' '}
-          {props.granmarcaofertas.name}
+          <span className="show-for-sr">Actual: </span> {props.granmarcaofertas.name}
         </li>
       </ul>
     </nav>
@@ -61,32 +57,23 @@ const OfertasGrandesMarcasByMarca = props => (
                 </td>
                 <td>
                   <div>
-                    {props.granmarcaofertas.description
-                      .split('\n')
-                      .map((item, key) => {
-                        return (
-                          <p key={key}>
-                            <span dangerouslySetInnerHTML={{ __html: item }} />
-                          </p>
-                        )
-                      })}
+                    {props.granmarcaofertas.description.split('\n').map((item, key) => {
+                      return (
+                        <p key={key}>
+                          <span dangerouslySetInnerHTML={{ __html: item }} />
+                        </p>
+                      );
+                    })}
                   </div>
                 </td>
                 <td>
                   <p className="align-center">
                     <Link
-                      prefetch
-                      as={`/ca-ES/mm/${props.granmarcaofertas.term_id}/${
-                        props.granmarcaofertas.slug
-                      }`}
-                      href={`/ca-ES/mapa-de-la-marca?id=${
-                        props.granmarcaofertas.term_id
-                      }`}
+                      as={`/ca-ES/mm/${props.granmarcaofertas.term_id}/${props.granmarcaofertas.slug}`}
+                      href={`/ca-ES/mapa-de-la-marca?id=${props.granmarcaofertas.term_id}`}
                     >
                       <a
-                        title={
-                          'Ver ' + props.granmarcaofertas.name + ' en el mapa'
-                        }
+                        title={'Ver ' + props.granmarcaofertas.name + ' en el mapa'}
                         className="button small"
                       >
                         {'Ver ' + props.granmarcaofertas.name + ' en el mapa'}
@@ -188,20 +175,16 @@ const OfertasGrandesMarcasByMarca = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 OfertasGrandesMarcasByMarca.getInitialProps = async function(context) {
-  const { id } = context.query
-  const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca/${id}`
-  )
-  const granmarcaofertas = await res.json()
+  const { id } = context.query;
+  const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca/${id}`);
+  const granmarcaofertas = await res.json();
 
-  console.log(
-    `Ofertes de la Marca data fetched. Count: ${granmarcaofertas.length}`
-  )
+  console.log(`Ofertes de la Marca data fetched. Count: ${granmarcaofertas.length}`);
 
-  return { granmarcaofertas }
-}
+  return { granmarcaofertas };
+};
 
-export default OfertasGrandesMarcasByMarca
+export default OfertasGrandesMarcasByMarca;

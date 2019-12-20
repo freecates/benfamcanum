@@ -17,12 +17,12 @@ const MunicipiosPrestaciones = props => (
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/prestacions">
+          <Link href="/ca-ES/prestacions">
             <a>Prestacions oficials</a>
           </Link>
         </li>

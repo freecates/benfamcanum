@@ -29,17 +29,17 @@ const PostsByCategoryComunidad = props => (
         <nav aria-label="Ets aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link prefetch href="/ca-ES">
+              <Link  href="/ca-ES">
                 <a>Inici</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/ca-ES/beneficis">
+              <Link  href="/ca-ES/beneficis">
                 <a>Ofertes per a famílies</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/ca-ES/ofertes-per-sectors">
+              <Link  href="/ca-ES/ofertes-per-sectors">
                 <a>Ofertes per sectors</a>
               </Link>
             </li>
@@ -54,7 +54,7 @@ const PostsByCategoryComunidad = props => (
           </h1>
           <p className="align-center">
             Si us plau, escull{' '}
-            <Link prefetch href="/ca-ES/ofertes-per-sectors">
+            <Link  href="/ca-ES/ofertes-per-sectors">
               <a>un altre sector</a>
             </Link>
             .
@@ -75,7 +75,7 @@ const PostsByCategoryComunidad = props => (
                     <span key={marcasoferta.marca.term_id}>
                       <li className="benefit align-center">
                         <Link
-                          prefetch
+                          
                           as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${
                             marcasoferta.marca.slug
                           }`}
@@ -222,17 +222,17 @@ const PostsByCategoryComunidad = props => (
         <nav aria-label="Ets aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link prefetch href="/ca-ES">
+              <Link  href="/ca-ES">
                 <a>Inici</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/ca-ES/beneficis">
+              <Link  href="/ca-ES/beneficis">
                 <a>Ofertes per a famílies</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/ca-ES/ofertes-per-sectors">
+              <Link  href="/ca-ES/ofertes-per-sectors">
                 <a>Ofertes per sectors</a>
               </Link>
             </li>
@@ -383,7 +383,7 @@ const PostsByCategoryComunidad = props => (
                       <span key={marcasoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            prefetch
+                            
                             as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${
                               marcasoferta.marca.slug
                             }`}
@@ -424,7 +424,7 @@ const PostsByCategoryComunidad = props => (
                       <span key={marcascaoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            prefetch
+                            
                             as={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${
                               marcascaoferta.marca.slug
                             }`}
@@ -465,7 +465,7 @@ const PostsByCategoryComunidad = props => (
                     <p className="align-center">
                       Si s'ho estima més, també por veure les{' '}
                       <Link
-                        prefetch
+                        
                         as={`/ca-ES/c-o-o/${
                           props.ofertasonlines[0].categoria_de_la_oferta.term_id
                         }/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
@@ -504,7 +504,7 @@ const PostsByCategoryComunidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              prefetch
+                              
                               as={`/ca-ES/p/${post.ID}/${post.slug}`}
                               href={`/ca-ES/post?id=${post.ID}`}
                             >
@@ -532,7 +532,7 @@ const PostsByCategoryComunidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              prefetch
+                              
                               as={`/ca-ES/p/${post.ID}/${post.slug}`}
                               href={`/ca-ES/post?id=${post.ID}`}
                             >
@@ -561,7 +561,7 @@ const PostsByCategoryComunidad = props => (
 
                     <p>
                       <Link
-                        prefetch
+                        
                         as={`/ca-ES/p/${post.ID}/${post.slug}`}
                         href={`/ca-ES/post?id=${post.ID}`}
                       >

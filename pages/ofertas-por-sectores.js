@@ -12,12 +12,12 @@ const OfertasPorSectores = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/beneficios">
+          <Link href="/beneficios">
             <a>Ofertas para familias numerosas</a>
           </Link>
         </li>
@@ -33,11 +33,8 @@ const OfertasPorSectores = props => (
             {props.ofertasporsectores.map((ofertasporsectore, index) => (
               <li className="item align-center" key={index}>
                 <Link
-                  prefetch
                   as={`/c-ca/${ofertasporsectore.term_id}/${ofertasporsectore.slug}/Catalu/8143`}
-                  href={`/category-comunidad?sid=${
-                    ofertasporsectore.term_id
-                  }&comunidad=Catalu&caid=8143`}
+                  href={`/category-comunidad?sid=${ofertasporsectore.term_id}&comunidad=Catalu&caid=8143`}
                 >
                   <a title={'Clica aquí para ver todas las ofertas de ' + ofertasporsectore.name}>
                     <img

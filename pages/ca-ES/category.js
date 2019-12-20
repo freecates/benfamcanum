@@ -27,17 +27,17 @@ const PostsByCategory = props => (
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/beneficis">
+          <Link href="/ca-ES/beneficis">
             <a>Ofertes per a famílies</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/ofertes-per-sectors">
+          <Link href="/ca-ES/ofertes-per-sectors">
             <a>Ofertes per sectors</a>
           </Link>
         </li>
@@ -90,10 +90,7 @@ const PostsByCategory = props => (
       <p className="align-center">
         <small>
           <Link
-            prefetch
-            as={`/ca-ES/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${
-              props.posts[0].categoria_de_la_prestacion.slug
-            }`}
+            as={`/ca-ES/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`}
             href={`/ca-ES/mapa?id=${props.posts[0].categoria_de_la_prestacion.term_id}`}
           >
             <a>
@@ -115,9 +112,7 @@ const PostsByCategory = props => (
               {
                 slug: 'catalunya',
                 key: 8143,
-                value: `/ca-ES/category-comunidad?sid=${
-                  props.posts[0].categoria_de_la_prestacion.term_id
-                }&comunidad=Catalu&caid=8143`,
+                value: `/ca-ES/category-comunidad?sid=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Catalu&caid=8143`,
                 label: 'Catalunya'
               }
             ]}
@@ -187,10 +182,7 @@ const PostsByCategory = props => (
                   <span key={marcasoferta.marca.term_id}>
                     <li className="benefit align-center">
                       <Link
-                        prefetch
-                        as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${
-                          marcasoferta.marca.slug
-                        }`}
+                        as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                         href={`/ca-ES/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                       >
                         <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
@@ -227,13 +219,8 @@ const PostsByCategory = props => (
             <p className="align-center">
               Si s'ho estime més, també por veure les{' '}
               <Link
-                prefetch
-                as={`/ca-ES/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${
-                  props.ofertasonlines[0].categoria_de_la_oferta.slug
-                }`}
-                href={`/ca-ES/category-ofertas-on-line?id=${
-                  props.ofertasonlines[0].categoria_de_la_oferta.term_id
-                }`}
+                as={`/ca-ES/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
+                href={`/ca-ES/category-ofertas-on-line?id=${props.ofertasonlines[0].categoria_de_la_oferta.term_id}`}
               >
                 <a
                   className="label alert file-label"
@@ -419,9 +406,7 @@ PostsByCategory.getInitialProps = async function(context) {
   const banners = await res4.json();
 
   console.log(
-    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${
-      ofertasonlines.length
-    }, ${banners.length}`
+    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${ofertasonlines.length}, ${banners.length}`
   );
 
   return { posts, marcasofertas, ofertasonlines, banners, sid };

@@ -73,23 +73,23 @@ const OfertaOnLine = props => (
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link  href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/beneficis">
+          <Link  href="/ca-ES/beneficis">
             <a>Ofertes per a famílies</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/ofertes-on-line">
+          <Link  href="/ca-ES/ofertes-on-line">
             <a>Ofertes On Line</a>
           </Link>
         </li>
         <li>
           <Link
-            prefetch
+            
             as={`/ca-ES/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
             href={`/ca-ES/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}
           >
@@ -153,7 +153,7 @@ const OfertaOnLine = props => (
           <small>
             <strong>Categoria</strong>:{' '}
             <Link
-              prefetch
+              
               as={`/ca-ES/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
               href={`/ca-ES/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}
             >

@@ -20,7 +20,7 @@ const Localidades = props => (
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>
-            <Link prefetch href="/">
+            <Link href="/">
               <a>Inicio</a>
             </Link>
           </li>
@@ -32,7 +32,7 @@ const Localidades = props => (
       <section className="call-to-action">
         <div className="icones-prestacions">
           <div className="icona">
-            <Link prefetch href="/ofertas-por-sectores">
+            <Link href="/ofertas-por-sectores">
               <a>
                 <img src="/static/icona-ofertas-por-sectores-familias-numerosas.png" />
                 <div className="text-icona">Ofertas por sectores</div>
@@ -40,7 +40,7 @@ const Localidades = props => (
             </Link>
           </div>
           <div className="icona">
-            <Link prefetch as={`/ca/Catalu/8143`} href={`/comunidad?comunidad=Catalu&caid=8143`}>
+            <Link as={`/ca/Catalu/8143`} href={`/comunidad?comunidad=Catalu&caid=8143`}>
               <a>
                 <img src="/static/icona-ofertas-por-poblacion-familias-numerosas.png" />
                 <div className="text-icona">Ofertas por población</div>
@@ -48,7 +48,7 @@ const Localidades = props => (
             </Link>
           </div>
           <div className="icona">
-            <Link prefetch href="/ofertas-on-line">
+            <Link href="/ofertas-on-line">
               <a>
                 <img src="/static/icona-ofertas-online-familias-numerosas.png" />
                 <div className="text-icona">Ofertas online</div>
@@ -56,7 +56,7 @@ const Localidades = props => (
             </Link>
           </div>
           <div className="icona">
-            <Link prefetch href="/ofertas-en-el-mapa">
+            <Link href="/ofertas-en-el-mapa">
               <a>
                 <img src="/static/icona-ofertas-en-el-mapa-familias-numerosas.png" />
                 <div className="text-icona">Ofertas en el mapa</div>
@@ -68,7 +68,7 @@ const Localidades = props => (
             <div className="promo">
               <h4 className="align-center">
                 <span className="label alert file-label">
-                  <Link prefetch href="/promociones">
+                  <Link href="/promociones">
                     <a>
                       Mira aquí promociones que te
                       <br />

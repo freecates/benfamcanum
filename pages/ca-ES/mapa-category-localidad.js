@@ -1,13 +1,13 @@
-import fetch from 'isomorphic-unfetch'
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
-import Link from 'next/link'
-import { IntlProvider } from 'react-intl'
-import Layout from '../../components/MyLayout.js'
+import fetch from 'isomorphic-unfetch';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../../components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => <p>carregant ...</p>
-})
+});
 
 const markerStyle = {
   'background-color': '#ffffff',
@@ -18,42 +18,36 @@ const markerStyle = {
   right: 25,
   bottom: 25,
   'border-radius': '50%'
-}
+};
 
-const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>
+const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 
-const ZOOM = 12
+const ZOOM = 12;
 
 const MapByCategoryLocalidad = props => (
   <Layout ruta={props.ruta}>
     <Head>
       <title>
-        Beneficis Famílies Nombroses -{' '}
-        {props.markers[0].categoria_de_la_prestacion.name} -{' '}
+        Beneficis Famílies Nombroses - {props.markers[0].categoria_de_la_prestacion.name} -{' '}
         {props.markers[0].localidad_del_beneficio.name}
       </title>
     </Head>
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/beneficis">
+          <Link href="/ca-ES/beneficis">
             <a>Ofertes per a famílies</a>
           </Link>
         </li>
         <li>
           <Link
-            prefetch
-            as={`/ca-ES/m/${
-              props.markers[0].categoria_de_la_prestacion.term_id
-            }/${props.markers[0].categoria_de_la_prestacion.slug}`}
-            href={`/ca-ES/mapa?id=${
-              props.markers[0].categoria_de_la_prestacion.term_id
-            }`}
+            as={`/ca-ES/m/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}`}
+            href={`/ca-ES/mapa?id=${props.markers[0].categoria_de_la_prestacion.term_id}`}
           >
             <a>{props.markers[0].categoria_de_la_prestacion.name}</a>
           </Link>
@@ -80,15 +74,8 @@ const MapByCategoryLocalidad = props => (
       <p className="align-center">
         <small>
           <Link
-            prefetch
-            as={`/ca-ES/c-l/${
-              props.markers[0].categoria_de_la_prestacion.term_id
-            }/${props.markers[0].categoria_de_la_prestacion.slug}/${
-              props.markers[0].localidad_del_beneficio.term_id
-            }/${props.markers[0].localidad_del_beneficio.slug}`}
-            href={`/ca-ES/category-localidad?id=${
-              props.markers[0].categoria_de_la_prestacion.term_id
-            }&localidad=${props.markers[0].localidad_del_beneficio.term_id}`}
+            as={`/ca-ES/c-l/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`}
+            href={`/ca-ES/category-localidad?id=${props.markers[0].categoria_de_la_prestacion.term_id}&localidad=${props.markers[0].localidad_del_beneficio.term_id}`}
           >
             <a
               title={
@@ -110,12 +97,10 @@ const MapByCategoryLocalidad = props => (
               key: 'AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90'
             }}
             center={[
-              props.markers[0].lat.includes(',') ||
-              props.markers[0].lat.includes('!')
+              props.markers[0].lat.includes(',') || props.markers[0].lat.includes('!')
                 ? 41.3948976
                 : Number(props.markers[0].lat),
-              props.markers[0].lon.includes(',') ||
-              props.markers[0].lon.includes('!')
+              props.markers[0].lon.includes(',') || props.markers[0].lon.includes('!')
                 ? 2.0787282
                 : Number(props.markers[0].lon)
             ]}
@@ -124,19 +109,10 @@ const MapByCategoryLocalidad = props => (
             {props.markers.map((marker, index) => (
               <MarkerComponent
                 key={index}
-                lat={
-                  marker.lat.includes(',') || marker.lat.includes('!')
-                    ? ''
-                    : marker.lat
-                }
-                lng={
-                  marker.lon.includes(',') || marker.lon.includes('!')
-                    ? ''
-                    : marker.lon
-                }
+                lat={marker.lat.includes(',') || marker.lat.includes('!') ? '' : marker.lat}
+                lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
                 text={
                   <Link
-                    prefetch
                     as={`/ca-ES/p/${marker.ID}/${marker.slug}`}
                     href={`/ca-ES/post?id=${marker.ID}`}
                   >
@@ -243,19 +219,19 @@ const MapByCategoryLocalidad = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 MapByCategoryLocalidad.getInitialProps = async function(context) {
-  const { id } = context.query
-  const { localidad } = context.query
+  const { id } = context.query;
+  const { localidad } = context.query;
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}&localidad=${localidad}`
-  )
-  const markers = await res.json()
+  );
+  const markers = await res.json();
 
-  console.log(`Markers data fetched. Count: ${markers.length}`)
+  console.log(`Markers data fetched. Count: ${markers.length}`);
 
-  return { markers }
-}
+  return { markers };
+};
 
-export default MapByCategoryLocalidad
+export default MapByCategoryLocalidad;

@@ -1,9 +1,9 @@
+import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
 import Link from 'next/link';
 import Observer from 'react-intersection-observer';
-import fetch from 'isomorphic-unfetch';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const PrestacionesEstatales = props => (
   <Layout ruta={props.ruta}>
@@ -13,12 +13,12 @@ const PrestacionesEstatales = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/prestaciones">
+          <Link href="/prestaciones">
             <a>Prestaciones</a>
           </Link>
         </li>
@@ -79,7 +79,6 @@ const PrestacionesEstatales = props => (
                     </td>
                     <td width="150">
                       <Link
-                        prefetch
                         as={`/pr/${prestacion.ID}/${prestacion.slug}`}
                         href={`/prestacion?id=${prestacion.ID}`}
                       >

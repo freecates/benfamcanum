@@ -1,8 +1,8 @@
-import fetch from 'isomorphic-unfetch'
-import Head from 'next/head'
-import Link from 'next/link'
-import { IntlProvider } from 'react-intl'
-import Layout from '../../components/MyLayout.js'
+import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../../components/MyLayout.js';
 
 const OfertasOnLine = props => (
   <Layout ruta={props.ruta}>
@@ -13,25 +13,21 @@ const OfertasOnLine = props => (
       <main>
         <h1>Ofertes On Line</h1>
         <section>
-          <h2 className="align-center">
-            Selecciona la categoria del teu interés
-          </h2>
+          <h2 className="align-center">Selecciona la categoria del teu interés</h2>
           <ul className="gallery">
             {props.ofertasonlines.reduce((categories, ofertasonline) => {
-              if (ofertasonline.categoria_de_la_oferta == false) {
-                return categories
+              if (
+                ofertasonline.categoria_de_la_oferta == false ||
+                ofertasonline.categoria_de_la_oferta == null
+              ) {
+                return categories;
               }
               categories[ofertasonline.categoria_de_la_oferta.term_id] = (
                 <span key={ofertasonline.categoria_de_la_oferta.term_id}>
                   <li className="item align-center">
                     <Link
-                      prefetch
-                      as={`/ca-ES/c-o-o/${
-                        ofertasonline.categoria_de_la_oferta.term_id
-                      }/${ofertasonline.categoria_de_la_oferta.slug}`}
-                      href={`/ca-ES/category-ofertas-on-line?id=${
-                        ofertasonline.categoria_de_la_oferta.term_id
-                      }`}
+                      as={`/ca-ES/c-o-o/${ofertasonline.categoria_de_la_oferta.term_id}/${ofertasonline.categoria_de_la_oferta.slug}`}
+                      href={`/ca-ES/category-ofertas-on-line?id=${ofertasonline.categoria_de_la_oferta.term_id}`}
                     >
                       <a
                         title={
@@ -56,8 +52,8 @@ const OfertasOnLine = props => (
                     </Link>
                   </li>
                 </span>
-              )
-              return categories
+              );
+              return categories;
             }, [])}
           </ul>
         </section>
@@ -128,17 +124,17 @@ const OfertasOnLine = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 OfertasOnLine.getInitialProps = async function() {
   const res = await fetch(
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?sim-model=categoria'
-  )
-  const ofertasonlines = await res.json()
+  );
+  const ofertasonlines = await res.json();
 
-  console.log(`Ofertes On Line data fetched. Count: ${ofertasonlines.length}`)
+  console.log(`Ofertes On Line data fetched. Count: ${ofertasonlines.length}`);
 
-  return { ofertasonlines }
-}
+  return { ofertasonlines };
+};
 
-export default OfertasOnLine
+export default OfertasOnLine;

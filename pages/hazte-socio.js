@@ -6,7 +6,7 @@ export default props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link  href="/">
             <a>Inicio</a>
           </Link>
         </li>

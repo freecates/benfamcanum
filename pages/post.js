@@ -142,18 +142,17 @@ const Post = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/beneficios">
+          <Link href="/beneficios">
             <a>Ofertas para familias</a>
           </Link>
         </li>
         <li>
           <Link
-            prefetch
             as={`/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`}
             href={`/category-comunidad?sid=${props.post.categoria_del_beneficio}&comunidad=${props.post.acf.comunidad_autonoma}&caid=8143`}
           >
@@ -198,7 +197,6 @@ const Post = props => (
             <span dangerouslySetInnerHTML={{ __html: props.post.acf.direccion }} />.{' '}
             <span>{props.post.acf.codigo_postal}</span>,{' '}
             <Link
-              prefetch
               as={`/l/${props.post.acf.localidad_del_beneficio.term_id}/${props.post.acf.localidad_del_beneficio.slug}`}
               href={`/localidad?localidad=${props.post.acf.localidad_del_beneficio.term_id}`}
             >
@@ -293,7 +291,6 @@ const Post = props => (
         <p className="category">
           <strong>Categoria</strong>:{' '}
           <Link
-            prefetch
             as={`/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`}
             href={`/category-comunidad?sid=${props.post.categoria_del_beneficio}&comunidad=${props.post.acf.comunidad_autonoma}&caid=8143`}
           >

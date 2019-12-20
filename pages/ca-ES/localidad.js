@@ -16,24 +16,19 @@ const PostsByLocalidad = props => (
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/beneficis">
+          <Link href="/ca-ES/beneficis">
             <a>Ofertes per a famílies</a>
           </Link>
         </li>
         <li>
           <Link
-            prefetch
-            as={`/ca-ES/ca/${props.posts[0].comunidad_autonoma}/${
-              props.marcasofertas[0].comunidad_autonoma.term_id
-            }`}
-            href={`/ca-ES/comunidad?comunidad=${props.posts[0].comunidad_autonoma}&caid=${
-              props.marcasofertas[0].comunidad_autonoma.term_id
-            }`}
+            as={`/ca-ES/ca/${props.posts[0].comunidad_autonoma}/${props.marcasofertas[0].comunidad_autonoma.term_id}`}
+            href={`/ca-ES/comunidad?comunidad=${props.posts[0].comunidad_autonoma}&caid=${props.marcasofertas[0].comunidad_autonoma.term_id}`}
           >
             <a>{props.posts[0].comunidad_autonoma}</a>
           </Link>
@@ -77,13 +72,8 @@ const PostsByLocalidad = props => (
       <p className="align-center">
         <small>
           <Link
-            prefetch
-            as={`/ca-ES/m-l/${props.posts[0].localidad_del_beneficio.term_id}/${
-              props.posts[0].localidad_del_beneficio.slug
-            }`}
-            href={`/ca-ES/mapa-localidad?localidad=${
-              props.posts[0].localidad_del_beneficio.term_id
-            }`}
+            as={`/ca-ES/m-l/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`}
+            href={`/ca-ES/mapa-localidad?localidad=${props.posts[0].localidad_del_beneficio.term_id}`}
           >
             <a>
               <img src="/static/icona-mapa-familias-numerosas.png" /> veure al mapa
@@ -108,10 +98,7 @@ const PostsByLocalidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              prefetch
-                              as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${
-                                marcasoferta.marca.slug
-                              }`}
+                              as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                               href={`/ca-ES/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                             >
                               <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
@@ -157,13 +144,8 @@ const PostsByLocalidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              prefetch
-                              as={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${
-                                marcascaoferta.marca.slug
-                              }`}
-                              href={`/ca-ES/ofertas-de-la-marca-ca?id=${
-                                marcascaoferta.marca.term_id
-                              }`}
+                              as={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
+                              href={`/ca-ES/ofertas-de-la-marca-ca?id=${marcascaoferta.marca.term_id}`}
                             >
                               <a title={'Veure totes les ofertes de ' + marcascaoferta.marca.name}>
                                 <img
@@ -203,7 +185,6 @@ const PostsByLocalidad = props => (
                     render={() => (
                       <p className="fade-in">
                         <Link
-                          prefetch
                           as={`/ca-ES/p/${post.ID}/${post.slug}`}
                           href={`/ca-ES/post?id=${post.ID}`}
                         >
@@ -229,7 +210,6 @@ const PostsByLocalidad = props => (
                     render={() => (
                       <p className="fade-in">
                         <Link
-                          prefetch
                           as={`/ca-ES/p/${post.ID}/${post.slug}`}
                           href={`/ca-ES/post?id=${post.ID}`}
                         >
@@ -254,11 +234,7 @@ const PostsByLocalidad = props => (
                 )}
 
                 <p>
-                  <Link
-                    prefetch
-                    as={`/ca-ES/p/${post.ID}/${post.slug}`}
-                    href={`/ca-ES/post?id=${post.ID}`}
-                  >
+                  <Link as={`/ca-ES/p/${post.ID}/${post.slug}`} href={`/ca-ES/post?id=${post.ID}`}>
                     <a dangerouslySetInnerHTML={{ __html: post.name }} />
                   </Link>
                   <br />
@@ -427,9 +403,7 @@ PostsByLocalidad.getInitialProps = async function(context) {
   const marcascaofertas = await res4.json();
 
   console.log(
-    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${banners.length}, ${
-      marcascaofertas.length
-    }`
+    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${banners.length}, ${marcascaofertas.length}`
   );
 
   return { posts, marcasofertas, banners, marcascaofertas };

@@ -158,7 +158,7 @@ class IsSearch extends React.Component {
                             <p className="fade-in">
                               {ruta.includes('/ca-ES') && (
                                 <Link
-                                  prefetch
+                                  
                                   as={`/ca-ES/p/${PostResult.ID}/${PostResult.slug}`}
                                   href={`/ca-ES/post?id=${PostResult.ID}`}
                                 >
@@ -177,7 +177,7 @@ class IsSearch extends React.Component {
                               )}
                               {ruta.indexOf('/ca-ES') == -1 && (
                                 <Link
-                                  prefetch
+                                  
                                   as={`/p/${PostResult.ID}/${PostResult.slug}`}
                                   href={`/post?id=${PostResult.ID}`}
                                 >
@@ -209,7 +209,7 @@ class IsSearch extends React.Component {
                             <p className="fade-in">
                               {ruta.includes('/ca-ES') && (
                                 <Link
-                                  prefetch
+                                  
                                   as={`/ca-ES/p/${PostResult.ID}/${PostResult.slug}`}
                                   href={`/ca-ES/post?id=${PostResult.ID}`}
                                 >
@@ -234,7 +234,7 @@ class IsSearch extends React.Component {
                               )}
                               {ruta.indexOf('/ca-ES') == -1 && (
                                 <Link
-                                  prefetch
+                                  
                                   as={`/p/${PostResult.ID}/${PostResult.slug}`}
                                   href={`/post?id=${PostResult.ID}`}
                                 >
@@ -267,7 +267,7 @@ class IsSearch extends React.Component {
                       <p>
                         {ruta.includes('/ca-ES') && (
                           <Link
-                            prefetch
+                            
                             as={`/ca-ES/p/${PostResult.ID}/${PostResult.slug}`}
                             href={`/ca-ES/post?id=${PostResult.ID}`}
                           >
@@ -279,7 +279,7 @@ class IsSearch extends React.Component {
                         )}
                         {ruta.indexOf('/ca-ES') == -1 && (
                           <Link
-                            prefetch
+                            
                             as={`/p/${PostResult.ID}/${PostResult.slug}`}
                             href={`/post?id=${PostResult.ID}`}
                           >
@@ -294,7 +294,7 @@ class IsSearch extends React.Component {
                           <small>
                             {ruta.includes('/ca-ES') && (
                               <Link
-                                prefetch
+                                
                                 as={`/ca-ES/c-l/${PostResult.categoria_de_la_prestacion.term_id}/${
                                   PostResult.categoria_de_la_prestacion.slug
                                 }/${PostResult.localidad_del_beneficio.term_id}/${
@@ -322,7 +322,7 @@ class IsSearch extends React.Component {
                             )}
                             {ruta.indexOf('/ca-ES') == -1 && (
                               <Link
-                                prefetch
+                                
                                 as={`/c-l/${PostResult.categoria_de_la_prestacion.term_id}/${
                                   PostResult.categoria_de_la_prestacion.slug
                                 }/${PostResult.localidad_del_beneficio.term_id}/${
@@ -404,7 +404,7 @@ class IsSearch extends React.Component {
                             <p className="fade-in">
                               {ruta.includes('/ca-ES') && (
                                 <Link
-                                  prefetch
+                                  
                                   as={`/ca-ES/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
                                   href={`/ca-ES/oferta-on-line?id=${OfertasResult.ID}`}
                                 >
@@ -423,7 +423,7 @@ class IsSearch extends React.Component {
                               )}
                               {ruta.indexOf('/ca-ES') == -1 && (
                                 <Link
-                                  prefetch
+                                  
                                   as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
                                   href={`/oferta-on-line?id=${OfertasResult.ID}`}
                                 >
@@ -455,7 +455,7 @@ class IsSearch extends React.Component {
                             <p className="fade-in">
                               {ruta.includes('/ca-ES') && (
                                 <Link
-                                  prefetch
+                                  
                                   as={`/ca-ES/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
                                   href={`/ca-ES/oferta-on-line?id=${OfertasResult.ID}`}
                                 >
@@ -480,7 +480,7 @@ class IsSearch extends React.Component {
                               )}
                               {ruta.indexOf('/ca-ES') == -1 && (
                                 <Link
-                                  prefetch
+                                  
                                   as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
                                   href={`/oferta-on-line?id=${OfertasResult.ID}`}
                                 >
@@ -513,7 +513,7 @@ class IsSearch extends React.Component {
                       <p>
                         {ruta.includes('/ca-ES') && (
                           <Link
-                            prefetch
+                            
                             as={`/ca-ES/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
                             href={`/ca-ES/oferta-on-line?id=${OfertasResult.ID}`}
                           >
@@ -525,7 +525,7 @@ class IsSearch extends React.Component {
                         )}
                         {ruta.indexOf('/ca-ES') == -1 && (
                           <Link
-                            prefetch
+                            
                             as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
                             href={`/oferta-on-line?id=${OfertasResult.ID}`}
                           >
@@ -540,7 +540,7 @@ class IsSearch extends React.Component {
                           <small>
                             {ruta.includes('/ca-ES') && (
                               <Link
-                                prefetch
+                                
                                 as={`/ca-ES/c-o-o/${OfertasResult.categoria_de_la_oferta.term_id}/${
                                   OfertasResult.categoria_de_la_oferta.slug
                                 }`}
@@ -564,7 +564,7 @@ class IsSearch extends React.Component {
                             )}
                             {ruta.indexOf('/ca-ES') == -1 && (
                               <Link
-                                prefetch
+                                
                                 as={`/c-o-o/${OfertasResult.categoria_de_la_oferta.term_id}/${
                                   OfertasResult.categoria_de_la_oferta.slug
                                 }`}
@@ -637,7 +637,7 @@ class IsSearch extends React.Component {
                       <p className="align-left">
                         {ruta.includes('/ca-ES') && (
                           <Link
-                            prefetch
+                            
                             as={`/ca-ES/ogm/${OfertasGrandeMarcasResult.ID}/${
                               OfertasGrandeMarcasResult.slug
                             }`}
@@ -651,7 +651,7 @@ class IsSearch extends React.Component {
                         )}
                         {ruta.indexOf('/ca-ES') == -1 && (
                           <Link
-                            prefetch
+                            
                             as={`/ogm/${OfertasGrandeMarcasResult.ID}/${
                               OfertasGrandeMarcasResult.slug
                             }`}
@@ -709,7 +709,7 @@ class IsSearch extends React.Component {
                         <p className="align-left">
                           {ruta.includes('/ca-ES') && (
                             <Link
-                              prefetch
+                              
                               as={`/ca-ES/ogmca/${OfertasGrandeMarcasCAResult.ID}/${
                                 OfertasGrandeMarcasCAResult.slug
                               }`}
@@ -727,7 +727,7 @@ class IsSearch extends React.Component {
                           )}
                           {ruta.indexOf('/ca-ES') == -1 && (
                             <Link
-                              prefetch
+                              
                               as={`/ogmca/${OfertasGrandeMarcasCAResult.ID}/${
                                 OfertasGrandeMarcasCAResult.slug
                               }`}

@@ -1,8 +1,8 @@
-import fetch from 'isomorphic-unfetch'
-import Head from 'next/head'
-import Link from 'next/link'
-import { IntlProvider } from 'react-intl'
-import Layout from '../../components/MyLayout.js'
+import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../../components/MyLayout.js';
 
 const OfertasPorSectores = props => (
   <Layout layout ruta={props.ruta}>
@@ -12,12 +12,12 @@ const OfertasPorSectores = props => (
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/beneficis">
+          <Link href="/ca-ES/beneficis">
             <a>Ofertes per a famílies nombroses</a>
           </Link>
         </li>
@@ -33,20 +33,10 @@ const OfertasPorSectores = props => (
             {props.ofertasporsectores.map((ofertasporsectore, index) => (
               <li className="item align-center" key={index}>
                 <Link
-                  prefetch
-                  as={`/ca-ES/c-ca/${ofertasporsectore.term_id}/${
-                    ofertasporsectore.slug
-                  }/Catalu/8143`}
-                  href={`/ca-ES/category-comunidad?sid=${
-                    ofertasporsectore.term_id
-                  }&comunidad=Catalu&caid=8143`}
+                  as={`/ca-ES/c-ca/${ofertasporsectore.term_id}/${ofertasporsectore.slug}/Catalu/8143`}
+                  href={`/ca-ES/category-comunidad?sid=${ofertasporsectore.term_id}&comunidad=Catalu&caid=8143`}
                 >
-                  <a
-                    title={
-                      'Clica aquí para ver todas las ofertas de ' +
-                      ofertasporsectore.name
-                    }
-                  >
+                  <a title={'Clica aquí para ver todas las ofertas de ' + ofertasporsectore.name}>
                     <img
                       src={
                         'https://benfamcanumpics.famnum.now.sh/static/96/' +
@@ -138,19 +128,17 @@ const OfertasPorSectores = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 OfertasPorSectores.getInitialProps = async function() {
   const res = await fetch(
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/categoria_del_beneficio'
-  )
-  const ofertasporsectores = await res.json()
+  );
+  const ofertasporsectores = await res.json();
 
-  console.log(
-    `Ofertes Por Sectors data fetched. Count: ${ofertasporsectores.length}`
-  )
+  console.log(`Ofertes Por Sectors data fetched. Count: ${ofertasporsectores.length}`);
 
-  return { ofertasporsectores }
-}
+  return { ofertasporsectores };
+};
 
-export default OfertasPorSectores
+export default OfertasPorSectores;

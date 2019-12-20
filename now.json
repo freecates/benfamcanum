@@ -4,6 +4,7 @@
   "routes": [
     { "src": "/ca-ES/p/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/ca-ES/post?id=$id" },
     { "src": "/ca-ES/pr/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/ca-ES/prestacion?id=$id" },
+    { "src": "/ca-ES/pro/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/ca-ES/promocio?id=$id" },
     { "src": "/ca-ES/oo/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/ca-ES/oferta-on-line?id=$id" },
     {
       "src": "/ca-ES/c-o-o/(?<id>[^/]+)/(?<slug>[^/]+)$",
@@ -47,6 +48,7 @@
     },
     { "src": "/p/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/post?id=$id" },
     { "src": "/pr/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/prestacion?id=$id" },
+    { "src": "/pro/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/promocion?id=$id" },
     { "src": "/oo/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/oferta-on-line?id=$id" },
     { "src": "/c-o-o/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/category-ofertas-on-line?id=$id" },
     {

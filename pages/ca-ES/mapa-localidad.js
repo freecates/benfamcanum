@@ -1,13 +1,13 @@
-import fetch from 'isomorphic-unfetch'
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
-import Link from 'next/link'
-import { IntlProvider } from 'react-intl'
-import Layout from '../../components/MyLayout.js'
+import fetch from 'isomorphic-unfetch';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../../components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => <p>carregant ...</p>
-})
+});
 
 const markerStyle = {
   backgroundColor: '#ffffff',
@@ -18,29 +18,26 @@ const markerStyle = {
   right: 25,
   bottom: 25,
   borderRadius: '50%'
-}
+};
 
-const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>
+const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 
-const ZOOM = 12
+const ZOOM = 12;
 
 const MapByLocalidad = props => (
   <Layout ruta={props.ruta}>
     <Head>
-      <title>
-        Beneficis Famílies Nombroses -{' '}
-        {props.markers[0].localidad_del_beneficio.name}
-      </title>
+      <title>Beneficis Famílies Nombroses - {props.markers[0].localidad_del_beneficio.name}</title>
     </Head>
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/beneficis">
+          <Link href="/ca-ES/beneficis">
             <a>Ofertes per a famílies</a>
           </Link>
         </li>
@@ -55,19 +52,11 @@ const MapByLocalidad = props => (
       <p className="align-center">
         <small>
           <Link
-            prefetch
-            as={`/ca-ES/l/${props.markers[0].localidad_del_beneficio.term_id}/${
-              props.markers[0].localidad_del_beneficio.slug
-            }`}
-            href={`/ca-ES/localidad?localidad=${
-              props.markers[0].localidad_del_beneficio.term_id
-            }`}
+            as={`/ca-ES/l/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`}
+            href={`/ca-ES/localidad?localidad=${props.markers[0].localidad_del_beneficio.term_id}`}
           >
             <a
-              title={
-                'Veure tots els beneficis de ' +
-                props.markers[0].localidad_del_beneficio.name
-              }
+              title={'Veure tots els beneficis de ' + props.markers[0].localidad_del_beneficio.name}
             >
               veure llistat
             </a>
@@ -81,12 +70,10 @@ const MapByLocalidad = props => (
               key: 'AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90'
             }}
             center={[
-              props.markers[0].lat.includes(',') ||
-              props.markers[0].lat.includes('!')
+              props.markers[0].lat.includes(',') || props.markers[0].lat.includes('!')
                 ? 41.3948976
                 : Number(props.markers[0].lat),
-              props.markers[0].lon.includes(',') ||
-              props.markers[0].lon.includes('!')
+              props.markers[0].lon.includes(',') || props.markers[0].lon.includes('!')
                 ? 2.0787282
                 : Number(props.markers[0].lon)
             ]}
@@ -96,23 +83,18 @@ const MapByLocalidad = props => (
               <MarkerComponent
                 key={index}
                 lat={
-                  nationalmarker.lat.includes(',') ||
-                  nationalmarker.lat.includes('!')
+                  nationalmarker.lat.includes(',') || nationalmarker.lat.includes('!')
                     ? nationalmarker.lat.replace(',', '.')
                     : nationalmarker.lat
                 }
                 lng={
-                  nationalmarker.lon.includes(',') ||
-                  nationalmarker.lon.includes('!')
+                  nationalmarker.lon.includes(',') || nationalmarker.lon.includes('!')
                     ? nationalmarker.lon.replace(',', '.')
                     : nationalmarker.lon
                 }
                 text={
                   <Link
-                    prefetch
-                    as={`/ca-ES/ogm/${nationalmarker.ID}/${
-                      nationalmarker.slug
-                    }`}
+                    as={`/ca-ES/ogm/${nationalmarker.ID}/${nationalmarker.slug}`}
                     href={`/ca-ES/oferta-gran-marca?id=${nationalmarker.ID}`}
                   >
                     <a title={nationalmarker.name}>
@@ -133,19 +115,10 @@ const MapByLocalidad = props => (
             {props.markers.map((marker, index) => (
               <MarkerComponent
                 key={index}
-                lat={
-                  marker.lat.includes(',') || marker.lat.includes('!')
-                    ? ''
-                    : marker.lat
-                }
-                lng={
-                  marker.lon.includes(',') || marker.lon.includes('!')
-                    ? ''
-                    : marker.lon
-                }
+                lat={marker.lat.includes(',') || marker.lat.includes('!') ? '' : marker.lat}
+                lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
                 text={
                   <Link
-                    prefetch
                     as={`/ca-ES/p/${marker.ID}/${marker.slug}`}
                     href={`/ca-ES/post?id=${marker.ID}`}
                   >
@@ -252,24 +225,22 @@ const MapByLocalidad = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 MapByLocalidad.getInitialProps = async function(context) {
-  const { localidad } = context.query
+  const { localidad } = context.query;
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&localidad=${localidad}`
-  )
-  const markers = await res.json()
+  );
+  const markers = await res.json();
   const res2 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&localidad=${localidad}`
-  )
-  const nationalmarkers = await res2.json()
+  );
+  const nationalmarkers = await res2.json();
 
-  console.log(
-    `Markers data fetched. Count: ${markers.length}, ${nationalmarkers.length}`
-  )
+  console.log(`Markers data fetched. Count: ${markers.length}, ${nationalmarkers.length}`);
 
-  return { markers, nationalmarkers }
-}
+  return { markers, nationalmarkers };
+};
 
-export default MapByLocalidad
+export default MapByLocalidad;

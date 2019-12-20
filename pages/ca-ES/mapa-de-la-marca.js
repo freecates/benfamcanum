@@ -1,9 +1,9 @@
-import fetch from 'isomorphic-unfetch'
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
-import Link from 'next/link'
-import { IntlProvider } from 'react-intl'
-import Layout from '../../components/MyLayout.js'
+import fetch from 'isomorphic-unfetch';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../../components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => (
@@ -13,7 +13,7 @@ const GoogleMapReact = dynamic(import('google-map-react'), {
       </p>
     </div>
   )
-})
+});
 
 const markerStyle = {
   backgroundColor: '#ffffff',
@@ -24,32 +24,30 @@ const markerStyle = {
   right: 25,
   bottom: 25,
   borderRadius: '50%'
-}
+};
 
-const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>
+const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 
-const CENTER = [41.3948976, 2.0787282]
-const ZOOM = 7
+const CENTER = [41.3948976, 2.0787282];
+const ZOOM = 7;
 
 const MapByMarca = props => (
   <Layout ruta={props.ruta}>
     <Head>
       <title>
-        Ofertes de la Marca{' '}
-        {props.markers.length >= 1 ? props.markers[0].marca.name : ''}
-        {props.camarkers.length >= 1 ? props.camarkers[0].marca.name : ''} per a
-        famílies nombroses
+        Ofertes de la Marca {props.markers.length >= 1 ? props.markers[0].marca.name : ''}
+        {props.camarkers.length >= 1 ? props.camarkers[0].marca.name : ''} per a famílies nombroses
       </title>
     </Head>
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/grans-marques">
+          <Link href="/ca-ES/grans-marques">
             <a>Grans Marques</a>
           </Link>
         </li>
@@ -77,13 +75,8 @@ const MapByMarca = props => (
           <p className="align-center">
             <small>
               <Link
-                prefetch
-                as={`/ca-ES/m-o-g-m/${props.markers[0].marca.term_id}/${
-                  props.markers[0].marca.slug
-                }`}
-                href={`/ca-ES/ofertas-de-la-marca?id=${
-                  props.markers[0].marca.term_id
-                }`}
+                as={`/ca-ES/m-o-g-m/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
+                href={`/ca-ES/ofertas-de-la-marca?id=${props.markers[0].marca.term_id}`}
               >
                 <a>veure llistat</a>
               </Link>
@@ -109,13 +102,8 @@ const MapByMarca = props => (
           <p className="align-center">
             <small>
               <Link
-                prefetch
-                as={`/ca-ES/m-o-g-m/${props.camarkers[0].marca.term_id}/${
-                  props.camarkers[0].marca.slug
-                }`}
-                href={`/ca-ES/ofertas-de-la-marca?id=${
-                  props.camarkers[0].marca.term_id
-                }`}
+                as={`/ca-ES/m-o-g-m/${props.camarkers[0].marca.term_id}/${props.camarkers[0].marca.slug}`}
+                href={`/ca-ES/ofertas-de-la-marca?id=${props.camarkers[0].marca.term_id}`}
               >
                 <a>veure llistat</a>
               </Link>
@@ -150,7 +138,6 @@ const MapByMarca = props => (
                     }
                     text={
                       <Link
-                        prefetch
                         as={`/ca-ES/ogm/${marker.ID}/${marker.slug}`}
                         href={`/ca-ES/oferta-gran-marca?id=${marker.ID}`}
                       >
@@ -187,7 +174,6 @@ const MapByMarca = props => (
                     }
                     text={
                       <Link
-                        prefetch
                         as={`/ca-ES/ogm/${marker.ID}/${marker.slug}`}
                         href={`/ca-ES/oferta-gran-marca?id=${marker.ID}`}
                       >
@@ -295,24 +281,22 @@ const MapByMarca = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 MapByMarca.getInitialProps = async function(context) {
-  const { id } = context.query
+  const { id } = context.query;
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?marca=${id}&sim-model=name-id-slug-lat-lon-marca`
-  )
-  const markers = await res.json()
+  );
+  const markers = await res.json();
   const res2 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?marca=${id}&sim-model=name-id-slug-lat-lon-marca`
-  )
-  const camarkers = await res2.json()
+  );
+  const camarkers = await res2.json();
 
-  console.log(
-    `Markers data fetched. Count: ${markers.length}, ${camarkers.length}`
-  )
+  console.log(`Markers data fetched. Count: ${markers.length}, ${camarkers.length}`);
 
-  return { markers, camarkers }
-}
+  return { markers, camarkers };
+};
 
-export default MapByMarca
+export default MapByMarca;

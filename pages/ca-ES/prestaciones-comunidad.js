@@ -1,26 +1,25 @@
-import fetch from 'isomorphic-unfetch'
-import Head from 'next/head'
-import Link from 'next/link'
-import { IntlProvider } from 'react-intl'
-import Layout from '../../components/MyLayout.js'
+import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../../components/MyLayout.js';
 
 const PrestacionesByComunidad = props => (
   <Layout ruta={props.ruta}>
     <Head>
       <title>
-        Prestacions Famílies Nombroses -{' '}
-        {props.prestaciones[0].comunidad_autonoma.name}
+        Prestacions Famílies Nombroses - {props.prestaciones[0].comunidad_autonoma.name}
       </title>
     </Head>
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/prestacions">
+          <Link href="/ca-ES/prestacions">
             <a>Prestacions</a>
           </Link>
         </li>
@@ -31,9 +30,7 @@ const PrestacionesByComunidad = props => (
       </ul>
     </nav>
     <section>
-      <h1>
-        Prestacions públiques a {props.prestaciones[0].comunidad_autonoma.name}
-      </h1>
+      <h1>Prestacions públiques a {props.prestaciones[0].comunidad_autonoma.name}</h1>
       <IntlProvider defaultLocale="ca">
         <div className="table-scroll">
           <table>
@@ -51,15 +48,15 @@ const PrestacionesByComunidad = props => (
                   a.categoria_de_la_prestacion_publica.slug <
                   b.categoria_de_la_prestacion_publica.slug
                 ) {
-                  return -1
+                  return -1;
                 }
                 if (
                   a.categoria_de_la_prestacion_publica.slug >
                   b.categoria_de_la_prestacion_publica.slug
                 ) {
-                  return 1
+                  return 1;
                 }
-                return 0
+                return 0;
               })
               .map((prestacion, index) => (
                 <tbody key={index}>
@@ -73,14 +70,9 @@ const PrestacionesByComunidad = props => (
                         }
                       />
                     </td>
-                    <td width="200">
-                      {prestacion.categoria_de_la_prestacion_publica.name}
-                    </td>
+                    <td width="200">{prestacion.categoria_de_la_prestacion_publica.name}</td>
                     <td>
-                      <span
-                        dangerouslySetInnerHTML={{ __html: prestacion.name }}
-                      />
-                      .{' '}
+                      <span dangerouslySetInnerHTML={{ __html: prestacion.name }} />.{' '}
                       {prestacion.nombre_de_la_prestacion ? (
                         <span>{prestacion.nombre_de_la_prestacion}</span>
                       ) : (
@@ -89,7 +81,6 @@ const PrestacionesByComunidad = props => (
                     </td>
                     <td width="150">
                       <Link
-                        prefetch
                         as={`/ca-ES/pr/${prestacion.ID}/${prestacion.slug}`}
                         href={`/ca-ES/prestacion?id=${prestacion.ID}`}
                       >
@@ -151,18 +142,18 @@ const PrestacionesByComunidad = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 PrestacionesByComunidad.getInitialProps = async function(context) {
-  const { comunidad } = context.query
+  const { comunidad } = context.query;
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Autonomico&comunidad=${comunidad}`
-  )
-  const prestaciones = await res.json()
+  );
+  const prestaciones = await res.json();
 
-  console.log(`Prestacions data fetched. Count: ${prestaciones.length}`)
+  console.log(`Prestacions data fetched. Count: ${prestaciones.length}`);
 
-  return { prestaciones }
-}
+  return { prestaciones };
+};
 
-export default PrestacionesByComunidad
+export default PrestacionesByComunidad;

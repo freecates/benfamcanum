@@ -1,9 +1,9 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => <p>cargando ...</p>
@@ -35,18 +35,18 @@ const MapByCategoryLocalidad = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link  href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/beneficios">
+          <Link  href="/beneficios">
             <a>Ofertas para familias</a>
           </Link>
         </li>
         <li>
           <Link
-            prefetch
+            
             as={`/m/${props.markers[0].categoria_de_la_prestacion.term_id}/${
               props.markers[0].categoria_de_la_prestacion.slug
             }`}
@@ -77,7 +77,7 @@ const MapByCategoryLocalidad = props => (
       <p className="align-center">
         <small>
           <Link
-            prefetch
+            
             as={`/c-l/${props.markers[0].categoria_de_la_prestacion.term_id}/${
               props.markers[0].categoria_de_la_prestacion.slug
             }/${props.markers[0].localidad_del_beneficio.term_id}/${
@@ -123,7 +123,7 @@ const MapByCategoryLocalidad = props => (
                 lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
                 text={
                   <Link
-                    prefetch
+                    
                     as={`/p/${marker.ID}/${marker.slug}`}
                     href={`/post?id=${marker.ID}`}
                   >

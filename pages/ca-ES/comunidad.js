@@ -29,12 +29,12 @@ const PostByComunidad = props => (
         <nav aria-label="Ets aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link prefetch href="/ca-ES">
+              <Link  href="/ca-ES">
                 <a>Inici</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/ca-ES/beneficis">
+              <Link  href="/ca-ES/beneficis">
                 <a>Ofertes per a famílies</a>
               </Link>
             </li>
@@ -47,7 +47,7 @@ const PostByComunidad = props => (
           <h1>Actualmente no existeixen ofertes per a famílies a aquesta Comunitat</h1>
           <p className="align-center">
             Si us plau, escull{' '}
-            <Link prefetch href="/ca-ES/beneficis">
+            <Link  href="/ca-ES/beneficis">
               <a>una altra</a>
             </Link>
             .
@@ -80,12 +80,12 @@ const PostByComunidad = props => (
         <nav aria-label="Ets aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link prefetch href="/ca-ES">
+              <Link  href="/ca-ES">
                 <a>Inici</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/ca-ES/beneficis">
+              <Link  href="/ca-ES/beneficis">
                 <a>Ofertes per a famílies</a>
               </Link>
             </li>
@@ -176,7 +176,7 @@ const PostByComunidad = props => (
                             render={() => (
                               <p className="fade-in">
                                 <Link
-                                  prefetch
+                                  
                                   as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${
                                     marcasoferta.marca.slug
                                   }`}
@@ -224,7 +224,7 @@ const PostByComunidad = props => (
                       <span key={marcascaoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            prefetch
+                            
                             as={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${
                               marcascaoferta.marca.slug
                             }`}
@@ -271,7 +271,7 @@ const PostByComunidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              prefetch
+                              
                               as={`/ca-ES/p/${post.ID}/${post.slug}`}
                               href={`/ca-ES/post?id=${post.ID}`}
                             >
@@ -300,7 +300,7 @@ const PostByComunidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              prefetch
+                              
                               as={`/ca-ES/p/${post.ID}/${post.slug}`}
                               href={`/ca-ES/post?id=${post.ID}`}
                             >
@@ -330,7 +330,7 @@ const PostByComunidad = props => (
 
                     <p>
                       <Link
-                        prefetch
+                        
                         as={`/ca-ES/p/${post.ID}/${post.slug}`}
                         href={`/ca-ES/post?id=${post.ID}`}
                       >
@@ -343,7 +343,7 @@ const PostByComunidad = props => (
                       {post.categoria_de_la_prestacion ? (
                         <small>
                           <Link
-                            prefetch
+                            
                             as={`/ca-ES/c-l/${post.categoria_de_la_prestacion.term_id}/${
                               post.categoria_de_la_prestacion.slug
                             }/${post.localidad_del_beneficio.term_id}/${

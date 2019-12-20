@@ -17,7 +17,6 @@ const GRandesMarcas = props => (
             {props.grandesmarcas.map((grandesmarca, index) => (
               <li className="item align-center" key={index}>
                 <Link
-                  prefetch
                   as={`/ca-ES/m-o-g-m/${grandesmarca.id}/${grandesmarca.slug}`}
                   href={`/ca-ES/ofertas-de-la-marca?id=${grandesmarca.id}`}
                 >

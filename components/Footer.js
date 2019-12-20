@@ -105,11 +105,11 @@ const Footer = props => (
               </p>
               <p>
                 <small>
-                  <Link prefetch href="/ca-ES/aviso-legal">
+                  <Link  href="/ca-ES/aviso-legal">
                     <a title="Avís legal">Avís Legal</a>
                   </Link>
                   <br />
-                  <Link prefetch href="/ca-ES/politica-de-cookies">
+                  <Link  href="/ca-ES/politica-de-cookies">
                     <a title="Polítiva de Cookies">Política de Cookies</a>
                   </Link>
                 </small>
@@ -204,11 +204,11 @@ const Footer = props => (
               </p>
               <p>
                 <small>
-                  <Link prefetch href="/aviso-legal">
+                  <Link  href="/aviso-legal">
                     <a title="Aviso legal">Aviso Legal</a>
                   </Link>
                   <br />
-                  <Link prefetch href="/politica-de-cookies">
+                  <Link  href="/politica-de-cookies">
                     <a title="Enlace externo">Política de Cookies</a>
                   </Link>
                 </small>

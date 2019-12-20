@@ -1,13 +1,13 @@
-import fetch from 'isomorphic-unfetch'
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
-import Link from 'next/link'
-import { IntlProvider } from 'react-intl'
-import Layout from '../../components/MyLayout.js'
+import fetch from 'isomorphic-unfetch';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../../components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => <p>carregant ...</p>
-})
+});
 
 const markerStyle = {
   'background-color': '#ffffff',
@@ -18,30 +18,29 @@ const markerStyle = {
   right: 25,
   bottom: 25,
   'border-radius': '50%'
-}
+};
 
-const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>
+const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 
-const CENTER = [41.3948976, 2.0787282]
-const ZOOM = 7
+const CENTER = [41.3948976, 2.0787282];
+const ZOOM = 7;
 
 const MapByCategory = props => (
   <Layout ruta={props.ruta}>
     <Head>
       <title>
-        Beneficis Famílies Nombroses -{' '}
-        {props.markers[0].categoria_de_la_prestacion.name}
+        Beneficis Famílies Nombroses - {props.markers[0].categoria_de_la_prestacion.name}
       </title>
     </Head>
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/beneficis">
+          <Link href="/ca-ES/beneficis">
             <a>Ofertes per a famílies</a>
           </Link>
         </li>
@@ -66,13 +65,8 @@ const MapByCategory = props => (
       <p className="align-center">
         <small>
           <Link
-            prefetch
-            as={`/ca-ES/c/${
-              props.markers[0].categoria_de_la_prestacion.term_id
-            }/${props.markers[0].categoria_de_la_prestacion.slug}`}
-            href={`/ca-ES/category?id=${
-              props.markers[0].categoria_de_la_prestacion.term_id
-            }`}
+            as={`/ca-ES/c/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}`}
+            href={`/ca-ES/category?id=${props.markers[0].categoria_de_la_prestacion.term_id}`}
           >
             <a>veure llistat</a>
           </Link>
@@ -90,19 +84,10 @@ const MapByCategory = props => (
             {props.markers.map((marker, index) => (
               <MarkerComponent
                 key={index}
-                lat={
-                  marker.lat.includes(',') || marker.lat.includes('!')
-                    ? ''
-                    : marker.lat
-                }
-                lng={
-                  marker.lon.includes(',') || marker.lon.includes('!')
-                    ? ''
-                    : marker.lon
-                }
+                lat={marker.lat.includes(',') || marker.lat.includes('!') ? '' : marker.lat}
+                lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
                 text={
                   <Link
-                    prefetch
                     as={`/ca-ES/p/${marker.ID}/${marker.slug}`}
                     href={`/ca-ES/post?id=${marker.ID}`}
                   >
@@ -209,18 +194,18 @@ const MapByCategory = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 MapByCategory.getInitialProps = async function(context) {
-  const { id } = context.query
+  const { id } = context.query;
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}`
-  )
-  const markers = await res.json()
+  );
+  const markers = await res.json();
 
-  console.log(`Markers data fetched. Count: ${markers.length}`)
+  console.log(`Markers data fetched. Count: ${markers.length}`);
 
-  return { markers }
-}
+  return { markers };
+};
 
-export default MapByCategory
+export default MapByCategory;

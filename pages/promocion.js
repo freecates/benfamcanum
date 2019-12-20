@@ -42,17 +42,17 @@ const Promocion = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link  href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/beneficios">
+          <Link  href="/beneficios">
             <a>Ofertas comerciales</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/promociones">
+          <Link  href="/promociones">
             <a>Promociones</a>
           </Link>
         </li>
@@ -68,7 +68,7 @@ const Promocion = props => (
         <h1>
           <img
             src={
-              '/static/' +
+              'https://benfamcanumpics.famnum.now.sh/static/32/' +
               props.promocion._embedded['wp:term'][0][0].slug +
               '-familias-numerosas.png'
             }

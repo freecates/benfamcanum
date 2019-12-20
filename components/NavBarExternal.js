@@ -29,7 +29,7 @@ const NavBarExternal = props => (
             </span>
             <span className="first">
               <Link href="/">
-                <a prefetch title="ir a la página de inicio en castellano" className="lang">
+                <a  title="ir a la página de inicio en castellano" className="lang">
                   es
                 </a>
               </Link>
@@ -112,7 +112,7 @@ const NavBarExternal = props => (
               </Link>
             </span>
             <span className="first">
-              <Link prefetch href="/ca-ES">
+              <Link  href="/ca-ES">
                 <a title="anar a la pàgina d'inici en català" className="lang">
                   ca
                 </a>

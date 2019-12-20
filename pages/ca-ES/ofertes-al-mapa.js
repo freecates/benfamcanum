@@ -17,12 +17,12 @@ const Localidades = props => (
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/beneficis">
+          <Link href="/ca-ES/beneficis">
             <a>Ofertes per a famílies nombroses</a>
           </Link>
         </li>
@@ -37,7 +37,7 @@ const Localidades = props => (
           <div className="wrapper wrapper-top">
             <div className="left">
               <p className="align-center no-margin-bottom padding">
-                <Link prefetch as="/ca-ES/m-p" href="/ca-ES/mapa-proximidad">
+                <Link as="/ca-ES/m-p" href="/ca-ES/mapa-proximidad">
                   <a className="button button-blue">Buscar a prop teu</a>
                 </Link>
               </p>
@@ -55,9 +55,7 @@ const Localidades = props => (
                         slug: beneficio.localidad_del_beneficio.slug,
                         key: beneficio.localidad_del_beneficio.term_id,
                         value: beneficio.localidad_del_beneficio
-                          ? `/ca-ES/mapa-localidad?localidad=${
-                              beneficio.localidad_del_beneficio.term_id
-                            }`
+                          ? `/ca-ES/mapa-localidad?localidad=${beneficio.localidad_del_beneficio.term_id}`
                           : '',
                         label: beneficio.localidad_del_beneficio
                           ? `${beneficio.localidad_del_beneficio.name}`

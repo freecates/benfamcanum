@@ -1,13 +1,13 @@
-import fetch from 'isomorphic-unfetch'
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
-import Link from 'next/link'
-import { IntlProvider } from 'react-intl'
-import Layout from '../../components/MyLayout.js'
+import fetch from 'isomorphic-unfetch';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../../components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => <p>carregant ...</p>
-})
+});
 
 const markerStyle = {
   backgroundColor: '#ffffff',
@@ -18,45 +18,45 @@ const markerStyle = {
   right: 25,
   bottom: 25,
   borderRadius: '50%'
-}
+};
 
 let centerLatLng = new Promise(function(resolve, reject) {
   if (typeof window === 'undefined') {
-    console.log('pastanaga')
-    resolve([40.4381311, -3.8196197])
+    console.log('pastanaga');
+    resolve([40.4381311, -3.8196197]);
   } else {
     if (!window.navigator.geolocation) {
-      console.log(`Not: ${window.navigator.geolocation}`)
-      resolve([40.4381311, -3.8196197])
+      console.log(`Not: ${window.navigator.geolocation}`);
+      resolve([40.4381311, -3.8196197]);
     }
 
     var options = {
       enableHighAccuracy: true,
       timeout: 5000,
       maximumAge: 0
-    }
+    };
 
     function success(pos) {
-      var crd = pos.coords
+      var crd = pos.coords;
 
-      console.log('Your current position is:')
-      console.log(`Latitude : ${crd.latitude}`)
-      console.log(`Longitude: ${crd.longitude}`)
-      console.log(`More or less ${crd.accuracy} meters.`)
-      resolve([crd.latitude, crd.longitude])
+      console.log('Your current position is:');
+      console.log(`Latitude : ${crd.latitude}`);
+      console.log(`Longitude: ${crd.longitude}`);
+      console.log(`More or less ${crd.accuracy} meters.`);
+      resolve([crd.latitude, crd.longitude]);
     }
 
     function error(err) {
-      console.warn(`ERROR(${err.code}): ${err.message}`)
-      resolve([40.4381311, -3.8196197])
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+      resolve([40.4381311, -3.8196197]);
     }
 
-    window.navigator.geolocation.getCurrentPosition(success, error, options)
+    window.navigator.geolocation.getCurrentPosition(success, error, options);
   }
-})
+});
 
-const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>
-const ZOOM = 14
+const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
+const ZOOM = 14;
 
 const MapByCategory = props => (
   <Layout ruta={props.ruta}>
@@ -66,12 +66,12 @@ const MapByCategory = props => (
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/beneficis">
+          <Link href="/ca-ES/beneficis">
             <a>Ofertes per a famílies</a>
           </Link>
         </li>
@@ -113,7 +113,6 @@ const MapByCategory = props => (
                     }
                     text={
                       <Link
-                        prefetch
                         as={`/ca-ES/p/${marker.ID}/${marker.slug}`}
                         href={`/ca-ES/post?id=${marker.ID}`}
                       >
@@ -136,9 +135,9 @@ const MapByCategory = props => (
             </div>
             <p className="text-center">
               Si hi ha Beneficis a prop teu,
-              <strong>prova de fer menys zoom al mapa</strong> fins a
-              trobar-los. O torna a provar fent clic{' '}
-              <Link prefetch as="/m-p" href="/mapa-proximidad">
+              <strong>prova de fer menys zoom al mapa</strong> fins a trobar-los. O torna a provar
+              fent clic{' '}
+              <Link as="/m-p" href="/mapa-proximidad">
                 <a className="blue-underline">
                   <strong>aquí</strong>
                 </a>
@@ -148,7 +147,7 @@ const MapByCategory = props => (
         ) : (
           <section>
             <p className="text-center">
-              <Link prefetch as="/m-p" href="/mapa-proximidad">
+              <Link as="/m-p" href="/mapa-proximidad">
                 <a className="button">Localitza't</a>
               </Link>
             </p>
@@ -256,18 +255,18 @@ const MapByCategory = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 MapByCategory.getInitialProps = async function() {
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?sim-model=name-id-slug-lat-lon-categoria`
-  )
-  const markers = await res.json()
-  const CENTER = await centerLatLng
+  );
+  const markers = await res.json();
+  const CENTER = await centerLatLng;
 
-  console.log(`Markers data fetched. Count: ${markers.length}`, `${CENTER}`)
+  console.log(`Markers data fetched. Count: ${markers.length}`, `${CENTER}`);
 
-  return { markers, CENTER }
-}
+  return { markers, CENTER };
+};
 
-export default MapByCategory
+export default MapByCategory;

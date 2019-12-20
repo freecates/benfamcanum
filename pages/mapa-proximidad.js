@@ -1,9 +1,9 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => <p>cargando ...</p>
@@ -66,12 +66,12 @@ const MapByCategory = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/beneficios">
+          <Link href="/beneficios">
             <a>Ofertas para familias</a>
           </Link>
         </li>
@@ -112,11 +112,7 @@ const MapByCategory = props => (
                         : marker.lon
                     }
                     text={
-                      <Link
-                        prefetch
-                        as={`/p/${marker.ID}/${marker.slug}`}
-                        href={`/post?id=${marker.ID}`}
-                      >
+                      <Link as={`/p/${marker.ID}/${marker.slug}`} href={`/post?id=${marker.ID}`}>
                         <a title={marker.name}>
                           <span>
                             <img
@@ -138,7 +134,7 @@ const MapByCategory = props => (
               Si no tienes Beneficios cerca de tí,
               <strong>prueba de hacer menos zoom en el mapa</strong> hasta encontarlos. O vuelve a
               probar haciendo clic{' '}
-              <Link prefetch as="/m-p" href="/mapa-proximidad">
+              <Link as="/m-p" href="/mapa-proximidad">
                 <a className="blue-underline">
                   <strong>aquí</strong>
                 </a>
@@ -148,7 +144,7 @@ const MapByCategory = props => (
         ) : (
           <section>
             <p className="text-center">
-              <Link prefetch as="/m-p" href="/mapa-proximidad">
+              <Link as="/m-p" href="/mapa-proximidad">
                 <a className="button">Localízate</a>
               </Link>
             </p>

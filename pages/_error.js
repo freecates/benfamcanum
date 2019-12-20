@@ -13,7 +13,7 @@ export default class Error extends React.Component {
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link prefetch href="/">
+              <Link href="/">
                 <a>Inicio</a>
               </Link>
             </li>
@@ -37,7 +37,7 @@ export default class Error extends React.Component {
 
         <p>
           Por favor, regrese a la página de{' '}
-          <Link prefetch href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
           .

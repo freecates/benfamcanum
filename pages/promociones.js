@@ -1,8 +1,8 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import Head from 'next/head';
+import Link from 'next/link';
+import { FormattedDate, IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
@@ -15,12 +15,12 @@ const Promociones = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link  href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/beneficios">
+          <Link  href="/beneficios">
             <a>Ofertas para familias</a>
           </Link>
         </li>
@@ -86,7 +86,7 @@ const Promociones = props => (
                       </td>
                       <td width="150">
                         <Link
-                          prefetch
+                          
                           as={`/pro/${promocione.id}/${promocione.slug}`}
                           href={`/promocion?id=${promocione.id}`}
                         >

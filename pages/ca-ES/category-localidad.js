@@ -19,21 +19,18 @@ const PostsByCategoryLocalidad = props => (
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/beneficis">
+          <Link href="/ca-ES/beneficis">
             <a>Ofertes per a famílies</a>
           </Link>
         </li>
         <li>
           <Link
-            prefetch
-            as={`/ca-ES/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${
-              props.posts[0].categoria_de_la_prestacion.slug
-            }`}
+            as={`/ca-ES/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`}
             href={`/ca-ES/category?sid=${props.posts[0].categoria_de_la_prestacion.term_id}`}
           >
             <a>{props.posts[0].categoria_de_la_prestacion.name}</a>
@@ -42,17 +39,8 @@ const PostsByCategoryLocalidad = props => (
         {props.marcacasofertas >= 1 ? (
           <li>
             <Link
-              prefetch
-              as={`/ca-ES/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${
-                props.posts[0].categoria_de_la_prestacion.slug
-              }/${props.posts[0].comunidad_autonoma}/${
-                props.marcasofertas[0].comunidad_autonoma.term_id
-              }`}
-              href={`/ca-ES/category-comunidad?sid=${
-                props.posts[0].categoria_de_la_prestacion.term_id
-              }&comunidad=${props.posts[0].comunidad_autonoma}&caid=${
-                props.marcasofertas[0].comunidad_autonoma.term_id
-              }`}
+              as={`/ca-ES/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].comunidad_autonoma}/${props.marcasofertas[0].comunidad_autonoma.term_id}`}
+              href={`/ca-ES/category-comunidad?sid=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=${props.posts[0].comunidad_autonoma}&caid=${props.marcasofertas[0].comunidad_autonoma.term_id}`}
             >
               <a>{props.posts[0].comunidad_autonoma}</a>
             </Link>
@@ -60,13 +48,8 @@ const PostsByCategoryLocalidad = props => (
         ) : (
           <li>
             <Link
-              prefetch
-              as={`/ca-ES/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${
-                props.posts[0].categoria_de_la_prestacion.slug
-              }/${props.posts[0].comunidad_autonoma}/8143`}
-              href={`/ca-ES/category-comunidad?sid=${
-                props.posts[0].categoria_de_la_prestacion.term_id
-              }&comunidad=${props.posts[0].comunidad_autonoma}&caid=8143`}
+              as={`/ca-ES/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].comunidad_autonoma}/8143`}
+              href={`/ca-ES/category-comunidad?sid=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=${props.posts[0].comunidad_autonoma}&caid=8143`}
             >
               <a>{props.posts[0].comunidad_autonoma}</a>
             </Link>
@@ -116,15 +99,8 @@ const PostsByCategoryLocalidad = props => (
       <p className="align-center">
         <small>
           <Link
-            prefetch
-            as={`/ca-ES/m-c-l/${props.posts[0].categoria_de_la_prestacion.term_id}/${
-              props.posts[0].categoria_de_la_prestacion.slug
-            }/${props.posts[0].localidad_del_beneficio.term_id}/${
-              props.posts[0].localidad_del_beneficio.slug
-            }`}
-            href={`/ca-ES/mapa-category-localidad?id=${
-              props.posts[0].categoria_de_la_prestacion.term_id
-            }&localidad=${props.posts[0].localidad_del_beneficio.term_id}`}
+            as={`/ca-ES/m-c-l/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`}
+            href={`/ca-ES/mapa-category-localidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&localidad=${props.posts[0].localidad_del_beneficio.term_id}`}
           >
             <a>
               <img src="/static/icona-mapa-familias-numerosas.png" /> veure al mapa
@@ -149,10 +125,7 @@ const PostsByCategoryLocalidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              prefetch
-                              as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${
-                                marcasoferta.marca.slug
-                              }`}
+                              as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                               href={`/ca-ES/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                             >
                               <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
@@ -198,13 +171,8 @@ const PostsByCategoryLocalidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              prefetch
-                              as={`/ca-ES/m-o-g-m-ca/${marcacasoferta.marca.term_id}/${
-                                marcacasoferta.marca.slug
-                              }`}
-                              href={`/ca-ES/ofertas-de-la-marca-ca?id=${
-                                marcacasoferta.marca.term_id
-                              }`}
+                              as={`/ca-ES/m-o-g-m-ca/${marcacasoferta.marca.term_id}/${marcacasoferta.marca.slug}`}
+                              href={`/ca-ES/ofertas-de-la-marca-ca?id=${marcacasoferta.marca.term_id}`}
                             >
                               <a title={'Veure totes les ofertes de ' + marcacasoferta.marca.name}>
                                 <img
@@ -244,7 +212,6 @@ const PostsByCategoryLocalidad = props => (
                     render={() => (
                       <p className="fade-in">
                         <Link
-                          prefetch
                           as={`/ca-ES/p/${post.ID}/${post.slug}`}
                           href={`/ca-ES/post?id=${post.ID}`}
                         >
@@ -270,7 +237,6 @@ const PostsByCategoryLocalidad = props => (
                     render={() => (
                       <p className="fade-in">
                         <Link
-                          prefetch
                           as={`/ca-ES/p/${post.ID}/${post.slug}`}
                           href={`/ca-ES/post?id=${post.ID}`}
                         >
@@ -295,11 +261,7 @@ const PostsByCategoryLocalidad = props => (
                 )}
 
                 <p>
-                  <Link
-                    prefetch
-                    as={`/ca-ES/p/${post.ID}/${post.slug}`}
-                    href={`/ca-ES/post?id=${post.ID}`}
-                  >
+                  <Link as={`/ca-ES/p/${post.ID}/${post.slug}`} href={`/ca-ES/post?id=${post.ID}`}>
                     <a
                       title={'Veure la fitxa de ' + post.name}
                       dangerouslySetInnerHTML={{ __html: post.name }}
@@ -595,9 +557,7 @@ PostsByCategoryLocalidad.getInitialProps = async function(context) {
   const banners = await res4.json();
 
   console.log(
-    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${
-      marcacasofertas.length
-    }, ${sid}, ${caid}`
+    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcacasofertas.length}, ${sid}, ${caid}`
   );
   const uniquemarcas = [...new Set(marcasofertas.map(({ marca }) => marca.name))];
   const uniquecamarcas = [...new Set(marcacasofertas.map(({ marca }) => marca.name))];

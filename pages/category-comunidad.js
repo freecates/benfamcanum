@@ -29,17 +29,17 @@ const PostsByCategoryComunidad = props => (
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link prefetch href="/">
+              <Link  href="/">
                 <a>Inicio</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/beneficios">
+              <Link  href="/beneficios">
                 <a>Ofertas para familias</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/ofertas-por-sectores">
+              <Link  href="/ofertas-por-sectores">
                 <a>Ofertas por sectores</a>
               </Link>
             </li>
@@ -54,7 +54,7 @@ const PostsByCategoryComunidad = props => (
           </h1>
           <p className="align-center">
             Por favor, escoge{' '}
-            <Link prefetch href="/ofertas-por-sectores">
+            <Link  href="/ofertas-por-sectores">
               <a>otro sector</a>
             </Link>
             .
@@ -75,7 +75,7 @@ const PostsByCategoryComunidad = props => (
                     <span key={marcasoferta.marca.term_id}>
                       <li className="benefit align-center">
                         <Link
-                          prefetch
+                          
                           as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                           href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                         >
@@ -220,17 +220,17 @@ const PostsByCategoryComunidad = props => (
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link prefetch href="/">
+              <Link  href="/">
                 <a>Inicio</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/beneficios">
+              <Link  href="/beneficios">
                 <a>Ofertas para familias</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/ofertas-por-sectores">
+              <Link  href="/ofertas-por-sectores">
                 <a>Ofertas por sectores</a>
               </Link>
             </li>
@@ -383,7 +383,7 @@ const PostsByCategoryComunidad = props => (
                       <span key={marcasoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            prefetch
+                            
                             as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                             href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                           >
@@ -422,7 +422,7 @@ const PostsByCategoryComunidad = props => (
                       <span key={marcascaoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            prefetch
+                            
                             as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${
                               marcascaoferta.marca.slug
                             }`}
@@ -463,7 +463,7 @@ const PostsByCategoryComunidad = props => (
                     <p className="align-center">
                       Si lo prefiere, también puede ver las{' '}
                       <Link
-                        prefetch
+                        
                         as={`/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${
                           props.ofertasonlines[0].categoria_de_la_oferta.slug
                         }`}
@@ -502,7 +502,7 @@ const PostsByCategoryComunidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              prefetch
+                              
                               as={`/p/${post.ID}/${post.slug}`}
                               href={`/post?id=${post.ID}`}
                             >
@@ -530,7 +530,7 @@ const PostsByCategoryComunidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              prefetch
+                              
                               as={`/p/${post.ID}/${post.slug}`}
                               href={`/post?id=${post.ID}`}
                             >
@@ -558,7 +558,7 @@ const PostsByCategoryComunidad = props => (
                     )}
 
                     <p>
-                      <Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                      <Link  as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
                         <a
                           title={'Ver la ficha de ' + post.name}
                           dangerouslySetInnerHTML={{ __html: post.name }}

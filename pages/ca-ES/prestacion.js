@@ -26,19 +26,19 @@ const Prestacion = props => (
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link  href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/prestacions">
+          <Link  href="/ca-ES/prestacions">
             <a>Prestacions</a>
           </Link>
         </li>
         {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica ==
         'Municipal' ? (
           <li>
-            <Link prefetch href="/ca-ES/municipis-prestacions">
+            <Link  href="/ca-ES/municipis-prestacions">
               <a>Municipis</a>
             </Link>
           </li>
@@ -48,7 +48,7 @@ const Prestacion = props => (
         {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica ==
         'Autonómico' ? (
           <li>
-            <Link prefetch href="/ca-ES/comunitats-prestacions">
+            <Link  href="/ca-ES/comunitats-prestacions">
               <a>Comunitats</a>
             </Link>
           </li>
@@ -58,7 +58,7 @@ const Prestacion = props => (
         {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica ==
         'Estatal' ? (
           <li>
-            <Link prefetch href="/ca-ES/prestacions-estatals">
+            <Link  href="/ca-ES/prestacions-estatals">
               <a>Estatals</a>
             </Link>
           </li>
@@ -69,7 +69,7 @@ const Prestacion = props => (
         'Municipal' ? (
           <li>
             <Link
-              prefetch
+              
               as={`/ca-ES/p-m/${props.prestacion.acf.localidad.term_id}/${
                 props.prestacion.acf.localidad.slug
               }`}
@@ -93,7 +93,7 @@ const Prestacion = props => (
         'Autonómico' ? (
           <li>
             <Link
-              prefetch
+              
               as={`/ca-ES/p-c/${
                 props.prestacion.acf.comunidad_autonoma.term_id
               }/${props.prestacion.acf.comunidad_autonoma.slug}`}
@@ -147,7 +147,7 @@ const Prestacion = props => (
           <p className="location">
             <small>
               <Link
-                prefetch
+                
                 as={`/ca-ES/p-m/${props.prestacion.acf.localidad.term_id}/${
                   props.prestacion.acf.localidad.slug
                 }`}
@@ -179,7 +179,7 @@ const Prestacion = props => (
           <p className="location">
             <small>
               <Link
-                prefetch
+                
                 as={`/ca-ES/p-c/${
                   props.prestacion.acf.comunidad_autonoma.term_id
                 }/${props.prestacion.acf.comunidad_autonoma.slug}`}

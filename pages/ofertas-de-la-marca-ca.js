@@ -1,8 +1,8 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const OfertasGrandesMarcasByMarcaCa = props => (
   <Layout ruta={props.ruta}>
@@ -12,7 +12,7 @@ const OfertasGrandesMarcasByMarcaCa = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
         </li>
@@ -67,10 +67,7 @@ const OfertasGrandesMarcasByMarcaCa = props => (
                 <td>
                   <p className="align-center">
                     <Link
-                      prefetch
-                      as={`/mmca/${props.granmarcacaofertas.term_id}/${
-                        props.granmarcacaofertas.slug
-                      }`}
+                      as={`/mmca/${props.granmarcacaofertas.term_id}/${props.granmarcacaofertas.slug}`}
                       href={`/mapa-de-la-marca-ca?id=${props.granmarcacaofertas.term_id}`}
                     >
                       <a

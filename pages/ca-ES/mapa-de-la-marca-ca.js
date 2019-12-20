@@ -1,9 +1,9 @@
-import fetch from 'isomorphic-unfetch'
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
-import Link from 'next/link'
-import { IntlProvider } from 'react-intl'
-import Layout from '../../components/MyLayout.js'
+import fetch from 'isomorphic-unfetch';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../../components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => (
@@ -13,7 +13,7 @@ const GoogleMapReact = dynamic(import('google-map-react'), {
       </p>
     </div>
   )
-})
+});
 
 const markerStyle = {
   backgroundColor: '#ffffff',
@@ -24,34 +24,30 @@ const markerStyle = {
   right: 25,
   bottom: 25,
   borderRadius: '50%'
-}
+};
 
-const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>
-const ZOOM = 8
+const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
+const ZOOM = 8;
 
 const MapByMarcaCa = props => (
   <Layout ruta={props.ruta}>
     <Head>
-      <title>
-        Ofertes de la Marca {props.markers[0].marca.name} per a famílies
-        nombroses
-      </title>
+      <title>Ofertes de la Marca {props.markers[0].marca.name} per a famílies nombroses</title>
     </Head>
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/grans-marques">
+          <Link href="/ca-ES/grans-marques">
             <a>Grans Marques</a>
           </Link>
         </li>
         <li>
-          <span className="show-for-sr">Actual: </span>{' '}
-          {props.markers[0].marca.name}
+          <span className="show-for-sr">Actual: </span> {props.markers[0].marca.name}
         </li>
       </ul>
     </nav>
@@ -70,13 +66,8 @@ const MapByMarcaCa = props => (
       <p className="align-center">
         <small>
           <Link
-            prefetch
-            as={`/ca-ES/m-o-g-m-ca/${props.markers[0].marca.term_id}/${
-              props.markers[0].marca.slug
-            }`}
-            href={`/ca-ES/ofertas-de-la-marca-ca?id=${
-              props.markers[0].marca.term_id
-            }`}
+            as={`/ca-ES/m-o-g-m-ca/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
+            href={`/ca-ES/ofertas-de-la-marca-ca?id=${props.markers[0].marca.term_id}`}
           >
             <a>veure llistat</a>
           </Link>
@@ -88,10 +79,7 @@ const MapByMarcaCa = props => (
             bootstrapURLKeys={{
               key: 'AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90'
             }}
-            center={[
-              parseFloat(`${props.markers[0].lat}`),
-              parseFloat(`${props.markers[0].lon}`)
-            ]}
+            center={[parseFloat(`${props.markers[0].lat}`), parseFloat(`${props.markers[0].lon}`)]}
             zoom={ZOOM}
           >
             {props.markers.map((marker, index) => (
@@ -109,7 +97,6 @@ const MapByMarcaCa = props => (
                 }
                 text={
                   <Link
-                    prefetch
                     as={`/ca-ES/ogmca/${marker.ID}/${marker.slug}`}
                     href={`/ca-ES/oferta-gran-marca-ca?id=${marker.ID}`}
                   >
@@ -216,18 +203,18 @@ const MapByMarcaCa = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 MapByMarcaCa.getInitialProps = async function(context) {
-  const { id } = context.query
+  const { id } = context.query;
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?marca=${id}&sim-model=name-id-slug-lat-lon-marca`
-  )
-  const markers = await res.json()
+  );
+  const markers = await res.json();
 
-  console.log(`Markers data fetched. Count: ${markers.length}`)
+  console.log(`Markers data fetched. Count: ${markers.length}`);
 
-  return { markers }
-}
+  return { markers };
+};
 
-export default MapByMarcaCa
+export default MapByMarcaCa;

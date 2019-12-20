@@ -105,18 +105,18 @@ const OfertaGranMarca = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link  href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/grandes-marcas">
+          <Link  href="/grandes-marcas">
             <a>Ofertas grandes marcas</a>
           </Link>
         </li>
         <li>
           <Link
-            prefetch
+            
             as={`/mm/${props.ofertagranmarca.marca}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
             href={`/mapa-de-la-marca?id=${props.ofertagranmarca.marca}`}
           >
@@ -269,7 +269,7 @@ const OfertaGranMarca = props => (
 
         <p className="category">
           <Link
-            prefetch
+            
             as={`/c/${props.ofertagranmarca.categoria_del_beneficio}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
             href={`/mapa-de-la-marca?id=${props.ofertagranmarca.marca}`}
           >

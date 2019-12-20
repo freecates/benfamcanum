@@ -1,9 +1,9 @@
-import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import { IntlProvider } from 'react-intl';
+import Layout from '../components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => (
@@ -42,12 +42,12 @@ const MapByMarca = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/grandes-marcas">
+          <Link href="/grandes-marcas">
             <a>Grandes Marcas</a>
           </Link>
         </li>
@@ -75,7 +75,6 @@ const MapByMarca = props => (
           <p className="align-center">
             <small>
               <Link
-                prefetch
                 as={`/m-o-g-m/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
                 href={`/ofertas-de-la-marca?id=${props.markers[0].marca.term_id}`}
               >
@@ -103,7 +102,6 @@ const MapByMarca = props => (
           <p className="align-center">
             <small>
               <Link
-                prefetch
                 as={`/m-o-g-m/${props.camarkers[0].marca.term_id}/${props.camarkers[0].marca.slug}`}
                 href={`/ofertas-de-la-marca?id=${props.camarkers[0].marca.term_id}`}
               >
@@ -140,7 +138,6 @@ const MapByMarca = props => (
                     }
                     text={
                       <Link
-                        prefetch
                         as={`/ogm/${marker.ID}/${marker.slug}`}
                         href={`/oferta-gran-marca?id=${marker.ID}`}
                       >
@@ -177,7 +174,6 @@ const MapByMarca = props => (
                     }
                     text={
                       <Link
-                        prefetch
                         as={`/ogm/${marker.ID}/${marker.slug}`}
                         href={`/oferta-gran-marca?id=${marker.ID}`}
                       >

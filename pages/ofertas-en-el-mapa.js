@@ -17,12 +17,12 @@ const Localidades = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link  href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/beneficios">
+          <Link  href="/beneficios">
             <a>Ofertas para familias numerosas</a>
           </Link>
         </li>
@@ -37,7 +37,7 @@ const Localidades = props => (
           <div className="wrapper wrapper-top">
             <div className="left">
               <p className="align-center no-margin-bottom padding">
-                <Link prefetch as="/m-p" href="/mapa-proximidad">
+                <Link  as="/m-p" href="/mapa-proximidad">
                   <a className="button button-blue">Buscar cerca de tí</a>
                 </Link>
               </p>

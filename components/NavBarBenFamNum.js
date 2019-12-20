@@ -47,21 +47,21 @@ export default class NavBarBenFamNum extends React.Component {
             {ruta.includes('/ca-ES') && (
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <Link prefetch href="/ca-ES/beneficis">
+                  <Link  href="/ca-ES/beneficis">
                     <a title="Ofertes comercials per a famílies nombroses">
                       <strong>Ofertes i descomptes</strong>
                     </a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link prefetch href="/ca-ES/prestacions">
+                  <Link  href="/ca-ES/prestacions">
                     <a title="Prestacions per a famílies nombroses">
                       <strong>Ajudes públiques</strong>
                     </a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link prefetch href="/ca-ES/buscador">
+                  <Link  href="/ca-ES/buscador">
                     <a title="Buscador">
                       <FontAwesome
                         name="search"
@@ -74,7 +74,7 @@ export default class NavBarBenFamNum extends React.Component {
                 <MediaQuery maxDeviceWidth={768}>
                   <NavItem>
                     <p>
-                      <Link prefetch href="/">
+                      <Link  href="/">
                         <a title="Ir a la página de inicio en castellano" className="lang">
                           <small>ES</small>
                         </a>
@@ -88,21 +88,21 @@ export default class NavBarBenFamNum extends React.Component {
             {ruta.indexOf('/ca-ES') == -1 && (
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <Link prefetch href="/beneficios">
+                  <Link  href="/beneficios">
                     <a title="Ofertas comerciales para familias numerosas">
                       <strong>Ofertas y descuentos</strong>
                     </a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link prefetch href="/prestaciones">
+                  <Link  href="/prestaciones">
                     <a title="Prestaciones para familias numerosas">
                       <strong>Ayudas públicas</strong>
                     </a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link prefetch href="/buscador">
+                  <Link  href="/buscador">
                     <a title="Buscador">
                       <FontAwesome
                         name="search"
@@ -115,7 +115,7 @@ export default class NavBarBenFamNum extends React.Component {
                 <MediaQuery maxDeviceWidth={768}>
                   <NavItem>
                     <p>
-                      <Link prefetch href="/ca-ES">
+                      <Link  href="/ca-ES">
                         <a title="Anar a la pàgina d'inici en català" className="lang">
                           <small>CA</small>
                         </a>

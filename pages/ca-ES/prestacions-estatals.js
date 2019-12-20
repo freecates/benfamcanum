@@ -13,12 +13,12 @@ const PrestacionesEstatales = props => (
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ca-ES/prestacions">
+          <Link href="/ca-ES/prestacions">
             <a>Prestacions</a>
           </Link>
         </li>
@@ -79,7 +79,6 @@ const PrestacionesEstatales = props => (
                     </td>
                     <td width="150">
                       <Link
-                        prefetch
                         as={`/ca-ES/pr/${prestacion.ID}/${prestacion.slug}`}
                         href={`/ca-ES/prestacion?id=${prestacion.ID}`}
                       >
