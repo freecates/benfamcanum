@@ -105,18 +105,17 @@ const OfertaGranMarca = props => (
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link  href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link  href="/ca-ES/grans-marques">
+          <Link href="/ca-ES/grans-marques">
             <a>Ofertes grans marques</a>
           </Link>
         </li>
         <li>
           <Link
-            
             as={`/ca-ES/mmca/${props.ofertagranmarca.marca}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
             href={`/ca-ES/mapa-de-la-marca-ca?id=${props.ofertagranmarca.marca}`}
           >
@@ -198,7 +197,6 @@ const OfertaGranMarca = props => (
                 >
                   <FontAwesome
                     name="envelope"
-                    size="1x"
                     style={{
                       textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)',
                       color: '#666666'
@@ -215,7 +213,6 @@ const OfertaGranMarca = props => (
                 <a href={props.ofertagranmarca.acf.twitter_del_establecimiento}>
                   <FontAwesome
                     name="twitter-square"
-                    size="1x"
                     style={{
                       textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)',
                       color: '#666666'
@@ -233,7 +230,6 @@ const OfertaGranMarca = props => (
                   <a href={props.ofertagranmarca.acf.facebook_del_establecimiento}>
                     <FontAwesome
                       name="facebook-square"
-                      size="1x"
                       style={{
                         textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)',
                         color: '#666666'
@@ -252,7 +248,6 @@ const OfertaGranMarca = props => (
                   >
                     <FontAwesome
                       name="facebook-square"
-                      size="1x"
                       style={{
                         textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)',
                         color: '#666666'
@@ -271,7 +266,6 @@ const OfertaGranMarca = props => (
                   <a>
                     <FontAwesome
                       name="external-link-square"
-                      size="1x"
                       style={{
                         textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)',
                         color: '#666666'
@@ -288,7 +282,6 @@ const OfertaGranMarca = props => (
 
         <p className="category">
           <Link
-            
             as={`/ca-ES/mmca/${props.ofertagranmarca.categoria_del_beneficio}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
             href={`/ca-ES/mapa-de-la-marca-ca?id=${props.ofertagranmarca.marca}`}
           >

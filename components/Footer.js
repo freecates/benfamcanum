@@ -105,11 +105,11 @@ const Footer = props => (
               </p>
               <p>
                 <small>
-                  <Link  href="/ca-ES/aviso-legal">
+                  <Link href="/ca-ES/aviso-legal">
                     <a title="Avís legal">Avís Legal</a>
                   </Link>
                   <br />
-                  <Link  href="/ca-ES/politica-de-cookies">
+                  <Link href="/ca-ES/politica-de-cookies">
                     <a title="Polítiva de Cookies">Política de Cookies</a>
                   </Link>
                 </small>
@@ -117,9 +117,9 @@ const Footer = props => (
             </div>
             <div className="four">
               <p>
-                <Link href="https://fanoc.org/hazte-amigo/">
-                  <a className="button">Subscriu-te a la nostra newsletter!</a>
-                </Link>
+                <a className="button" href="https://fanoc.org/hazte-amigo/">
+                  Subscriu-te a la nostra newsletter!
+                </a>
               </p>
             </div>
           </React.Fragment>
@@ -204,11 +204,11 @@ const Footer = props => (
               </p>
               <p>
                 <small>
-                  <Link  href="/aviso-legal">
+                  <Link href="/aviso-legal">
                     <a title="Aviso legal">Aviso Legal</a>
                   </Link>
                   <br />
-                  <Link  href="/politica-de-cookies">
+                  <Link href="/politica-de-cookies">
                     <a title="Enlace externo">Política de Cookies</a>
                   </Link>
                 </small>
@@ -216,9 +216,9 @@ const Footer = props => (
             </div>
             <div className="four">
               <p>
-                <Link href="https://fanoc.org/hazte-amigo/">
-                  <a className="button">¡Suscríbete a nuestra newsletter!</a>
-                </Link>
+                <a className="button" href="https://fanoc.org/hazte-amigo/">
+                  ¡Suscríbete a nuestra newsletter!
+                </a>
               </p>
             </div>
           </React.Fragment>

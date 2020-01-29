@@ -23,45 +23,45 @@ export default class NavBarBenFamNum extends React.Component {
     const ruta = this.props.ruta;
     return (
       <div>
-        <Navbar style={{ padding: '0 1rem 1rem 1rem' }} inverse expand="lg" ruta={ruta}>
+        <Navbar style={{ padding: '0 1rem 1rem 1rem' }} dark expand="lg" ruta={ruta}>
           <NavbarToggler title="Commutador" className="ml-2" onClick={this.toggle} />
           {ruta.includes('/ca-ES') && (
-            <Link href="https://fanoc.org/">
-              <a>
-                <NavbarBrand title="Anar al Web Corporatiu FANOC" className="ml-auto">
-                  <img src="/static/logo-families-nombroses.png" alt="Web Corporatiu FANOC" />
-                </NavbarBrand>
-              </a>
-            </Link>
+            <NavbarBrand
+              title="Anar al Web Corporatiu FANOC"
+              className="ml-auto"
+              href="https://fanoc.org/"
+            >
+              <img src="/static/logo-families-nombroses.png" alt="Web Corporatiu FANOC" />
+            </NavbarBrand>
           )}
           {ruta.indexOf('/ca-ES') == -1 && (
-            <Link href="https://fanoc.org/">
-              <a>
-                <NavbarBrand title="Ir a la Web Corporativa FANOC" className="ml-auto">
-                  <img src="/static/logo-families-nombroses.png" alt="Web Corporativa FANOC" />
-                </NavbarBrand>
-              </a>
-            </Link>
+            <NavbarBrand
+              title="Ir a la Web Corporativa FANOC"
+              className="ml-auto"
+              href="https://fanoc.org/"
+            >
+              <img src="/static/logo-families-nombroses.png" alt="Web Corporativa FANOC" />
+            </NavbarBrand>
           )}
           <Collapse isOpen={this.state.isOpen} navbar>
             {ruta.includes('/ca-ES') && (
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <Link  href="/ca-ES/beneficis">
+                  <Link href="/ca-ES/beneficis">
                     <a title="Ofertes comercials per a famílies nombroses">
                       <strong>Ofertes i descomptes</strong>
                     </a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link  href="/ca-ES/prestacions">
+                  <Link href="/ca-ES/prestacions">
                     <a title="Prestacions per a famílies nombroses">
                       <strong>Ajudes públiques</strong>
                     </a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link  href="/ca-ES/buscador">
+                  <Link href="/ca-ES/buscador">
                     <a title="Buscador">
                       <FontAwesome
                         name="search"
@@ -74,7 +74,7 @@ export default class NavBarBenFamNum extends React.Component {
                 <MediaQuery maxDeviceWidth={768}>
                   <NavItem>
                     <p>
-                      <Link  href="/">
+                      <Link href="/">
                         <a title="Ir a la página de inicio en castellano" className="lang">
                           <small>ES</small>
                         </a>
@@ -88,21 +88,21 @@ export default class NavBarBenFamNum extends React.Component {
             {ruta.indexOf('/ca-ES') == -1 && (
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <Link  href="/beneficios">
+                  <Link href="/beneficios">
                     <a title="Ofertas comerciales para familias numerosas">
                       <strong>Ofertas y descuentos</strong>
                     </a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link  href="/prestaciones">
+                  <Link href="/prestaciones">
                     <a title="Prestaciones para familias numerosas">
                       <strong>Ayudas públicas</strong>
                     </a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link  href="/buscador">
+                  <Link href="/buscador">
                     <a title="Buscador">
                       <FontAwesome
                         name="search"
@@ -115,7 +115,7 @@ export default class NavBarBenFamNum extends React.Component {
                 <MediaQuery maxDeviceWidth={768}>
                   <NavItem>
                     <p>
-                      <Link  href="/ca-ES">
+                      <Link href="/ca-ES">
                         <a title="Anar a la pàgina d'inici en català" className="lang">
                           <small>CA</small>
                         </a>

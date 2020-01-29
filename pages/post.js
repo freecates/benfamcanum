@@ -233,7 +233,6 @@ const Post = props => (
                 <a href={'mailto:' + props.post.acf.correo_electronico_del_establecimiento}>
                   <FontAwesome
                     name="envelope"
-                    size="1x"
                     style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                   />
                 </a>{' '}
@@ -247,7 +246,6 @@ const Post = props => (
                 <a href={'https://twitter.com/' + props.post.acf.twitter_del_establecimiento}>
                   <FontAwesome
                     name="twitter-square"
-                    size="1x"
                     style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                   />
                 </a>
@@ -261,7 +259,6 @@ const Post = props => (
                 <a href={props.post.acf.facebook_del_establecimiento}>
                   <FontAwesome
                     name="facebook-square"
-                    size="1x"
                     style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                   />
                 </a>
@@ -272,15 +269,12 @@ const Post = props => (
             {props.post.acf.sitio_web_del_establecimiento ? (
               <span>
                 |{' '}
-                <Link href={props.post.acf.sitio_web_del_establecimiento}>
-                  <a title="Visita la web">
-                    <FontAwesome
-                      name="globe"
-                      size="1x"
-                      style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
-                    />
-                  </a>
-                </Link>
+                <a title="Visita la web" href={props.post.acf.sitio_web_del_establecimiento}>
+                  <FontAwesome
+                    name="globe"
+                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
+                  />
+                </a>
               </span>
             ) : (
               ''

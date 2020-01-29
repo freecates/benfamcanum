@@ -142,18 +142,17 @@ const Post = props => (
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link  href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link  href="/ca-ES/beneficis">
+          <Link href="/ca-ES/beneficis">
             <a>Ofertes per a famílies</a>
           </Link>
         </li>
         <li>
           <Link
-            
             as={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`}
             href={`/ca-ES/category-comunidad?sid=${props.post.categoria_del_beneficio}&comunidad=${props.post.acf.comunidad_autonoma}&caid=8143`}
           >
@@ -198,7 +197,6 @@ const Post = props => (
             <span dangerouslySetInnerHTML={{ __html: props.post.acf.direccion }} />.{' '}
             <span>{props.post.acf.codigo_postal}</span>,{' '}
             <Link
-              
               as={`/ca-ES/l/${props.post.acf.localidad_del_beneficio.term_id}/${props.post.acf.localidad_del_beneficio.slug}`}
               href={`/ca-ES/localidad?localidad=${props.post.acf.localidad_del_beneficio.term_id}`}
             >
@@ -235,7 +233,7 @@ const Post = props => (
                 <a href={'mailto:' + props.post.acf.correo_electronico_del_establecimiento}>
                   <FontAwesome
                     name="envelope"
-                    size="1x"
+                    
                     style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                   />
                 </a>{' '}
@@ -249,7 +247,7 @@ const Post = props => (
                 <a href={'https://twitter.com/' + props.post.acf.twitter_del_establecimiento}>
                   <FontAwesome
                     name="twitter-square"
-                    size="1x"
+                    
                     style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                   />
                 </a>
@@ -263,7 +261,7 @@ const Post = props => (
                 <a href={props.post.acf.facebook_del_establecimiento}>
                   <FontAwesome
                     name="facebook-square"
-                    size="1x"
+                    
                     style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                   />
                 </a>
@@ -274,15 +272,13 @@ const Post = props => (
             {props.post.acf.sitio_web_del_establecimiento ? (
               <span>
                 |{' '}
-                <Link href={props.post.acf.sitio_web_del_establecimiento}>
-                  <a title="Visita la web">
-                    <FontAwesome
-                      name="globe"
-                      size="1x"
-                      style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
-                    />
-                  </a>
-                </Link>
+                <a title="Visita la web" href={props.post.acf.sitio_web_del_establecimiento}>
+                  <FontAwesome
+                    name="globe"
+                    
+                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
+                  />
+                </a>
               </span>
             ) : (
               ''
@@ -293,7 +289,6 @@ const Post = props => (
         <p className="category">
           <strong>Categoria</strong>:{' '}
           <Link
-            
             as={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`}
             href={`/ca-ES/category-comunidad?sid=${props.post.categoria_del_beneficio}&comunidad=${props.post.acf.comunidad_autonoma}&caid=8143`}
           >

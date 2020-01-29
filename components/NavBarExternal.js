@@ -21,15 +21,13 @@ const NavBarExternal = props => (
         {props.ruta.includes('/ca-ES') && (
           <p>
             <span className="first">
-              <Link href="https://fanoc.org/zona-soci/">
-                <a target="_blank" className="button">
-                  Zona socis
-                </a>
-              </Link>
+              <a target="_blank" className="button" href="https://fanoc.org/zona-soci/">
+                Zona socis
+              </a>
             </span>
             <span className="first">
               <Link href="/">
-                <a  title="ir a la página de inicio en castellano" className="lang">
+                <a title="ir a la página de inicio en castellano" className="lang">
                   es
                 </a>
               </Link>
@@ -94,25 +92,21 @@ const NavBarExternal = props => (
               </span>
             </span>{' '}
             <span className="third">
-              <Link href="https://fanoc.org/contacte/">
-                <a target="_blank" title="Contacte">
-                  Contacta
-                </a>
-              </Link>
+              <a target="_blank" title="Contacte" href="https://fanoc.org/contacte/">
+                Contacta
+              </a>
             </span>
           </p>
         )}
         {props.ruta.indexOf('/ca-ES') == -1 && (
           <p>
             <span className="first">
-              <Link href="https://fanoc.org/es/zona-socio/">
-                <a target="_blank" className="button">
-                  Zona socios
-                </a>
-              </Link>
+              <a target="_blank" className="button" href="https://fanoc.org/es/zona-socio/">
+                Zona socios
+              </a>
             </span>
             <span className="first">
-              <Link  href="/ca-ES">
+              <Link href="/ca-ES">
                 <a title="anar a la pàgina d'inici en català" className="lang">
                   ca
                 </a>
@@ -178,11 +172,9 @@ const NavBarExternal = props => (
               </span>
             </span>{' '}
             <span className="third">
-              <Link href="https://fanoc.org/es/contacto/">
-                <a target="_blank" title="Contacto">
-                  Contacta
-                </a>
-              </Link>
+              <a target="_blank" title="Contacto" href="https://fanoc.org/es/contacto/">
+                Contacta
+              </a>
             </span>
           </p>
         )}

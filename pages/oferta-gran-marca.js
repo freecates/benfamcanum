@@ -194,7 +194,7 @@ const OfertaGranMarca = props => (
                 >
                   <FontAwesome
                     name="envelope"
-                    size="1x"
+                    
                     style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                   />
                 </a>{' '}
@@ -208,7 +208,7 @@ const OfertaGranMarca = props => (
                 <a href={props.ofertagranmarca.acf.twitter_del_establecimiento}>
                   <FontAwesome
                     name="twitter-square"
-                    size="1x"
+                    
                     style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                   />
                 </a>
@@ -223,7 +223,7 @@ const OfertaGranMarca = props => (
                   <a href={props.ofertagranmarca.acf.facebook_del_establecimiento}>
                     <FontAwesome
                       name="facebook-square"
-                      size="1x"
+                      
                       style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                     />
                   </a>
@@ -239,7 +239,7 @@ const OfertaGranMarca = props => (
                   >
                     <FontAwesome
                       name="facebook-square"
-                      size="1x"
+                      
                       style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                     />
                   </a>
@@ -255,7 +255,7 @@ const OfertaGranMarca = props => (
                   <a>
                     <FontAwesome
                       name="external-link-square"
-                      size="1x"
+                      
                       style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                     />
                   </a>

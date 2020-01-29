@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import LayoutHome from '../components/LayoutHome.js';
 
 export default props => (
@@ -19,11 +18,15 @@ export default props => (
         />
       </h1>
       <p>
-        <Link href="https://www.familias-numerosas.org">
-          <a className="hollow button" target="_blank" title="Enlace externo" rel="noopener">
-            Quiero participar de estas ventajas
-          </a>
-        </Link>
+        <a
+          className="hollow button"
+          target="_blank"
+          title="Enlace externo"
+          rel="noopener"
+          href="https://www.familias-numerosas.org"
+        >
+          Quiero participar de estas ventajas
+        </a>
       </p>
       <style jsx>{`
         .call-to-action {

@@ -17,7 +17,11 @@ export default function SelectCity(props) {
   };
 
   const renderedElements = elements.map(element => {
-    return <option value={element.value}>{element.label}</option>;
+    return (
+      <option value={element.value} key={element.value}>
+        {element.label}
+      </option>
+    );
   });
 
   return (
