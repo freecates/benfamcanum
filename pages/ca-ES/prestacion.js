@@ -1,7 +1,7 @@
-import fetch from 'isomorphic-unfetch'
-import Head from 'next/head'
-import Link from 'next/link'
-import Layout from '../../components/MyLayout.js'
+import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import Link from 'next/link';
+import Layout from '../../components/MyLayout.js';
 
 const Prestacion = props => (
   <Layout ruta={props.ruta}>
@@ -9,73 +9,58 @@ const Prestacion = props => (
       {props.prestacion.acf.nombre_de_la_prestacion ? (
         <title
           dangerouslySetInnerHTML={{
-            __html:
-              props.prestacion.acf.nombre_de_la_prestacion +
-              ' - Famílies Nombroses'
+            __html: props.prestacion.acf.nombre_de_la_prestacion + ' - Famílies Nombroses'
           }}
         />
       ) : (
         ''
       )}
-      {props.prestacion.acf.telefono ? (
-        <link rel="stylesheet" href="/static/custom.css" />
-      ) : (
-        ''
-      )}
+      {props.prestacion.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : ''}
     </Head>
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link  href="/ca-ES">
+          <Link href="/ca-ES">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link  href="/ca-ES/prestacions">
+          <Link href="/ca-ES/prestacions">
             <a>Prestacions</a>
           </Link>
         </li>
-        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica ==
-        'Municipal' ? (
+        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica == 'Municipal' ? (
           <li>
-            <Link  href="/ca-ES/municipis-prestacions">
+            <Link href="/ca-ES/municipis-prestacions">
               <a>Municipis</a>
             </Link>
           </li>
         ) : (
           ''
         )}
-        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica ==
-        'Autonómico' ? (
+        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica == 'Autonómico' ? (
           <li>
-            <Link  href="/ca-ES/comunitats-prestacions">
+            <Link href="/ca-ES/comunitats-prestacions">
               <a>Comunitats</a>
             </Link>
           </li>
         ) : (
           ''
         )}
-        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica ==
-        'Estatal' ? (
+        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica == 'Estatal' ? (
           <li>
-            <Link  href="/ca-ES/prestacions-estatals">
+            <Link href="/ca-ES/prestacions-estatals">
               <a>Estatals</a>
             </Link>
           </li>
         ) : (
           ''
         )}
-        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica ==
-        'Municipal' ? (
+        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica == 'Municipal' ? (
           <li>
             <Link
-              
-              as={`/ca-ES/p-m/${props.prestacion.acf.localidad.term_id}/${
-                props.prestacion.acf.localidad.slug
-              }`}
-              href={`/ca-ES/prestaciones-municipio?localidad=${
-                props.prestacion.acf.localidad.term_id
-              }`}
+              as={`/ca-ES/p-m/${props.prestacion.acf.localidad.term_id}/${props.prestacion.acf.localidad.slug}`}
+              href={`/ca-ES/prestaciones-municipio?localidad=${props.prestacion.acf.localidad.term_id}`}
             >
               <a>
                 <span
@@ -89,17 +74,11 @@ const Prestacion = props => (
         ) : (
           ''
         )}
-        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica ==
-        'Autonómico' ? (
+        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica == 'Autonómico' ? (
           <li>
             <Link
-              
-              as={`/ca-ES/p-c/${
-                props.prestacion.acf.comunidad_autonoma.term_id
-              }/${props.prestacion.acf.comunidad_autonoma.slug}`}
-              href={`/ca-ES/prestaciones-comunidad?comunidad=${
-                props.prestacion.acf.comunidad_autonoma.term_id
-              }`}
+              as={`/ca-ES/p-c/${props.prestacion.acf.comunidad_autonoma.term_id}/${props.prestacion.acf.comunidad_autonoma.slug}`}
+              href={`/ca-ES/prestaciones-comunidad?comunidad=${props.prestacion.acf.comunidad_autonoma.term_id}`}
             >
               <a>
                 <span
@@ -142,25 +121,14 @@ const Prestacion = props => (
           />
         </h1>
 
-        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica ==
-        'Municipal' ? (
+        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica == 'Municipal' ? (
           <p className="location">
             <small>
               <Link
-                
-                as={`/ca-ES/p-m/${props.prestacion.acf.localidad.term_id}/${
-                  props.prestacion.acf.localidad.slug
-                }`}
-                href={`/ca-ES/prestaciones-municipio?localidad=${
-                  props.prestacion.acf.localidad.term_id
-                }`}
+                as={`/ca-ES/p-m/${props.prestacion.acf.localidad.term_id}/${props.prestacion.acf.localidad.slug}`}
+                href={`/ca-ES/prestaciones-municipio?localidad=${props.prestacion.acf.localidad.term_id}`}
               >
-                <a
-                  title={
-                    'Ver todas las prestaciones de ' +
-                    props.prestacion.acf.localidad.name
-                  }
-                >
+                <a title={'Ver todas las prestaciones de ' + props.prestacion.acf.localidad.name}>
                   <span
                     dangerouslySetInnerHTML={{
                       __html: props.prestacion.acf.localidad.name
@@ -174,23 +142,16 @@ const Prestacion = props => (
           ''
         )}
 
-        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica ==
-        'Autonómico' ? (
+        {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica == 'Autonómico' ? (
           <p className="location">
             <small>
               <Link
-                
-                as={`/ca-ES/p-c/${
-                  props.prestacion.acf.comunidad_autonoma.term_id
-                }/${props.prestacion.acf.comunidad_autonoma.slug}`}
-                href={`/ca-ES/prestaciones-comunidad?comunidad=${
-                  props.prestacion.acf.comunidad_autonoma.term_id
-                }`}
+                as={`/ca-ES/p-c/${props.prestacion.acf.comunidad_autonoma.term_id}/${props.prestacion.acf.comunidad_autonoma.slug}`}
+                href={`/ca-ES/prestaciones-comunidad?comunidad=${props.prestacion.acf.comunidad_autonoma.term_id}`}
               >
                 <a
                   title={
-                    'Ver todas las prestaciones de ' +
-                    props.prestacion.acf.comunidad_autonoma.name
+                    'Ver todas las prestaciones de ' + props.prestacion.acf.comunidad_autonoma.name
                   }
                 >
                   <span
@@ -321,18 +282,18 @@ const Prestacion = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
 Prestacion.getInitialProps = async function(context) {
-  const { id } = context.query
+  const { id } = context.query;
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/prestaciones/${id}?_embed`
-  )
-  const prestacion = await res.json()
+  );
+  const prestacion = await res.json();
 
-  console.log(`Fetched prestacion: ${prestacion.title.rendered}`)
+  console.log(`Fetched prestacion: ${prestacion.title.rendered}`);
 
-  return { prestacion }
-}
+  return { prestacion };
+};
 
-export default Prestacion
+export default Prestacion;

@@ -29,17 +29,17 @@ const PostsByCategoryComunidad = props => (
         <nav aria-label="Ets aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link  href="/ca-ES">
+              <Link href="/ca-ES">
                 <a>Inici</a>
               </Link>
             </li>
             <li>
-              <Link  href="/ca-ES/beneficis">
+              <Link href="/ca-ES/beneficis">
                 <a>Ofertes per a famílies</a>
               </Link>
             </li>
             <li>
-              <Link  href="/ca-ES/ofertes-per-sectors">
+              <Link href="/ca-ES/ofertes-per-sectors">
                 <a>Ofertes per sectors</a>
               </Link>
             </li>
@@ -54,7 +54,7 @@ const PostsByCategoryComunidad = props => (
           </h1>
           <p className="align-center">
             Si us plau, escull{' '}
-            <Link  href="/ca-ES/ofertes-per-sectors">
+            <Link href="/ca-ES/ofertes-per-sectors">
               <a>un altre sector</a>
             </Link>
             .
@@ -75,10 +75,7 @@ const PostsByCategoryComunidad = props => (
                     <span key={marcasoferta.marca.term_id}>
                       <li className="benefit align-center">
                         <Link
-                          
-                          as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${
-                            marcasoferta.marca.slug
-                          }`}
+                          as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                           href={`/ca-ES/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                         >
                           <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
@@ -222,17 +219,17 @@ const PostsByCategoryComunidad = props => (
         <nav aria-label="Ets aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link  href="/ca-ES">
+              <Link href="/ca-ES">
                 <a>Inici</a>
               </Link>
             </li>
             <li>
-              <Link  href="/ca-ES/beneficis">
+              <Link href="/ca-ES/beneficis">
                 <a>Ofertes per a famílies</a>
               </Link>
             </li>
             <li>
-              <Link  href="/ca-ES/ofertes-per-sectors">
+              <Link href="/ca-ES/ofertes-per-sectors">
                 <a>Ofertes per sectors</a>
               </Link>
             </li>
@@ -302,9 +299,7 @@ const PostsByCategoryComunidad = props => (
                       slug: post.localidad_del_beneficio.slug,
                       key: post.localidad_del_beneficio.term_id,
                       value: post.categoria_de_la_prestacion
-                        ? `/ca-ES/category-localidad?sid=${
-                            post.categoria_de_la_prestacion.term_id
-                          }&localidad=${post.localidad_del_beneficio.term_id}`
+                        ? `/ca-ES/category-localidad?sid=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}`
                         : '',
                       label: post.categoria_de_la_prestacion
                         ? `${post.localidad_del_beneficio.name}`
@@ -383,10 +378,7 @@ const PostsByCategoryComunidad = props => (
                       <span key={marcasoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            
-                            as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${
-                              marcasoferta.marca.slug
-                            }`}
+                            as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                             href={`/ca-ES/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                           >
                             <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
@@ -424,13 +416,8 @@ const PostsByCategoryComunidad = props => (
                       <span key={marcascaoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            
-                            as={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${
-                              marcascaoferta.marca.slug
-                            }`}
-                            href={`/ca-ES/ofertas-de-la-marca-ca?id=${
-                              marcascaoferta.marca.term_id
-                            }&caid=${marcascaoferta.comunidad_autonoma.term_id}`}
+                            as={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
+                            href={`/ca-ES/ofertas-de-la-marca-ca?id=${marcascaoferta.marca.term_id}&caid=${marcascaoferta.comunidad_autonoma.term_id}`}
                           >
                             <a title={'Veure totes les ofertes de ' + marcascaoferta.marca.name}>
                               <img
@@ -465,13 +452,8 @@ const PostsByCategoryComunidad = props => (
                     <p className="align-center">
                       Si s'ho estima més, també por veure les{' '}
                       <Link
-                        
-                        as={`/ca-ES/c-o-o/${
-                          props.ofertasonlines[0].categoria_de_la_oferta.term_id
-                        }/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
-                        href={`/ca-ES/category-ofertas-on-line?id=${
-                          props.ofertasonlines[0].categoria_de_la_oferta.term_id
-                        }`}
+                        as={`/ca-ES/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
+                        href={`/ca-ES/category-ofertas-on-line?id=${props.ofertasonlines[0].categoria_de_la_oferta.term_id}`}
                       >
                         <a
                           className="label alert file-label"
@@ -504,7 +486,6 @@ const PostsByCategoryComunidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              
                               as={`/ca-ES/p/${post.ID}/${post.slug}`}
                               href={`/ca-ES/post?id=${post.ID}`}
                             >
@@ -532,7 +513,6 @@ const PostsByCategoryComunidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              
                               as={`/ca-ES/p/${post.ID}/${post.slug}`}
                               href={`/ca-ES/post?id=${post.ID}`}
                             >
@@ -561,7 +541,6 @@ const PostsByCategoryComunidad = props => (
 
                     <p>
                       <Link
-                        
                         as={`/ca-ES/p/${post.ID}/${post.slug}`}
                         href={`/ca-ES/post?id=${post.ID}`}
                       >
@@ -899,9 +878,7 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   const ofertasonlines = await res5.json();
 
   console.log(
-    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${
-      marcascaofertas.length
-    }, ${banners.length}, ${caid}, ${sid}, ${comunidad}, ${ofertasonlines.length}`
+    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcascaofertas.length}, ${banners.length}, ${caid}, ${sid}, ${comunidad}, ${ofertasonlines.length}`
   );
   const uniquemarcas = [...new Set(marcasofertas.map(({ marca }) => marca.name))];
   const uniquecamarcas = [...new Set(marcascaofertas.map(({ marca }) => marca.name))];
