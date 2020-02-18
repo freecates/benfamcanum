@@ -30,7 +30,10 @@ const Promocion = props => (
         ''
       )}
 
-      <meta property="og:url" content={`/oo/${props.promocion.id}/${props.promocion.slug}`} />
+      <meta
+        property="og:url"
+        content={`https://beneficios.fanoc.org/pro/${props.promocion.id}/${props.promocion.slug}`}
+      />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={props.promocion.acf.nombre_de_la_empresa} />
       {props.promocion.acf.descripcion_de_la_promocion ? (
@@ -42,17 +45,17 @@ const Promocion = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link  href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link  href="/beneficios">
+          <Link href="/beneficios">
             <a>Ofertas comerciales</a>
           </Link>
         </li>
         <li>
-          <Link  href="/promociones">
+          <Link href="/promociones">
             <a>Promociones</a>
           </Link>
         </li>
