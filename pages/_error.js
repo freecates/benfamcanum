@@ -45,9 +45,7 @@ export default class Error extends React.Component {
 
         <p>
           Si el error persiste, póngase en contacto con{' '}
-          <Link href="mailto:info@fanoc.org">
-            <a>info@fanoc.org</a>
-          </Link>
+            <a href="mailto:info@fanoc.org">info@fanoc.org</a>
         </p>
 
         <style jsx>{`

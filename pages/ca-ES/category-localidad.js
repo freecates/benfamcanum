@@ -72,18 +72,14 @@ const PostsByCategoryLocalidad = props => (
             banner.acf.sector_del_banner.term_id == props.sid ? (
               <React.Fragment>
                 <p className="align-center promo dk">
-                  <Link href={banner.acf.url_de_destino_del_banner}>
-                    <a target="_blank">
+                    <a href={banner.acf.url_de_destino_del_banner} target="_blank">
                       <img src={banner.acf.banner_grande_728x90.sizes.large} />
                     </a>
-                  </Link>
                 </p>
                 <p className="align-center promo mb">
-                  <Link href={banner.acf.url_de_destino_del_banner}>
-                    <a target="_blank">
+                    <a href={banner.acf.url_de_destino_del_banner} target="_blank">
                       <img src={banner.acf.baner_movil_320x100.sizes.large} />
                     </a>
-                  </Link>
                 </p>
               </React.Fragment>
             ) : (
@@ -547,11 +543,15 @@ PostsByCategoryLocalidad.getInitialProps = async function(context) {
   const res2 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&localidad=${localidad}&sim-model=id-marca`
   );
-  const marcasofertas = await res2.json();
+  const almostuniquemarcas = await res2.json();
+  const marcasofertas = almostuniquemarcas.filter((x) => x.marca != null);
+
   const res3 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_of_gr_m_ca=${sid}&localidad=${localidad}&sim-model=id-marca`
   );
-  const marcacasofertas = await res3.json();
+  
+  const almostuniquecamarcas = await res3.json();
+  const marcacasofertas = almostuniquecamarcas.filter((x) => x.marca != null);
 
   const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales`);
   const banners = await res4.json();
@@ -559,8 +559,8 @@ PostsByCategoryLocalidad.getInitialProps = async function(context) {
   console.log(
     `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcacasofertas.length}, ${sid}, ${caid}`
   );
-  const uniquemarcas = [...new Set(marcasofertas.map(({ marca }) => marca.name))];
-  const uniquecamarcas = [...new Set(marcacasofertas.map(({ marca }) => marca.name))];
+  const uniquemarcas = [...new Set(marcasofertas.map(({ marca }) => marca != null ? marca.name : ''))];
+  const uniquecamarcas = [...new Set(marcacasofertas.map(({ marca }) => marca != null ? marca.name : ''))];
 
   return {
     posts,
