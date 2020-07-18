@@ -840,7 +840,7 @@ const PostsByCategoryComunidad = props => (
   </section>
 );
 
-export async function getServerSideProps(context) {
+PostsByCategoryComunidad.getInitialProps = async function(context) {
   const { sid } = context.query;
   const { comunidad } = context.query;
   const comunidadEncoded = encodeURI(comunidad);
@@ -874,16 +874,13 @@ export async function getServerSideProps(context) {
     `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcascaofertas.length}, ${banners.length}, ${caid}, ${sid}, ${comunidad}, ${ofertasonlines.length}`
   );
   
-  const uniquemarcas = [...new Set(marcasofertas.map(({ marca  }) => marca != null ? marca.name : '' ))];
-  const uniquecamarcas = [...new Set(marcascaofertas.map(({ marca }) => marca && marca.name))];
+  const uniquemarcasnotfiltered = [...new Set(marcasofertas.map(({ marca  }) => marca != null ? marca.name : '' ))];
+  const uniquecamarcasnotfiltered = [...new Set(marcascaofertas.map(({ marca }) => marca && marca.name))];
 
-
-
-
-  console.log(uniquemarcas);
+  const uniquemarcas = uniquemarcasnotfiltered.filter(Boolean);
+  const uniquecamarcas = uniquecamarcasnotfiltered.filter(Boolean);
 
   return {
-    props: {
       posts,
       marcasofertas,
       marcascaofertas,
@@ -893,7 +890,6 @@ export async function getServerSideProps(context) {
       caid,
       sid,
       ofertasonlines
-    } // will be passed to the page component as props
   };
 }
 
