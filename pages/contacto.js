@@ -26,9 +26,7 @@ const Contacto = () => (
       <br />
       08008 Barcelona
       <br />
-      <Link href="mailto:info@fanoc.org">
-        <a>info@fanoc.org</a>
-      </Link>
+        <a href="mailto:info@fanoc.org">info@fanoc.org</a>
     </p>
     <MapaDeGoogle lat="41.3914434" lng="2.1578962" ruta={props.ruta} />
 

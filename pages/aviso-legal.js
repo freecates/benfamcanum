@@ -68,9 +68,7 @@ export default props => (
       El usuario registrado en los servicios de la sede web de FANOC puede en todo momento ejercitar
       los derechos de acceso, rectificación y cancelación en los términos previstos en la LOPD y
       demás normas que la desarrollan. Puede hacerlo por correo electrónico{' '}
-      <Link href="mailto:info@fanoc.org">
-        <a>info@fanoc.org</a>
-      </Link>{' '}
+        <a href="mailto:info@fanoc.org">info@fanoc.org</a>
       solicitando el acceso, cancelación o rectificación de sus datos.
     </p>
 

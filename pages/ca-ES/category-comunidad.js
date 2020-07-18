@@ -863,11 +863,15 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   const res2 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&comunidad=${caid}&sim-model=id-marca`
   );
-  const marcasofertas = await res2.json();
+  const almostuniquemarcas = await res2.json();
+  const marcasofertas = almostuniquemarcas.filter((x) => x.marca != null);
+
   const res3 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_of_gr_m_ca=${sid}&comunidad=${caid}&sim-model=id-marca-comunidad`
   );
-  const marcascaofertas = await res3.json();
+  
+  const almostuniquecamarcas = await res3.json();
+  const marcascaofertas = almostuniquecamarcas.filter((x) => x.marca != null);
 
   const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales`);
   const banners = await res4.json();
@@ -880,8 +884,9 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   console.log(
     `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcascaofertas.length}, ${banners.length}, ${caid}, ${sid}, ${comunidad}, ${ofertasonlines.length}`
   );
-  const uniquemarcas = [...new Set(marcasofertas.map(({ marca }) => marca.name))];
-  const uniquecamarcas = [...new Set(marcascaofertas.map(({ marca }) => marca.name))];
+  
+  const uniquemarcas = [...new Set(marcasofertas.map(({ marca  }) => marca != null ? marca.name : '' ))];
+  const uniquecamarcas = [...new Set(marcascaofertas.map(({ marca }) => marca && marca.name))];
 
   return {
     posts,
