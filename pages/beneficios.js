@@ -78,9 +78,7 @@ const Localidades = props => (
                 </span>
               </h4>
             </div>
-          ) : (
-            ''
-          )}
+          ) : null}
         </div>
       </section>
     </div>
@@ -189,13 +187,14 @@ const Localidades = props => (
   </Layout>
 );
 
-Localidades.getInitialProps = async function() {
+export async function getStaticProps() {
   const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`);
   const promociones = await res2.json();
 
   console.log(`Ofertas data fetched. Count: ${promociones.length}`);
-
-  return { promociones };
-};
+  return {
+    props: { promociones }
+  };
+}
 
 export default Localidades;

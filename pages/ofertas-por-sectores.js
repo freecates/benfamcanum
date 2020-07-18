@@ -33,8 +33,7 @@ const OfertasPorSectores = props => (
             {props.ofertasporsectores.map((ofertasporsectore, index) => (
               <li className="item align-center" key={index}>
                 <Link
-                  as={`/c-ca/${ofertasporsectore.term_id}/${ofertasporsectore.slug}/Catalu/8143`}
-                  href={`/category-comunidad?sid=${ofertasporsectore.term_id}&comunidad=Catalu&caid=8143`}
+                  href={{ pathname: '/category-comunidad', query: { sid: ofertasporsectore.term_id, comunidad: 'Catalu', caid: '8143' } }}
                 >
                   <a title={'Clica aquí para ver todas las ofertas de ' + ofertasporsectore.name}>
                     <img
@@ -126,15 +125,16 @@ const OfertasPorSectores = props => (
   </Layout>
 );
 
-OfertasPorSectores.getInitialProps = async function() {
+export async function getStaticProps() {
   const res = await fetch(
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/categoria_del_beneficio'
   );
   const ofertasporsectores = await res.json();
 
   console.log(`Ofertas Por Sectores data fetched. Count: ${ofertasporsectores.length}`);
-
-  return { ofertasporsectores };
-};
+  return {
+    props: { ofertasporsectores }
+  };
+}
 
 export default OfertasPorSectores;
