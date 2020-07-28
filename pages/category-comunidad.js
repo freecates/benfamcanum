@@ -249,14 +249,24 @@ const PostsByCategoryComunidad = props => (
                 banner.comunidad == props.caid ? (
                   <React.Fragment>
                     <p className="align-center promo dk">
-                        <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                          <img src={banner.acf.banner_grande_728x90.sizes.large} />
-                        </a>
+                      <a href={banner.acf.url_de_destino_del_banner} target="_blank">
+                        <img
+                          src={banner.acf.banner_grande_728x90.sizes.large}
+                          width={728}
+                          height={90}
+                          loading={'lazy'}
+                        />
+                      </a>
                     </p>
                     <p className="align-center promo mb">
-                        <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                          <img src={banner.acf.baner_movil_320x100.sizes.large} />
-                        </a>
+                      <a href={banner.acf.url_de_destino_del_banner} target="_blank">
+                        <img
+                          src={banner.acf.baner_movil_320x100.sizes.large}
+                          width={320}
+                          height={100}
+                          loading={'lazy'}
+                        />
+                      </a>
                     </p>
                   </React.Fragment>
                 ) : (
@@ -853,14 +863,14 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&comunidad=${caid}&sim-model=id-marca`
   );
   const almostuniquemarcas = await res2.json();
-  const marcasofertas = almostuniquemarcas.filter((x) => x.marca != null);
+  const marcasofertas = almostuniquemarcas.filter(x => x.marca != null);
 
   const res3 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_of_gr_m_ca=${sid}&comunidad=${caid}&sim-model=id-marca-comunidad`
   );
-  
+
   const almostuniquecamarcas = await res3.json();
-  const marcascaofertas = almostuniquecamarcas.filter((x) => x.marca != null);
+  const marcascaofertas = almostuniquecamarcas.filter(x => x.marca != null);
 
   const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales`);
   const banners = await res4.json();
@@ -873,24 +883,28 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   console.log(
     `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcascaofertas.length}, ${banners.length}, ${caid}, ${sid}, ${comunidad}, ${ofertasonlines.length}`
   );
-  
-  const uniquemarcasnotfiltered = [...new Set(marcasofertas.map(({ marca  }) => marca != null ? marca.name : '' ))];
-  const uniquecamarcasnotfiltered = [...new Set(marcascaofertas.map(({ marca }) => marca && marca.name))];
+
+  const uniquemarcasnotfiltered = [
+    ...new Set(marcasofertas.map(({ marca }) => (marca != null ? marca.name : '')))
+  ];
+  const uniquecamarcasnotfiltered = [
+    ...new Set(marcascaofertas.map(({ marca }) => marca && marca.name))
+  ];
 
   const uniquemarcas = uniquemarcasnotfiltered.filter(Boolean);
   const uniquecamarcas = uniquecamarcasnotfiltered.filter(Boolean);
 
   return {
-      posts,
-      marcasofertas,
-      marcascaofertas,
-      uniquemarcas,
-      uniquecamarcas,
-      banners,
-      caid,
-      sid,
-      ofertasonlines
+    posts,
+    marcasofertas,
+    marcascaofertas,
+    uniquemarcas,
+    uniquecamarcas,
+    banners,
+    caid,
+    sid,
+    ofertasonlines
   };
-}
+};
 
 export default PostsByCategoryComunidad;
