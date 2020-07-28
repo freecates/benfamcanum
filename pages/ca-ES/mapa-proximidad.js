@@ -112,22 +112,17 @@ const MapByCategory = props => (
                         : marker.lon
                     }
                     text={
-                      <Link
-                        as={`/ca-ES/p/${marker.ID}/${marker.slug}`}
-                        href={`/ca-ES/post?id=${marker.ID}`}
-                      >
-                        <a title={marker.name}>
-                          <span>
-                            <img
-                              src={
-                                'https://benfamcanumpics.famnum.now.sh/static/32/' +
-                                marker.categoria_de_la_prestacion.slug +
-                                '-familias-numerosas.png'
-                              }
-                            />
-                          </span>
-                        </a>
-                      </Link>
+                      <a href={`/ca-ES/post?id=${marker.ID}`} title={marker.name}>
+                        <span>
+                          <img
+                            src={
+                              'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                              marker.categoria_de_la_prestacion.slug +
+                              '-familias-numerosas.png'
+                            }
+                          />
+                        </span>
+                      </a>
                     }
                   />
                 ))}

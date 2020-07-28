@@ -137,22 +137,17 @@ const MapByMarca = props => (
                         : marker.lon
                     }
                     text={
-                      <Link
-                        as={`/ogm/${marker.ID}/${marker.slug}`}
-                        href={`/oferta-gran-marca?id=${marker.ID}`}
-                      >
-                        <a title={marker.name}>
-                          <span>
-                            <img
-                              src={
-                                'https://benfamcanumpics.famnum.now.sh/static/32/' +
-                                props.markers[0].marca.slug +
-                                '-familias-numerosas.png'
-                              }
-                            />
-                          </span>
-                        </a>
-                      </Link>
+                      <a href={`/oferta-gran-marca?id=${marker.ID}`} title={marker.name}>
+                        <span>
+                          <img
+                            src={
+                              'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                              props.markers[0].marca.slug +
+                              '-familias-numerosas.png'
+                            }
+                          />
+                        </span>
+                      </a>
                     }
                   />
                 ))
@@ -173,22 +168,17 @@ const MapByMarca = props => (
                         : marker.lon
                     }
                     text={
-                      <Link
-                        as={`/ogm/${marker.ID}/${marker.slug}`}
-                        href={`/oferta-gran-marca?id=${marker.ID}`}
-                      >
-                        <a title={marker.name}>
-                          <span>
-                            <img
-                              src={
-                                'https://benfamcanumpics.famnum.now.sh/static/32/' +
-                                props.camarkers[0].marca.slug +
-                                '-familias-numerosas.png'
-                              }
-                            />
-                          </span>
-                        </a>
-                      </Link>
+                      <a href={`/oferta-gran-marca?id=${marker.ID}`} title={marker.name}>
+                        <span>
+                          <img
+                            src={
+                              'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                              props.camarkers[0].marca.slug +
+                              '-familias-numerosas.png'
+                            }
+                          />
+                        </span>
+                      </a>
                     }
                   />
                 ))

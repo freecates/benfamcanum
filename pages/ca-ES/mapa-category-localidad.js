@@ -112,22 +112,17 @@ const MapByCategoryLocalidad = props => (
                 lat={marker.lat.includes(',') || marker.lat.includes('!') ? '' : marker.lat}
                 lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
                 text={
-                  <Link
-                    as={`/ca-ES/p/${marker.ID}/${marker.slug}`}
-                    href={`/ca-ES/post?id=${marker.ID}`}
-                  >
-                    <a title={marker.name}>
-                      <span>
-                        <img
-                          src={
-                            'https://benfamcanumpics.famnum.now.sh/static/32/' +
-                            props.markers[0].categoria_de_la_prestacion.slug +
-                            '-familias-numerosas.png'
-                          }
-                        />
-                      </span>
-                    </a>
-                  </Link>
+                  <a href={`/ca-ES/post?id=${marker.ID}`} title={marker.name}>
+                    <span>
+                      <img
+                        src={
+                          'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                          props.markers[0].categoria_de_la_prestacion.slug +
+                          '-familias-numerosas.png'
+                        }
+                      />
+                    </span>
+                  </a>
                 }
               />
             ))}

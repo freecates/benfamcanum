@@ -35,21 +35,18 @@ const MapByCategoryLocalidad = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link  href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link  href="/beneficios">
+          <Link href="/beneficios">
             <a>Ofertas para familias</a>
           </Link>
         </li>
         <li>
           <Link
-            
-            as={`/m/${props.markers[0].categoria_de_la_prestacion.term_id}/${
-              props.markers[0].categoria_de_la_prestacion.slug
-            }`}
+            as={`/m/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}`}
             href={`/mapa?id=${props.markers[0].categoria_de_la_prestacion.term_id}`}
           >
             <a>{props.markers[0].categoria_de_la_prestacion.name}</a>
@@ -77,15 +74,8 @@ const MapByCategoryLocalidad = props => (
       <p className="align-center">
         <small>
           <Link
-            
-            as={`/c-l/${props.markers[0].categoria_de_la_prestacion.term_id}/${
-              props.markers[0].categoria_de_la_prestacion.slug
-            }/${props.markers[0].localidad_del_beneficio.term_id}/${
-              props.markers[0].localidad_del_beneficio.slug
-            }`}
-            href={`/category-localidad?id=${
-              props.markers[0].categoria_de_la_prestacion.term_id
-            }&localidad=${props.markers[0].localidad_del_beneficio.term_id}`}
+            as={`/c-l/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`}
+            href={`/category-localidad?id=${props.markers[0].categoria_de_la_prestacion.term_id}&localidad=${props.markers[0].localidad_del_beneficio.term_id}`}
           >
             <a
               title={
@@ -122,23 +112,17 @@ const MapByCategoryLocalidad = props => (
                 lat={marker.lat.includes(',') || marker.lat.includes('!') ? '' : marker.lat}
                 lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
                 text={
-                  <Link
-                    
-                    as={`/p/${marker.ID}/${marker.slug}`}
-                    href={`/post?id=${marker.ID}`}
-                  >
-                    <a title={marker.name}>
-                      <span>
-                        <img
-                          src={
-                            'https://benfamcanumpics.famnum.now.sh/static/32/' +
-                            props.markers[0].categoria_de_la_prestacion.slug +
-                            '-familias-numerosas.png'
-                          }
-                        />
-                      </span>
-                    </a>
-                  </Link>
+                  <a href={`/post?id=${marker.ID}`} title={marker.name}>
+                    <span>
+                      <img
+                        src={
+                          'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                          props.markers[0].categoria_de_la_prestacion.slug +
+                          '-familias-numerosas.png'
+                        }
+                      />
+                    </span>
+                  </a>
                 }
               />
             ))}

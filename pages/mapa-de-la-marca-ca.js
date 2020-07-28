@@ -96,22 +96,17 @@ const MapByMarcaCa = props => (
                     : marker.lon
                 }
                 text={
-                  <Link
-                    as={`/ogmca/${marker.ID}/${marker.slug}`}
-                    href={`/oferta-gran-marca-ca?id=${marker.ID}`}
-                  >
-                    <a title={marker.name}>
-                      <span>
-                        <img
-                          src={
-                            'https://benfamcanumpics.famnum.now.sh/static/32/' +
-                            props.markers[0].marca.slug +
-                            '-familias-numerosas.png'
-                          }
-                        />
-                      </span>
-                    </a>
-                  </Link>
+                  <a href={`/oferta-gran-marca-ca?id=${marker.ID}`} title={marker.name}>
+                    <span>
+                      <img
+                        src={
+                          'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                          props.markers[0].marca.slug +
+                          '-familias-numerosas.png'
+                        }
+                      />
+                    </span>
+                  </a>
                 }
               />
             ))}

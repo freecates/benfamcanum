@@ -12,7 +12,7 @@ const IsSearch = dynamic(import('../../components/IsSearch'), {
   )
 });
 
-export default props => (
+const Cercador = props => (
   <Layout ruta={props.ruta}>
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
@@ -29,3 +29,5 @@ export default props => (
     <IsSearch ruta={props.ruta} />
   </Layout>
 );
+
+export default Cercador;
