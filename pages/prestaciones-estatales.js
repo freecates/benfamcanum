@@ -173,8 +173,7 @@ const PrestacionesEstatales = props => (
   </Layout>
 );
 
-PrestacionesEstatales.getInitialProps = async function(context) {
-  const { comunidad } = context.query;
+export async function getStaticProps() {
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Estatal`
   );
@@ -182,7 +181,7 @@ PrestacionesEstatales.getInitialProps = async function(context) {
 
   console.log(`Prestaciones data fetched. Count: ${prestaciones.length}`);
 
-  return { prestaciones };
+  return { props: {prestaciones} };
 };
 
 export default PrestacionesEstatales;

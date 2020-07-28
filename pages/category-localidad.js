@@ -550,8 +550,14 @@ PostsByCategoryLocalidad.getInitialProps = async function(context) {
   console.log(
     `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcacasofertas.length}, ${sid}, ${caid}`
   );
-  const uniquemarcas = [...new Set(marcasofertas.map(({ marca }) => marca != null ? marca.name : ''))];
-  const uniquecamarcas = [...new Set(marcacasofertas.map(({ marca }) => marca != null ? marca.name : ''))];
+
+
+  
+  const uniquemarcasnotfiltered = [...new Set(marcasofertas.map(({ marca  }) => marca != null ? marca.name : '' ))];
+  const uniquecamarcasnotfiltered = [...new Set(marcacasofertas.map(({ marca }) => marca && marca.name))];
+
+  const uniquemarcas = uniquemarcasnotfiltered.filter(Boolean);
+  const uniquecamarcas = uniquecamarcasnotfiltered.filter(Boolean);
 
   return { posts, marcasofertas, marcacasofertas, uniquemarcas, uniquecamarcas, banners, sid };
 };
