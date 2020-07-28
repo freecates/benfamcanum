@@ -868,8 +868,7 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
 
   const res3 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_of_gr_m_ca=${sid}&comunidad=${caid}&sim-model=id-marca-comunidad`
-  );
-  
+  );  
   const almostuniquecamarcas = await res3.json();
   const marcascaofertas = almostuniquecamarcas.filter((x) => x.marca != null);
 

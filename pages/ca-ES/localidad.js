@@ -48,18 +48,14 @@ const PostsByLocalidad = props => (
             banner.acf.comunidad_autonoma.name == props.posts[0].comunidad_autonoma ? (
               <React.Fragment>
                 <p className="align-center promo dk">
-                  <Link href={banner.acf.url_de_destino_del_banner}>
-                    <a target="_blank">
-                      <img src={banner.acf.banner_grande_728x90.sizes.large} />
-                    </a>
-                  </Link>
+                  <a href={banner.acf.url_de_destino_del_banner} target="_blank">
+                    <img src={banner.acf.banner_grande_728x90.sizes.large} />
+                  </a>
                 </p>
                 <p className="align-center promo mb">
-                  <Link href={banner.acf.url_de_destino_del_banner}>
-                    <a target="_blank">
-                      <img src={banner.acf.baner_movil.sizes.large} />
-                    </a>
-                  </Link>
+                  <a href={banner.acf.url_de_destino_del_banner} target="_blank">
+                    <img src={banner.acf.baner_movil.sizes.large} />
+                  </a>
                 </p>
               </React.Fragment>
             ) : (
@@ -392,7 +388,8 @@ PostsByLocalidad.getInitialProps = async function(context) {
   const res2 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&localidad=${localidad}`
   );
-  const marcasofertas = await res2.json();
+  const almostuniquemarcas = await res2.json();
+  const marcasofertas = almostuniquemarcas.filter(x => x.marca != null);
 
   const res3 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners`);
   const banners = await res3.json();
@@ -400,7 +397,8 @@ PostsByLocalidad.getInitialProps = async function(context) {
   const res4 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&localidad=${localidad}`
   );
-  const marcascaofertas = await res4.json();
+  const almostuniquecamarcas = await res4.json();
+  const marcascaofertas = almostuniquecamarcas.filter(x => x.marca != null);
 
   console.log(
     `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${banners.length}, ${marcascaofertas.length}`

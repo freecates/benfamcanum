@@ -29,12 +29,12 @@ const PostByComunidad = props => (
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link  href="/">
+              <Link href="/">
                 <a>Inicio</a>
               </Link>
             </li>
             <li>
-              <Link  href="/beneficios">
+              <Link href="/beneficios">
                 <a>Ofertas para familias</a>
               </Link>
             </li>
@@ -47,7 +47,7 @@ const PostByComunidad = props => (
           <h1>Actualmente no existen ofertas para familias en esta Comunidad</h1>
           <p className="align-center">
             Por favor, escoge{' '}
-            <Link  href="/beneficios">
+            <Link href="/beneficios">
               <a>otra</a>
             </Link>
             .
@@ -80,12 +80,12 @@ const PostByComunidad = props => (
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link  href="/">
+              <Link href="/">
                 <a>Inicio</a>
               </Link>
             </li>
             <li>
-              <Link  href="/beneficios">
+              <Link href="/beneficios">
                 <a>Ofertas para familias</a>
               </Link>
             </li>
@@ -103,18 +103,14 @@ const PostByComunidad = props => (
                 banner.comunidad == props.caid ? (
                   <React.Fragment>
                     <p className="align-center promo dk">
-                      <Link href={banner.acf.url_de_destino_del_banner}>
-                        <a target="_blank">
-                          <img src={banner.acf.banner_grande_728x90.sizes.large} />
-                        </a>
-                      </Link>
+                      <a href={banner.acf.url_de_destino_del_banner} target="_blank">
+                        <img src={banner.acf.banner_grande_728x90.sizes.large} />
+                      </a>
                     </p>
                     <p className="align-center promo mb">
-                      <Link href={banner.acf.url_de_destino_del_banner}>
-                        <a target="_blank">
-                          <img src={banner.acf.baner_movil.sizes.large} />
-                        </a>
-                      </Link>
+                      <a href={banner.acf.url_de_destino_del_banner} target="_blank">
+                        <img src={banner.acf.baner_movil.sizes.large} />
+                      </a>
                     </p>
                   </React.Fragment>
                 ) : (
@@ -132,7 +128,8 @@ const PostByComunidad = props => (
               </p>
 
               <SelectCity
-                inputClass="city" ruta={props.ruta}
+                inputClass="city"
+                ruta={props.ruta}
                 inputValue="Buscar el mejor descuento"
                 options={props.posts
                   .reduce((ciutats, post) => {
@@ -177,10 +174,7 @@ const PostByComunidad = props => (
                             render={() => (
                               <p className="fade-in">
                                 <Link
-                                  
-                                  as={`/m-o-g-m/${marcasoferta.marca.term_id}/${
-                                    marcasoferta.marca.slug
-                                  }`}
+                                  as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                                   href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                                 >
                                   <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
@@ -221,13 +215,8 @@ const PostByComunidad = props => (
                       <span key={marcascaoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            
-                            as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${
-                              marcascaoferta.marca.slug
-                            }`}
-                            href={`/ofertas-de-la-marca-ca?id=${
-                              marcascaoferta.marca.term_id
-                            }&caid=${marcascaoferta.comunidad_autonoma.term_id}`}
+                            as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
+                            href={`/ofertas-de-la-marca-ca?id=${marcascaoferta.marca.term_id}&caid=${marcascaoferta.comunidad_autonoma.term_id}`}
                           >
                             <a title={'Ver todas las ofertas de ' + marcascaoferta.marca.name}>
                               <img
@@ -267,11 +256,7 @@ const PostByComunidad = props => (
                         triggerOnce={true}
                         render={() => (
                           <p className="fade-in">
-                            <Link
-                              
-                              as={`/p/${post.ID}/${post.slug}`}
-                              href={`/post?id=${post.ID}`}
-                            >
+                            <Link as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
                               <a title={'Ver la ficha de ' + post.name}>
                                 <img
                                   className="fade-in"
@@ -296,11 +281,7 @@ const PostByComunidad = props => (
                         triggerOnce={true}
                         render={() => (
                           <p className="fade-in">
-                            <Link
-                              
-                              as={`/p/${post.ID}/${post.slug}`}
-                              href={`/post?id=${post.ID}`}
-                            >
+                            <Link as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
                               <a title={'Ver la ficha de ' + post.name}>
                                 <img
                                   className="fade-in"
@@ -326,7 +307,7 @@ const PostByComunidad = props => (
                     )}
 
                     <p>
-                      <Link  as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                      <Link as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
                         <a
                           title={'Ver la ficha de ' + post.name}
                           dangerouslySetInnerHTML={{ __html: post.name }}
@@ -336,15 +317,8 @@ const PostByComunidad = props => (
                       {post.categoria_de_la_prestacion ? (
                         <small>
                           <Link
-                            
-                            as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${
-                              post.categoria_de_la_prestacion.slug
-                            }/${post.localidad_del_beneficio.term_id}/${
-                              post.localidad_del_beneficio.slug
-                            }`}
-                            href={`/category-localidad?id=${
-                              post.categoria_de_la_prestacion.term_id
-                            }&localidad=${post.localidad_del_beneficio.term_id}`}
+                            as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${post.categoria_de_la_prestacion.slug}/${post.localidad_del_beneficio.term_id}/${post.localidad_del_beneficio.slug}`}
+                            href={`/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}`}
                           >
                             <a
                               title={
@@ -534,19 +508,23 @@ PostByComunidad.getInitialProps = async function(context) {
   const res2 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&comunidad=${caid}&sim-model=id-marca`
   );
+  const almostuniquemarcas = await res2.json();
+  const marcasofertas = almostuniquemarcas.filter(x => x.marca != null);
 
-  const marcasofertas = await res2.json();
   const res3 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&comunidad=${caid}&sim-model=id-marca-comunidad`
   );
-  const marcascaofertas = await res3.json();
+  const almostuniquecamarcas = await res3.json();
+  const marcascaofertas = almostuniquecamarcas.filter(x => x.marca != null);
 
   const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners`);
   const banners = await res4.json();
 
   console.log(`Posts data fetched. Count: ${posts.length}, ${banners.length}`);
 
-  const uniquemarcas = [...new Set(marcasofertas.map(({ marca }) => marca.name))];
+  const uniquemarcas = [
+    ...new Set(marcasofertas.map(({ marca }) => (marca != null ? marca.name : '')))
+  ];
 
   return { posts, banners, marcasofertas, marcascaofertas, caid, uniquemarcas };
 };

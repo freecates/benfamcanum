@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "builds": [{ "src": "package.json", "use": "@now/next" }],
   "routes": [
     { "src": "/ca-ES/p/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/ca-ES/post?id=$id" },
     { "src": "/ca-ES/pr/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/ca-ES/prestacion?id=$id" },

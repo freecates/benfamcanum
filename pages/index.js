@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import LayoutHome from '../components/LayoutHome.js';
 
-export default props => (
+const Home = props => (
   <LayoutHome ruta={props.ruta}>
     <Head>
-      <title>Beneficios FAmilies NOmbroses de Catalunya</title>
+      <title>Beneficis Families Nombroses de Catalunya</title>
       <meta
         name="description"
         content="Directorio del conjunto de beneficios y prestaciones para familias numererosas"
@@ -68,3 +68,5 @@ export default props => (
     </section>
   </LayoutHome>
 );
+
+export default Home;
