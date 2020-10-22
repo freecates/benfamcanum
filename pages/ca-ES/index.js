@@ -23,7 +23,7 @@ const HomeCA = props => (
           target="_blank"
           title="Enlace externo"
           rel="noopener"
-          href="https://www.familias-numerosas.org"
+          href="https://fanoc.org/"
         >
           Vull participar d'aquests avantatges
         </a>

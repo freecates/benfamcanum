@@ -23,7 +23,7 @@ const Home = props => (
           target="_blank"
           title="Enlace externo"
           rel="noopener"
-          href="https://www.familias-numerosas.org"
+          href="https://fanoc.org/es/"
         >
           Quiero participar de estas ventajas
         </a>

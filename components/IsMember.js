@@ -159,7 +159,7 @@ class IsMember extends React.Component {
                   <a
                     target="_blank"
                     className="button button-pink"
-                    href="http://www.familiasnumerosas.org/hazte-socio/"
+                    href="https://fanoc.org/inscriu-te/"
                   >
                     {ruta.includes('/ca-ES') && <>Sí, vull fer-me soci</>}
                     {ruta.indexOf('/ca-ES') == -1 && <>Sí, quiero hacerme socio</>}
