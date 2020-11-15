@@ -1,9 +1,10 @@
+ 
 import fetch from 'isomorphic-unfetch';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../../components/MyLayout.js';
+import Layout from '../../../../components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => (
@@ -75,8 +76,7 @@ const MapByMarca = props => (
           <p className="align-center">
             <small>
               <Link
-                as={`/ca-ES/m-o-g-m/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
-                href={`/ca-ES/ofertas-de-la-marca?id=${props.markers[0].marca.term_id}`}
+                href={`/ca-ES/m-o-g-m/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
               >
                 <a>veure llistat</a>
               </Link>
@@ -102,8 +102,7 @@ const MapByMarca = props => (
           <p className="align-center">
             <small>
               <Link
-                as={`/ca-ES/m-o-g-m/${props.camarkers[0].marca.term_id}/${props.camarkers[0].marca.slug}`}
-                href={`/ca-ES/ofertas-de-la-marca?id=${props.camarkers[0].marca.term_id}`}
+                href={`/ca-ES/m-o-g-m/${props.camarkers[0].marca.term_id}/${props.camarkers[0].marca.slug}`}
               >
                 <a>veure llistat</a>
               </Link>
@@ -137,7 +136,7 @@ const MapByMarca = props => (
                         : marker.lon
                     }
                     text={
-                      <a href={`/ca-ES/oferta-gran-marca?id=${marker.ID}`} title={marker.name}>
+                      <a href={`/ca-ES/ogm/${marker.ID}`} title={marker.name}>
                         <span>
                           <img
                             src={
@@ -168,7 +167,7 @@ const MapByMarca = props => (
                         : marker.lon
                     }
                     text={
-                      <a href={`/ca-ES/oferta-gran-marca?id=${marker.ID}`} title={marker.name}>
+                      <a href={`/ca-ES/ogm/${marker.ID}`} title={marker.name}>
                         <span>
                           <img
                             src={
@@ -273,20 +272,26 @@ const MapByMarca = props => (
   </Layout>
 );
 
-MapByMarca.getInitialProps = async function(context) {
-  const { id } = context.query;
-  const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?marca=${id}&sim-model=name-id-slug-lat-lon-marca`
-  );
-  const markers = await res.json();
-  const res2 = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?marca=${id}&sim-model=name-id-slug-lat-lon-marca`
-  );
-  const camarkers = await res2.json();
+export async function getStaticPaths() {
+  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca');
+  const marques = await res.json();
 
-  console.log(`Markers data fetched. Count: ${markers.length}, ${camarkers.length}`);
+  const paths = marques.map((m) => `/ca-ES/mm/${m.id}/${m.slug}`);
 
-  return { markers, camarkers };
-};
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+    const res = await fetch(
+      `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?marca=${params.id}&sim-model=name-id-slug-lat-lon-marca`
+    );
+    const markers = await res.json();
+    const res2 = await fetch(
+      `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?marca=${params.id}&sim-model=name-id-slug-lat-lon-marca`
+    );
+    const camarkers = await res2.json();
+
+  return { props: { markers, camarkers } };
+}
 
 export default MapByMarca;

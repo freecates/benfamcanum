@@ -3,8 +3,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import FontAwesome from 'react-fontawesome';
 import { generateShareIcon, ShareButtons } from 'react-share';
-import IsMember from '../../components/IsMember.js';
-import Layout from '../../components/MyLayout.js';
+import IsMember from '../../../components/IsMember.js';
+import Layout from '../../../components/MyLayout.js';
 
 const {
   FacebookShareButton,
@@ -24,7 +24,7 @@ const OfertaOnLine = props => (
       {props.ofertaonline.acf.nombre_del_establecimiento ? (
         <title
           dangerouslySetInnerHTML={{
-            __html: props.ofertaonline.acf.nombre_del_establecimiento + ' - Famílies Nombroses'
+            __html: props.ofertaonline.acf.nombre_del_establecimiento + ' - Familias Numerosas'
           }}
         />
       ) : (
@@ -70,28 +70,27 @@ const OfertaOnLine = props => (
       <meta property="og:image:width" content="1024" />
       <meta property="og:image:height" content="1024" />
     </Head>
-    <nav aria-label="Ets aquí:" role="navigation">
+    <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link  href="/ca-ES">
-            <a>Inici</a>
+          <Link  href="/">
+            <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link  href="/ca-ES/beneficis">
-            <a>Ofertes per a famílies</a>
+          <Link  href="/beneficios">
+            <a>Ofertas para familias</a>
           </Link>
         </li>
         <li>
-          <Link  href="/ca-ES/ofertes-on-line">
-            <a>Ofertes On Line</a>
+          <Link  href="/ofertas-on-line">
+            <a>Ofertas On Line</a>
           </Link>
         </li>
         <li>
           <Link
             
-            as={`/ca-ES/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
-            href={`/ca-ES/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}
+            href={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
           >
             <a>{props.ofertaonline._embedded['wp:term'][0][0].name}</a>
           </Link>
@@ -99,9 +98,7 @@ const OfertaOnLine = props => (
         <li>
           <span className="show-for-sr">Actual: </span>{' '}
           <span
-            dangerouslySetInnerHTML={{
-              __html: props.ofertaonline.acf.nombre_del_establecimiento
-            }}
+            dangerouslySetInnerHTML={{ __html: props.ofertaonline.acf.nombre_del_establecimiento }}
           />
         </li>
       </ul>
@@ -119,15 +116,13 @@ const OfertaOnLine = props => (
           />
           <br />
           <span
-            dangerouslySetInnerHTML={{
-              __html: props.ofertaonline.acf.nombre_del_establecimiento
-            }}
+            dangerouslySetInnerHTML={{ __html: props.ofertaonline.acf.nombre_del_establecimiento }}
           />{' '}
           {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? (
             <span className="label alert file-label">
               <small>
-                EXCLUSIU
-                <br /> SOCIS
+                EXCLUSIVO
+                <br /> SOCIOS
               </small>
             </span>
           ) : (
@@ -140,7 +135,7 @@ const OfertaOnLine = props => (
             {props.ofertaonline.acf.url_de_la_oferta_online ? (
               <span>
                 <Link href={props.ofertaonline.acf.url_de_la_oferta_online}>
-                  <a>Accedeix al seu web</a>
+                  <a>Accede a su web</a>
                 </Link>
               </span>
             ) : (
@@ -154,12 +149,11 @@ const OfertaOnLine = props => (
             <strong>Categoria</strong>:{' '}
             <Link
               
-              as={`/ca-ES/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
-              href={`/ca-ES/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}
+              href={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
             >
               <a
                 title={
-                  'Veure totes les ofertes de la categoría ' +
+                  'Ver todas las ofertas de la categoría ' +
                   props.ofertaonline._embedded['wp:term'][0][0].name
                 }
               >
@@ -208,9 +202,9 @@ const OfertaOnLine = props => (
                 <span className="label alert file-label">
                   <Link href="#how-to-get-it">
                     <a>
-                      EXCLUSIU SOCIS.
+                      EXCLUSIVO SOCIOS.
                       <br />
-                      MIRA COM ACONSEGUIR AQUESTA OFERTA
+                      MIRA COMO CONSEGUIR ESTA OFERTA
                     </a>
                   </Link>
                   <br />
@@ -262,7 +256,7 @@ const OfertaOnLine = props => (
             <div className="social-share-icons">
               <div className="Post__some-network">
                 <p>
-                  <small>Comparteix:</small>
+                  <small>Comparte:</small>
                 </p>
               </div>
 
@@ -484,16 +478,21 @@ const OfertaOnLine = props => (
   </Layout>
 );
 
-OfertaOnLine.getInitialProps = async function(context) {
-  const { id } = context.query;
-  const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/ofertas_online/${id}?_embed`
-  );
+export async function getStaticPaths() {
+  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?sim-model=categoria');
+  const ofertes = await res.json();
+
+  const paths = ofertes.map((o) => `/oo/${o.ID}/${o.slug}`);
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/ofertas_online/${params.id}?_embed`);
+
   const ofertaonline = await res.json();
 
-  console.log(`Fetched ofertaonline: ${ofertaonline.title.rendered}`);
-
-  return { ofertaonline };
-};
+  return { props: { ofertaonline } };
+}
 
 export default OfertaOnLine;

@@ -2,7 +2,7 @@ import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../components/MyLayout.js';
+import Layout from '../../../components/MyLayout.js';
 
 const OfertasOnLineByCategory = props => (
   <Layout ruta={props.ruta}>
@@ -78,8 +78,7 @@ const OfertasOnLineByCategory = props => (
                     <td width="150">
                       <Link
                         
-                        as={`/oo/${ofertasonline.ID}/${ofertasonline.slug}`}
-                        href={`/oferta-on-line?id=${ofertasonline.ID}`}
+                        href={`/oo/${ofertasonline.ID}/${ofertasonline.slug}`}
                       >
                         <a
                           title={
@@ -143,16 +142,21 @@ const OfertasOnLineByCategory = props => (
   </Layout>
 );
 
-OfertasOnLineByCategory.getInitialProps = async function(context) {
-  const { id } = context.query;
-  const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${id}`
-  );
+export async function getStaticPaths() {
+  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?sim-model=categoria');
+  const ofertes = await res.json();
+
+  const paths = ofertes.map((o) => `/c-o-o/${o.categoria_de_la_oferta.term_id}/${o.categoria_de_la_oferta.slug}`);
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${params.id}`);
+
   const ofertasonlines = await res.json();
 
-  console.log(`Ofertas On Line data fetched. Count: ${ofertasonlines.length}`);
-
-  return { ofertasonlines };
-};
+  return { props: { ofertasonlines } };
+}
 
 export default OfertasOnLineByCategory;

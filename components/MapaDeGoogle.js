@@ -34,8 +34,6 @@ export default function MapaDeGoogle(props) {
   const [lng, setLng] = useState(props.lng);
   const [ruta, setRurat] = useState(props.ruta);
 
-  console.log('New props ', props);
-
   return (
     <SimpleMapExampleGoogleMap
       lat={lat}

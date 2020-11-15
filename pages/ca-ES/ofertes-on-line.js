@@ -26,8 +26,7 @@ const OfertasOnLine = props => (
                 <span key={ofertasonline.categoria_de_la_oferta.term_id}>
                   <li className="item align-center">
                     <Link
-                      as={`/ca-ES/c-o-o/${ofertasonline.categoria_de_la_oferta.term_id}/${ofertasonline.categoria_de_la_oferta.slug}`}
-                      href={`/ca-ES/category-ofertas-on-line?id=${ofertasonline.categoria_de_la_oferta.term_id}`}
+                      href={`/ca-ES/c-o-o/${ofertasonline.categoria_de_la_oferta.term_id}/${ofertasonline.categoria_de_la_oferta.slug}`}
                     >
                       <a
                         title={
