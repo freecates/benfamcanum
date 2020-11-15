@@ -142,15 +142,16 @@ const ComunidadesPrestaciones = props => (
   </Layout>
 );
 
-ComunidadesPrestaciones.getInitialProps = async function() {
+export async function getStaticProps() {
   const res = await fetch(
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Autonomico'
   );
   const comunidades = await res.json();
 
   console.log(`ComunidadesPrestaciones data fetched. Count: ${comunidades.length}`);
-
-  return { comunidades };
-};
+  return {
+    props: { comunidades }
+  };
+}
 
 export default ComunidadesPrestaciones;
