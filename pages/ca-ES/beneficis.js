@@ -20,7 +20,7 @@ const Localidades = props => (
       <nav aria-label="Ets aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>
-            <Link  href="/ca-ES">
+            <Link href="/ca-ES">
               <a>Inici</a>
             </Link>
           </li>
@@ -32,7 +32,7 @@ const Localidades = props => (
       <section className="call-to-action">
         <div className="icones-prestacions">
           <div className="icona">
-            <Link  href="/ca-ES/ofertes-per-sectors">
+            <Link href="/ca-ES/ofertes-per-sectors">
               <a>
                 <img src="/static/icona-ofertas-por-sectores-familias-numerosas.png" />
                 <div className="text-icona">Ofertes per sectors</div>
@@ -40,11 +40,7 @@ const Localidades = props => (
             </Link>
           </div>
           <div className="icona">
-            <Link
-              
-              as={`/ca-ES/ca/Catalu/8196`}
-              href={`/ca-ES/comunidad?comunidad=Catalu&caid=8196`}
-            >
+            <Link as={`/ca-ES/ca/Catalu/8196`} href={`/ca-ES/comunidad?comunidad=Catalu&caid=8196`}>
               <a>
                 <img src="/static/icona-ofertas-por-poblacion-familias-numerosas.png" />
                 <div className="text-icona">Ofertes per població</div>
@@ -52,7 +48,7 @@ const Localidades = props => (
             </Link>
           </div>
           <div className="icona">
-            <Link  href="/ca-ES/ofertes-on-line">
+            <Link href="/ca-ES/ofertes-on-line">
               <a>
                 <img src="/static/icona-ofertas-online-familias-numerosas.png" />
                 <div className="text-icona">Ofertes online</div>
@@ -60,7 +56,7 @@ const Localidades = props => (
             </Link>
           </div>
           <div className="icona">
-            <Link  href="/ca-ES/ofertes-al-mapa">
+            <Link href="/ca-ES/ofertes-al-mapa">
               <a>
                 <img src="/static/icona-ofertas-en-el-mapa-familias-numerosas.png" />
                 <div className="text-icona">Ofertes al mapa</div>
@@ -72,7 +68,7 @@ const Localidades = props => (
             <div className="promo">
               <h4 className="align-center">
                 <span className="label alert file-label">
-                  <Link  href="/ca-ES/promocions">
+                  <Link href="/ca-ES/promocions">
                     <a>
                       Mira aquí promocions que et
                       <br />
@@ -193,13 +189,13 @@ const Localidades = props => (
   </Layout>
 );
 
-Localidades.getInitialProps = async function() {
+export async function getStaticProps() {
   const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`);
   const promociones = await res2.json();
 
   console.log(`Ofertes data fetched. Count: ${promociones.length}`);
 
-  return { promociones };
-};
+  return { props: { promociones } };
+}
 
 export default Localidades;

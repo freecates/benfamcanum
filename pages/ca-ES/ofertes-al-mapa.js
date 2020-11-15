@@ -228,7 +228,7 @@ const Localidades = props => (
   </Layout>
 );
 
-Localidades.getInitialProps = async function() {
+export async function getStaticProps() {
   const res = await fetch(
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?comunidad=Catalu%C3%B1a&sim-model=localidad'
   );
@@ -236,7 +236,7 @@ Localidades.getInitialProps = async function() {
 
   console.log(`Ofertes data fetched. Count: ${beneficios.length}`);
 
-  return { beneficios };
-};
+  return { props: { beneficios } };
+}
 
 export default Localidades;

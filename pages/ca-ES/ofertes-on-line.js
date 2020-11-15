@@ -126,7 +126,7 @@ const OfertasOnLine = props => (
   </Layout>
 );
 
-OfertasOnLine.getInitialProps = async function() {
+export async function getStaticProps() {
   const res = await fetch(
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?sim-model=categoria'
   );
@@ -134,7 +134,7 @@ OfertasOnLine.getInitialProps = async function() {
 
   console.log(`Ofertes On Line data fetched. Count: ${ofertasonlines.length}`);
 
-  return { ofertasonlines };
-};
+  return { props: { ofertasonlines } };
+}
 
 export default OfertasOnLine;

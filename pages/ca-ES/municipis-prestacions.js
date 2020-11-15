@@ -138,7 +138,7 @@ const MunicipiosPrestaciones = props => (
   </Layout>
 );
 
-MunicipiosPrestaciones.getInitialProps = async function() {
+export async function getStaticProps() {
   const res = await fetch(
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Municipal&comunidad=8143'
   );
@@ -146,7 +146,7 @@ MunicipiosPrestaciones.getInitialProps = async function() {
 
   console.log(`MunicipiosPrestaciones data fetched. Count: ${municipios.length}`);
 
-  return { municipios };
-};
+  return { props: { municipios } };
+}
 
 export default MunicipiosPrestaciones;

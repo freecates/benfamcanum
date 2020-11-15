@@ -130,7 +130,7 @@ const OfertasPorSectores = props => (
   </Layout>
 );
 
-OfertasPorSectores.getInitialProps = async function() {
+export async function getStaticProps() {
   const res = await fetch(
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/categoria_del_beneficio'
   );
@@ -138,7 +138,7 @@ OfertasPorSectores.getInitialProps = async function() {
 
   console.log(`Ofertes Por Sectors data fetched. Count: ${ofertasporsectores.length}`);
 
-  return { ofertasporsectores };
-};
+  return { props: { ofertasporsectores } };
+}
 
 export default OfertasPorSectores;

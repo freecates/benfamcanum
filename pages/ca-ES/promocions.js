@@ -155,7 +155,7 @@ const Promocions = props => (
   </Layout>
 );
 
-Promocions.getInitialProps = async function(context) {
+export async function getStaticProps() {
   const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`);
   const promociones = await res.json();
 
@@ -164,7 +164,7 @@ Promocions.getInitialProps = async function(context) {
     `La data de la promoció és ${promociones[0].acf.fecha_de_finalizaciion_de_la_promocion} i la data d'avui és ${todayISO}`
   );
 
-  return { promociones };
-};
+  return { props: { promociones } };
+}
 
 export default Promocions;
