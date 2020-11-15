@@ -94,7 +94,7 @@ const MapByLocalidad = props => (
                 }
                 text={
                     <a 
-                    href={`/oferta-gran-marca?id=${nationalmarker.ID}`} title={nationalmarker.name}>
+                    href={`/ogm/${nationalmarker.ID}`} title={nationalmarker.name}>
                       <span>
                         <img
                           src={
@@ -114,7 +114,7 @@ const MapByLocalidad = props => (
                 lat={marker.lat.includes(',') || marker.lat.includes('!') ? '' : marker.lat}
                 lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
                 text={
-                  <a href={`/post?id=${marker.ID}`} title={marker.name}>
+                  <a href={`/p/${marker.ID}/${marker.slug}`} title={marker.name}>
                     <span>
                       <img
                         src={

@@ -5,10 +5,10 @@ import Head from 'next/head';
 import Link from 'next/link';
 import FontAwesome from 'react-fontawesome';
 import { generateShareIcon, ShareButtons } from 'react-share';
-import Layout from '../../../components/MyLayout.js';
-import Custom404 from '../../404';
+import Layout from '../../components/MyLayout.js';
+import Custom404 from '../404';
 
-const MapaDeGoogle = dynamic(import('../../../components/MapaDeGoogle'), {
+const MapaDeGoogle = dynamic(import('../../components/MapaDeGoogle'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -18,7 +18,7 @@ const MapaDeGoogle = dynamic(import('../../../components/MapaDeGoogle'), {
   )
 });
 
-const IsMember = dynamic(import('../../../components/IsMember'), {
+const IsMember = dynamic(import('../../components/IsMember'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -44,7 +44,7 @@ const Fallback = ({ ruta, notFound }) => {
   return (
     <Layout ruta={ruta}>
       <Head>
-        <title>{notFound ? '404 | Oferta no trobada' : '... Loading'}</title>
+        <title>{notFound ? '404 | Oferta no encontrada' : '... Loading'}</title>
       </Head>
       <nav aria-label="Ets aquí:" role="navigation">
         <ul className="breadcrumbs">
@@ -62,7 +62,7 @@ const Fallback = ({ ruta, notFound }) => {
       </nav>
       <section>
         <div className={'file'}>
-          <h1>{notFound ? 'Oferta no trobada' : '... Loading'}</h1>
+          <h1>{notFound ? 'Oferta no encontrada' : '... Loading'}</h1>
         </div>
       </section>
     </Layout>
@@ -90,7 +90,7 @@ const OfertaGranMarca = props => {
                 props.ofertagranmarca._embedded['wp:term'][3][0].name +
                 ' - ' +
                 props.ofertagranmarca.acf.nombre_del_establecimiento +
-                ' - Famílies Nombroses'
+                ' - Familias Numerosas'
             }}
           />
         ) : (
@@ -125,41 +125,41 @@ const OfertaGranMarca = props => {
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: `
-        {
-          "@context": "http://schema.org",
-          "@type": "Product",
-          "description": "${props.ofertagranmarca.acf.descripcion_de_la_oferta}",
-          "name": "${props.ofertagranmarca.acf.nombre_del_establecimiento}",
-          "image": "/static/logo-familias-numerosas-og.png",
-          "offers": {
-            "@type": "Offer",
-            "availability": "http://schema.org/InStock",
-            "price": "${props.ofertagranmarca.acf.titulo_de_la_oferta}",
-            "priceCurrency": "EUR"
-          }
-        }`
+          {
+            "@context": "http://schema.org",
+            "@type": "Product",
+            "description": "${props.ofertagranmarca.acf.descripcion_de_la_oferta}",
+            "name": "${props.ofertagranmarca.acf.nombre_del_establecimiento}",
+            "image": "/static/logo-familias-numerosas-og.png",
+            "offers": {
+              "@type": "Offer",
+              "availability": "http://schema.org/InStock",
+              "price": "${props.ofertagranmarca.acf.titulo_de_la_oferta}",
+              "priceCurrency": "EUR"
+            }
+          }`
             }}
           />
         ) : (
           ''
         )}
       </Head>
-      <nav aria-label="Ets aquí:" role="navigation">
+      <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>
-            <Link href="/ca-ES">
-              <a>Inici</a>
+            <Link href="/">
+              <a>Inicio</a>
             </Link>
           </li>
           <li>
-            <Link href="/ca-ES/grans-marques">
-              <a>Ofertes grans marques</a>
+            <Link href="/grandes-marcas">
+              <a>Ofertas grandes marcas</a>
             </Link>
           </li>
           <li>
             <Link
-              as={`/ca-ES/mm/${props.ofertagranmarca.marca}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
-              href={`/ca-ES/mapa-de-la-marca?id=${props.ofertagranmarca.marca}`}
+              as={`/mm/${props.ofertagranmarca.marca}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
+              href={`/mapa-de-la-marca?id=${props.ofertagranmarca.marca}`}
             >
               <a>{props.ofertagranmarca._embedded['wp:term'][3][0].name}</a>
             </Link>
@@ -194,8 +194,8 @@ const OfertaGranMarca = props => {
             {props.ofertagranmarca.acf.oferta_exclusiva_socios == true ? (
               <span className="label alert file-label">
                 <small>
-                  EXCLUSIU
-                  <br /> SOCIS
+                  EXCLUSIVO
+                  <br /> SOCIOS
                 </small>
               </span>
             ) : (
@@ -205,12 +205,8 @@ const OfertaGranMarca = props => {
 
           <h4 className="location dont-break-out">
             <span>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: props.ofertagranmarca.acf.direccion
-                }}
-              />
-              . <span>{props.ofertagranmarca.acf.codigo_postal}</span>,{' '}
+              <span dangerouslySetInnerHTML={{ __html: props.ofertagranmarca.acf.direccion }} />.{' '}
+              <span>{props.ofertagranmarca.acf.codigo_postal}</span>,{' '}
               <span
                 dangerouslySetInnerHTML={{
                   __html: props.ofertagranmarca.acf.localidad_del_beneficio.name
@@ -239,10 +235,7 @@ const OfertaGranMarca = props => {
                   >
                     <FontAwesome
                       name="envelope"
-                      style={{
-                        textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)',
-                        color: '#666666'
-                      }}
+                      style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                     />
                   </a>{' '}
                 </span>
@@ -255,10 +248,7 @@ const OfertaGranMarca = props => {
                   <a href={props.ofertagranmarca.acf.twitter_del_establecimiento}>
                     <FontAwesome
                       name="twitter-square"
-                      style={{
-                        textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)',
-                        color: '#666666'
-                      }}
+                      style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                     />
                   </a>
                 </span>
@@ -272,10 +262,7 @@ const OfertaGranMarca = props => {
                     <a href={props.ofertagranmarca.acf.facebook_del_establecimiento}>
                       <FontAwesome
                         name="facebook-square"
-                        style={{
-                          textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)',
-                          color: '#666666'
-                        }}
+                        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                       />
                     </a>
                   </span>
@@ -290,10 +277,7 @@ const OfertaGranMarca = props => {
                     >
                       <FontAwesome
                         name="facebook-square"
-                        style={{
-                          textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)',
-                          color: '#666666'
-                        }}
+                        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                       />
                     </a>
                   </span>
@@ -308,10 +292,7 @@ const OfertaGranMarca = props => {
                     <a>
                       <FontAwesome
                         name="external-link-square"
-                        style={{
-                          textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)',
-                          color: '#666666'
-                        }}
+                        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                       />
                     </a>
                   </Link>
@@ -324,8 +305,8 @@ const OfertaGranMarca = props => {
 
           <p className="category">
             <Link
-              as={`/ca-ES/c/${props.ofertagranmarca.categoria_del_beneficio}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
-              href={`/ca-ES/mapa-de-la-marca?id=${props.ofertagranmarca.marca}`}
+              as={`/c/${props.ofertagranmarca.categoria_del_beneficio}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
+              href={`/mapa-de-la-marca?id=${props.ofertagranmarca.marca}`}
             >
               <a
                 title={
@@ -413,9 +394,9 @@ const OfertaGranMarca = props => {
                   <Link href="#how-to-get-it">
                     <a>
                       <span className="label alert file-label">
-                        EXCLUSIU SOCIS.
-                        <br /> Introdueix el teu usuari i contrasenya d'associat per saber com
-                        obtenir aquesta oferta
+                        EXCLUSIVO SOCIOS.
+                        <br /> Introduce tu usuario y contraseña de asociado para saber como obtener
+                        esta oferta
                         <br />
                         <FontAwesome
                           name="check-circle-o"
@@ -453,7 +434,7 @@ const OfertaGranMarca = props => {
               <div className="social-share-icons">
                 <div className="Post__some-network">
                   <p>
-                    <small>Comparteix:</small>
+                    <small>Comparte:</small>
                   </p>
                 </div>
 
@@ -700,7 +681,7 @@ export async function getStaticPaths() {
   const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/wp/v2/ofertas_grandes_marc/');
   const ofertes = await res.json();
 
-  const paths = ofertes.map(o => `/ca-ES/ogm/${o.id}`);
+  const paths = ofertes.map(o => `/ogm/${o.id}`);
 
   return { paths, fallback: true };
 }

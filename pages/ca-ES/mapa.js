@@ -88,8 +88,7 @@ const MapByCategory = props => (
                 lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
                 text={
                   <Link
-                    as={`/ca-ES/p/${marker.ID}/${marker.slug}`}
-                    href={`/ca-ES/post?id=${marker.ID}`}
+                    href={`/ca-ES/p/${marker.ID}/${marker.slug}`}
                   >
                     <a title={marker.name}>
                       <span>

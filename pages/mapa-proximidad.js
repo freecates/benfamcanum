@@ -112,7 +112,7 @@ const MapByCategory = props => (
                         : marker.lon
                     }
                     text={
-                      <a href={`/post?id=${marker.ID}`} title={marker.name}>
+                      <a href={`/p/${marker.ID}/${marker.slug}`} title={marker.name}>
                         <span>
                           <img
                             src={

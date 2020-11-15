@@ -178,7 +178,7 @@ const PostsByLocalidad = props => (
                     triggerOnce={true}
                     render={() => (
                       <p className="fade-in">
-                        <Link as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                        <Link href={`/p/${post.ID}/${post.slug}`}>
                           <a>
                             <img
                               width="250"
@@ -200,7 +200,7 @@ const PostsByLocalidad = props => (
                     triggerOnce={true}
                     render={() => (
                       <p className="fade-in">
-                        <Link as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                        <Link href={`/p/${post.ID}/${post.slug}`}>
                           <a>
                             <img
                               width="250"
@@ -223,7 +223,7 @@ const PostsByLocalidad = props => (
                 )}
 
                 <p>
-                  <Link as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                  <Link href={`/p/${post.ID}/${post.slug}`}>
                     <a dangerouslySetInnerHTML={{ __html: post.name }} />
                   </Link>
                   <br />

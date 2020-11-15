@@ -92,8 +92,7 @@ const MapByCategory = props => (
                 text={
                   <Link
                     
-                    as={`/p/${marker.ID}/${marker.slug}`}
-                    href={`/post?id=${marker.ID}`}
+                    href={`/p/${marker.ID}/${marker.slug}`}
                   >
                     <a title={marker.name}>
                       <span>

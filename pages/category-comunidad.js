@@ -493,7 +493,7 @@ const PostsByCategoryComunidad = props => (
                         triggerOnce={true}
                         render={() => (
                           <p className="fade-in">
-                            <Link as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                            <Link href={`/p/${post.ID}/${post.slug}`}>
                               <a title={'Ver la ficha de ' + post.name}>
                                 <img
                                   width="250"
@@ -517,7 +517,7 @@ const PostsByCategoryComunidad = props => (
                         triggerOnce={true}
                         render={() => (
                           <p className="fade-in">
-                            <Link as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                            <Link href={`/p/${post.ID}/${post.slug}`}>
                               <a title={'Ver la ficha de ' + post.name}>
                                 <img
                                   width="250"
@@ -542,7 +542,7 @@ const PostsByCategoryComunidad = props => (
                     )}
 
                     <p>
-                      <Link as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                      <Link href={`/p/${post.ID}/${post.slug}`}>
                         <a
                           title={'Ver la ficha de ' + post.name}
                           dangerouslySetInnerHTML={{ __html: post.name }}

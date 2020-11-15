@@ -257,8 +257,7 @@ const PostByComunidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              as={`/ca-ES/p/${post.ID}/${post.slug}`}
-                              href={`/ca-ES/post?id=${post.ID}`}
+                              href={`/ca-ES/p/${post.ID}/${post.slug}`}
                             >
                               <a title={'Veure la fitxa de ' + post.name}>
                                 <img
@@ -285,8 +284,7 @@ const PostByComunidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              as={`/ca-ES/p/${post.ID}/${post.slug}`}
-                              href={`/ca-ES/post?id=${post.ID}`}
+                              href={`/ca-ES/p/${post.ID}/${post.slug}`}
                             >
                               <a title={'Veure la fitxa de ' + post.name}>
                                 <img
@@ -314,8 +312,7 @@ const PostByComunidad = props => (
 
                     <p>
                       <Link
-                        as={`/ca-ES/p/${post.ID}/${post.slug}`}
-                        href={`/ca-ES/post?id=${post.ID}`}
+                        href={`/ca-ES/p/${post.ID}/${post.slug}`}
                       >
                         <a
                           title={'Veure la fitxa de ' + post.name}
