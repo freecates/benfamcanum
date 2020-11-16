@@ -158,8 +158,7 @@ const OfertaGranMarca = props => {
           </li>
           <li>
             <Link
-              as={`/mm/${props.ofertagranmarca.marca}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
-              href={`/mapa-de-la-marca?id=${props.ofertagranmarca.marca}`}
+              href={`/mm/${props.ofertagranmarca.marca}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
             >
               <a>{props.ofertagranmarca._embedded['wp:term'][3][0].name}</a>
             </Link>
