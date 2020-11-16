@@ -14,7 +14,7 @@ const Fallback = ({ ruta, notFound }) => {
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>
-            <Link href="/">
+            <Link href="/ca-ES">
               <a>Inici</a>
             </Link>
           </li>

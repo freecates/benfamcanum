@@ -87,8 +87,7 @@ const Promociones = props => (
                       <td width="150">
                         <Link
                           
-                          as={`/pro/${promocione.id}/${promocione.slug}`}
-                          href={`/promocion?id=${promocione.id}`}
+                          href={`/pro/${promocione.id}/${promocione.slug}`}
                         >
                           <a
                             title={'Acceder a la ficha de ' + promocione.acf.nombre_de_la_empresa}

@@ -159,11 +159,6 @@ export async function getStaticProps() {
   const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`);
   const promociones = await res.json();
 
-  console.log(`Promocions data fetched. Count: ${promociones.length}`);
-  console.log(
-    `La data de la promoció és ${promociones[0].acf.fecha_de_finalizaciion_de_la_promocion} i la data d'avui és ${todayISO}`
-  );
-
   return { props: { promociones } };
 }
 
