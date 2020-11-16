@@ -48,7 +48,7 @@ const MunicipiosPrestaciones = props => (
                 slug: municipio.localidad.slug,
                 key: municipio.localidad.term_id,
                 value: municipio.localidad.term_id
-                  ? `/prestaciones-municipio?localidad=${municipio.localidad.term_id}`
+                  ? `/pm/${municipio.localidad.term_id}/${municipio.localidad.slug}`
                   : '',
                 label: municipio.localidad.term_id ? `${municipio.localidad.name}` : ''
               };

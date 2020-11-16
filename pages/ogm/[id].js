@@ -43,9 +43,6 @@ const EmailIcon = generateShareIcon('email');
 const Fallback = ({ ruta, notFound }) => {
   return (
     <Layout ruta={ruta}>
-      <Head>
-        <title>{notFound ? '404 | Oferta no encontrada' : '... Loading'}</title>
-      </Head>
       <nav aria-label="Ets aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>

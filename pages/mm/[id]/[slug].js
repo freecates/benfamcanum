@@ -98,7 +98,7 @@ const MapByMarca = props => (
                     : marker.lon
                 }
                 text={
-                  <a href={`/oferta-gran-marca-ca?id=${marker.ID}`} title={marker.name}>
+                  <a href={`/ogm/${marker.ID}`} title={marker.name}>
                     <span>
                       <img
                         src={

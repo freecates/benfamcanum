@@ -710,7 +710,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log('params ', params);
+  
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/beneficios/${params.id}?_embed`
   );

@@ -67,7 +67,6 @@ class IsMember extends React.Component {
 
   render() {
     const ruta = this.props.ruta;
-    console.log(`Hola: ${this.state.isRegistered}`);
     if (typeof window != 'undefined') {
       if (this.state.isRegistered == true || sessionStorage.getItem('isMember') == 'MTV0cnVlNDU=') {
         return (

@@ -2,32 +2,32 @@ import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../components/MyLayout.js';
+import Layout from '../../../../components/MyLayout.js';
 
 const PrestacionesByMunicipio = props => (
   <Layout ruta={props.ruta}>
     <Head>
-      <title>Prestaciones Familias Numerosas - {props.prestaciones[0].localidad.name}</title>
+      <title>Prestacions Famílies Nombroses - {props.prestaciones[0].localidad.name}</title>
     </Head>
-    <nav aria-label="Estás aquí:" role="navigation">
+    <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link  href="/">
-            <a>Inicio</a>
+          <Link href="/ca-ES">
+            <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link  href="/prestaciones">
-            <a>Prestaciones</a>
+          <Link href="/ca-ES/prestacions">
+            <a>Prestacions</a>
           </Link>
         </li>
         <li>
-          <Link  href="/municipios-prestaciones">
-            <a>Municipios</a>
+          <Link href="/ca-ES/municipis-prestacions">
+            <a>Municipis</a>
           </Link>
         </li>
         <li>
-          <span className="show-for-sr">Actual: </span> Municipio:{' '}
+          <span className="show-for-sr">Actual: </span> Municipi:{' '}
           {props.prestaciones[0].localidad.name}
         </li>
       </ul>
@@ -42,13 +42,13 @@ const PrestacionesByMunicipio = props => (
         <br />
         {props.prestaciones[0].localidad.name}
       </h1>
-      <IntlProvider defaultLocale="es">
+      <IntlProvider defaultLocale="ca">
         <div className="table-scroll">
           <table>
             <thead>
               <tr>
                 <td />
-                <td>Tipo de prestación</td>
+                <td>Tipus de prestació</td>
                 <td />
                 <td />
               </tr>
@@ -92,15 +92,13 @@ const PrestacionesByMunicipio = props => (
                     </td>
                     <td width="150">
                       <Link
-                        
-                        as={`/pr/${prestacion.ID}/${prestacion.slug}`}
-                        href={`/prestacion?id=${prestacion.ID}`}
+                        href={`/ca-ES/pr/${prestacion.ID}/${prestacion.slug}`}
                       >
                         <a
-                          title={'Acceder a la ficha de ' + prestacion.name}
+                          title={'Accedir a la fitxa de ' + prestacion.name}
                           className="button small"
                         >
-                          Acceder a la ficha
+                          Accedir a la fitxa
                         </a>
                       </Link>
                     </td>
@@ -156,16 +154,24 @@ const PrestacionesByMunicipio = props => (
   </Layout>
 );
 
-PrestacionesByMunicipio.getInitialProps = async function(context) {
-  const { localidad } = context.query;
+export async function getStaticPaths() {
   const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Municipal&localidad=${localidad}`
+    'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Municipal&comunidad=8143'
+  );
+  const localidad = await res.json();
+
+  const paths = localidad.map(l => `/ca-ES/pm/${l.localidad.term_id}/${l.localidad.slug}`);
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const res = await fetch(
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Municipal&localidad=${params.id}`
   );
   const prestaciones = await res.json();
 
-  console.log(`Prestaciones data fetched. Count: ${prestaciones.length}`);
-
-  return { prestaciones };
-};
+  return { props: { prestaciones } };
+}
 
 export default PrestacionesByMunicipio;

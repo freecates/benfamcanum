@@ -7,6 +7,7 @@ import FontAwesome from 'react-fontawesome';
 import Observer from 'react-intersection-observer';
 import { generateShareIcon, ShareButtons } from 'react-share';
 import Layout from '../../../components/MyLayout.js';
+import Custom404 from '../../404';
 
 const MapaDeGoogle = dynamic(import('../../../components/MapaDeGoogle'), {
   loading: () => (
@@ -710,7 +711,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log('params ', params);
+  
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/beneficios/${params.id}?_embed`
   );
