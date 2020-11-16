@@ -1,10 +1,11 @@
- 
 import fetch from 'isomorphic-unfetch';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../../../components/MyLayout.js';
+import Custom404 from '../../../404';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => (
@@ -31,8 +32,46 @@ const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 
 const CENTER = [41.3948976, 2.0787282];
 const ZOOM = 7;
+const ZOOM = 7;
 
-const MapByMarca = props => (
+const Fallback = ({ ruta, notFound }) => {
+  return (
+    <Layout ruta={ruta}>
+      <nav aria-label="Ets aquí:" role="navigation">
+        <ul className="breadcrumbs">
+          <li>
+            <Link href="/ca-ES">
+              <a>Inici</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/ca-ES/grans-marques">
+              <a>Ofertes grans marques</a>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <div className={'file'}>
+          <h1>{notFound ? 'Oferta no trobada' : '... Loading'}</h1>
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+const MapByMarca = props => {
+  const { isFallback } = useRouter();
+  if ((!isFallback && !props.markers) || !props.camarkers) {
+    return <Custom404 ruta={props.ruta} />;
+  }
+  if (isFallback) {
+    return <Fallback ruta={props.ruta} />;
+  }
+  if (props.markers === '404' || props.camarkers === '404') {
+    return <Fallback ruta={props.ruta} notFound />;
+  }
+  return (
   <Layout ruta={props.ruta}>
     <Head>
       <title>
@@ -270,28 +309,32 @@ const MapByMarca = props => (
       }
     `}</style>
   </Layout>
-);
+)};
 
 export async function getStaticPaths() {
   const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca');
   const marques = await res.json();
 
-  const paths = marques.map((m) => `/ca-ES/mm/${m.id}/${m.slug}`);
+  const paths = marques.map(m => `/ca-ES/mm/${m.id}/${m.slug}`);
 
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-    const res = await fetch(
-      `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?marca=${params.id}&sim-model=name-id-slug-lat-lon-marca`
-    );
-    const markers = await res.json();
-    const res2 = await fetch(
-      `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?marca=${params.id}&sim-model=name-id-slug-lat-lon-marca`
-    );
-    const camarkers = await res2.json();
+  const res = await fetch(
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?marca=${params.id}&sim-model=name-id-slug-lat-lon-marca`
+  );
+  const markers = await res.json();
+  const res2 = await fetch(
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?marca=${params.id}&sim-model=name-id-slug-lat-lon-marca`
+  );
+  const camarkers = await res2.json();
 
-  return { props: { markers, camarkers } };
+  if (!camarkers.data || !markers.data) {
+    return { props: { markers, camarkers }, revalidate: 1 };
+  } else {
+    return { props: { markers: '404', camarkers: '404' } };
+  }
 }
 
 export default MapByMarca;
