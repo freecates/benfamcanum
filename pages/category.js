@@ -215,7 +215,7 @@ const PostsByCategory = props => (
       </IntlProvider>
       <section>
         <hr />
-        {props.ofertasonlines.length >= 1 ? (
+        {props.uniquemarcas.length >= 1 ? (
           <div className="promo">
             <p className="align-center">
               Si lo prefiere, también puede ver las{' '}
@@ -396,7 +396,8 @@ PostsByCategory.getInitialProps = async function(context) {
   const res2 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&sim-model=id-marca`
   );
-  const marcasofertas = await res2.json();
+  const almostuniquemarcas = await res2.json();
+  const marcasofertas = almostuniquemarcas.filter(x => x.marca != null);
 
   const res3 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${sid}`
@@ -406,11 +407,11 @@ PostsByCategory.getInitialProps = async function(context) {
   const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales`);
   const banners = await res4.json();
 
-  console.log(
-    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${ofertasonlines.length}, ${banners.length}`
-  );
+  const uniquemarcas = [
+    ...new Set(marcasofertas.map(({ marca }) => (marca != null ? marca.name : '')))
+  ];
 
-  return { posts, marcasofertas, ofertasonlines, banners, sid };
+  return { posts, marcasofertas, uniquemarcas, ofertasonlines, banners, sid };
 };
 
 export default PostsByCategory;

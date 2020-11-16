@@ -320,7 +320,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log('params ', params);
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?marca=${params.id}&sim-model=name-id-slug-lat-lon-marca`
   );

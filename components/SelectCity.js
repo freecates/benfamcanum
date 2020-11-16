@@ -1,15 +1,9 @@
 import { useState } from 'react';
 
-export default function SelectCity(props) {
-  console.log(props.options[Object.keys(props.options)[0]].value);
-  const [elements, setElements] = useState(props.options);
-  const [selecteValue, setSelectedValue] = useState(
-    props.options[Object.keys(props.options)[0]].value
-  );
-  const [inputClass, setInputClass] = useState(props.inputClass);
-  const [inputClass2, setInputClass2] = useState(props.inputClass2);
-  const [localBenefit, setLocalBenefit] = useState(props.localBenefit);
-  const [inputValue, setInputValue] = useState(props.inputValue);
+const SelectCity = ({ ruta, options, inputClass, inputClass2, localBenefit, inputValue }) => {
+  const elements = options;
+  const [selecteValue, setSelectedValue] = useState(options[Object.keys(options)[0]].value);
+  // console.log('select city selected options', selecteValue);
 
   const handleSubmit = event => {
     window.location.href = selecteValue;
@@ -36,8 +30,8 @@ export default function SelectCity(props) {
           >
             {' '}
             <React.Fragment>
-              {props.ruta.includes('/ca-ES') && <option>Escull població</option>}
-              {props.ruta.indexOf('/ca-ES') == -1 && <option>Escoge población</option>}
+              {ruta.includes('/ca-ES') && <option disabled>Escull població</option>}
+              {ruta.indexOf('/ca-ES') == -1 && <option disabled>Escoge población</option>}
             </React.Fragment>
             {renderedElements}
           </select>
@@ -54,8 +48,8 @@ export default function SelectCity(props) {
             }
           >
             <React.Fragment>
-              {props.ruta.includes('/ca-ES') && <option>Escull CA</option>}
-              {props.ruta.indexOf('/ca-ES') == -1 && <option>Elige CA</option>}
+              {ruta.includes('/ca-ES') && <option>Escull CA</option>}
+              {ruta.indexOf('/ca-ES') == -1 && <option>Elige CA</option>}
             </React.Fragment>
             {renderedElements}
           </select>
@@ -81,13 +75,13 @@ export default function SelectCity(props) {
         <label className="benefit">
           {localBenefit == true ? (
             <React.Fragment>
-              {props.ruta.includes('/ca-ES') && <h4>Selecciona el municipi</h4>}
-              {props.ruta.indexOf('/ca-ES') == -1 && <h4>Selecciona el municipio</h4>}
+              {ruta.includes('/ca-ES') && <h4>Selecciona el municipi</h4>}
+              {ruta.indexOf('/ca-ES') == -1 && <h4>Selecciona el municipio</h4>}
             </React.Fragment>
           ) : (
             <React.Fragment>
-              {props.ruta.includes('/ca-ES') && <h4>Selecciona la comunitat municipi</h4>}
-              {props.ruta.indexOf('/ca-ES') == -1 && <h4>Selecciona la comunidad</h4>}
+              {ruta.includes('/ca-ES') && <h4>Selecciona la comunitat municipi</h4>}
+              {ruta.indexOf('/ca-ES') == -1 && <h4>Selecciona la comunidad</h4>}
             </React.Fragment>
           )}
           <select
@@ -191,4 +185,6 @@ export default function SelectCity(props) {
       `}</style>
     </form>
   );
-}
+};
+
+export default SelectCity;
