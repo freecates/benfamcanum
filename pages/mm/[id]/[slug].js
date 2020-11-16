@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../../components/MyLayout.js';
-import Custom404 from '../404';
+import Custom404 from '../../404';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => (
@@ -73,7 +73,10 @@ const MapByMarca = props => {
   return (
     <Layout ruta={props.ruta}>
       <Head>
-        <title>Ofertas de la Marca {props.markers[0].marca.name} para familias numerosas</title>
+        <title>
+          Ofertas de la Marca {props.markers.length >= 1 ? props.markers[0].marca.name : ''}
+          {props.camarkers.length >= 1 ? props.camarkers[0].marca.name : ''} para familias numerosas
+        </title>
       </Head>
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
@@ -88,72 +91,135 @@ const MapByMarca = props => {
             </Link>
           </li>
           <li>
-            <span className="show-for-sr">Actual: </span> {props.markers[0].marca.name}
+            <span className="show-for-sr">Actual: </span>{' '}
+            {props.markers.length >= 1 ? props.markers[0].marca.name : ''}
+            {props.camarkers.length >= 1 ? props.camarkers[0].marca.name : ''}
           </li>
         </ul>
       </nav>
       <section>
-        <h1>
-          <img
-            src={
-              'https://benfamcanumpics.famnum.now.sh/static/96/' +
-              props.markers[0].marca.slug +
-              '-familias-numerosas.png'
-            }
-          />
-          <br />
-          {props.markers[0].marca.name}
-        </h1>
-        <p className="align-center">
-          <small>
-            <Link
-              as={`/m-o-g-m-ca/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
-              href={`/ofertas-de-la-marca-ca?id=${props.markers[0].marca.term_id}`}
-            >
-              <a>ver listado</a>
-            </Link>
-          </small>
-        </p>
-        <IntlProvider defaultLocale="es">
+        {props.markers.length >= 1 ? (
+          <div>
+            <h1>
+              <img
+                src={
+                  'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                  props.markers[0].marca.slug +
+                  '-familias-numerosas.png'
+                }
+              />
+              <br />
+              {props.markers[0].marca.name}
+            </h1>
+            <p className="align-center">
+              <small>
+                <Link
+                  href={`/ca-ES/m-o-g-m/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
+                >
+                  <a>veure llistat</a>
+                </Link>
+              </small>
+            </p>
+          </div>
+        ) : (
+          ''
+        )}
+        {props.camarkers.length >= 1 ? (
+          <div>
+            <h1>
+              <img
+                src={
+                  'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                  props.camarkers[0].marca.slug +
+                  '-familias-numerosas.png'
+                }
+              />
+              <br />
+              {props.camarkers[0].marca.name}
+            </h1>
+            <p className="align-center">
+              <small>
+                <Link
+                  href={`/ca-ES/m-o-g-m/${props.camarkers[0].marca.term_id}/${props.camarkers[0].marca.slug}`}
+                >
+                  <a>veure llistat</a>
+                </Link>
+              </small>
+            </p>
+          </div>
+        ) : (
+          ''
+        )}
+        <IntlProvider defaultLocale="ca">
           <div style={{ width: '100%', height: '500px' }}>
             <GoogleMapReact
               bootstrapURLKeys={{
                 key: 'AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90'
               }}
-              center={[
-                parseFloat(`${props.markers[0].lat}`),
-                parseFloat(`${props.markers[0].lon}`)
-              ]}
+              center={CENTER}
               zoom={ZOOM}
             >
-              {props.markers.map((marker, index) => (
-                <MarkerComponent
-                  key={index}
-                  lat={
-                    marker.lat.includes(',') || marker.lat.includes('!')
-                      ? marker.lat.replace(',', '.')
-                      : marker.lat
-                  }
-                  lng={
-                    marker.lon.includes(',') || marker.lon.includes('!')
-                      ? marker.lon.replace(',', '.')
-                      : marker.lon
-                  }
-                  text={
-                    <a href={`/ogm/${marker.ID}`} title={marker.name}>
-                      <span>
-                        <img
-                          src={
-                            'https://benfamcanumpics.famnum.now.sh/static/32/' +
-                            props.markers[0].marca.slug +
-                            '-familias-numerosas.png'
-                          }
-                        />
-                      </span>
-                    </a>
-                  }
-                />
-              ))}
+              {props.markers.length >= 1
+                ? props.markers.map((marker, index) => (
+                    <MarkerComponent
+                      key={index}
+                      lat={
+                        marker.lat.includes(',') || marker.lat.includes('!')
+                          ? marker.lat.replace(',', '.')
+                          : marker.lat
+                      }
+                      lng={
+                        marker.lon.includes(',') || marker.lon.includes('!')
+                          ? marker.lon.replace(',', '.')
+                          : marker.lon
+                      }
+                      text={
+                        <a href={`/ca-ES/ogm/${marker.ID}`} title={marker.name}>
+                          <span>
+                            <img
+                              src={
+                                'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                                props.markers[0].marca.slug +
+                                '-familias-numerosas.png'
+                              }
+                            />
+                          </span>
+                        </a>
+                      }
+                    />
+                  ))
+                : ''}
+
+              {props.camarkers.length >= 1
+                ? props.camarkers.map((marker, index) => (
+                    <MarkerComponent
+                      key={index}
+                      lat={
+                        marker.lat.includes(',') || marker.lat.includes('!')
+                          ? marker.lat.replace(',', '.')
+                          : marker.lat
+                      }
+                      lng={
+                        marker.lon.includes(',') || marker.lon.includes('!')
+                          ? marker.lon.replace(',', '.')
+                          : marker.lon
+                      }
+                      text={
+                        <a href={`/ca-ES/ogm/${marker.ID}`} title={marker.name}>
+                          <span>
+                            <img
+                              src={
+                                'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                                props.camarkers[0].marca.slug +
+                                '-familias-numerosas.png'
+                              }
+                            />
+                          </span>
+                        </a>
+                      }
+                    />
+                  ))
+                : ''}
             </GoogleMapReact>
           </div>
         </IntlProvider>
