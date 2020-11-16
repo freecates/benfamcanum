@@ -114,7 +114,7 @@ const MapByMarca = props => {
             <p className="align-center">
               <small>
                 <Link
-                  href={`/ca-ES/m-o-g-m/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
+                  href={`/m-o-g-m/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
                 >
                   <a>veure llistat</a>
                 </Link>
@@ -140,7 +140,7 @@ const MapByMarca = props => {
             <p className="align-center">
               <small>
                 <Link
-                  href={`/ca-ES/m-o-g-m/${props.camarkers[0].marca.term_id}/${props.camarkers[0].marca.slug}`}
+                  href={`/m-o-g-m/${props.camarkers[0].marca.term_id}/${props.camarkers[0].marca.slug}`}
                 >
                   <a>veure llistat</a>
                 </Link>
@@ -174,7 +174,7 @@ const MapByMarca = props => {
                           : marker.lon
                       }
                       text={
-                        <a href={`/ca-ES/ogm/${marker.ID}`} title={marker.name}>
+                        <a href={`/ogm/${marker.ID}`} title={marker.name}>
                           <span>
                             <img
                               src={

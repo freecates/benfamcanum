@@ -94,8 +94,7 @@ const PostsByLocalidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
-                              href={`/ca-ES/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
+                              href={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                             >
                               <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
                                 <img
@@ -140,8 +139,7 @@ const PostsByLocalidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              as={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
-                              href={`/ca-ES/ofertas-de-la-marca-ca?id=${marcascaoferta.marca.term_id}`}
+                              href={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
                             >
                               <a title={'Veure totes les ofertes de ' + marcascaoferta.marca.name}>
                                 <img

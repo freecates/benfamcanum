@@ -75,8 +75,7 @@ const PostsByCategoryComunidad = props => (
                     <span key={marcasoferta.marca.term_id}>
                       <li className="benefit align-center">
                         <Link
-                          as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
-                          href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
+                          href={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                         >
                           <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
                             <img
@@ -386,8 +385,7 @@ const PostsByCategoryComunidad = props => (
                       <span key={marcasoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
-                            href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
+                            href={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                           >
                             <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
                               <img

@@ -182,8 +182,7 @@ const PostsByCategory = props => (
                   <span key={marcasoferta.marca.term_id}>
                     <li className="benefit align-center">
                       <Link
-                        as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
-                        href={`/ca-ES/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
+                        href={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                       >
                         <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
                           <img

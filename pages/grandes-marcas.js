@@ -18,8 +18,7 @@ const GRandesMarcas = props => (
               <li className="item align-center" key={index}>
                 <Link
                   
-                  as={`/m-o-g-m/${grandesmarca.id}/${grandesmarca.slug}`}
-                  href={`/ofertas-de-la-marca?id=${grandesmarca.id}`}
+                  href={`/m-o-g-m/${grandesmarca.id}/${grandesmarca.slug}`}
                 >
                   <a title={'Clica aquí para ver las ofertas de ' + grandesmarca.name}>
                     <img

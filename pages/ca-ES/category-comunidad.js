@@ -75,8 +75,7 @@ const PostsByCategoryComunidad = props => (
                     <span key={marcasoferta.marca.term_id}>
                       <li className="benefit align-center">
                         <Link
-                          as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
-                          href={`/ca-ES/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
+                          href={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                         >
                           <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
                             <img
@@ -388,8 +387,7 @@ const PostsByCategoryComunidad = props => (
                       <span key={marcasoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            as={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
-                            href={`/ca-ES/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
+                            href={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                           >
                             <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
                               <img
@@ -426,8 +424,7 @@ const PostsByCategoryComunidad = props => (
                       <span key={marcascaoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            as={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
-                            href={`/ca-ES/ofertas-de-la-marca-ca?id=${marcascaoferta.marca.term_id}&caid=${marcascaoferta.comunidad_autonoma.term_id}`}
+                            href={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
                           >
                             <a title={'Veure totes les ofertes de ' + marcascaoferta.marca.name}>
                               <img

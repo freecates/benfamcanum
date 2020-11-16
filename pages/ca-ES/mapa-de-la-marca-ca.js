@@ -66,8 +66,7 @@ const MapByMarcaCa = props => (
       <p className="align-center">
         <small>
           <Link
-            as={`/ca-ES/m-o-g-m-ca/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
-            href={`/ca-ES/ofertas-de-la-marca-ca?id=${props.markers[0].marca.term_id}`}
+            href={`/ca-ES/m-o-g-m-ca/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
           >
             <a>veure llistat</a>
           </Link>
