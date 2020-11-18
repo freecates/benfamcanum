@@ -394,8 +394,7 @@ const Post = props => {
             <div className="file-content">
               {props.post.acf.como_conseguir_la_oferta_oferta_socios ? (
                 <h1 className="align-none">
-                  <Link href="#how-to-get-it">
-                    <a>
+                  <a href="#how-to-get-it">
                       <span className="label alert file-label">
                         EXCLUSIU SOCIS.
                         <br /> Introdueix el teu usuari i contrasenya d'associat per saber com
@@ -407,8 +406,7 @@ const Post = props => {
                           style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
                         />
                       </span>
-                    </a>
-                  </Link>
+                  </a>
                 </h1>
               ) : (
                 ''
