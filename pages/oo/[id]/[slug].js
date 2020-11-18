@@ -73,23 +73,22 @@ const OfertaOnLine = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link  href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link  href="/beneficios">
+          <Link href="/beneficios">
             <a>Ofertas para familias</a>
           </Link>
         </li>
         <li>
-          <Link  href="/ofertas-on-line">
+          <Link href="/ofertas-on-line">
             <a>Ofertas On Line</a>
           </Link>
         </li>
         <li>
           <Link
-            
             href={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
           >
             <a>{props.ofertaonline._embedded['wp:term'][0][0].name}</a>
@@ -148,7 +147,6 @@ const OfertaOnLine = props => (
           <small>
             <strong>Categoria</strong>:{' '}
             <Link
-              
               href={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
             >
               <a
@@ -201,10 +199,10 @@ const OfertaOnLine = props => (
               <h1>
                 <span className="label alert file-label">
                   <a href="#how-to-get-it">
-                      EXCLUSIVO SOCIOS.
-                      <br />
-                      MIRA COMO CONSEGUIR ESTA OFERTA
-                    </a>
+                    EXCLUSIVO SOCIOS.
+                    <br />
+                    MIRA COMO CONSEGUIR ESTA OFERTA
+                  </a>
                   <br />
                   <FontAwesome
                     name="check-circle-o"
@@ -260,12 +258,8 @@ const OfertaOnLine = props => (
 
               <div className="Post__some-network">
                 <FacebookShareButton
-                  url={
-                    'https://beneficios.fanoc.org/p/' +
-                    props.ofertaonline.id +
-                    '/' +
-                    props.ofertaonline.slug
-                  }
+                  url={`https://beneficios.fanoc.org/oo/${props.ofertaonline.id}/${props.ofertaonline.slug}
+                  `}
                   className="Post__some-network__share-button"
                 >
                   <FacebookIcon size={32} round />
@@ -274,18 +268,14 @@ const OfertaOnLine = props => (
 
               <div className="Post__some-network">
                 <TwitterShareButton
-                  url={
-                    'https://beneficios.fanoc.org/p/' +
-                    props.ofertaonline.id +
-                    '/' +
-                    props.ofertaonline.slug
+                  url={`https://beneficios.fanoc.org/oo/${props.ofertaonline.id}/${props.ofertaonline.slug}
+                  `}
+                  title={`${props.ofertaonline.acf.nombre_del_establecimiento}: ${
+                    !props.ofertaonline.acf.titulo_de_la_oferta_general_online
+                      ? props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios
+                      : props.ofertaonline.acf.titulo_de_la_oferta_general_online
                   }
-                  title={
-                    props.ofertaonline.acf.nombre_del_establecimiento +
-                    ':' +
-                    ' ' +
-                    props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios
-                  }
+                  `}
                   hashtags={['beneficiosfamiliasnumerosas']}
                   via="familianombrosa"
                   className="Post__some-network__share-button"
@@ -296,18 +286,14 @@ const OfertaOnLine = props => (
 
               <div className="Post__some-network">
                 <LinkedinShareButton
-                  url={
-                    'https://beneficios.fanoc.org/p/' +
-                    props.ofertaonline.id +
-                    '/' +
-                    props.ofertaonline.slug
+                  url={`https://beneficios.fanoc.org/oo/${props.ofertaonline.id}/${props.ofertaonline.slug}
+                  `}
+                  title={`${props.ofertaonline.acf.nombre_del_establecimiento}: ${
+                    !props.ofertaonline.acf.titulo_de_la_oferta_general_online
+                      ? props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios
+                      : props.ofertaonline.acf.titulo_de_la_oferta_general_online
                   }
-                  title={
-                    props.ofertaonline.acf.nombre_del_establecimiento +
-                    ':' +
-                    ' ' +
-                    props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios
-                  }
+                  `}
                   className="Post__some-network__share-button"
                 >
                   <LinkedinIcon size={32} round />
@@ -316,30 +302,24 @@ const OfertaOnLine = props => (
 
               <div className="Post__some-network">
                 <EmailShareButton
-                  url={
-                    'https://beneficios.fanoc.org/p/' +
-                    props.ofertaonline.id +
-                    '/' +
+                  url={`https://beneficios.fanoc.org/oo/${props.ofertaonline.id}/${props.ofertaonline.slug}
+                  `}
+                  subject={`${props.ofertaonline.acf.nombre_del_establecimiento}: ${
+                    !props.ofertaonline.acf.titulo_de_la_oferta_general_online
+                      ? props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios
+                      : props.ofertaonline.acf.titulo_de_la_oferta_general_online
+                  }
+                  `}
+                  body={`Échale un vistazo a esta oferta: ${
+                    props.ofertaonline.acf.nombre_del_establecimiento
+                  }: ${
+                    !props.ofertaonline.acf.titulo_de_la_oferta_general_online
+                      ? props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios
+                      : props.ofertaonline.acf.titulo_de_la_oferta_general_online
+                  } [https://beneficios.fanoc.org/oo/${props.ofertaonline.id}/${
                     props.ofertaonline.slug
-                  }
-                  subject={
-                    props.ofertaonline.acf.nombre_del_establecimiento +
-                    ':' +
-                    ' ' +
-                    props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios
-                  }
-                  body={
-                    'Échale un vistazo a esta oferta: ' +
-                    props.ofertaonline.acf.nombre_del_establecimiento +
-                    ':' +
-                    ' ' +
-                    props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios +
-                    ' ' +
-                    'https://beneficios.fanoc.org/p/' +
-                    props.ofertaonline.id +
-                    '/' +
-                    props.ofertaonline.slug
-                  }
+                  }]
+                  `}
                   className="Post__some-network__share-button"
                 >
                   <EmailIcon size={32} round />
@@ -477,16 +457,20 @@ const OfertaOnLine = props => (
 );
 
 export async function getStaticPaths() {
-  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?sim-model=categoria');
+  const res = await fetch(
+    'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?sim-model=categoria'
+  );
   const ofertes = await res.json();
 
-  const paths = ofertes.map((o) => `/oo/${o.ID}/${o.slug}`);
+  const paths = ofertes.map(o => `/oo/${o.ID}/${o.slug}`);
 
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/ofertas_online/${params.id}?_embed`);
+  const res = await fetch(
+    `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/ofertas_online/${params.id}?_embed`
+  );
 
   const ofertaonline = await res.json();
 
