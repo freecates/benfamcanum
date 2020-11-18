@@ -27,7 +27,7 @@ const HeaderHome = props => (
             <NavBarBenFamNum ruta={props.ruta} />
           </section>
         </div>
-        <div>
+        <div style={{maxWidth: '100%', width: '1917px', margin: '0 auto'}}>
           <picture>
             <source
               type="image/webp"
