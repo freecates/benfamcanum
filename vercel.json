@@ -98,5 +98,5 @@
     },
     { "src": "/sitemap.xml", "dest": "/static/sitemap.xml" },
     { "src": "/robots.txt", "dest": "/static/robots.txt" }
-  ],
+  ]
 }
