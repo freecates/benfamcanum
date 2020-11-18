@@ -200,13 +200,11 @@ const OfertaOnLine = props => (
             {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ? (
               <h1>
                 <span className="label alert file-label">
-                  <Link href="#how-to-get-it">
-                    <a>
+                  <a href="#how-to-get-it">
                       EXCLUSIVO SOCIOS.
                       <br />
                       MIRA COMO CONSEGUIR ESTA OFERTA
                     </a>
-                  </Link>
                   <br />
                   <FontAwesome
                     name="check-circle-o"

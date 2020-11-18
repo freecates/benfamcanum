@@ -323,7 +323,7 @@ class IsMember extends React.Component {
                   <a
                     target="_blank"
                     className="button button-pink"
-                    href="http://www.familiasnumerosas.org/hazte-socio/"
+                    href="https://fanoc.org/inscriu-te/"
                   >
                     Sí, quiero hacerme socio
                   </a>

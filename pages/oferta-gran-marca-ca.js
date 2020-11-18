@@ -375,8 +375,7 @@ const OfertaGranMarca = props => (
           <div className="file-content">
             {props.ofertagranmarca.acf.oferta_exclusiva_socios == true ? (
               <h1 className="align-none">
-                <Link href="#how-to-get-it">
-                  <a>
+                <a href="#how-to-get-it">
                     <span className="label alert file-label">
                       EXCLUSIVO SOCIOS.
                       <br /> Introduce tu usuario y contraseña de asociado para saber como obtener
@@ -388,8 +387,7 @@ const OfertaGranMarca = props => (
                         style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
                       />
                     </span>
-                  </a>
-                </Link>
+                </a>
               </h1>
             ) : (
               ''
