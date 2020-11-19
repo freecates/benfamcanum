@@ -2,12 +2,12 @@ import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../../components/MyLayout.js';
+import Layout from '../../../../components/MyLayout.js';
 
-const OfertasGrandesMarcasByMarcaCa = props => (
+const OfertasGrandesMarcasCaByMarca = props => (
   <Layout ruta={props.ruta}>
     <Head>
-      <title>Ofertes de la Marca {props.granmarcacaofertas.name} per a famílies nombroses</title>
+      <title>Ofertes de la Marca {props.granmarcaofertas.name} per a famílies nombroses</title>
     </Head>
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
@@ -17,15 +17,17 @@ const OfertasGrandesMarcasByMarcaCa = props => (
           </Link>
         </li>
         <li>
-          <a href="javascript:history.back()">Ofertes</a>
+          <Link href="/ca-ES/grans-marques">
+            <a>Ofertes grans marques</a>
+          </Link>
         </li>
         <li>
-          <span className="show-for-sr">Actual: </span> {props.granmarcacaofertas.name}
+          <span className="show-for-sr">Actual: </span> {props.granmarcaofertas.name}
         </li>
       </ul>
     </nav>
     <section>
-      <h1>Ofertes de {props.granmarcacaofertas.name}</h1>
+      <h1>Ofertes de {props.granmarcaofertas.name}</h1>
       <IntlProvider defaultLocale="ca">
         <div className="table-scroll">
           <table>
@@ -44,18 +46,18 @@ const OfertasGrandesMarcasByMarcaCa = props => (
                     <img
                       src={
                         'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                        props.granmarcacaofertas.slug +
+                        props.granmarcaofertas.slug +
                         '-familias-numerosas.png'
                       }
                     />
                   </p>
                 </td>
                 <td>
-                  <p className="align-center">{props.granmarcacaofertas.name}</p>
+                  <p className="align-center">{props.granmarcaofertas.name}</p>
                 </td>
                 <td>
                   <div>
-                    {props.granmarcacaofertas.description.split('\n').map((item, key) => {
+                    {props.granmarcaofertas.description.split('\n').map((item, key) => {
                       return (
                         <p key={key}>
                           <span dangerouslySetInnerHTML={{ __html: item }} />
@@ -67,14 +69,13 @@ const OfertasGrandesMarcasByMarcaCa = props => (
                 <td>
                   <p className="align-center">
                     <Link
-                      as={`/ca-ES/mmca/${props.granmarcacaofertas.term_id}/${props.granmarcacaofertas.slug}`}
-                      href={`/ca-ES/mapa-de-la-marca-ca?id=${props.granmarcacaofertas.term_id}`}
+                      href={`/ca-ES/mmca/${props.granmarcaofertas.term_id}/${props.granmarcaofertas.slug}`}
                     >
                       <a
-                        title={'Ver ' + props.granmarcacaofertas.name + ' en el mapa'}
+                        title={'Ver ' + props.granmarcaofertas.name + ' en el mapa'}
                         className="button small"
                       >
-                        {'Ver ' + props.granmarcacaofertas.name + ' en el mapa'}
+                        {'Ver ' + props.granmarcaofertas.name + ' en el mapa'}
                       </a>
                     </Link>
                   </p>
@@ -175,14 +176,21 @@ const OfertasGrandesMarcasByMarcaCa = props => (
   </Layout>
 );
 
-OfertasGrandesMarcasByMarcaCa.getInitialProps = async function(context) {
-  const { id } = context.query;
-  const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca/${id}`);
-  const granmarcacaofertas = await res.json();
+export async function getStaticPaths() {
+  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca');
+  const marques = await res.json();
 
-  console.log(`Ofertes de la Marca data fetched. Count: ${granmarcacaofertas.length}`);
+  const paths = marques.map((m) => `/ca-ES/m-o-g-m-ca/${m.id}/${m.slug}`);
 
-  return { granmarcacaofertas };
-};
+  return { paths, fallback: false };
+}
 
-export default OfertasGrandesMarcasByMarcaCa;
+export async function getStaticProps({ params }) {
+  const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca/${params.id}`);
+
+  const granmarcaofertas = await res.json();
+
+  return { props: { granmarcaofertas } };
+}
+
+export default OfertasGrandesMarcasCaByMarca;
