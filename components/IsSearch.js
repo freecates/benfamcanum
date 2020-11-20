@@ -704,11 +704,8 @@ class IsSearch extends React.Component {
                           {ruta.includes('/ca-ES') && (
                             <Link
                               
-                              as={`/ca-ES/ogmca/${OfertasGrandeMarcasCAResult.ID}/${
+                              href={`/ca-ES/ogmca/${OfertasGrandeMarcasCAResult.ID}/${
                                 OfertasGrandeMarcasCAResult.slug
-                              }`}
-                              href={`/ca-ES/oferta-gran-marca-ca?id=${
-                                OfertasGrandeMarcasCAResult.ID
                               }`}
                             >
                               <a
