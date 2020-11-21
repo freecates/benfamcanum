@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
-import Layout from '../../components/MyLayout.js';
+import Layout from '../../../components/MyLayout.js';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
@@ -11,30 +11,30 @@ const todayISO = new Date(today).toISOString();
 const PostsByLocalidad = props => (
   <Layout ruta={props.ruta}>
     <Head>
-      <title>Beneficis Famílies Nombroses - {props.posts[0].localidad_del_beneficio.name}</title>
+      <title>Beneficios Familias Numerosas - {props.posts[0].localidad_del_beneficio.name}</title>
     </Head>
-    <nav aria-label="Ets aquí:" role="navigation">
+    <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link href="/ca-ES">
-            <a>Inici</a>
+          <Link href="/">
+            <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link href="/ca-ES/beneficis">
-            <a>Ofertes per a famílies</a>
+          <Link href="/beneficios">
+            <a>Ofertas para familias</a>
           </Link>
         </li>
         <li>
           <Link
-            as={`/ca-ES/ca/${props.posts[0].comunidad_autonoma}/${props.marcasofertas[0].comunidad_autonoma.term_id}`}
-            href={`/ca-ES/comunidad?comunidad=${props.posts[0].comunidad_autonoma}&caid=${props.marcasofertas[0].comunidad_autonoma.term_id}`}
+            as={`/ca/${props.posts[0].comunidad_autonoma}/${props.marcasofertas[0].comunidad_autonoma.term_id}`}
+            href={`/comunidad?comunidad=${props.posts[0].comunidad_autonoma}&caid=${props.marcasofertas[0].comunidad_autonoma.term_id}`}
           >
             <a>{props.posts[0].comunidad_autonoma}</a>
           </Link>
         </li>
         <li>
-          <span className="show-for-sr">Actual: </span> Localitat:{' '}
+          <span className="show-for-sr">Actual: </span> Localidad:{' '}
           {props.posts[0].localidad_del_beneficio.name}
         </li>
       </ul>
@@ -48,14 +48,14 @@ const PostsByLocalidad = props => (
             banner.acf.comunidad_autonoma.name == props.posts[0].comunidad_autonoma ? (
               <React.Fragment>
                 <p className="align-center promo dk">
-                  <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                    <img src={banner.acf.banner_grande_728x90.sizes.large} />
-                  </a>
+                    <a href={banner.acf.url_de_destino_del_banner} target="_blank">
+                      <img src={banner.acf.banner_grande_728x90.sizes.large} />
+                    </a>
                 </p>
                 <p className="align-center promo mb">
-                  <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                    <img src={banner.acf.baner_movil.sizes.large} />
-                  </a>
+                    <a href={banner.acf.url_de_destino_del_banner} target="_blank">
+                      <img src={banner.acf.baner_movil.sizes.large} />
+                    </a>
                 </p>
               </React.Fragment>
             ) : (
@@ -64,20 +64,20 @@ const PostsByLocalidad = props => (
           </React.Fragment>
         ))}
       </div>
-      <h1>Beneficis a {props.posts[0].localidad_del_beneficio.name}</h1>
+      <h1>Beneficios en {props.posts[0].localidad_del_beneficio.name}</h1>
       <p className="align-center">
         <small>
           <Link
-            as={`/ca-ES/m-l/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`}
-            href={`/ca-ES/mapa-localidad?localidad=${props.posts[0].localidad_del_beneficio.term_id}`}
+            as={`/m-l/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`}
+            href={`/mapa-localidad?localidad=${props.posts[0].localidad_del_beneficio.term_id}`}
           >
             <a>
-              <img src="/static/icona-mapa-familias-numerosas.png" /> veure al mapa
+              <img src="/static/icona-mapa-familias-numerosas.png" /> ver en el mapa
             </a>
           </Link>
         </small>
       </p>
-      <IntlProvider defaultLocale="ca">
+      <IntlProvider defaultLocale="es">
         <section>
           {props.marcasofertas.length >= 1 ? (
             <ul className="gallery national-gallery">
@@ -94,9 +94,9 @@ const PostsByLocalidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              href={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
+                              href={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                             >
-                              <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
+                              <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
                                 <img
                                   src={
                                     'https://benfamcanumpics.famnum.now.sh/static/96/' +
@@ -106,9 +106,7 @@ const PostsByLocalidad = props => (
                                 />
                                 <br />{' '}
                                 <span
-                                  dangerouslySetInnerHTML={{
-                                    __html: marcasoferta.marca.name
-                                  }}
+                                  dangerouslySetInnerHTML={{ __html: marcasoferta.marca.name }}
                                 />
                               </a>
                             </Link>
@@ -139,9 +137,9 @@ const PostsByLocalidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              href={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
+                              href={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
                             >
-                              <a title={'Veure totes les ofertes de ' + marcascaoferta.marca.name}>
+                              <a title={'Ver todas la oferta de ' + marcascaoferta.marca.name}>
                                 <img
                                   src={
                                     'https://benfamcanumpics.famnum.now.sh/static/96/' +
@@ -178,9 +176,7 @@ const PostsByLocalidad = props => (
                     triggerOnce={true}
                     render={() => (
                       <p className="fade-in">
-                        <Link
-                          href={`/ca-ES/p/${post.ID}/${post.slug}`}
-                        >
+                        <Link href={`/p/${post.ID}/${post.slug}`}>
                           <a>
                             <img
                               width="250"
@@ -202,9 +198,7 @@ const PostsByLocalidad = props => (
                     triggerOnce={true}
                     render={() => (
                       <p className="fade-in">
-                        <Link
-                          href={`/ca-ES/p/${post.ID}/${post.slug}`}
-                        >
+                        <Link href={`/p/${post.ID}/${post.slug}`}>
                           <a>
                             <img
                               width="250"
@@ -213,7 +207,8 @@ const PostsByLocalidad = props => (
                             />
                             <span className="label alert gallery-label">
                               <small>
-                                EXCLUSIU <br /> SOCIS
+                                EXCLUSIVO
+                                <br /> SOCIOS
                               </small>
                             </span>
                           </a>
@@ -226,7 +221,7 @@ const PostsByLocalidad = props => (
                 )}
 
                 <p>
-                  <Link href={`/ca-ES/p/${post.ID}/${post.slug}`}>
+                  <Link href={`/p/${post.ID}/${post.slug}`}>
                     <a dangerouslySetInnerHTML={{ __html: post.name }} />
                   </Link>
                   <br />
@@ -374,15 +369,27 @@ const PostsByLocalidad = props => (
   </Layout>
 );
 
-PostsByLocalidad.getInitialProps = async function(context) {
-  const { localidad } = context.query;
+export async function getStaticPaths() {
+  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed');
+  const localidades = await res.json();
+
+  const paths = localidades.map(
+    l => `/l/${l.localidad_del_beneficio.term_id}/${l.localidad_del_beneficio.slug}`
+  );
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const id = params.id;
+
   const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&localidad=${localidad}`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&localidad=${id}`
   );
   const posts = await res.json();
 
   const res2 = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&localidad=${localidad}`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&localidad=${id}`
   );
   const almostuniquemarcas = await res2.json();
   const marcasofertas = almostuniquemarcas.filter(x => x.marca != null);
@@ -391,12 +398,12 @@ PostsByLocalidad.getInitialProps = async function(context) {
   const banners = await res3.json();
 
   const res4 = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&localidad=${localidad}`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&localidad=${id}`
   );
   const almostuniquecamarcas = await res4.json();
   const marcascaofertas = almostuniquecamarcas.filter(x => x.marca != null);
 
-  return { posts, marcasofertas, banners, marcascaofertas };
-};
+  return { props: { posts, marcasofertas, banners, marcascaofertas } };
+}
 
 export default PostsByLocalidad;

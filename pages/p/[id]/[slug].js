@@ -239,8 +239,7 @@ const Post = props => {
               <span dangerouslySetInnerHTML={{ __html: props.post.acf.direccion }} />.{' '}
               <span>{props.post.acf.codigo_postal}</span>,{' '}
               <Link
-                as={`/l/${props.post.acf.localidad_del_beneficio.term_id}/${props.post.acf.localidad_del_beneficio.slug}`}
-                href={`/localidad?localidad=${props.post.acf.localidad_del_beneficio.term_id}`}
+                href={`/l/${props.post.acf.localidad_del_beneficio.term_id}/${props.post.acf.localidad_del_beneficio.slug}`}
               >
                 <a
                   title={
