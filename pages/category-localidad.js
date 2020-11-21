@@ -30,8 +30,7 @@ const PostsByCategoryLocalidad = props => (
         </li>
         <li>
           <Link
-            as={`/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`}
-            href={`/category?sid=${props.posts[0].categoria_de_la_prestacion.term_id}`}
+            href={`/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`}
           >
             <a>{props.posts[0].categoria_de_la_prestacion.name}</a>
           </Link>

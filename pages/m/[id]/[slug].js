@@ -106,8 +106,7 @@ const MapByCategory = props => {
       <p className="align-center">
         <small>
           <Link
-            as={`/ca-ES/c/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}`}
-            href={`/ca-ES/category?id=${props.markers[0].categoria_de_la_prestacion.term_id}`}
+            href={`/ca-ES/c/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}`}
           >
             <a>ver listado</a>
           </Link>

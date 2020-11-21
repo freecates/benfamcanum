@@ -458,8 +458,7 @@ const PostsByCategoryComunidad = props => (
                     <p className="align-center">
                       Si lo prefiere, también puede ver las{' '}
                       <Link
-                        as={`/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
-                        href={`/category-ofertas-on-line?id=${props.ofertasonlines[0].categoria_de_la_oferta.term_id}`}
+                        href={`/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
                       >
                         <a
                           className="label alert file-label"

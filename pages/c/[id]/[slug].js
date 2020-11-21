@@ -4,9 +4,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
-import Layout from '../../components/MyLayout.js';
+import Layout from '../../../../components/MyLayout.js';
 
-const SelectCity = dynamic(import('../../components/SelectCity'), {
+const SelectCity = dynamic(import('../../../../components/SelectCity'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -22,23 +22,23 @@ const todayISO = new Date(today).toISOString();
 const PostsByCategory = props => (
   <Layout ruta={props.ruta}>
     <Head>
-      <title>Beneficis Famílies Nombroses - {props.posts[0].categoria_de_la_prestacion.name}</title>
+      <title>Beneficios Familias Numerosas - {props.posts[0].categoria_de_la_prestacion.name}</title>
     </Head>
-    <nav aria-label="Ets aquí:" role="navigation">
+    <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link href="/ca-ES">
+          <Link href="/">
             <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link href="/ca-ES/beneficis">
-            <a>Ofertes per a famílies</a>
+          <Link href="/beneficios">
+            <a>Ofertas para familias</a>
           </Link>
         </li>
         <li>
           <Link href="/ca-ES/ofertes-per-sectors">
-            <a>Ofertes per sectors</a>
+            <a>Ofertas por sectores</a>
           </Link>
         </li>
         <li>
@@ -53,7 +53,7 @@ const PostsByCategory = props => (
           <React.Fragment key={index}>
             {banner.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
             banner.acf.la_publicidad_es_de_ca != true &&
-            banner.acf.sector_del_banner.term_id == props.sid ? (
+            banner.acf.sector_del_banner.term_id == props.id ? (
               <React.Fragment>
                 <p className="align-center promo dk">
                   <Link href={banner.acf.url_de_destino_del_banner}>
@@ -101,12 +101,12 @@ const PostsByCategory = props => (
 
       <section id="select-city">
         <div className="wrapper">
-          <p className="align-center">On vols gaudir del benefici? Selecciona la CA</p>
+          <p className="align-center">¿Donde quieres disfrutar del beneficio? Selecciona la CA</p>
 
           <SelectCity
             inputClass="comunidad"
             ruta={props.ruta}
-            inputValue="Cercar el millor descompte"
+            inputValue="Buscar el mejor descuento"
             options={[
               {
                 slug: 'catalunya',
@@ -215,19 +215,18 @@ const PostsByCategory = props => (
         {props.ofertasonlines.length >= 1 ? (
           <div className="promo">
             <p className="align-center">
-              Si s'ho estime més, també por veure les{' '}
+              Si lo prefiere, también puede ver las{' '}
               <Link
-                as={`/ca-ES/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
-                href={`/ca-ES/category-ofertas-on-line?id=${props.ofertasonlines[0].categoria_de_la_oferta.term_id}`}
+                href={`/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
               >
                 <a
                   className="label alert file-label"
                   title={
-                    'Clica aquí per veure totes les ofertes online de ' +
+                    'Clica aquí para ver todas las ofertas online de ' +
                     props.ofertasonlines[0].categoria_de_la_oferta.name
                   }
                 >
-                  ofertes on line de {props.ofertasonlines[0].categoria_de_la_oferta.name}
+                  ofertas on line de {props.ofertasonlines[0].categoria_de_la_oferta.name}
                 </a>
               </Link>
             </p>
@@ -383,21 +382,32 @@ const PostsByCategory = props => (
   </Layout>
 );
 
-PostsByCategory.getInitialProps = async function(context) {
-  const { sid } = context.query;
+export async function getStaticPaths() {
+  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/categoria_del_beneficio');
+  const categories = await res.json();
+
+  const paths = categories.map((c) => `/c/${c.term_id}/${c.slug}`);
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+
+  const id = params.id;
+
   const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}`
   );
   const posts = await res.json();
 
   const res2 = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&sim-model=id-marca`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${id}&sim-model=id-marca`
   );
   const almostuniquemarcas = await res2.json();
-  const marcasofertas = almostuniquemarcas.filter(x => x.marca != null);
+  const marcasofertas = almostuniquemarcas.filter(x => x.marca !== null);
 
   const res3 = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${sid}`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${id}`
   );
   const ofertasonlines = await res3.json();
 
@@ -405,10 +415,10 @@ PostsByCategory.getInitialProps = async function(context) {
   const banners = await res4.json();
 
   const uniquemarcas = [
-    ...new Set(marcasofertas.map(({ marca }) => (marca != null ? marca.name : '')))
+    ...new Set(marcasofertas.map(({ marca }) => (marca !== null && marca.name !== undefined ? marca.name : '')))
   ];
 
-  return { posts, marcasofertas, uniquemarcas, ofertasonlines, banners, sid };
+  return { props: { posts, marcasofertas, uniquemarcas, ofertasonlines, banners, id } };
 };
 
 export default PostsByCategory;

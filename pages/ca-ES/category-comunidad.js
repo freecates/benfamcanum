@@ -457,10 +457,9 @@ const PostsByCategoryComunidad = props => (
                 {props.ofertasonlines.length >= 1 ? (
                   <div className="promo">
                     <p className="align-center">
-                      Si s'ho estima més, també por veure les{' '}
+                      Si s'ho estima més, també pot veure les{' '}
                       <Link
-                        as={`/ca-ES/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
-                        href={`/ca-ES/category-ofertas-on-line?id=${props.ofertasonlines[0].categoria_de_la_oferta.term_id}`}
+                        href={`/ca-ES/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
                       >
                         <a
                           className="label alert file-label"

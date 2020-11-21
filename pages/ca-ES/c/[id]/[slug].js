@@ -4,9 +4,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
-import Layout from '../components/MyLayout.js';
+import Layout from '../../../../components/MyLayout.js';
 
-const SelectCity = dynamic(import('../components/SelectCity'), {
+const SelectCity = dynamic(import('../../../../components/SelectCity'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -22,25 +22,23 @@ const todayISO = new Date(today).toISOString();
 const PostsByCategory = props => (
   <Layout ruta={props.ruta}>
     <Head>
-      <title>
-        Beneficios Familias Numerosas - {props.posts[0].categoria_de_la_prestacion.name}
-      </title>
+      <title>Beneficis Famílies Nombroses - {props.posts[0].categoria_de_la_prestacion.name}</title>
     </Head>
-    <nav aria-label="Estás aquí:" role="navigation">
+    <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link href="/">
-            <a>Inicio</a>
+          <Link href="/ca-ES">
+            <a>Inici</a>
           </Link>
         </li>
         <li>
-          <Link href="/beneficios">
-            <a>Ofertas para familias</a>
+          <Link href="/ca-ES/beneficis">
+            <a>Ofertes per a famílies</a>
           </Link>
         </li>
         <li>
-          <Link href="/ofertas-por-sectores">
-            <a>Ofertas por sectores</a>
+          <Link href="/ca-ES/ofertes-per-sectors">
+            <a>Ofertes per sectors</a>
           </Link>
         </li>
         <li>
@@ -55,7 +53,7 @@ const PostsByCategory = props => (
           <React.Fragment key={index}>
             {banner.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
             banner.acf.la_publicidad_es_de_ca != true &&
-            banner.acf.sector_del_banner.term_id == props.sid ? (
+            banner.acf.sector_del_banner.term_id == props.id ? (
               <React.Fragment>
                 <p className="align-center promo dk">
                   <Link href={banner.acf.url_de_destino_del_banner}>
@@ -92,10 +90,10 @@ const PostsByCategory = props => (
       <p className="align-center">
         <small>
           <Link
-            href={`/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`}
+            href={`/ca-ES/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`}
           >
             <a>
-              <img src="/static/icona-mapa-familias-numerosas.png" /> ver en el mapa
+              <img src="/static/icona-mapa-familias-numerosas.png" /> veure al mapa
             </a>
           </Link>
         </small>
@@ -103,25 +101,25 @@ const PostsByCategory = props => (
 
       <section id="select-city">
         <div className="wrapper">
-          <p className="align-center">¿Dónde quieres disfrutar del beneficio? Selecciona la CA</p>
+          <p className="align-center">On vols gaudir del benefici? Selecciona la CA</p>
 
           <SelectCity
             inputClass="comunidad"
             ruta={props.ruta}
-            inputValue="Buscar el mejor descuento"
+            inputValue="Cercar el millor descompte"
             options={[
               {
                 slug: 'catalunya',
                 key: 8143,
-                value: `/category-comunidad?sid=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Catalu&caid=8196`,
-                label: 'Cataluña'
+                value: `/ca-ES/category-comunidad?sid=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Catalu&caid=8196`,
+                label: 'Catalunya'
               }
             ]}
           />
         </div>
       </section>
 
-      <IntlProvider defaultLocale="es">
+      <IntlProvider defaultLocale="ca">
         <section>
           {props.posts[0].categoria_de_la_prestacion.term_id === 6 ? (
             <ul className="gallery national-gallery">
@@ -133,7 +131,7 @@ const PostsByCategory = props => (
                     <p className="fade-in align-center">
                       <Link href="https://www.colectivosubica.com/familiamassegura/">
                         <a
-                          title="Federación Española Familias Numerosas / Ubica, correduría de seguros"
+                          title="Federación Española Famílies Nombroses / Ubica, correduría de seguros"
                           target="_blank"
                         >
                           <img
@@ -155,7 +153,7 @@ const PostsByCategory = props => (
                     <p className="fade-in align-center">
                       <Link href="https://www.colectivosubica.com/familiamassegura/">
                         <a
-                          title="Federación Española Familias Numerosas / Ubica, correduría de seguros"
+                          title="Federación Española Famílies Nombroses / Ubica, correduría de seguros"
                           target="_blank"
                         >
                           <img
@@ -173,7 +171,7 @@ const PostsByCategory = props => (
           ) : (
             ''
           )}
-          {props.marcasofertas.length >= 1 ? (
+          {props.uniquemarcas.length >= 1 ? (
             <ul className="gallery national-gallery">
               {props.marcasofertas.reduce((marcas, marcasoferta) => {
                 if (marcasoferta.marca == false) {
@@ -183,9 +181,9 @@ const PostsByCategory = props => (
                   <span key={marcasoferta.marca.term_id}>
                     <li className="benefit align-center">
                       <Link
-                        href={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
+                        href={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                       >
-                        <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
+                        <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
                           <img
                             src={
                               'https://benfamcanumpics.famnum.now.sh/static/96/' +
@@ -214,22 +212,21 @@ const PostsByCategory = props => (
       </IntlProvider>
       <section>
         <hr />
-        {props.uniquemarcas.length >= 1 ? (
+        {props.ofertasonlines.length >= 1 ? (
           <div className="promo">
             <p className="align-center">
-              Si lo prefiere, también puede ver las{' '}
+              Si s'ho estime més, també pot veure les{' '}
               <Link
-                as={`/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
-                href={`/category-ofertas-on-line?id=${props.ofertasonlines[0].categoria_de_la_oferta.term_id}`}
+                href={`/ca-ES/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
               >
                 <a
                   className="label alert file-label"
                   title={
-                    'Clica aquí para ver todas las ofertas online de ' +
+                    'Clica aquí per veure totes les ofertes online de ' +
                     props.ofertasonlines[0].categoria_de_la_oferta.name
                   }
                 >
-                  ofertas on line de {props.ofertasonlines[0].categoria_de_la_oferta.name}
+                  ofertes on line de {props.ofertasonlines[0].categoria_de_la_oferta.name}
                 </a>
               </Link>
             </p>
@@ -385,21 +382,32 @@ const PostsByCategory = props => (
   </Layout>
 );
 
-PostsByCategory.getInitialProps = async function(context) {
-  const { sid } = context.query;
+export async function getStaticPaths() {
+  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/categoria_del_beneficio');
+  const categories = await res.json();
+
+  const paths = categories.map((c) => `/ca-ES/c/${c.term_id}/${c.slug}`);
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+
+  const id = params.id;
+
   const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}`
   );
   const posts = await res.json();
 
   const res2 = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&sim-model=id-marca`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${id}&sim-model=id-marca`
   );
   const almostuniquemarcas = await res2.json();
-  const marcasofertas = almostuniquemarcas.filter(x => x.marca != null);
+  const marcasofertas = almostuniquemarcas.filter(x => x.marca !== null);
 
   const res3 = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${sid}`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${id}`
   );
   const ofertasonlines = await res3.json();
 
@@ -407,10 +415,10 @@ PostsByCategory.getInitialProps = async function(context) {
   const banners = await res4.json();
 
   const uniquemarcas = [
-    ...new Set(marcasofertas.map(({ marca }) => (marca != null ? marca.name : '')))
+    ...new Set(marcasofertas.map(({ marca }) => (marca !== null && marca.name !== undefined ? marca.name : '')))
   ];
 
-  return { posts, marcasofertas, uniquemarcas, ofertasonlines, banners, sid };
+  return { props: { posts, marcasofertas, uniquemarcas, ofertasonlines, banners, id } };
 };
 
 export default PostsByCategory;

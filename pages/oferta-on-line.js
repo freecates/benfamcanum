@@ -90,8 +90,7 @@ const OfertaOnLine = props => (
         <li>
           <Link
             
-            as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
-            href={`/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}
+            href={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
           >
             <a>{props.ofertaonline._embedded['wp:term'][0][0].name}</a>
           </Link>
@@ -150,8 +149,7 @@ const OfertaOnLine = props => (
             <strong>Categoria</strong>:{' '}
             <Link
               
-              as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
-              href={`/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}
+              href={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`}
             >
               <a
                 title={
