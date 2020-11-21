@@ -27,8 +27,8 @@ const PostsByLocalidad = props => (
         </li>
         <li>
           <Link
-            as={`/ca/${props.posts[0].comunidad_autonoma}/${props.marcasofertas[0].comunidad_autonoma.term_id}`}
-            href={`/comunidad?comunidad=${props.posts[0].comunidad_autonoma}&caid=${props.marcasofertas[0].comunidad_autonoma.term_id}`}
+            as={`/ca/${props.posts[0].comunidad_autonoma}/8143`}
+            href={`/comunidad?comunidad=${props.posts[0].comunidad_autonoma}&caid=8143`}
           >
             <a>{props.posts[0].comunidad_autonoma}</a>
           </Link>
