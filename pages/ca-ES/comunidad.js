@@ -138,7 +138,7 @@ const PostByComunidad = props => (
                       slug: post.localidad_del_beneficio.slug,
                       key: post.localidad_del_beneficio.term_id,
                       value: post.localidad_del_beneficio
-                        ? `/ca-ES/localidad?localidad=${post.localidad_del_beneficio.term_id}`
+                        ? `/ca-ES/l/${post.localidad_del_beneficio.term_id}/${post.localidad_del_beneficio.slug}`
                         : '',
                       label: post.localidad_del_beneficio
                         ? `${post.localidad_del_beneficio.name}`
