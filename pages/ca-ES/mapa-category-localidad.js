@@ -46,8 +46,7 @@ const MapByCategoryLocalidad = props => (
         </li>
         <li>
           <Link
-            as={`/ca-ES/m/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}`}
-            href={`/ca-ES/mapa?id=${props.markers[0].categoria_de_la_prestacion.term_id}`}
+            href={`/ca-ES/m/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}`}
           >
             <a>{props.markers[0].categoria_de_la_prestacion.name}</a>
           </Link>

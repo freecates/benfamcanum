@@ -1,23 +1,31 @@
 import fetch from 'isomorphic-unfetch';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../../components/MyLayout.js';
+import Layout from '../../../../components/MyLayout.js';
+import Custom404 from '../../../404';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
-  loading: () => <p>carregant ...</p>
+  loading: () => (
+    <div>
+      <p style={{ textAlign: 'center' }}>
+        <img src="/static/rolling.gif" />
+      </p>
+    </div>
+  )
 });
 
 const markerStyle = {
-  'background-color': '#ffffff',
+  backgroundColor: '#ffffff',
   width: '50px',
-  'text-align': 'center',
+  textAlign: 'center',
   padding: '.5em',
   position: 'relative',
   right: 25,
   bottom: 25,
-  'border-radius': '50%'
+  borderRadius: '50%'
 };
 
 const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
@@ -25,8 +33,45 @@ const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 const CENTER = [41.3948976, 2.0787282];
 const ZOOM = 7;
 
-const MapByCategory = props => (
-  <Layout ruta={props.ruta}>
+const Fallback = ({ ruta, notFound }) => {
+  return (
+    <Layout ruta={ruta}>
+      <nav aria-label="Ets aquí:" role="navigation">
+        <ul className="breadcrumbs">
+          <li>
+            <Link href="/ca-ES">
+              <a>Inici</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/ca-ES/beneficis">
+              <a>Ofertes per a famílies</a>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <div className={'file'}>
+          <h1>{notFound ? 'Oferta no trobada' : '... Loading'}</h1>
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+const MapByCategory = props => {
+  const { isFallback } = useRouter();
+  if ((!isFallback && !props.markers)) {
+    return <Custom404 ruta={props.ruta} />;
+  }
+  if (isFallback) {
+    return <Fallback ruta={props.ruta} />;
+  }
+  if (props.markers === '404') {
+    return <Fallback ruta={props.ruta} notFound />;
+  }
+  return (
+    <Layout ruta={props.ruta}>
     <Head>
       <title>
         Beneficis Famílies Nombroses - {props.markers[0].categoria_de_la_prestacion.name}
@@ -53,11 +98,7 @@ const MapByCategory = props => (
     <section>
       <h1>
         <img
-          src={
-            '/static/' +
-            props.markers[0].categoria_de_la_prestacion.slug +
-            '-familias-numerosas.png'
-          }
+          src={`https://benfamcanumpics.famnum.now.sh/static/96/${props.markers[0].categoria_de_la_prestacion.slug}-familias-numerosas.png`}
         />
         <br />
         {props.markers[0].categoria_de_la_prestacion.name}
@@ -87,10 +128,9 @@ const MapByCategory = props => (
                 lat={marker.lat.includes(',') || marker.lat.includes('!') ? '' : marker.lat}
                 lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
                 text={
-                  <Link
+                  <a
                     href={`/ca-ES/p/${marker.ID}/${marker.slug}`}
                   >
-                    <a title={marker.name}>
                       <span>
                         <img
                           src={
@@ -100,8 +140,7 @@ const MapByCategory = props => (
                           }
                         />
                       </span>
-                    </a>
-                  </Link>
+                  </a>
                 }
               />
             ))}
@@ -193,18 +232,28 @@ const MapByCategory = props => (
       }
     `}</style>
   </Layout>
-);
+)};
 
-MapByCategory.getInitialProps = async function(context) {
-  const { id } = context.query;
+export async function getStaticPaths() {
+  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/categoria_del_beneficio');
+  const categories = await res.json();
+
+  const paths = categories.map(c => `/ca-ES/m/${c.id}/${c.slug}`);
+
+  return { paths, fallback: true };
+}
+
+export async function getStaticProps({ params }) {
   const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${params.id}`
   );
   const markers = await res.json();
 
-  console.log(`Markers data fetched. Count: ${markers.length}`);
-
-  return { markers };
-};
+  if (!markers.data) {
+    return { props: { markers }, revalidate: 1 };
+  } else {
+    return { props: { markers: '404' } };
+  }
+}
 
 export default MapByCategory;

@@ -92,8 +92,7 @@ const PostsByCategory = props => (
       <p className="align-center">
         <small>
           <Link
-            as={`/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`}
-            href={`/mapa?id=${props.posts[0].categoria_de_la_prestacion.term_id}`}
+            href={`/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`}
           >
             <a>
               <img src="/static/icona-mapa-familias-numerosas.png" /> ver en el mapa
