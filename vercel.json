@@ -10,20 +10,12 @@
       "dest": "/ca-ES/comunidad?comunidad=Catalu&caid=$caid"
     },
     {
-      "src": "/ca-ES/l/(?<localidad>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/ca-ES/localidad?localidad=$localidad"
-    },
-    {
       "src": "/c-ca/(?<sid>[^/]+)/(?<slug>[^/]+)/(?<comunidad>[^/]+)/(?<caid>[^/]+)$",
       "dest": "/category-comunidad?sid=$sid&comunidad=$comunidad&caid=$caid"
     },
     {
       "src": "/ca/(?<comunidad>[^/]+)/(?<caid>[^/]+)$",
       "dest": "/comunidad?comunidad=Catalu&caid=$caid"
-    },
-    {
-      "src": "/l/(?<localidad>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/localidad?localidad=$localidad"
     },
     {
       "src": "/manifest.json",
