@@ -55,8 +55,7 @@ const MapByLocalidad = props => {
         <p className="align-center">
           <small>
             <Link
-              as={`/ca-ES/l/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`}
-              href={`/ca-ES/localidad?localidad=${props.markers[0].localidad_del_beneficio.term_id}`}
+              href={`/ca-ES/l/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`}
             >
               <a
                 title={

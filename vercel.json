@@ -1,93 +1,38 @@
 {
   "version": 2,
   "routes": [
-    { "src": "/ca-ES/p/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/ca-ES/post?id=$id" },
-    { "src": "/ca-ES/pr/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/ca-ES/prestacion?id=$id" },
-    { "src": "/ca-ES/pro/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/ca-ES/promocio?id=$id" },
-    { "src": "/ca-ES/oo/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/ca-ES/oferta-on-line?id=$id" },
-    {
-      "src": "/ca-ES/c-o-o/(?<id>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/ca-ES/category-ofertas-on-line?id=$id"
-    },
     {
       "src": "/ca-ES/c-ca/(?<sid>[^/]+)/(?<slug>[^/]+)/(?<comunidad>[^/]+)/(?<caid>[^/]+)$",
       "dest": "/ca-ES/category-comunidad?sid=$sid&comunidad=$comunidad&caid=$caid"
-    },
-    {
-      "src": "/ca-ES/c/(?<sid>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/ca-ES/category?sid=$sid"
     },
     {
       "src": "/ca-ES/ca/(?<comunidad>[^/]+)/(?<caid>[^/]+)$",
       "dest": "/ca-ES/comunidad?comunidad=Catalu&caid=$caid"
     },
     {
-      "src": "/ca-ES/m-o-g-m/(?<id>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/ca-ES/ofertas-de-la-marca?id=$id"
-    },
-    {
-      "src": "/ca-ES/m-o-g-m-ca/(?<id>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/ca-ES/ofertas-de-la-marca-ca?id=$id"
-    },
-    {
-      "src": "/ca-ES/mm/(?<id>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/ca-ES/mapa-de-la-marca?id=$id"
-    },
-    {
-      "src": "/ca-ES/ogm/(?<id>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/ca-ES/oferta-gran-marca?id=$id"
-    },
-    {
-      "src": "/ca-ES/ogmca/(?<id>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/ca-ES/oferta-gran-marca-ca?id=$id"
-    },
-    {
       "src": "/ca-ES/l/(?<localidad>[^/]+)/(?<slug>[^/]+)$",
       "dest": "/ca-ES/localidad?localidad=$localidad"
     },
-    { "src": "/p/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/post?id=$id" },
-    { "src": "/pr/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/prestacion?id=$id" },
-    { "src": "/pro/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/promocion?id=$id" },
-    { "src": "/oo/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/oferta-on-line?id=$id" },
-    { "src": "/c-o-o/(?<id>[^/]+)/(?<slug>[^/]+)$", "dest": "/category-ofertas-on-line?id=$id" },
     {
       "src": "/c-ca/(?<sid>[^/]+)/(?<slug>[^/]+)/(?<comunidad>[^/]+)/(?<caid>[^/]+)$",
       "dest": "/category-comunidad?sid=$sid&comunidad=$comunidad&caid=$caid"
-    },
-    {
-      "src": "/c/(?<sid>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/category?sid=$sid"
     },
     {
       "src": "/ca/(?<comunidad>[^/]+)/(?<caid>[^/]+)$",
       "dest": "/comunidad?comunidad=Catalu&caid=$caid"
     },
     {
-      "src": "/m-o-g-m/(?<id>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/ofertas-de-la-marca?id=$id"
-    },
-    {
-      "src": "/m-o-g-m-ca/(?<id>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/ofertas-de-la-marca-ca?id=$id"
-    },
-    {
-      "src": "/mm/(?<id>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/mapa-de-la-marca?id=$id"
-    },
-    {
-      "src": "/ogm/(?<id>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/oferta-gran-marca?id=$id"
-    },
-    {
-      "src": "/ogmca/(?<id>[^/]+)/(?<slug>[^/]+)$",
-      "dest": "/oferta-gran-marca-ca?id=$id"
-    },
-    {
       "src": "/l/(?<localidad>[^/]+)/(?<slug>[^/]+)$",
       "dest": "/localidad?localidad=$localidad"
     },
-    { "src": "/manifest.json", "dest": "/static/manifest.json" },
-    { "src": "/google614be494af9bad15.html", "dest": "/static/google614be494af9bad15.html" },
+    {
+      "src": "/manifest.json",
+      "dest": "/static/manifest.json"
+    },
+    {
+      "src": "/google614be494af9bad15.html",
+      "dest": "/static/google614be494af9bad15.html"
+    },
     {
       "src": "^/service-worker.js$",
       "dest": "/_next/static/service-worker.js",
@@ -96,7 +41,13 @@
         "Service-Worker-Allowed": "/"
       }
     },
-    { "src": "/sitemap.xml", "dest": "/static/sitemap.xml" },
-    { "src": "/robots.txt", "dest": "/static/robots.txt" }
+    {
+      "src": "/sitemap.xml",
+      "dest": "/static/sitemap.xml"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/static/robots.txt"
+    }
   ]
 }
