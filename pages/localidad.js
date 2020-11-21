@@ -137,8 +137,7 @@ const PostsByLocalidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
-                              href={`/ofertas-de-la-marca-ca?id=${marcascaoferta.marca.term_id}`}
+                              href={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
                             >
                               <a title={'Ver todas la oferta de ' + marcascaoferta.marca.name}>
                                 <img
