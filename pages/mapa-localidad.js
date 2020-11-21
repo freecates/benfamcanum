@@ -230,8 +230,6 @@ MapByLocalidad.getInitialProps = async function(context) {
   const almosnationalmarkers = await res2.json();
   const nationalmarkers = almosnationalmarkers.filter((x) => x.marca != null);
 
-  console.log(`Markers data fetched. Count: ${markers.length}, ${nationalmarkers.length}`);
-
   return { markers, nationalmarkers };
 };
 

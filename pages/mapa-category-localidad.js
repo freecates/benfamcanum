@@ -223,8 +223,6 @@ MapByCategoryLocalidad.getInitialProps = async function(context) {
   );
   const markers = await res.json();
 
-  console.log(`Markers data fetched. Count: ${markers.length}`);
-
   return { markers };
 };
 

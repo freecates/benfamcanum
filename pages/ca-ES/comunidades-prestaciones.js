@@ -148,8 +148,6 @@ export async function getStaticProps() {
   );
   const comunidades = await res.json();
 
-  console.log(`ComunidadesPrestaciones data fetched. Count: ${comunidades.length}`);
-
   return { props: { comunidades } };
 }
 

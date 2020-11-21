@@ -136,8 +136,6 @@ export async function getStaticProps() {
   );
   const ofertasporsectores = await res.json();
 
-  console.log(`Ofertes Por Sectors data fetched. Count: ${ofertasporsectores.length}`);
-
   return { props: { ofertasporsectores } };
 }
 

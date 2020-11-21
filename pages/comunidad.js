@@ -519,8 +519,6 @@ PostByComunidad.getInitialProps = async function(context) {
   const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners`);
   const banners = await res4.json();
 
-  console.log(`Posts data fetched. Count: ${posts.length}, ${banners.length}`);
-
   const uniquemarcas = [
     ...new Set(marcasofertas.map(({ marca }) => (marca != null ? marca.name : '')))
   ];

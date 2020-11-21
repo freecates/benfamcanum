@@ -151,8 +151,6 @@ PrestacionesByComunidad.getInitialProps = async function(context) {
   );
   const prestaciones = await res.json();
 
-  console.log(`Prestacions data fetched. Count: ${prestaciones.length}`);
-
   return { prestaciones };
 };
 

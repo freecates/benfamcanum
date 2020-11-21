@@ -193,8 +193,6 @@ export async function getStaticProps() {
   const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`);
   const promociones = await res2.json();
 
-  console.log(`Ofertes data fetched. Count: ${promociones.length}`);
-
   return { props: { promociones } };
 }
 

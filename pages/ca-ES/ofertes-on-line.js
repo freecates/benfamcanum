@@ -130,9 +130,6 @@ export async function getStaticProps() {
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?sim-model=categoria'
   );
   const ofertasonlines = await res.json();
-
-  console.log(`Ofertes On Line data fetched. Count: ${ofertasonlines.length}`);
-
   return { props: { ofertasonlines } };
 }
 

@@ -233,8 +233,6 @@ export async function getStaticProps() {
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?comunidad=Catalu%C3%B1a&sim-model=localidad'
   );
   const beneficios = await res.json();
-
-  console.log(`Ofertas data fetched. Count: ${beneficios.length}`);
   return {
     props: { beneficios }
   };

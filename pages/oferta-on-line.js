@@ -483,8 +483,6 @@ OfertaOnLine.getInitialProps = async function(context) {
   );
   const ofertaonline = await res.json();
 
-  console.log(`Fetched ofertaonline: ${ofertaonline.title.rendered}`);
-
   return { ofertaonline };
 };
 

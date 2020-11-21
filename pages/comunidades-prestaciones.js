@@ -147,8 +147,6 @@ export async function getStaticProps() {
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Autonomico'
   );
   const comunidades = await res.json();
-
-  console.log(`ComunidadesPrestaciones data fetched. Count: ${comunidades.length}`);
   return {
     props: { comunidades }
   };

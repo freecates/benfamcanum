@@ -131,8 +131,6 @@ export async function getStaticProps() {
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/categoria_del_beneficio'
   );
   const ofertasporsectores = await res.json();
-
-  console.log(`Ofertas Por Sectores data fetched. Count: ${ofertasporsectores.length}`);
   return {
     props: { ofertasporsectores }
   };

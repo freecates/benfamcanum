@@ -234,8 +234,6 @@ export async function getStaticProps() {
   );
   const beneficios = await res.json();
 
-  console.log(`Ofertes data fetched. Count: ${beneficios.length}`);
-
   return { props: { beneficios } };
 }
 

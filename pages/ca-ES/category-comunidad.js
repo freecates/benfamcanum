@@ -883,10 +883,6 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   );
   const ofertasonlines = await res5.json();
 
-  console.log(
-    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcascaofertas.length}, ${banners.length}, ${caid}, ${sid}, ${comunidad}, ${ofertasonlines.length}`
-  );
-
   const uniquemarcas = [
     ...new Set(marcasofertas.map(({ marca }) => (marca != null ? marca.name : '')))
   ];

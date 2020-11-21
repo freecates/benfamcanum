@@ -143,8 +143,6 @@ export async function getStaticProps() {
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Municipal&comunidad=8143'
   );
   const municipios = await res.json();
-
-  console.log(`MunicipiosPrestaciones data fetched. Count: ${municipios.length}`);
   return {
     props: { municipios }
   };

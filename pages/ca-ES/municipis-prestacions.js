@@ -144,8 +144,6 @@ export async function getStaticProps() {
   );
   const municipios = await res.json();
 
-  console.log(`MunicipiosPrestaciones data fetched. Count: ${municipios.length}`);
-
   return { props: { municipios } };
 }
 

@@ -179,8 +179,6 @@ export async function getStaticProps() {
   );
   const prestaciones = await res.json();
 
-  console.log(`Prestaciones data fetched. Count: ${prestaciones.length}`);
-
   return { props: {prestaciones} };
 };
 

@@ -396,10 +396,6 @@ PostsByLocalidad.getInitialProps = async function(context) {
   const almostuniquecamarcas = await res4.json();
   const marcascaofertas = almostuniquecamarcas.filter(x => x.marca != null);
 
-  console.log(
-    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${banners.length}, ${marcascaofertas.length}`
-  );
-
   return { posts, marcasofertas, banners, marcascaofertas };
 };
 

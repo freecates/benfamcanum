@@ -119,8 +119,6 @@ const GRandesMarcas = props => (
 export async function getStaticProps() {
   const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca');
   const grandesmarcas = await res.json();
-
-  console.log(`Ofertas On Line data fetched. Count: ${grandesmarcas.length}`);
   return {
     props: { grandesmarcas }
   };
