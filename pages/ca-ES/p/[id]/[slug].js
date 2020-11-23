@@ -7,6 +7,7 @@ import FontAwesome from 'react-fontawesome';
 import Observer from 'react-intersection-observer';
 import { generateShareIcon, ShareButtons } from 'react-share';
 import Layout from '../../../../components/MyLayout.js';
+import Fallback from '../../../../components/Fallback';
 
 const MapaDeGoogle = dynamic(import('../../../../components/MapaDeGoogle'), {
   loading: () => (
@@ -40,45 +41,16 @@ const TwitterIcon = generateShareIcon('twitter');
 const LinkedinIcon = generateShareIcon('linkedin');
 const EmailIcon = generateShareIcon('email');
 
-const Fallback = ({ ruta, notFound }) => {
-  return (
-    <Layout ruta={ruta}>
-      <Head>
-        <title>{notFound ? '404 | Oferta no trobada' : '... Loading'}</title>
-      </Head>
-      <nav aria-label="Estás aquí:" role="navigation">
-        <ul className="breadcrumbs">
-          <li>
-            <Link href="/ca-ES">
-              <a>Inicio</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/ca-ES/beneficis">
-              <a>Beneficios</a>
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <section>
-        <div className={'file'}>
-          <h1>{notFound ? 'Oferta no trobada' : '... Loading'}</h1>
-        </div>
-      </section>
-    </Layout>
-  );
-};
-
 const Post = props => {
   const { isFallback } = useRouter();
   if (!isFallback && !props.post) {
     return <Custom404 ruta={props.ruta} />;
   }
   if (isFallback) {
-    return <Fallback ruta={props.ruta} />;
+    return <Fallback ruta={props.ruta} breadCrumb={'Beneficis'} />;
   }
   if (props.post === '404') {
-    return <Fallback ruta={props.ruta} notFound />;
+    return <Fallback ruta={props.ruta} notFound breadCrumb={'Beneficis'} />;
   }
   return (
     <Layout ruta={props.ruta}>

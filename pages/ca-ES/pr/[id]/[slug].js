@@ -3,36 +3,8 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../../../components/MyLayout.js';
+import Fallback from '../../../../components/Fallback';
 import Custom404 from '../../../404';
-
-const Fallback = ({ ruta, notFound }) => {
-  return (
-    <Layout ruta={ruta}>
-      <Head>
-        <title>{notFound ? '404 | Prestació no trobada' : '... Loading'}</title>
-      </Head>
-      <nav aria-label="Estás aquí:" role="navigation">
-        <ul className="breadcrumbs">
-          <li>
-            <Link href="/ca-ES">
-              <a>Inici</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/ca-ES/prestacions">
-              <a>Prestacions</a>
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <section>
-        <div className={'file'}>
-          <h1>{notFound ? 'Prestació no trobada' : '... Loading'}</h1>
-        </div>
-      </section>
-    </Layout>
-  );
-};
 
 const Prestacion = props => {
   const { isFallback } = useRouter();
@@ -41,10 +13,10 @@ const Prestacion = props => {
     return <Custom404 ruta={props.ruta} />;
   }
   if (isFallback) {
-    return <Fallback ruta={props.ruta} />;
+    return <Fallback ruta={props.ruta} breadCrumb={'Prestacions'} />;
   }
   if (props.prestacion === '404') {
-    return <Fallback ruta={props.ruta} notFound />;
+    return <Fallback ruta={props.ruta} notFound breadCrumb={'Prestacions'} />;
   }
   return (
     <Layout ruta={props.ruta}>

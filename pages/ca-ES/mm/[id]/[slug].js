@@ -5,6 +5,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../../../components/MyLayout.js';
+import Fallback from '../../../../components/Fallback';
 import Custom404 from '../../../404';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
@@ -33,42 +34,16 @@ const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 const CENTER = [41.3948976, 2.0787282];
 const ZOOM = 7;
 
-const Fallback = ({ ruta, notFound }) => {
-  return (
-    <Layout ruta={ruta}>
-      <nav aria-label="Ets aquí:" role="navigation">
-        <ul className="breadcrumbs">
-          <li>
-            <Link href="/ca-ES">
-              <a>Inici</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/ca-ES/grans-marques">
-              <a>Ofertes grans marques</a>
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <section>
-        <div className={'file'}>
-          <h1>{notFound ? 'Oferta no trobada' : '... Loading'}</h1>
-        </div>
-      </section>
-    </Layout>
-  );
-};
-
 const MapByMarca = props => {
   const { isFallback } = useRouter();
   if ((!isFallback && !props.markers) || !props.camarkers) {
     return <Custom404 ruta={props.ruta} />;
   }
   if (isFallback) {
-    return <Fallback ruta={props.ruta} />;
+    return <Fallback ruta={props.ruta} breadCrumb={'Grans marques'} />;
   }
   if (props.markers === '404' || props.camarkers === '404') {
-    return <Fallback ruta={props.ruta} notFound />;
+    return <Fallback ruta={props.ruta} notFound breadCrumb={'Grans marques'} />;
   }
   return (
   <Layout ruta={props.ruta}>

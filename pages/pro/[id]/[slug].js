@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FormattedDate, IntlProvider } from 'react-intl';
 import { generateShareIcon, ShareButtons } from 'react-share';
 import Layout from '../../../components/MyLayout.js';
+import Fallback from '../../../components/Fallback';
 import Custom404 from '../../404';
 
 const {
@@ -19,40 +20,6 @@ const TwitterIcon = generateShareIcon('twitter');
 const LinkedinIcon = generateShareIcon('linkedin');
 const EmailIcon = generateShareIcon('email');
 
-const Fallback = ({ ruta, notFound }) => {
-  return (
-    <Layout ruta={ruta}>
-      <Head>
-        <title>{notFound ? '404 | Promoción no encontrada' : '... Loading'}</title>
-      </Head>
-      <nav aria-label="Estás aquí:" role="navigation">
-        <ul className="breadcrumbs">
-          <li>
-            <Link href="/">
-              <a>Inici</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/beneficios">
-              <a>Beneficis</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/promociones">
-              <a>Promociones</a>
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <section>
-        <div className={'file'}>
-          <h1>{notFound ? 'Promoción no encontrada' : '... Loading'}</h1>
-        </div>
-      </section>
-    </Layout>
-  );
-};
-
 const Promocion = props => {
   const { isFallback } = useRouter();
 
@@ -60,10 +27,10 @@ const Promocion = props => {
     return <Custom404 ruta={props.ruta} />;
   }
   if (isFallback) {
-    return <Fallback ruta={props.ruta} />;
+    return <Fallback ruta={props.ruta} breadCrumb={'Beneficios'} />;
   }
   if (props.promocion === '404') {
-    return <Fallback ruta={props.ruta} notFound />;
+    return <Fallback ruta={props.ruta} notFound breadCrumb={'Beneficios'} />;
   }
   return (
     <Layout ruta={props.ruta}>
