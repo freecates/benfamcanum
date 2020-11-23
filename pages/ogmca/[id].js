@@ -6,7 +6,7 @@ import Link from 'next/link';
 import FontAwesome from 'react-fontawesome';
 import { generateShareIcon, ShareButtons } from 'react-share';
 import Layout from '../../components/MyLayout.js';
-import Fallback from '../../../components/Fallback';
+import Fallback from '../../components/Fallback';
 import Custom404 from '../404';
 
 const MapaDeGoogle = dynamic(import('../../components/MapaDeGoogle'), {
