@@ -32,6 +32,7 @@ const markerStyle = {
 const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 
 const CENTER = [41.3948976, 2.0787282];
+const ZOOM = 7;
 
 const MapByMarca = props => {
   const { isFallback } = useRouter();
