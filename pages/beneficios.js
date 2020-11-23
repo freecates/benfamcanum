@@ -40,7 +40,7 @@ const Localidades = props => (
             </Link>
           </div>
           <div className="icona">
-            <Link as={`/ca/Catalu/8196`} href={`/comunidad?comunidad=Catalu&caid=8196`}>
+            <Link as={`/ca/Catalu/8143`} href={`/comunidad?comunidad=Catalu&caid=8143`}>
               <a>
                 <img src="/static/icona-ofertas-por-poblacion-familias-numerosas.png" />
                 <div className="text-icona">Ofertas por población</div>
