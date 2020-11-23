@@ -6,16 +6,8 @@
       "dest": "/ca-ES/category-comunidad?sid=$sid&comunidad=$comunidad&caid=$caid"
     },
     {
-      "src": "/ca-ES/ca/(?<comunidad>[^/]+)/(?<caid>[^/]+)$",
-      "dest": "/ca-ES/comunidad?comunidad=Catalu&caid=$caid"
-    },
-    {
       "src": "/c-ca/(?<sid>[^/]+)/(?<slug>[^/]+)/(?<comunidad>[^/]+)/(?<caid>[^/]+)$",
       "dest": "/category-comunidad?sid=$sid&comunidad=$comunidad&caid=$caid"
-    },
-    {
-      "src": "/ca/(?<comunidad>[^/]+)/(?<caid>[^/]+)$",
-      "dest": "/comunidad?comunidad=Catalu&caid=$caid"
     },
     {
       "src": "/manifest.json",

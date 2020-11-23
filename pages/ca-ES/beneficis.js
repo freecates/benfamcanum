@@ -11,7 +11,7 @@ const SelectCity = dynamic(import('../../components/SelectCity'), {
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
-const Localidades = props => (
+const Beneficis = props => (
   <Layout layout ruta={props.ruta}>
     <Head>
       <title>Ofertes per a famílies nombroses</title>
@@ -40,7 +40,7 @@ const Localidades = props => (
             </Link>
           </div>
           <div className="icona">
-            <Link as={`/ca-ES/ca/Catalu/8143`} href={`/ca-ES/comunidad?comunidad=Catalu&caid=8143`}>
+            <Link href={`/ca-ES/comunidad`}>
               <a>
                 <img src="/static/icona-ofertas-por-poblacion-familias-numerosas.png" />
                 <div className="text-icona">Ofertes per població</div>
@@ -196,4 +196,4 @@ export async function getStaticProps() {
   return { props: { promociones } };
 }
 
-export default Localidades;
+export default Beneficis;

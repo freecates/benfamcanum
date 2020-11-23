@@ -496,22 +496,22 @@ const PostByComunidad = props => (
   </section>
 );
 
-PostByComunidad.getInitialProps = async function(context) {
-  const { comunidad } = context.query;
-  const { caid } = context.query;
+export async function getStaticProps() {
+  const caid = '8143';
+
   const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&comunidad=${comunidad}`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&comunidad=Catalu`
   );
   const posts = await res.json();
 
   const res2 = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&comunidad=${caid}&sim-model=id-marca`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&comunidad=8143&sim-model=id-marca`
   );
   const almostuniquemarcas = await res2.json();
   const marcasofertas = almostuniquemarcas.filter(x => x.marca != null);
 
   const res3 = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&comunidad=${caid}&sim-model=id-marca-comunidad`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&comunidad=8143&sim-model=id-marca-comunidad`
   );
   const almostuniquecamarcas = await res3.json();
   const marcascaofertas = almostuniquecamarcas.filter(x => x.marca != null);
@@ -520,10 +520,17 @@ PostByComunidad.getInitialProps = async function(context) {
   const banners = await res4.json();
 
   const uniquemarcas = [
-    ...new Set(marcasofertas.map(({ marca }) => (marca != null ? marca.name : '')))
+    ...new Set(
+      marcasofertas.map(({ marca }) =>
+        marca !== null && marca.name !== undefined ? marca.name : ''
+      )
+    )
   ];
 
-  return { posts, banners, marcasofertas, marcascaofertas, caid, uniquemarcas };
-};
+  return {
+    props: { posts, banners, marcasofertas, marcascaofertas, caid, uniquemarcas },
+    revalidate: 1
+  };
+}
 
 export default PostByComunidad;
