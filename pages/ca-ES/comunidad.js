@@ -515,7 +515,7 @@ export async function getStaticProps() {
   const almostuniquecamarcas = await res3.json();
   const marcascaofertas = almostuniquecamarcas.filter(x => x.marca != null);
 
-  const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners`);
+  const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners?per_page=100`);
   const banners = await res4.json();
 
   const uniquemarcas = [
