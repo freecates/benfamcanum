@@ -542,7 +542,7 @@ PostsByCategoryLocalidad.getInitialProps = async function(context) {
   const almostuniquecamarcas = await res3.json();
   const marcacasofertas = almostuniquecamarcas.filter((x) => x.marca != null);
 
-  const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales`);
+  const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales?per_page=100`);
   const banners = await res4.json();
 
 
