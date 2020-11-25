@@ -1,12 +1,12 @@
 import fetch from 'isomorphic-unfetch';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import Link from 'next/link';
 import FontAwesome from 'react-fontawesome';
 import Observer from 'react-intersection-observer';
 import { generateShareIcon, ShareButtons } from 'react-share';
 import Layout from '../../../../components/MyLayout.js';
+import SeoHead from '../../../../components/SeoHead';
 import Fallback from '../../../../components/Fallback';
 
 const MapaDeGoogle = dynamic(import('../../../../components/MapaDeGoogle'), {
@@ -54,104 +54,7 @@ const Post = props => {
   }
   return (
     <Layout ruta={props.ruta}>
-      <Head>
-        {props.post.acf.nombre_del_establecimiento ? (
-          <title
-            dangerouslySetInnerHTML={{
-              __html: props.post.acf.nombre_del_establecimiento + ' - Famílies Nombroses'
-            }}
-          />
-        ) : (
-          ''
-        )}
-        {props.post.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : ''}
-
-        <meta property="og:url" content={`/p/${props.post.id}/${props.post.slug}`} />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={props.post.acf.nombre_del_establecimiento} />
-        {props.post.acf.descripcion_de_la_oferta_oferta_socios ? (
-          <meta
-            property="og:description"
-            content={props.post.acf.descripcion_de_la_oferta_oferta_socios}
-          />
-        ) : (
-          ''
-        )}
-        {props.post.acf.descripcion_de_la_oferta_oferta_general ? (
-          <meta
-            property="og:description"
-            content={props.post.acf.descripcion_de_la_oferta_oferta_general}
-          />
-        ) : (
-          ''
-        )}
-        {props.post.acf.imagen_destacada_de_la_oferta_socios_large ? (
-          <meta
-            property="og:image"
-            content={props.post.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large}
-          />
-        ) : (
-          ''
-        )}
-        {props.post.acf.imagen_destacada_de_la_oferta_general_large ? (
-          <meta
-            property="og:image"
-            content={props.post.acf.imagen_destacada_de_la_oferta_general_large.sizes.large}
-          />
-        ) : (
-          ''
-        )}
-        <meta property="og:image:width" content="1024" />
-        <meta property="og:image:height" content="1024" />
-
-        {props.post.acf.imagen_destacada_de_la_oferta_socios_large ? (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: `
-            {
-              "@context": "http://schema.org",
-              "@type": "Product",
-              "description": "${props.post.acf.descripcion_de_la_oferta_oferta_socios}",
-              "name": "${props.post.acf.nombre_del_establecimiento}",
-              "image": "${props.post.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large}",
-              "offers": {
-                "@type": "Offer",
-                "availability": "http://schema.org/InStock",
-                "price": "${props.post.acf.titulo_de_la_oferta_oferta_socios}",
-                "priceCurrency": "EUR"
-              }
-            }`
-            }}
-          />
-        ) : (
-          ''
-        )}
-
-        {props.post.acf.imagen_destacada_de_la_oferta_general_large ? (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: `
-            {
-              "@context": "http://schema.org",
-              "@type": "Product",
-              "description": "${props.post.acf.descripcion_de_la_oferta_oferta_general}",
-              "name": "${props.post.acf.nombre_del_establecimiento}",
-              "image": "${props.post.acf.imagen_destacada_de_la_oferta_general_large.sizes.large}",
-              "offers": {
-                "@type": "Offer",
-                "availability": "http://schema.org/InStock",
-                "price": "${props.post.acf.titulo_de_la_oferta_oferta_general}",
-                "priceCurrency": "EUR"
-              }
-            }`
-            }}
-          />
-        ) : (
-          ''
-        )}
-      </Head>
+      <SeoHead seo={props.post} ruta={props.ruta} />
       <nav aria-label="Ets aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>
@@ -366,17 +269,17 @@ const Post = props => {
               {props.post.acf.como_conseguir_la_oferta_oferta_socios ? (
                 <h1 className="align-none">
                   <a href="#how-to-get-it">
-                      <span className="label alert file-label">
-                        EXCLUSIU SOCIS.
-                        <br /> Introdueix el teu usuari i contrasenya d'associat per saber com
-                        obtenir aquesta oferta
-                        <br />
-                        <FontAwesome
-                          name="check-circle-o"
-                          size="2x"
-                          style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-                        />
-                      </span>
+                    <span className="label alert file-label">
+                      EXCLUSIU SOCIS.
+                      <br /> Introdueix el teu usuari i contrasenya d'associat per saber com obtenir
+                      aquesta oferta
+                      <br />
+                      <FontAwesome
+                        name="check-circle-o"
+                        size="2x"
+                        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+                      />
+                    </span>
                   </a>
                 </h1>
               ) : (
@@ -679,7 +582,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/beneficios/${params.id}?_embed`
   );
