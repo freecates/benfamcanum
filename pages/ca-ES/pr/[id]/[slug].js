@@ -1,10 +1,10 @@
 import fetch from 'isomorphic-unfetch';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../../../components/MyLayout.js';
 import Fallback from '../../../../components/Fallback';
 import Custom404 from '../../../404';
+import SeoHead from '../../../../components/SeoHead.js';
 
 const Prestacion = props => {
   const { isFallback } = useRouter();
@@ -20,18 +20,7 @@ const Prestacion = props => {
   }
   return (
     <Layout ruta={props.ruta}>
-      <Head>
-        {props.prestacion.acf.nombre_de_la_prestacion ? (
-          <title
-            dangerouslySetInnerHTML={{
-              __html: props.prestacion.acf.nombre_de_la_prestacion + ' - Famílies Nombroses'
-            }}
-          />
-        ) : (
-          ''
-        )}
-        {props.prestacion.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : ''}
-      </Head>
+      <SeoHead seo={props.prestacion} ruta={props.ruta} />
       <nav aria-label="Ets aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>

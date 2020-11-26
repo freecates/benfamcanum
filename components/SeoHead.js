@@ -1,16 +1,23 @@
 import Head from 'next/head';
 
 const SeoHead = ({ seo, ruta }) => {
-    console.log('ruta ', ruta);
-    const postURL = ruta.includes('/ca-ES/p/') ? `/ca-ES/p/${seo.id}/${seo.slug}` : `/p/${seo.id}/${seo.slug}`;
+  const caURL = ruta.includes('/ca-ES/') ? `/ca-ES/` : '';
+  const esURL = !ruta.includes('/ca-ES/') ? `/` : '';
+  const prURL = ruta.includes('/pr/') ? `pr/${seo.id}/${seo.slug}` : '';
+  const pURL = ruta.includes('/p/') ? `p/${seo.id}/${seo.slug}` : '';
+  const ogmURL = ruta.includes('/ogm/') ? `ogm/${seo.id}/${seo.slug}` : '';
+
   return (
     <Head>
       {seo.acf.nombre_del_establecimiento ? (
         <title>{`${seo.acf.nombre_del_establecimiento} - Familias Numerosas`}</title>
       ) : null}
+      {seo.acf.nombre_de_la_prestacion ? (
+        <title>{`${seo.acf.nombre_de_la_prestacion} - Familias Numerosas`}</title>
+      ) : null}
       {seo.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : null}
 
-      <meta property="og:url" content={postURL} />
+      <meta property="og:url" content={(caURL || esURL) + (prURL || pURL || ogmURL)} />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={seo.acf.nombre_del_establecimiento} />
       {seo.acf.descripcion_de_la_oferta_oferta_socios ? (

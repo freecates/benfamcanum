@@ -1,12 +1,12 @@
 import fetch from 'isomorphic-unfetch';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import Link from 'next/link';
 import FontAwesome from 'react-fontawesome';
 import { generateShareIcon, ShareButtons } from 'react-share';
 import Layout from '../../components/MyLayout.js';
 import Fallback from '../../components/Fallback';
+import SeoHead from '../../components/SeoHead';
 import Custom404 from '../404';
 
 const MapaDeGoogle = dynamic(import('../../components/MapaDeGoogle'), {
@@ -54,68 +54,7 @@ const OfertaGranMarca = props => {
   }
   return (
     <Layout ruta={props.ruta}>
-      <Head>
-        {props.ofertagranmarca.acf.nombre_del_establecimiento ? (
-          <title
-            dangerouslySetInnerHTML={{
-              __html:
-                props.ofertagranmarca._embedded['wp:term'][3][0].name +
-                ' - ' +
-                props.ofertagranmarca.acf.nombre_del_establecimiento +
-                ' - Familias Numerosas'
-            }}
-          />
-        ) : (
-          ''
-        )}
-        {props.ofertagranmarca.acf.telefono ? (
-          <link rel="stylesheet" href="/static/custom.css" />
-        ) : (
-          ''
-        )}
-
-        <meta
-          property="og:url"
-          content={`/ogm/${props.ofertagranmarca.id}/${props.ofertagranmarca.slug}`}
-        />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={props.ofertagranmarca.acf.nombre_del_establecimiento} />
-        {props.ofertagranmarca.acf.descripcion_de_la_oferta ? (
-          <meta
-            content="og:description"
-            content={props.ofertagranmarca.acf.descripcion_de_la_oferta}
-          />
-        ) : (
-          ''
-        )}
-        <meta property="og:image" content="/static/logo-familias-numerosas-og.png" />
-        <meta property="og:image:width" content="1024" />
-        <meta property="og:image:height" content="1024" />
-
-        {props.ofertagranmarca.acf.descripcion_de_la_oferta ? (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: `
-          {
-            "@context": "http://schema.org",
-            "@type": "Product",
-            "description": "${props.ofertagranmarca.acf.descripcion_de_la_oferta}",
-            "name": "${props.ofertagranmarca.acf.nombre_del_establecimiento}",
-            "image": "/static/logo-familias-numerosas-og.png",
-            "offers": {
-              "@type": "Offer",
-              "availability": "http://schema.org/InStock",
-              "price": "${props.ofertagranmarca.acf.titulo_de_la_oferta}",
-              "priceCurrency": "EUR"
-            }
-          }`
-            }}
-          />
-        ) : (
-          ''
-        )}
-      </Head>
+    <SeoHead seo={props.ofertagranmarca} ruta={props.ruta} />
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>

@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/MyLayout.js';
 
-export default props => (
+const Prestacions = props => (
   <Layout layout ruta={props.ruta}>
     <Head>
       <title>Prestacions Famílies Nombroses</title>
@@ -76,3 +76,4 @@ export default props => (
     `}</style>
   </Layout>
 );
+export default Prestacions;
