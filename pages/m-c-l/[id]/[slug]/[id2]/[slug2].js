@@ -3,10 +3,10 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../components/MyLayout.js';
+import Layout from '../../../../../components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
-  loading: () => <p>cargando ...</p>
+  loading: () => <p>carregant ...</p>
 });
 
 const markerStyle = {
@@ -215,15 +215,29 @@ const MapByCategoryLocalidad = props => (
   </Layout>
 );
 
-MapByCategoryLocalidad.getInitialProps = async function(context) {
-  const { id } = context.query;
-  const { localidad } = context.query;
-  const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}&localidad=${localidad}`
-  );
-  const markers = await res.json();
+export async function getStaticPaths() {
+  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed');
+  const localidades = await res.json();
 
-  return { markers };
-};
+  const paths = localidades.map(
+    l => `/m-c-l/${l.categoria_de_la_prestacion.term_id}/${l.categoria_de_la_prestacion.slug}/${l.localidad_del_beneficio.term_id}/${l.localidad_del_beneficio.slug}`
+  );
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+    const id = params.id;
+    const localidad = params.id2;
+    const res = await fetch(
+      `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}&localidad=${localidad}`
+    );
+    const markers = await res.json();
+    if (markers.errors) {
+      console.error(markers.errors)
+      throw new Error('Failed to fetch API')
+    }
+    return { props: { markers } };
+}
 
 export default MapByCategoryLocalidad;

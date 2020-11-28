@@ -37,7 +37,7 @@ const Localidades = props => (
           <div className="wrapper wrapper-top">
             <div className="left">
               <p className="align-center no-margin-bottom padding">
-                <Link  as="/m-p" href="/mapa-proximidad">
+                <Link href="/mapa-proximidad">
                   <a className="button button-blue">Buscar cerca de tí</a>
                 </Link>
               </p>

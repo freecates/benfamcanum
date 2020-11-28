@@ -132,7 +132,7 @@ const MapByCategory = props => (
               Si no tienes Beneficios cerca de tí,
               <strong>prueba de hacer menos zoom en el mapa</strong> hasta encontarlos. O vuelve a
               probar haciendo clic{' '}
-              <Link as="/m-p" href="/mapa-proximidad">
+              <Link href="/mapa-proximidad">
                 <a className="blue-underline">
                   <strong>aquí</strong>
                 </a>
@@ -142,7 +142,7 @@ const MapByCategory = props => (
         ) : (
           <section>
             <p className="text-center">
-              <Link as="/m-p" href="/mapa-proximidad">
+              <Link href="/mapa-proximidad">
                 <a className="button">Localízate</a>
               </Link>
             </p>
@@ -258,6 +258,7 @@ MapByCategory.getInitialProps = async function() {
   );
   const markers = await res.json();
   const CENTER = await centerLatLng;
+  console.log('CENTER ', CENTER);
 
   console.log(`Markers data fetched. Count: ${markers.length}`, `${CENTER}`);
 

@@ -94,8 +94,7 @@ const PostsByCategoryLocalidad = props => (
       <p className="align-center">
         <small>
           <Link
-            as={`/ca-ES/m-c-l/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`}
-            href={`/ca-ES/mapa-category-localidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&localidad=${props.posts[0].localidad_del_beneficio.term_id}`}
+            href={`/ca-ES/m-c-l/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`}
           >
             <a>
               <img src="/static/icona-mapa-familias-numerosas.png" /> veure al mapa
@@ -530,7 +529,6 @@ const PostsByCategoryLocalidad = props => (
 PostsByCategoryLocalidad.getInitialProps = async function(context) {
   const { sid } = context.query;
   const { localidad } = context.query;
-  const { caid } = context.query;
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&localidad=${localidad}`
   );

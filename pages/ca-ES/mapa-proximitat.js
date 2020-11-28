@@ -20,7 +20,7 @@ const markerStyle = {
   borderRadius: '50%'
 };
 
-let centerLatLng = new Promise(function(resolve, reject) {
+const centerLatLng = new Promise(function(resolve, reject) {
   if (typeof window === 'undefined') {
     console.log('pastanaga');
     resolve([40.4381311, -3.8196197]);
@@ -132,7 +132,7 @@ const MapByCategory = props => (
               Si hi ha Beneficis a prop teu,
               <strong>prova de fer menys zoom al mapa</strong> fins a trobar-los. O torna a provar
               fent clic{' '}
-              <Link as="/m-p" href="/mapa-proximidad">
+              <Link href="/ca-ES/mapa-proximitat">
                 <a className="blue-underline">
                   <strong>aquí</strong>
                 </a>
@@ -142,7 +142,7 @@ const MapByCategory = props => (
         ) : (
           <section>
             <p className="text-center">
-              <Link as="/m-p" href="/mapa-proximidad">
+              <Link href="/ca-ES/mapa-proximitat">
                 <a className="button">Localitza't</a>
               </Link>
             </p>
@@ -258,6 +258,7 @@ MapByCategory.getInitialProps = async function() {
   );
   const markers = await res.json();
   const CENTER = await centerLatLng;
+  console.log('CENTER ', CENTER);
 
   console.log(`Markers data fetched. Count: ${markers.length}`, `${CENTER}`);
 
