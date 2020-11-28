@@ -80,8 +80,7 @@ const Prestacion = props => {
           {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica == 'Autonómico' ? (
             <li>
               <Link
-                as={`/ca-ES/p-c/${props.prestacion.acf.comunidad_autonoma.term_id}/${props.prestacion.acf.comunidad_autonoma.slug}`}
-                href={`/ca-ES/prestaciones-comunidad?comunidad=${props.prestacion.acf.comunidad_autonoma.term_id}`}
+                href={`/ca-ES/prestacions-comunitat`}
               >
                 <a>
                   <span
@@ -149,8 +148,7 @@ const Prestacion = props => {
             <p className="location">
               <small>
                 <Link
-                  as={`/ca-ES/p-c/${props.prestacion.acf.comunidad_autonoma.term_id}/${props.prestacion.acf.comunidad_autonoma.slug}`}
-                  href={`/ca-ES/prestaciones-comunidad?comunidad=${props.prestacion.acf.comunidad_autonoma.term_id}`}
+                  href={`/ca-ES/prestacions-comunitat`}
                 >
                   <a
                     title={

@@ -26,7 +26,7 @@ const Prestaciones = props => (
             <img src="/static/icona-prestacions-municipals-familias-numerosas.png" />
           </a>
         </Link>
-        <Link href="/prestaciones-comunidad?comunidad=8143" as="/p-c/8143/cataluna">
+        <Link href="/prestaciones-comunidad">
           <a>
             <img src="/static/icona-prestacions-autonomiques-familias-numerosas.png" />
           </a>

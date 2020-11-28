@@ -1,11 +1,11 @@
 import fetch from 'isomorphic-unfetch';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import Link from 'next/link';
 import { FormattedDate, IntlProvider } from 'react-intl';
 import { generateShareIcon, ShareButtons } from 'react-share';
 import Layout from '../../../../components/MyLayout.js';
 import Fallback from '../../../../components/Fallback';
+import SeoHead from '../../../../components/SeoHead';
 import Custom404 from '../../../404';
 
 const {
@@ -34,32 +34,7 @@ const Promocion = props => {
   }
   return (
     <Layout ruta={props.ruta}>
-      <Head>
-        {props.promocion.acf.nombre_de_la_empresa ? (
-          <title
-            dangerouslySetInnerHTML={{
-              __html: props.promocion.acf.nombre_de_la_empresa + ' - Famílies Nombroses'
-            }}
-          />
-        ) : (
-          ''
-        )}
-
-        <meta
-          property="og:url"
-          content={`https://beneficios.fanoc.org/ca-ES/pro/${props.promocion.id}/${props.promocion.slug}`}
-        />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={props.promocion.acf.nombre_de_la_empresa} />
-        {props.promocion.acf.descripcion_de_la_promocion ? (
-          <meta
-            property="og:description"
-            content={props.promocion.acf.descripcion_de_la_promocion}
-          />
-        ) : (
-          ''
-        )}
-      </Head>
+    <SeoHead seo={props.promocion} ruta={props.ruta} />
       <nav aria-label="Ets aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>
@@ -93,7 +68,7 @@ const Promocion = props => {
           <h1>
             <img
               src={
-                'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                'https://benfamcanumpics.famnum.now.sh/static/96/' +
                 props.promocion._embedded['wp:term'][0][0].slug +
                 '-familias-numerosas.png'
               }

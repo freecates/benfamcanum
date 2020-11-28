@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../components/MyLayout.js';
 
-const PrestacionesByComunidad = props => (
+const PrestacionsComunitat = props => (
   <Layout ruta={props.ruta}>
     <Head>
       <title>
@@ -144,14 +144,11 @@ const PrestacionesByComunidad = props => (
   </Layout>
 );
 
-PrestacionesByComunidad.getInitialProps = async function(context) {
-  const { comunidad } = context.query;
-  const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Autonomico&comunidad=${comunidad}`
-  );
+export async function getStaticProps() {
+  const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Autonomico&comunidad=8143`);
   const prestaciones = await res.json();
 
-  return { prestaciones };
-};
+  return { props: { prestaciones }, revalidate: 1 };
+}
 
-export default PrestacionesByComunidad;
+export default PrestacionsComunitat;

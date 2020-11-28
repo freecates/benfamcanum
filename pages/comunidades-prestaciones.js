@@ -46,7 +46,7 @@ const ComunidadesPrestaciones = props => (
                 slug: comunidad.comunidad_autonoma.slug,
                 key: comunidad.comunidad_autonoma.term_id,
                 value: comunidad.comunidad_autonoma.term_id
-                  ? `/prestaciones-comunidad?comunidad=${comunidad.comunidad_autonoma.term_id}`
+                  ? `/prestaciones-comunidad`
                   : '',
                 label: comunidad.comunidad_autonoma.term_id
                   ? `${comunidad.comunidad_autonoma.name}`
