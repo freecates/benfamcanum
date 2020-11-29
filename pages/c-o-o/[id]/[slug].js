@@ -5,7 +5,7 @@ import { IntlProvider } from 'react-intl';
 import Layout from '../../../components/MyLayout.js';
 
 const OfertasOnLineByCategory = props => (
-  <Layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Ofertas On Line - {props.ofertasonlines[0].categoria_de_la_oferta.name}</title>
     </Head>

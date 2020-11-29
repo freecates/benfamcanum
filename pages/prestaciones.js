@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Layout from '../components/MyLayout.js';
 
 const Prestaciones = props => (
-  <Layout layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Prestaciones Familias Numerosas</title>
     </Head>

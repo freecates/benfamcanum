@@ -42,19 +42,19 @@ const LinkedinIcon = generateShareIcon('linkedin');
 const EmailIcon = generateShareIcon('email');
 
 const OfertaGranMarca = props => {
-  const { isFallback } = useRouter();
+  const { pathname, isFallback } = useRouter();
   if (!isFallback && !props.ofertagranmarca) {
-    return <Custom404 ruta={props.ruta} />;
+    return <Custom404 />;
   }
   if (isFallback) {
-    return <Fallback ruta={props.ruta} breadCrumb={'Grandes Marcas'} />;
+    return <Fallback breadCrumb={'Grandes Marcas'} />;
   }
   if (props.ofertagranmarca === '404') {
-    return <Fallback ruta={props.ruta} notFound breadCrumb={'Grandes Marcas'} />;
+    return <Fallback notFound breadCrumb={'Grandes Marcas'} />;
   }
   return (
-    <Layout ruta={props.ruta}>
-    <SeoHead seo={props.ofertagranmarca} ruta={props.ruta} />
+    <Layout>
+      <SeoHead seo={props.ofertagranmarca} />
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>
@@ -233,7 +233,6 @@ const OfertaGranMarca = props => {
 
           {props.ofertagranmarca.acf.lat ? (
             <MapaDeGoogle
-              ruta={props.ruta}
               lat={
                 props.ofertagranmarca.acf.lat.includes(',') ||
                 props.ofertagranmarca.acf.lat.includes('!')
@@ -302,17 +301,17 @@ const OfertaGranMarca = props => {
               {props.ofertagranmarca.acf.oferta_exclusiva_socios == true ? (
                 <h1 className="align-none">
                   <a href="#how-to-get-it">
-                      <span className="label alert file-label">
-                        EXCLUSIVO SOCIOS.
-                        <br /> Introduce tu usuario y contraseña de asociado para saber como obtener
-                        esta oferta
-                        <br />
-                        <FontAwesome
-                          name="check-circle-o"
-                          size="2x"
-                          style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-                        />
-                      </span>
+                    <span className="label alert file-label">
+                      EXCLUSIVO SOCIOS.
+                      <br /> Introduce tu usuario y contraseña de asociado para saber como obtener
+                      esta oferta
+                      <br />
+                      <FontAwesome
+                        name="check-circle-o"
+                        size="2x"
+                        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+                      />
+                    </span>
                   </a>
                 </h1>
               ) : (
@@ -438,6 +437,7 @@ const OfertaGranMarca = props => {
               {props.ofertagranmarca.acf.oferta_exclusiva_socios == true ? (
                 <div id="how-to-get-it">
                   <IsMember
+                    ruta={pathname}
                     dataOK={
                       <div
                         dangerouslySetInnerHTML={{

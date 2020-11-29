@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
+import { useRouter } from 'next/router';
 import Layout from '../../components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
@@ -26,7 +27,7 @@ const ZOOM = 12;
 
 const MapByLocalidad = props => {
   return (
-    <Layout ruta={props.ruta}>
+    <Layout>
       <Head>
         <title>
           Beneficis Famílies Nombroses - {props.markers[0].localidad_del_beneficio.name}
@@ -97,10 +98,7 @@ const MapByLocalidad = props => {
                       : nationalmarker.lon
                   }
                   text={
-                    <a
-                      href={`/ca-ES/ogm/${nationalmarker.ID}`}
-                      title={nationalmarker.name}
-                    >
+                    <a href={`/ca-ES/ogm/${nationalmarker.ID}`} title={nationalmarker.name}>
                       <span>
                         <img
                           src={
@@ -233,9 +231,9 @@ MapByLocalidad.getInitialProps = async function(context) {
   const markers = await res.json();
   const res2 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&localidad=${localidad}`
-  );  
+  );
   const almosnationalmarkers = await res2.json();
-  const nationalmarkers = almosnationalmarkers.filter((x) => x.marca != null);
+  const nationalmarkers = almosnationalmarkers.filter(x => x.marca != null);
 
   return { markers, nationalmarkers };
 };

@@ -24,17 +24,17 @@ const Promocion = props => {
   const { isFallback } = useRouter();
 
   if (!isFallback && !props.promocion) {
-    return <Custom404 ruta={props.ruta} />;
+    return <Custom404 />;
   }
   if (isFallback) {
-    return <Fallback ruta={props.ruta} breadCrumb={'Beneficis'} />;
+    return <Fallback breadCrumb={'Beneficis'} />;
   }
   if (props.promocion === '404') {
-    return <Fallback ruta={props.ruta} notFound breadCrumb={'Beneficis'} />;
+    return <Fallback notFound breadCrumb={'Beneficis'} />;
   }
   return (
-    <Layout ruta={props.ruta}>
-    <SeoHead seo={props.promocion} ruta={props.ruta} />
+    <Layout>
+    <SeoHead seo={props.promocion} />
       <nav aria-label="Ets aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>

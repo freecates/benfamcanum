@@ -1,14 +1,16 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import slug from 'limax';
 import Layout from './MyLayout';
 
-const Fallback = ({ ruta, notFound, breadCrumb }) => {
+const Fallback = ({ notFound, breadCrumb }) => {
 
+  const { pathname } = useRouter();
   const slugFromBreadCrumb = slug(breadCrumb);
   return (
     <>
-      {ruta.includes('/ca-ES') && (
-        <Layout ruta={ruta}>
+      {pathname.includes('/ca-ES') && (
+        <Layout>
           <nav aria-label="Ets aquí:" role="navigation">
             <ul className="breadcrumbs">
               <li>
@@ -30,8 +32,8 @@ const Fallback = ({ ruta, notFound, breadCrumb }) => {
           </section>
         </Layout>
       )}
-      {ruta.indexOf('/ca-ES') == -1 && (
-        <Layout ruta={ruta}>
+      {pathname.indexOf('/ca-ES') == -1 && (
+        <Layout>
           <nav aria-label="Estás aquí:" role="navigation">
             <ul className="breadcrumbs">
               <li>

@@ -10,7 +10,7 @@ const SelectCity = dynamic(import('../components/SelectCity'), {
 });
 
 const MunicipiosPrestaciones = props => (
-  <Layout layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Prestaciones Familias Numerosas - Municipios</title>
     </Head>
@@ -37,7 +37,7 @@ const MunicipiosPrestaciones = props => (
         <SelectCity
           inputClass="benefit"
           inputValue="Buscar la prestación"
-          ruta={props.ruta}
+         
           localBenefit={true}
           options={props.municipios
             .reduce((ciutats, municipio) => {

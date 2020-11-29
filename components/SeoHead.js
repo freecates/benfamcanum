@@ -1,14 +1,16 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
-const SeoHead = ({ seo, ruta }) => {
-  const caSiteTitle = ruta.includes('/ca-ES/') ? `Famílies Nombroses` : '';
-  const esSiteTitle = !ruta.includes('/ca-ES/') ? `Familias Numerosas` : '';
-  const caURL = ruta.includes('/ca-ES/') ? `/ca-ES/` : '';
-  const esURL = !ruta.includes('/ca-ES/') ? `/` : '';
-  const prURL = ruta.includes('/pr/') ? `pr/${seo.id}/${seo.slug}` : '';
-  const pURL = ruta.includes('/p/') ? `p/${seo.id}/${seo.slug}` : '';
-  const ogmURL = ruta.includes('/ogm/') ? `ogm/${seo.id}/${seo.slug}` : '';
-  const proURL = ruta.includes('/pro/') ? `pro/${seo.id}/${seo.slug}` : '';
+const SeoHead = ({ seo }) => {
+  const { pathname } = useRouter();
+  const caSiteTitle = pathname.includes('/ca-ES/') ? `Famílies Nombroses` : '';
+  const esSiteTitle = !pathname.includes('/ca-ES/') ? `Familias Numerosas` : '';
+  const caURL = pathname.includes('/ca-ES/') ? `/ca-ES/` : '';
+  const esURL = !pathname.includes('/ca-ES/') ? `/` : '';
+  const prURL = pathname.includes('/pr/') ? `pr/${seo.id}/${seo.slug}` : '';
+  const pURL = pathname.includes('/p/') ? `p/${seo.id}/${seo.slug}` : '';
+  const ogmURL = pathname.includes('/ogm/') ? `ogm/${seo.id}/${seo.slug}` : '';
+  const proURL = pathname.includes('/pro/') ? `pro/${seo.id}/${seo.slug}` : '';
 
   return (
     <Head>
@@ -28,10 +30,7 @@ const SeoHead = ({ seo, ruta }) => {
       <meta property="og:title" content={seo.acf.nombre_del_establecimiento} />
       {seo.acf.descripcion_de_la_promocion ? (
         <>
-          <meta
-            property="og:description"
-            content={seo.acf.descripcion_de_la_promocion}
-          />
+          <meta property="og:description" content={seo.acf.descripcion_de_la_promocion} />
           <meta name="description" content={seo.acf.descripcion_de_la_promocion} />
         </>
       ) : null}

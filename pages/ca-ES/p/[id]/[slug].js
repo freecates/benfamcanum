@@ -42,19 +42,19 @@ const LinkedinIcon = generateShareIcon('linkedin');
 const EmailIcon = generateShareIcon('email');
 
 const Post = props => {
-  const { isFallback } = useRouter();
+  const { pathname, isFallback } = useRouter();
   if (!isFallback && !props.post) {
-    return <Custom404 ruta={props.ruta} />;
+    return <Custom404 />;
   }
   if (isFallback) {
-    return <Fallback ruta={props.ruta} breadCrumb={'Beneficis'} />;
+    return <Fallback breadCrumb={'Beneficis'} />;
   }
   if (props.post === '404') {
-    return <Fallback ruta={props.ruta} notFound breadCrumb={'Beneficis'} />;
+    return <Fallback notFound breadCrumb={'Beneficis'} />;
   }
   return (
-    <Layout ruta={props.ruta}>
-      <SeoHead seo={props.post} ruta={props.ruta} />
+    <Layout>
+      <SeoHead seo={props.post} />
       <nav aria-label="Ets aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>
@@ -219,7 +219,7 @@ const Post = props => {
           </p>
 
           {props.post.acf.lat ? (
-            <MapaDeGoogle lat={props.post.acf.lat} lng={props.post.acf.lon} ruta={props.ruta} />
+            <MapaDeGoogle lat={props.post.acf.lat} lng={props.post.acf.lon} />
           ) : (
             ''
           )}
@@ -417,7 +417,7 @@ const Post = props => {
               {props.post.acf.como_conseguir_la_oferta_oferta_socios ? (
                 <div id="how-to-get-it">
                   <IsMember
-                    ruta={props.ruta}
+                    ruta={pathname}
                     dataOK={
                       <div
                         dangerouslySetInnerHTML={{

@@ -20,7 +20,7 @@ const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
 const PostsByCategory = props => (
-  <Layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Beneficios Familias Numerosas - {props.posts[0].categoria_de_la_prestacion.name}</title>
     </Head>
@@ -105,7 +105,7 @@ const PostsByCategory = props => (
 
           <SelectCity
             inputClass="comunidad"
-            ruta={props.ruta}
+           
             inputValue="Buscar el mejor descuento"
             options={[
               {

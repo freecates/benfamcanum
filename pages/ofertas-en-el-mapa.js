@@ -10,7 +10,7 @@ const SelectCity = dynamic(import('../components/SelectCity'), {
 });
 
 const Localidades = props => (
-  <Layout bgmapa ruta={props.ruta}>
+  <Layout bgmapa>
     <Head>
       <title>Ofertas geolocalizadas para familias numerosas</title>
     </Head>

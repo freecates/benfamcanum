@@ -37,16 +37,16 @@ const ZOOM = 7;
 const MapByCategory = props => {
   const { isFallback } = useRouter();
   if ((!isFallback && !props.markers)) {
-    return <Custom404 ruta={props.ruta} />;
+    return <Custom404 />;
   }
   if (isFallback) {
-    return <Fallback ruta={props.ruta} breadCrumb={'Beneficios'} />;
+    return <Fallback breadCrumb={'Beneficios'} />;
   }
   if (props.markers === '404') {
-    return <Fallback ruta={props.ruta} notFound breadCrumb={'Beneficios'} />;
+    return <Fallback notFound breadCrumb={'Beneficios'} />;
   }
   return (
-    <Layout ruta={props.ruta}>
+    <Layout>
     <Head>
       <title>
         Beneficios Familias Numerosas - {props.markers[0].categoria_de_la_prestacion.name}

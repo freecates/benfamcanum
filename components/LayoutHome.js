@@ -1,5 +1,6 @@
 import Footer from './Footer';
 import HeaderHome from './HeaderHome';
+import { useRouter } from 'next/router';
 import Styles from './Styles';
 
 const layoutStyle = {
@@ -8,13 +9,16 @@ const layoutStyle = {
   maxWidth: '100%'
 };
 
-const LayoutHome = props => (
-  <div style={layoutStyle}>
-    <HeaderHome ruta={props.ruta} />
-    <main>{props.children}</main>
-    <Footer ruta={props.ruta} />
-    <Styles />
-  </div>
-);
+const LayoutHome = props => {
+  const { pathname } = useRouter();
+  return (
+    <div style={layoutStyle}>
+      <HeaderHome ruta={pathname} />
+      <main>{props.children}</main>
+      <Footer ruta={pathname} />
+      <Styles />
+    </div>
+  );
+};
 
 export default LayoutHome;

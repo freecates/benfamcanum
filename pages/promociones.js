@@ -8,7 +8,7 @@ const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
 const Promociones = props => (
-  <Layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Promociones para familias numerosas</title>
     </Head>

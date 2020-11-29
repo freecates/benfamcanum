@@ -5,7 +5,7 @@ import { IntlProvider } from 'react-intl';
 import Layout from '../components/MyLayout.js';
 
 const OfertasOnLine = props => (
-  <Layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Ofertas On Line para familias numerosas</title>
     </Head>

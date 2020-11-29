@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Layout from '../components/MyLayout.js';
 
-export default function Custom404(props) {
+export default function Custom404() {
+  
   return (
-    <Layout ruta={props.ruta}>
+    <Layout>
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>

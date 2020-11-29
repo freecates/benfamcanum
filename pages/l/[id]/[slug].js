@@ -9,7 +9,7 @@ const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
 const PostsByLocalidad = props => (
-  <Layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Beneficios Familias Numerosas - {props.posts[0].localidad_del_beneficio.name}</title>
     </Head>

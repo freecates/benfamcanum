@@ -42,18 +42,18 @@ const LinkedinIcon = generateShareIcon('linkedin');
 const EmailIcon = generateShareIcon('email');
 
 const OfertaGranMarca = props => {
-  const { isFallback } = useRouter();
+  const { pathname, isFallback } = useRouter();
   if (!isFallback && !props.ofertagranmarca) {
-    return <Custom404 ruta={props.ruta} />;
+    return <Custom404 />;
   }
   if (isFallback) {
-    return <Fallback ruta={props.ruta} breadCrumb={'Grans marques'} />;
+    return <Fallback breadCrumb={'Grans marques'} />;
   }
   if (props.ofertagranmarca === '404') {
-    return <Fallback ruta={props.ruta} notFound breadCrumb={'Grans marques'} />;
+    return <Fallback notFound breadCrumb={'Grans marques'} />;
   }
   return (
-    <Layout ruta={props.ruta}>
+    <Layout>
       <Head>
         {props.ofertagranmarca.acf.nombre_del_establecimiento ? (
           <title
@@ -312,7 +312,7 @@ const OfertaGranMarca = props => {
 
           {props.ofertagranmarca.acf.lat ? (
             <MapaDeGoogle
-              ruta={props.ruta}
+             
               lat={
                 props.ofertagranmarca.acf.lat.includes(',') ||
                 props.ofertagranmarca.acf.lat.includes('!')
@@ -517,6 +517,7 @@ const OfertaGranMarca = props => {
               {props.ofertagranmarca.acf.oferta_exclusiva_socios == true ? (
                 <div id="how-to-get-it">
                   <IsMember
+                  ruta={pathname}
                     dataOK={
                       <div
                         dangerouslySetInnerHTML={{

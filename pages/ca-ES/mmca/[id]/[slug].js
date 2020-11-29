@@ -37,16 +37,16 @@ const ZOOM = 7;
 const MapByMarcaCa = props => {
   const { isFallback } = useRouter();
   if ((!isFallback && !props.camarkers)) {
-    return <Custom404 ruta={props.ruta} />;
+    return <Custom404 />;
   }
   if (isFallback) {
-    return <Fallback ruta={props.ruta} breadCrumb={'Grans marques'} />;
+    return <Fallback breadCrumb={'Grans marques'} />;
   }
   if (props.camarkers === '404') {
-    return <Fallback ruta={props.ruta} notFound breadCrumb={'Grans marques'} />;
+    return <Fallback notFound breadCrumb={'Grans marques'} />;
   }
   return (
-  <Layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>
         Ofertes de la Marca 

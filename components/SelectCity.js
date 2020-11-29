@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
-const SelectCity = ({ ruta, options, inputClass, inputClass2, localBenefit, inputValue }) => {
+const SelectCity = ({ options, inputClass, inputClass2, localBenefit, inputValue }) => {
+  const { pathname } = useRouter();
   const elements = options;
   const [selecteValue, setSelectedValue] = useState(options[Object.keys(options)[0]].value);
   // console.log('select city selected options', selecteValue);
@@ -30,8 +32,8 @@ const SelectCity = ({ ruta, options, inputClass, inputClass2, localBenefit, inpu
           >
             {' '}
             <React.Fragment>
-              {ruta.includes('/ca-ES') && <option disabled>Escull població</option>}
-              {ruta.indexOf('/ca-ES') == -1 && <option disabled>Escoge población</option>}
+              {pathname.includes('/ca-ES') && <option disabled>Escull població</option>}
+              {pathname.indexOf('/ca-ES') == -1 && <option disabled>Escoge población</option>}
             </React.Fragment>
             {renderedElements}
           </select>
@@ -48,8 +50,8 @@ const SelectCity = ({ ruta, options, inputClass, inputClass2, localBenefit, inpu
             }
           >
             <React.Fragment>
-              {ruta.includes('/ca-ES') && <option>Escull CA</option>}
-              {ruta.indexOf('/ca-ES') == -1 && <option>Elige CA</option>}
+              {pathname.includes('/ca-ES') && <option>Escull CA</option>}
+              {pathname.indexOf('/ca-ES') == -1 && <option>Elige CA</option>}
             </React.Fragment>
             {renderedElements}
           </select>
@@ -75,13 +77,13 @@ const SelectCity = ({ ruta, options, inputClass, inputClass2, localBenefit, inpu
         <label className="benefit">
           {localBenefit == true ? (
             <React.Fragment>
-              {ruta.includes('/ca-ES') && <h4>Selecciona el municipi</h4>}
-              {ruta.indexOf('/ca-ES') == -1 && <h4>Selecciona el municipio</h4>}
+              {pathname.includes('/ca-ES') && <h4>Selecciona el municipi</h4>}
+              {pathname.indexOf('/ca-ES') == -1 && <h4>Selecciona el municipio</h4>}
             </React.Fragment>
           ) : (
             <React.Fragment>
-              {ruta.includes('/ca-ES') && <h4>Selecciona la comunitat municipi</h4>}
-              {ruta.indexOf('/ca-ES') == -1 && <h4>Selecciona la comunidad</h4>}
+              {pathname.includes('/ca-ES') && <h4>Selecciona la comunitat municipi</h4>}
+              {pathname.indexOf('/ca-ES') == -1 && <h4>Selecciona la comunidad</h4>}
             </React.Fragment>
           )}
           <select

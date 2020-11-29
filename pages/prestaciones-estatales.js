@@ -6,7 +6,7 @@ import { IntlProvider } from 'react-intl';
 import Layout from '../components/MyLayout.js';
 
 const PrestacionesEstatales = props => (
-  <Layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Prestaciones Familias Numerosas - Estatales</title>
     </Head>

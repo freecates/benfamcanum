@@ -37,253 +37,255 @@ const ZOOM = 7;
 const MapByMarca = props => {
   const { isFallback } = useRouter();
   if ((!isFallback && !props.markers) || !props.camarkers) {
-    return <Custom404 ruta={props.ruta} />;
+    return <Custom404 />;
   }
   if (isFallback) {
-    return <Fallback ruta={props.ruta} breadCrumb={'Grans marques'} />;
+    return <Fallback breadCrumb={'Grans marques'} />;
   }
   if (props.markers === '404' || props.camarkers === '404') {
-    return <Fallback ruta={props.ruta} notFound breadCrumb={'Grans marques'} />;
+    return <Fallback notFound breadCrumb={'Grans marques'} />;
   }
   return (
-  <Layout ruta={props.ruta}>
-    <Head>
-      <title>
-        Ofertes de la Marca {props.markers.length >= 1 ? props.markers[0].marca.name : ''}
-        {props.camarkers.length >= 1 ? props.camarkers[0].marca.name : ''} per a famílies nombroses
-      </title>
-    </Head>
-    <nav aria-label="Ets aquí:" role="navigation">
-      <ul className="breadcrumbs">
-        <li>
-          <Link href="/ca-ES">
-            <a>Inici</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/ca-ES/grans-marques">
-            <a>Grans Marques</a>
-          </Link>
-        </li>
-        <li>
-          <span className="show-for-sr">Actual: </span>{' '}
-          {props.markers.length >= 1 ? props.markers[0].marca.name : ''}
-          {props.camarkers.length >= 1 ? props.camarkers[0].marca.name : ''}
-        </li>
-      </ul>
-    </nav>
-    <section>
-      {props.markers.length >= 1 ? (
-        <div>
-          <h1>
-            <img
-              src={
-                'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                props.markers[0].marca.slug +
-                '-familias-numerosas.png'
-              }
-            />
-            <br />
-            {props.markers[0].marca.name}
-          </h1>
-          <p className="align-center">
-            <small>
-              <Link
-                href={`/ca-ES/m-o-g-m/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
-              >
-                <a>veure llistat</a>
-              </Link>
-            </small>
-          </p>
-        </div>
-      ) : (
-        ''
-      )}
-      {props.camarkers.length >= 1 ? (
-        <div>
-          <h1>
-            <img
-              src={
-                'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                props.camarkers[0].marca.slug +
-                '-familias-numerosas.png'
-              }
-            />
-            <br />
-            {props.camarkers[0].marca.name}
-          </h1>
-          <p className="align-center">
-            <small>
-              <Link
-                href={`/ca-ES/m-o-g-m/${props.camarkers[0].marca.term_id}/${props.camarkers[0].marca.slug}`}
-              >
-                <a>veure llistat</a>
-              </Link>
-            </small>
-          </p>
-        </div>
-      ) : (
-        ''
-      )}
-      <IntlProvider defaultLocale="ca">
-        <div style={{ width: '100%', height: '500px' }}>
-          <GoogleMapReact
-            bootstrapURLKeys={{
-              key: 'AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90'
-            }}
-            center={CENTER}
-            zoom={ZOOM}
-          >
-            {props.markers.length >= 1
-              ? props.markers.map((marker, index) => (
-                  <MarkerComponent
-                    key={index}
-                    lat={
-                      marker.lat.includes(',') || marker.lat.includes('!')
-                        ? marker.lat.replace(',', '.')
-                        : marker.lat
-                    }
-                    lng={
-                      marker.lon.includes(',') || marker.lon.includes('!')
-                        ? marker.lon.replace(',', '.')
-                        : marker.lon
-                    }
-                    text={
-                      <a href={`/ca-ES/ogm/${marker.ID}`} title={marker.name}>
-                        <span>
-                          <img
-                            src={
-                              'https://benfamcanumpics.famnum.now.sh/static/32/' +
-                              props.markers[0].marca.slug +
-                              '-familias-numerosas.png'
-                            }
-                          />
-                        </span>
-                      </a>
-                    }
-                  />
-                ))
-              : ''}
+    <Layout>
+      <Head>
+        <title>
+          Ofertes de la Marca {props.markers.length >= 1 ? props.markers[0].marca.name : ''}
+          {props.camarkers.length >= 1 ? props.camarkers[0].marca.name : ''} per a famílies
+          nombroses
+        </title>
+      </Head>
+      <nav aria-label="Ets aquí:" role="navigation">
+        <ul className="breadcrumbs">
+          <li>
+            <Link href="/ca-ES">
+              <a>Inici</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/ca-ES/grans-marques">
+              <a>Grans Marques</a>
+            </Link>
+          </li>
+          <li>
+            <span className="show-for-sr">Actual: </span>{' '}
+            {props.markers.length >= 1 ? props.markers[0].marca.name : ''}
+            {props.camarkers.length >= 1 ? props.camarkers[0].marca.name : ''}
+          </li>
+        </ul>
+      </nav>
+      <section>
+        {props.markers.length >= 1 ? (
+          <div>
+            <h1>
+              <img
+                src={
+                  'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                  props.markers[0].marca.slug +
+                  '-familias-numerosas.png'
+                }
+              />
+              <br />
+              {props.markers[0].marca.name}
+            </h1>
+            <p className="align-center">
+              <small>
+                <Link
+                  href={`/ca-ES/m-o-g-m/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`}
+                >
+                  <a>veure llistat</a>
+                </Link>
+              </small>
+            </p>
+          </div>
+        ) : (
+          ''
+        )}
+        {props.camarkers.length >= 1 ? (
+          <div>
+            <h1>
+              <img
+                src={
+                  'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                  props.camarkers[0].marca.slug +
+                  '-familias-numerosas.png'
+                }
+              />
+              <br />
+              {props.camarkers[0].marca.name}
+            </h1>
+            <p className="align-center">
+              <small>
+                <Link
+                  href={`/ca-ES/m-o-g-m/${props.camarkers[0].marca.term_id}/${props.camarkers[0].marca.slug}`}
+                >
+                  <a>veure llistat</a>
+                </Link>
+              </small>
+            </p>
+          </div>
+        ) : (
+          ''
+        )}
+        <IntlProvider defaultLocale="ca">
+          <div style={{ width: '100%', height: '500px' }}>
+            <GoogleMapReact
+              bootstrapURLKeys={{
+                key: 'AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90'
+              }}
+              center={CENTER}
+              zoom={ZOOM}
+            >
+              {props.markers.length >= 1
+                ? props.markers.map((marker, index) => (
+                    <MarkerComponent
+                      key={index}
+                      lat={
+                        marker.lat.includes(',') || marker.lat.includes('!')
+                          ? marker.lat.replace(',', '.')
+                          : marker.lat
+                      }
+                      lng={
+                        marker.lon.includes(',') || marker.lon.includes('!')
+                          ? marker.lon.replace(',', '.')
+                          : marker.lon
+                      }
+                      text={
+                        <a href={`/ca-ES/ogm/${marker.ID}`} title={marker.name}>
+                          <span>
+                            <img
+                              src={
+                                'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                                props.markers[0].marca.slug +
+                                '-familias-numerosas.png'
+                              }
+                            />
+                          </span>
+                        </a>
+                      }
+                    />
+                  ))
+                : ''}
 
-            {props.camarkers.length >= 1
-              ? props.camarkers.map((marker, index) => (
-                  <MarkerComponent
-                    key={index}
-                    lat={
-                      marker.lat.includes(',') || marker.lat.includes('!')
-                        ? marker.lat.replace(',', '.')
-                        : marker.lat
-                    }
-                    lng={
-                      marker.lon.includes(',') || marker.lon.includes('!')
-                        ? marker.lon.replace(',', '.')
-                        : marker.lon
-                    }
-                    text={
-                      <a href={`/ca-ES/ogm/${marker.ID}`} title={marker.name}>
-                        <span>
-                          <img
-                            src={
-                              'https://benfamcanumpics.famnum.now.sh/static/32/' +
-                              props.camarkers[0].marca.slug +
-                              '-familias-numerosas.png'
-                            }
-                          />
-                        </span>
-                      </a>
-                    }
-                  />
-                ))
-              : ''}
-          </GoogleMapReact>
-        </div>
-      </IntlProvider>
-    </section>
-    <style jsx>{`
-      .breadcrumbs {
-        margin-bottom: 1em !important;
-      }
-      h1,
-      .align-center {
-        text-align: center;
-      }
-      h1 {
-        color: #cb5599;
-      }
-      .gallery {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        padding: 5px;
-      }
-      ul {
-        list-style-type: none !important;
-        margin-left: 0;
-        margin: 0 auto !important;
-      }
-      a {
-        color: inherit !important;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      nav a {
-        color: #00add9;
-      }
-      .benefit {
-        /c-l/8/moda/talavera%20de%20la%20reinawidth: 150px;
-      }
-      .gallery-label {
-        position: relative;
-        margin-top: -45px;
-        margin-right: 10px;
-        float: right;
-        text-align: center;
-        background: #f18903 !important;
-      }
-      .titulo-oferta {
-        color: #ff0000;
-      }
-      .marker {
-        width: 50px;
-        background-color: #ffffff;
-        text-align: center;
-      }
-      @media screen and (min-width: 320px) {
+              {props.camarkers.length >= 1
+                ? props.camarkers.map((marker, index) => (
+                    <MarkerComponent
+                      key={index}
+                      lat={
+                        marker.lat.includes(',') || marker.lat.includes('!')
+                          ? marker.lat.replace(',', '.')
+                          : marker.lat
+                      }
+                      lng={
+                        marker.lon.includes(',') || marker.lon.includes('!')
+                          ? marker.lon.replace(',', '.')
+                          : marker.lon
+                      }
+                      text={
+                        <a href={`/ca-ES/ogm/${marker.ID}`} title={marker.name}>
+                          <span>
+                            <img
+                              src={
+                                'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                                props.camarkers[0].marca.slug +
+                                '-familias-numerosas.png'
+                              }
+                            />
+                          </span>
+                        </a>
+                      }
+                    />
+                  ))
+                : ''}
+            </GoogleMapReact>
+          </div>
+        </IntlProvider>
+      </section>
+      <style jsx>{`
+        .breadcrumbs {
+          margin-bottom: 1em !important;
+        }
+        h1,
+        .align-center {
+          text-align: center;
+        }
+        h1 {
+          color: #cb5599;
+        }
         .gallery {
-          width: 100%;
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+          padding: 5px;
+        }
+        ul {
+          list-style-type: none !important;
+          margin-left: 0;
+          margin: 0 auto !important;
+        }
+        a {
+          color: inherit !important;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+        nav a {
+          color: #00add9;
         }
         .benefit {
-          margin: 5px;
+          /c-l/8/moda/talavera%20de%20la%20reinawidth: 150px;
         }
-      }
-      @media screen and (max-width: 375px) {
-        .benefit {
-          width: 124px;
+        .gallery-label {
+          position: relative;
+          margin-top: -45px;
+          margin-right: 10px;
+          float: right;
+          text-align: center;
+          background: #f18903 !important;
         }
-      }
-      @media screen and (min-width: 360px) {
-        .gallery {
-          width: 90%;
+        .titulo-oferta {
+          color: #ff0000;
         }
-      }
-      @media screen and (min-width: 768px) {
-        .gallery {
-          width: 90%;
+        .marker {
+          width: 50px;
+          background-color: #ffffff;
+          text-align: center;
         }
-        .benefit {
-          width: 200px;
+        @media screen and (min-width: 320px) {
+          .gallery {
+            width: 100%;
+          }
+          .benefit {
+            margin: 5px;
+          }
         }
-      }
-      @media screen and (min-width: 1366px) {
-        .gallery {
-          width: 82%;
+        @media screen and (max-width: 375px) {
+          .benefit {
+            width: 124px;
+          }
         }
-      }
-    `}</style>
-  </Layout>
-)};
+        @media screen and (min-width: 360px) {
+          .gallery {
+            width: 90%;
+          }
+        }
+        @media screen and (min-width: 768px) {
+          .gallery {
+            width: 90%;
+          }
+          .benefit {
+            width: 200px;
+          }
+        }
+        @media screen and (min-width: 1366px) {
+          .gallery {
+            width: 82%;
+          }
+        }
+      `}</style>
+    </Layout>
+  );
+};
 
 export async function getStaticPaths() {
   const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca');
