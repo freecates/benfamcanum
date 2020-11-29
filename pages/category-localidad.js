@@ -1,15 +1,15 @@
 import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
-import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
 import Layout from '../components/MyLayout.js';
+import BrandsGallery from '../components/BrandsGallery';
+import Gallery from '../components/Gallery';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
 const PostsByCategoryLocalidad = props => {
-  
   return (
     <Layout>
       <Head>
@@ -106,181 +106,11 @@ const PostsByCategoryLocalidad = props => {
         </p>
         <IntlProvider defaultLocale="es">
           <section>
-            {props.uniquemarcas.length >= 1 ? (
-              <ul className="gallery national-gallery">
-                {props.marcasofertas.reduce((marcas, marcasoferta) => {
-                  if (marcasoferta.marca == false) {
-                    return marcas;
-                  }
-                  marcas[marcasoferta.marca.term_id] = (
-                    <span key={marcasoferta.marca.term_id}>
-                      <li className="benefit align-center">
-                        <Observer
-                          threshold={1}
-                          triggerOnce={true}
-                          render={() => (
-                            <p className="fade-in">
-                              <Link
-                                href={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
-                              >
-                                <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
-                                  <img
-                                    src={
-                                      'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                                      marcasoferta.marca.slug +
-                                      '-familias-numerosas.png'
-                                    }
-                                  />
-                                  <br />{' '}
-                                  <span
-                                    dangerouslySetInnerHTML={{ __html: marcasoferta.marca.name }}
-                                  />
-                                </a>
-                              </Link>
-                            </p>
-                          )}
-                        />
-                      </li>
-                    </span>
-                  );
-                  return marcas;
-                }, [])}
-              </ul>
-            ) : (
-              ''
-            )}
+            {props.uniquemarcas.length >= 1 ? <BrandsGallery data={props.marcasofertas} /> : null}
             {props.marcacasofertas.length >= 1 ? (
-              <ul className="gallery national-gallery">
-                {props.marcacasofertas.reduce((marcas, marcacasoferta) => {
-                  if (marcacasoferta.marca == false) {
-                    return marcas;
-                  }
-                  marcas[marcacasoferta.marca.term_id] = (
-                    <span key={marcacasoferta.marca.term_id}>
-                      <li className="benefit align-center">
-                        <Observer
-                          threshold={1}
-                          triggerOnce={true}
-                          render={() => (
-                            <p className="fade-in">
-                              <Link
-                                as={`/m-o-g-m-ca/${marcacasoferta.marca.term_id}/${marcacasoferta.marca.slug}`}
-                                href={`/ofertas-de-la-marca-ca?id=${marcacasoferta.marca.term_id}`}
-                              >
-                                <a title={'Ver todas las ofertas de ' + marcacasoferta.marca.name}>
-                                  <img
-                                    src={
-                                      'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                                      marcacasoferta.marca.slug +
-                                      '-familias-numerosas.png'
-                                    }
-                                  />
-                                  <br />{' '}
-                                  <span
-                                    dangerouslySetInnerHTML={{ __html: marcacasoferta.marca.name }}
-                                  />
-                                </a>
-                              </Link>
-                            </p>
-                          )}
-                        />
-                      </li>
-                    </span>
-                  );
-                  return marcas;
-                }, [])}
-              </ul>
-            ) : (
-              ''
-            )}
-            <ul className="gallery">
-              {props.posts.map((post, index) => (
-                <li className="benefit" key={index}>
-                  {post.imagen_destacada_de_la_oferta_general_thumb ? (
-                    <Observer
-                      threshold={1}
-                      triggerOnce={true}
-                      render={() => (
-                        <p className="fade-in">
-                          <Link href={`/p/${post.ID}/${post.slug}`}>
-                            <a title={'Ver la ficha de ' + post.name}>
-                              <img
-                                width="250"
-                                src={
-                                  post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail
-                                }
-                                alt={post.titulo_de_la_oferta_oferta_general}
-                              />
-                            </a>
-                          </Link>
-                        </p>
-                      )}
-                    />
-                  ) : (
-                    ''
-                  )}
-
-                  {post.imagen_destacada_de_la_oferta_socios_thumb ? (
-                    <Observer
-                      threshold={1}
-                      triggerOnce={true}
-                      render={() => (
-                        <p className="fade-in">
-                          <Link href={`/p/${post.ID}/${post.slug}`}>
-                            <a title={'Ver la ficha de ' + post.name}>
-                              <img
-                                width="250"
-                                src={
-                                  post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail
-                                }
-                                alt={post.titulo_de_la_oferta_oferta_socios}
-                              />
-                              <span className="label alert gallery-label">
-                                <small>
-                                  EXCLUSIVO
-                                  <br /> SOCIOS
-                                </small>
-                              </span>
-                            </a>
-                          </Link>
-                        </p>
-                      )}
-                    />
-                  ) : (
-                    ''
-                  )}
-
-                  <p>
-                    <Link href={`/p/${post.ID}/${post.slug}`}>
-                      <a
-                        title={'Ver la ficha de ' + post.name}
-                        dangerouslySetInnerHTML={{ __html: post.name }}
-                      />
-                    </Link>
-                    <br />
-
-                    <small>{post.localidad_del_beneficio.name}</small>
-                    <br />
-
-                    {post.titulo_de_la_oferta_oferta_general ? (
-                      <span className="titulo-oferta">
-                        {post.titulo_de_la_oferta_oferta_general}
-                      </span>
-                    ) : (
-                      ''
-                    )}
-
-                    {post.titulo_de_la_oferta_oferta_socios ? (
-                      <span className="titulo-oferta">
-                        {post.titulo_de_la_oferta_oferta_socios}
-                      </span>
-                    ) : (
-                      ''
-                    )}
-                  </p>
-                </li>
-              ))}
-            </ul>
+              <BrandsGallery data={props.marcacasofertas} type={'ca'} />
+            ) : null}
+            <Gallery data={props.posts} />
           </section>
         </IntlProvider>
       </section>

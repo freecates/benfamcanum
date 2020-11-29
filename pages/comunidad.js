@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
 import Layout from '../components/MyLayout.js';
+import BrandsGallery from '../components/BrandsGallery';
+import Gallery from '../components/Gallery';
 
 const SelectCity = dynamic(import('../components/SelectCity'), {
   loading: () => (
@@ -20,7 +22,6 @@ const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
 const PostByComunidad = props => {
-  
   return (
     <section>
       {props.posts.length == 0 ? (
@@ -131,7 +132,6 @@ const PostByComunidad = props => {
 
                 <SelectCity
                   inputClass="city"
-                 
                   inputValue="Buscar el mejor descuento"
                   options={props.posts
                     .reduce((ciutats, post) => {
@@ -162,207 +162,16 @@ const PostByComunidad = props => {
             <IntlProvider defaultLocale="es">
               <section>
                 {props.marcasofertas.length >= 1 ? (
-                  <ul className="gallery national-gallery">
-                    {props.marcasofertas.reduce((marcas, marcasoferta) => {
-                      if (marcasoferta.marca == false) {
-                        return marcas;
-                      }
-                      marcas[marcasoferta.marca.term_id] = (
-                        <span key={marcasoferta.marca.term_id}>
-                          <li className="benefit align-center">
-                            <Observer
-                              threshold={1}
-                              triggerOnce={true}
-                              render={() => (
-                                <p className="fade-in">
-                                  <Link
-                                    href={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
-                                  >
-                                    <a
-                                      title={'Ver todas las ofertas de ' + marcasoferta.marca.name}
-                                    >
-                                      <img
-                                        src={
-                                          'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                                          marcasoferta.marca.slug +
-                                          '-familias-numerosas.png'
-                                        }
-                                      />
-                                      <br />{' '}
-                                      <span
-                                        dangerouslySetInnerHTML={{
-                                          __html: marcasoferta.marca.name
-                                        }}
-                                      />
-                                    </a>
-                                  </Link>
-                                </p>
-                              )}
-                            />
-                          </li>
-                        </span>
-                      );
-                      return marcas;
-                    }, [])}
-                  </ul>
-                ) : (
-                  ''
-                )}
+                  <BrandsGallery data={props.marcasofertas} />
+                ) : null}
                 {props.marcascaofertas.length >= 1 ? (
-                  <ul className="gallery national-gallery">
-                    {props.marcascaofertas.reduce((marcas, marcascaoferta) => {
-                      if (marcascaoferta.marca == false) {
-                        return marcas;
-                      }
-                      marcas[marcascaoferta.marca.term_id] = (
-                        <span key={marcascaoferta.marca.term_id}>
-                          <li className="benefit align-center">
-                            <Link
-                              as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
-                              href={`/ofertas-de-la-marca-ca?id=${marcascaoferta.marca.term_id}&caid=${marcascaoferta.comunidad_autonoma.term_id}`}
-                            >
-                              <a title={'Ver todas las ofertas de ' + marcascaoferta.marca.name}>
-                                <img
-                                  src={
-                                    'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                                    marcascaoferta.marca.slug +
-                                    '-familias-numerosas.png'
-                                  }
-                                />
-                                <br />{' '}
-                                <span
-                                  dangerouslySetInnerHTML={{
-                                    __html: marcascaoferta.marca.name
-                                  }}
-                                />
-                              </a>
-                            </Link>
-                          </li>
-                        </span>
-                      );
-                      return marcas;
-                    }, [])}
-                  </ul>
-                ) : (
-                  ''
-                )}
+                  <BrandsGallery data={props.marcascaofertas} />
+                ) : null}
                 <p className="align-center">
                   ... O si lo prefieres accede directamente a cualquiera de las fichas
                 </p>
 
-                <ul className="gallery">
-                  {props.posts.map((post, index) => (
-                    <li className="benefit" key={index}>
-                      {post.imagen_destacada_de_la_oferta_general_thumb ? (
-                        <Observer
-                          threshold={1}
-                          triggerOnce={true}
-                          render={() => (
-                            <p className="fade-in">
-                              <Link href={`/p/${post.ID}/${post.slug}`}>
-                                <a title={'Ver la ficha de ' + post.name}>
-                                  <img
-                                    className="fade-in"
-                                    width="250"
-                                    src={
-                                      post.imagen_destacada_de_la_oferta_general_thumb.sizes
-                                        .thumbnail
-                                    }
-                                    alt={post.titulo_de_la_oferta_oferta_general}
-                                  />
-                                </a>
-                              </Link>
-                            </p>
-                          )}
-                        />
-                      ) : (
-                        ''
-                      )}
-
-                      {post.imagen_destacada_de_la_oferta_socios_thumb ? (
-                        <Observer
-                          threshold={1}
-                          triggerOnce={true}
-                          render={() => (
-                            <p className="fade-in">
-                              <Link href={`/p/${post.ID}/${post.slug}`}>
-                                <a title={'Ver la ficha de ' + post.name}>
-                                  <img
-                                    className="fade-in"
-                                    width="250"
-                                    src={
-                                      post.imagen_destacada_de_la_oferta_socios_thumb.sizes
-                                        .thumbnail
-                                    }
-                                    alt={post.titulo_de_la_oferta_oferta_socios}
-                                  />
-                                  <span className="label alert gallery-label">
-                                    <small>
-                                      EXCLUSIVO
-                                      <br /> SOCIOS
-                                    </small>
-                                  </span>
-                                </a>
-                              </Link>
-                            </p>
-                          )}
-                        />
-                      ) : (
-                        ''
-                      )}
-
-                      <p>
-                        <Link href={`/p/${post.ID}/${post.slug}`}>
-                          <a
-                            title={'Ver la ficha de ' + post.name}
-                            dangerouslySetInnerHTML={{ __html: post.name }}
-                          />
-                        </Link>
-                        <br />
-                        {post.categoria_de_la_prestacion ? (
-                          <small>
-                            <Link
-                              as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${post.categoria_de_la_prestacion.slug}/${post.localidad_del_beneficio.term_id}/${post.localidad_del_beneficio.slug}`}
-                              href={`/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}`}
-                            >
-                              <a
-                                title={
-                                  'Ver todos los beneficios de ' +
-                                  post.categoria_de_la_prestacion.name +
-                                  ' en ' +
-                                  post.localidad_del_beneficio.name
-                                }
-                              >
-                                <span
-                                  dangerouslySetInnerHTML={{
-                                    __html: post.localidad_del_beneficio.name
-                                  }}
-                                />
-                              </a>
-                            </Link>
-                          </small>
-                        ) : (
-                          <small>{post.localidad_del_beneficio.name}</small>
-                        )}{' '}
-                        <br />
-                        {post.titulo_de_la_oferta_oferta_general ? (
-                          <span className="titulo-oferta">
-                            {post.titulo_de_la_oferta_oferta_general}
-                          </span>
-                        ) : (
-                          ''
-                        )}
-                        {post.titulo_de_la_oferta_oferta_socios ? (
-                          <span className="titulo-oferta">
-                            {post.titulo_de_la_oferta_oferta_socios}
-                          </span>
-                        ) : (
-                          ''
-                        )}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
+                <Gallery data={props.posts} />
               </section>
             </IntlProvider>
           </section>
