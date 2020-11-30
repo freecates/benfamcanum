@@ -1,13 +1,13 @@
-const Banners = ({ data }) => {
+const Banners = ({ data, section }) => {
   const today = Date.now();
   const todayISO = new Date(today).toISOString();
   return (
-    <div>
+    <>
       {data.map((d, index) => (
         <React.Fragment key={index}>
           {d.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
           d.acf.la_publicidad_es_de_ca == true &&
-          d.acf.seccion_principal == '1' ? (
+          d.acf.seccion_principal == section ? (
             <React.Fragment>
               <p className="align-center promo dk">
                 <a href={d.acf.url_de_destino_del_banner} target="_blank">
@@ -43,6 +43,9 @@ const Banners = ({ data }) => {
         .promo {
           margin-top: 2em;
         }
+        .mb {
+          display: block;
+        }
         .dk {
           display: none;
         }
@@ -55,7 +58,7 @@ const Banners = ({ data }) => {
           }
         }
       `}</style>
-    </div>
+    </>
   );
 };
 

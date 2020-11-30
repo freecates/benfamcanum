@@ -2,7 +2,6 @@ import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/MyLayout.js';
-import Banners from '../../components/Banners.js';
 import Promotions from '../../components/Promotions.js';
 
 const Beneficis = props => {
@@ -25,7 +24,6 @@ const Beneficis = props => {
           </ul>
         </nav>
         <section className="call-to-action">
-          <Banners data={props.banners} />
           <div className="icones-prestacions">
             <div className="icona">
               <Link href="/ca-ES/ofertes-per-sectors">
@@ -199,10 +197,7 @@ export async function getStaticProps() {
   const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`);
   const promociones = await res.json();
 
-  const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners?per_page=100`);
-  const banners = await res2.json();
-
-  return { props: { promociones, banners } };
+  return { props: { promociones } };
 }
 
 export default Beneficis;

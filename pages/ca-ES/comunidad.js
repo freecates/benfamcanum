@@ -6,6 +6,7 @@ import { IntlProvider } from 'react-intl';
 import Layout from '../../components/MyLayout.js';
 import BrandsGallery from '../../components/BrandsGallery';
 import Gallery from '../../components/Gallery';
+import Banners from '../../components/Banners.js';
 
 const SelectCity = dynamic(import('../../components/SelectCity'), {
   loading: () => (
@@ -97,38 +98,7 @@ const PostByComunidad = props => {
             </ul>
           </nav>
           <section>
-            <div>
-              {props.banners.map((banner, index) => (
-                <React.Fragment key={index}>
-                  {banner.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
-                  banner.acf.la_publicidad_es_de_ca == true &&
-                  banner.comunidad == props.caid ? (
-                    <React.Fragment>
-                      <p className="align-center promo dk">
-                        <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                          <img
-                            src={banner.acf.banner_grande_728x90.sizes.large}
-                            width={728}
-                            height={90}
-                            loading={'lazy'}
-                          />
-                        </a>
-                      </p>
-                      <p className="align-center promo mb">
-                        <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                          <img
-                            src={banner.acf.baner_movil.sizes.large}
-                            width={728}
-                            height={90}
-                            loading={'lazy'}
-                          />
-                        </a>
-                      </p>
-                    </React.Fragment>
-                  ) : null}
-                </React.Fragment>
-              ))}
-            </div>
+            <Banners data={props.banners} section={'2'} />
             <h1>{props.posts[0].comunidad_autonoma}</h1>
 
             <section id="select-city">

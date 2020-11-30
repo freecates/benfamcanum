@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
 import Layout from '../components/MyLayout.js';
+import Banners from '../components/Banners.js';
 
 const OfertasPorSectores = props => (
   <Layout>
@@ -29,6 +30,7 @@ const OfertasPorSectores = props => (
     <IntlProvider defaultLocale="ca">
       <main>
         <section>
+          <Banners data={props.banners} section={'1'} />
           <ul className="gallery">
             {props.ofertasporsectores.map((ofertasporsectore, index) => (
               <li className="item align-center" key={index}>
@@ -131,8 +133,11 @@ export async function getStaticProps() {
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/categoria_del_beneficio'
   );
   const ofertasporsectores = await res.json();
+
+  const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners?per_page=100`);
+  const banners = await res2.json();
   return {
-    props: { ofertasporsectores }
+    props: { ofertasporsectores, banners }
   };
 }
 

@@ -1,9 +1,9 @@
 import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../components/MyLayout.js';
+import Banners from '../../components/Banners.js';
 
 const OfertasPorSectores = props => {
   return (
@@ -31,6 +31,7 @@ const OfertasPorSectores = props => {
       <IntlProvider defaultLocale="ca">
         <main>
           <section>
+          <Banners data={props.banners} section={'1'} />
             <ul className="gallery">
               {props.ofertasporsectores.map((ofertasporsectore, index) => (
                 <li className="item align-center" key={index}>
@@ -140,7 +141,10 @@ export async function getStaticProps() {
   );
   const ofertasporsectores = await res.json();
 
-  return { props: { ofertasporsectores } };
+  const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners?per_page=100`);
+  const banners = await res2.json();
+
+  return { props: { ofertasporsectores, banners } };
 }
 
 export default OfertasPorSectores;

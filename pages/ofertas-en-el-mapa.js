@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
 import Layout from '../components/MyLayout.js';
+import Banners from '../components/Banners.js';
 
 const SelectCity = dynamic(import('../components/SelectCity'), {
   loading: () => <p>cargando ...</p>
@@ -17,12 +18,12 @@ const Localidades = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link  href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link  href="/beneficios">
+          <Link href="/beneficios">
             <a>Ofertas para familias numerosas</a>
           </Link>
         </li>
@@ -33,6 +34,7 @@ const Localidades = props => (
     </nav>
     <IntlProvider defaultLocale="ca">
       <main className="bgmapa">
+        <Banners data={props.banners} section={'4'} />
         <section className="padding-4x">
           <div className="wrapper wrapper-top">
             <div className="left">
@@ -233,8 +235,11 @@ export async function getStaticProps() {
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?comunidad=Catalu%C3%B1a&sim-model=localidad'
   );
   const beneficios = await res.json();
+
+  const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners?per_page=100`);
+  const banners = await res2.json();
   return {
-    props: { beneficios }
+    props: { beneficios, banners }
   };
 }
 
