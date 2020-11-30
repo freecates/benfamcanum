@@ -2,10 +2,10 @@ import fetch from 'isomorphic-unfetch';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../../../components/MyLayout.js';
+import BrandsGallery from '../../../../components/BrandsGallery';
 
 const SelectCity = dynamic(import('../../../../components/SelectCity'), {
   loading: () => (
@@ -185,44 +185,8 @@ const PostsByCategory = props => {
               ''
             )}
             {props.uniquemarcas.length >= 1 ? (
-              <ul className="gallery national-gallery">
-                {props.marcasofertas.reduce((marcas, marcasoferta) => {
-                  if (marcasoferta.marca == false) {
-                    return marcas;
-                  }
-                  marcas[marcasoferta.marca.term_id] = (
-                    <span key={marcasoferta.marca.term_id}>
-                      <li className="benefit align-center">
-                        <Link
-                          href={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
-                        >
-                          <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
-                            <img
-                              src={
-                                'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                                marcasoferta.marca.slug +
-                                '-familias-numerosas.png'
-                              }
-                              width={'96'}
-                              height={'96'}
-                            />
-                            <br />{' '}
-                            <span
-                              dangerouslySetInnerHTML={{
-                                __html: marcasoferta.marca.name
-                              }}
-                            />
-                          </a>
-                        </Link>
-                      </li>
-                    </span>
-                  );
-                  return marcas;
-                }, [])}
-              </ul>
-            ) : (
-              ''
-            )}
+              <BrandsGallery data={props.marcasofertas} type={'ca'} />
+            ) : null}
           </section>
         </IntlProvider>
         <section>
@@ -246,154 +210,154 @@ const PostsByCategory = props => {
                 </Link>
               </p>
             </div>
-          ) : (
-            ''
-          )}
+          ) : null}
         </section>
       </section>
-      <style jsx>{`
-        .national-gallery {
-          background: #eeeeee;
-          margin-top: 1em !important;
-          margin-bottom: 1em !important;
-          padding-top: 0.75em !important;
-        }
-        .dk {
-          display: none;
-        }
-        @media screen and (min-width: 768px) {
-          .wrapper {
-            width: 80%;
-            margin: 0 auto;
+      {props.posts.length >= 2 && (
+        <style jsx>{`
+          .national-gallery {
+            background: #eeeeee;
+            margin-top: 1em !important;
+            margin-bottom: 1em !important;
+            padding-top: 0.75em !important;
           }
           .dk {
-            display: block;
-          }
-          .mb {
             display: none;
           }
-        }
-        @media screen and (min-width: 1024px) {
-          .wrapper {
-            width: 50%;
+          @media screen and (min-width: 768px) {
+            .wrapper {
+              width: 80%;
+              margin: 0 auto;
+            }
+            .dk {
+              display: block;
+            }
+            .mb {
+              display: none;
+            }
           }
-        }
-        .promo {
-          margin-top: 1em;
-        }
-        .file-label {
-          background: #f18903 !important;
-          color: #ffffff;
-          font-weight: 400;
-          font-size: 0.9rem;
-          white-space: normal;
-        }
-        .file-label:hover {
-          background: #960025 !important;
-          text-decoration: none;
-          cursor: pointer;
-        }
-        .breadcrumbs {
-          margin-bottom: 1em;
-        }
-        h1,
-        .align-center {
-          text-align: center;
-        }
-        h1 {
-          color: #cb5599;
-        }
-        .gallery {
-          display: -ms-flexbox;
-          display: flex;
-          -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-          padding: 5px;
-        }
-        ul {
-          list-style-type: none !important;
-          margin-left: 0;
-          margin: 0 auto !important;
-        }
-        a {
-          color: inherit !important;
-        }
-        a:hover {
-          text-decoration: underline;
-        }
-        nav a {
-          color: #00add9;
-        }
-        .benefit {
-          width: 150px;
-        }
-        .gallery-label {
-          position: relative;
-          margin-top: -40px;
-          margin-right: 5px;
-          float: right;
-          text-align: center;
-          background: #f18903 !important;
-        }
-        .titulo-oferta {
-          color: #ff0000;
-        }
-        @media screen and (min-width: 320px) {
+          @media screen and (min-width: 1024px) {
+            .wrapper {
+              width: 50%;
+            }
+          }
+          .promo {
+            margin-top: 1em;
+          }
+          .file-label {
+            background: #f18903 !important;
+            color: #ffffff;
+            font-weight: 400;
+            font-size: 0.9rem;
+            white-space: normal;
+          }
+          .file-label:hover {
+            background: #960025 !important;
+            text-decoration: none;
+            cursor: pointer;
+          }
+          .breadcrumbs {
+            margin-bottom: 1em;
+          }
+          h1,
+          .align-center {
+            text-align: center;
+          }
+          h1 {
+            color: #cb5599;
+          }
           .gallery {
-            width: 100%;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            padding: 5px;
+          }
+          ul {
+            list-style-type: none !important;
+            margin-left: 0;
+            margin: 0 auto !important;
+          }
+          a {
+            color: inherit !important;
+          }
+          a:hover {
+            text-decoration: underline;
+          }
+          nav a {
+            color: #00add9;
           }
           .benefit {
-            margin: 5px;
+            width: 150px;
           }
-        }
-        @media screen and (max-width: 375px) {
-          .benefit {
-            width: 124px;
+          .gallery-label {
+            position: relative;
+            margin-top: -40px;
+            margin-right: 5px;
+            float: right;
+            text-align: center;
+            background: #f18903 !important;
           }
-        }
-        @media screen and (min-width: 360px) {
-          .gallery {
-            width: 90%;
+          .titulo-oferta {
+            color: #ff0000;
           }
-        }
-        @media screen and (min-width: 768px) {
-          .gallery {
-            width: 90%;
+          @media screen and (min-width: 320px) {
+            .gallery {
+              width: 100%;
+            }
+            .benefit {
+              margin: 5px;
+            }
           }
-          .benefit {
-            width: 200px;
-            margin: 7.5px;
+          @media screen and (max-width: 375px) {
+            .benefit {
+              width: 124px;
+            }
           }
-        }
-        @media screen and (min-width: 1024px) {
-          .gallery {
-            width: 100%;
+          @media screen and (min-width: 360px) {
+            .gallery {
+              width: 90%;
+            }
           }
-          .benefit {
-            width: 220px;
-            margin: 0 10px;
+          @media screen and (min-width: 768px) {
+            .gallery {
+              width: 90%;
+            }
+            .benefit {
+              width: 200px;
+              margin: 7.5px;
+            }
           }
-        }
-        @media screen and (min-width: 1160px) {
-          .benefit {
-            width: 245px;
+          @media screen and (min-width: 1024px) {
+            .gallery {
+              width: 100%;
+            }
+            .benefit {
+              width: 220px;
+              margin: 0 10px;
+            }
           }
-        }
-        .fade-in {
-          animation-name: fadeIn;
-          animation-duration: 1.3s;
-          animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-          animation-fill-mode: forwards;
-        }
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
+          @media screen and (min-width: 1160px) {
+            .benefit {
+              width: 245px;
+            }
           }
-          to {
-            opacity: 1;
+          .fade-in {
+            animation-name: fadeIn;
+            animation-duration: 1.3s;
+            animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+            animation-fill-mode: forwards;
           }
-        }
-      `}</style>
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+        `}</style>
+      )}
     </Layout>
   );
 };
