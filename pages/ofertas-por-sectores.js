@@ -137,7 +137,8 @@ export async function getStaticProps() {
   const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners?per_page=100`);
   const banners = await res2.json();
   return {
-    props: { ofertasporsectores, banners }
+    props: { ofertasporsectores, banners },
+    revalidate: 1
   };
 }
 

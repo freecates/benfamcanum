@@ -137,7 +137,8 @@ export async function getStaticProps() {
   const banners = await res2.json();
 
   return {
-    props: { ofertasonlines, banners }
+    props: { ofertasonlines, banners },
+    revalidate: 1
   };
 }
 

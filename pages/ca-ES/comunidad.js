@@ -18,9 +18,6 @@ const SelectCity = dynamic(import('../../components/SelectCity'), {
   )
 });
 
-const today = Date.now();
-const todayISO = new Date(today).toISOString();
-
 const PostByComunidad = props => {
   return (
     <section>
