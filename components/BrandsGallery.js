@@ -5,7 +5,6 @@ const BrandsGallery = ({ data, type }) => {
     const { pathname } = useRouter();
     const langURL = !pathname.includes('/ca-ES/') ? `/` : '/ca-ES/';
     const typeURL = type && type.length ? `-${type}` : '';
-    console.log('pathname ', pathname);
   return (
     <ul className="gallery national-gallery">
       {data.reduce((brands, d) => {
