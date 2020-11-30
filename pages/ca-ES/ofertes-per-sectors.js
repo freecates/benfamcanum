@@ -46,6 +46,7 @@ const OfertasPorSectores = props => {
                           '-familias-numerosas.png'
                         }
                         width="96"
+                        height={'96'}
                       />
                       <br />
                       <span

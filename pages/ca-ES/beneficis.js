@@ -1,5 +1,4 @@
 import fetch from 'isomorphic-unfetch';
-import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/MyLayout.js';
@@ -31,7 +30,11 @@ const Beneficis = props => {
             <div className="icona">
               <Link href="/ca-ES/ofertes-per-sectors">
                 <a>
-                  <img src="/static/icona-ofertas-por-sectores-familias-numerosas.png" />
+                  <img
+                    src="/static/icona-ofertas-por-sectores-familias-numerosas.png"
+                    width="192"
+                    height="192"
+                  />
                   <div className="text-icona">Ofertes per sectors</div>
                 </a>
               </Link>
@@ -39,7 +42,11 @@ const Beneficis = props => {
             <div className="icona">
               <Link href={`/ca-ES/comunidad`}>
                 <a>
-                  <img src="/static/icona-ofertas-por-poblacion-familias-numerosas.png" />
+                  <img
+                    src="/static/icona-ofertas-por-poblacion-familias-numerosas.png"
+                    width="192"
+                    height="192"
+                  />
                   <div className="text-icona">Ofertes per població</div>
                 </a>
               </Link>
@@ -47,7 +54,11 @@ const Beneficis = props => {
             <div className="icona">
               <Link href="/ca-ES/ofertes-on-line">
                 <a>
-                  <img src="/static/icona-ofertas-online-familias-numerosas.png" />
+                  <img
+                    src="/static/icona-ofertas-online-familias-numerosas.png"
+                    width="192"
+                    height="192"
+                  />
                   <div className="text-icona">Ofertes online</div>
                 </a>
               </Link>
@@ -55,7 +66,11 @@ const Beneficis = props => {
             <div className="icona">
               <Link href="/ca-ES/ofertes-al-mapa">
                 <a>
-                  <img src="/static/icona-ofertas-en-el-mapa-familias-numerosas.png" />
+                  <img
+                    src="/static/icona-ofertas-en-el-mapa-familias-numerosas.png"
+                    width="192"
+                    height="192"
+                  />
                   <div className="text-icona">Ofertes al mapa</div>
                 </a>
               </Link>

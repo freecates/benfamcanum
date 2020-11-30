@@ -25,17 +25,29 @@ const Prestacions = () => {
         <p className="icones-prestacions">
           <Link href="/ca-ES/municipis-prestacions">
             <a>
-              <img src="/static/icona-prestacions-municipals-familias-numerosas.png" />
+              <img
+                src="/static/icona-prestacions-municipals-familias-numerosas.png"
+                width={'193'}
+                height={'192'}
+              />
             </a>
           </Link>
           <Link href="/ca-ES/prestacions-comunitat">
             <a>
-              <img src="/static/icona-prestacions-autonomiques-familias-numerosas.png" />
+              <img
+                src="/static/icona-prestacions-autonomiques-familias-numerosas.png"
+                width={'194'}
+                height={'192'}
+              />
             </a>
           </Link>
           <Link href="/ca-ES/prestacions-estatals">
             <a>
-              <img src="/static/icona-prestacions-estatals-familias-numerosas.png" />
+              <img
+                src="/static/icona-prestacions-estatals-familias-numerosas.png"
+                width={'192'}
+                height={'192'}
+              />
             </a>
           </Link>
         </p>

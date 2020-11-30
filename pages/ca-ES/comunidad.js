@@ -106,12 +106,22 @@ const PostByComunidad = props => {
                     <React.Fragment>
                       <p className="align-center promo dk">
                         <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                          <img src={banner.acf.banner_grande_728x90.sizes.large} />
+                          <img
+                            src={banner.acf.banner_grande_728x90.sizes.large}
+                            width={728}
+                            height={90}
+                            loading={'lazy'}
+                          />
                         </a>
                       </p>
                       <p className="align-center promo mb">
                         <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                          <img src={banner.acf.baner_movil.sizes.large} />
+                          <img
+                            src={banner.acf.baner_movil.sizes.large}
+                            width={728}
+                            height={90}
+                            loading={'lazy'}
+                          />
                         </a>
                       </p>
                     </React.Fragment>

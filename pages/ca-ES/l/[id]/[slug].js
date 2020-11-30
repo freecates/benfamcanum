@@ -48,12 +48,16 @@ const PostsByLocalidad = props => {
                 <React.Fragment>
                   <p className="align-center promo dk">
                     <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                      <img src={banner.acf.banner_grande_728x90.sizes.large} />
+                      <img
+                        src={banner.acf.banner_grande_728x90.sizes.large}
+                        width={'728'}
+                        height={'90'}
+                      />
                     </a>
                   </p>
                   <p className="align-center promo mb">
                     <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                      <img src={banner.acf.baner_movil.sizes.large} />
+                      <img src={banner.acf.baner_movil.sizes.large} width={'320'} height={'100'} />
                     </a>
                   </p>
                 </React.Fragment>
@@ -102,6 +106,8 @@ const PostsByLocalidad = props => {
                                       marcasoferta.marca.slug +
                                       '-familias-numerosas.png'
                                     }
+                                    width={'96'}
+                                    height={'96'}
                                   />
                                   <br />{' '}
                                   <span
@@ -149,6 +155,8 @@ const PostsByLocalidad = props => {
                                       marcascaoferta.marca.slug +
                                       '-familias-numerosas.png'
                                     }
+                                    width={'96'}
+                                    height={'96'}
                                   />
                                   <br />{' '}
                                   <span

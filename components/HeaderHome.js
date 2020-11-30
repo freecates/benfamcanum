@@ -39,7 +39,7 @@ const HeaderHome = props => (
               srcSet="/static/02-bg-body-familias-numerosas.webp"
               media="(min-width: 568px)"
             />
-            <img src="/static/02-bg-body-familias-numerosas.jpg" alt="més és més" />
+            <img src="/static/02-bg-body-familias-numerosas.jpg" alt="més és més" width='100%' />
           </picture>
         </div>
         {props.ruta.includes('/ca-ES') && (

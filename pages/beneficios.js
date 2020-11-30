@@ -1,18 +1,12 @@
 import fetch from 'isomorphic-unfetch';
-import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/MyLayout.js';
-
-const SelectCity = dynamic(import('../components/SelectCity'), {
-  loading: () => <p>cargando ...</p>
-});
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
 const Beneficios = props => {
-  
   return (
     <Layout>
       <Head>
@@ -36,7 +30,11 @@ const Beneficios = props => {
             <div className="icona">
               <Link href="/ofertas-por-sectores">
                 <a>
-                  <img src="/static/icona-ofertas-por-sectores-familias-numerosas.png" />
+                  <img
+                    src="/static/icona-ofertas-por-sectores-familias-numerosas.png"
+                    width="192"
+                    height="192"
+                  />
                   <div className="text-icona">Ofertas por sectores</div>
                 </a>
               </Link>
@@ -44,7 +42,11 @@ const Beneficios = props => {
             <div className="icona">
               <Link href={`/comunidad`}>
                 <a>
-                  <img src="/static/icona-ofertas-por-poblacion-familias-numerosas.png" />
+                  <img
+                    src="/static/icona-ofertas-por-poblacion-familias-numerosas.png"
+                    width="192"
+                    height="192"
+                  />
                   <div className="text-icona">Ofertas por población</div>
                 </a>
               </Link>
@@ -52,7 +54,11 @@ const Beneficios = props => {
             <div className="icona">
               <Link href="/ofertas-on-line">
                 <a>
-                  <img src="/static/icona-ofertas-online-familias-numerosas.png" />
+                  <img
+                    src="/static/icona-ofertas-online-familias-numerosas.png"
+                    width="192"
+                    height="192"
+                  />
                   <div className="text-icona">Ofertas online</div>
                 </a>
               </Link>
@@ -60,7 +66,11 @@ const Beneficios = props => {
             <div className="icona">
               <Link href="/ofertas-en-el-mapa">
                 <a>
-                  <img src="/static/icona-ofertas-en-el-mapa-familias-numerosas.png" />
+                  <img
+                    src="/static/icona-ofertas-en-el-mapa-familias-numerosas.png"
+                    width="192"
+                    height="192"
+                  />
                   <div className="text-icona">Ofertas en el mapa</div>
                 </a>
               </Link>

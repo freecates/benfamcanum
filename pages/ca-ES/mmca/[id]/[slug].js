@@ -81,6 +81,8 @@ const MapByMarcaCa = props => {
                 props.camarkers[0].marca.slug +
                 '-familias-numerosas.png'
               }
+              width={'96'}
+              height={'96'}
             />
             <br />
             {props.camarkers[0].marca.name}
@@ -130,6 +132,8 @@ const MapByMarcaCa = props => {
                               props.camarkers[0].marca.slug +
                               '-familias-numerosas.png'
                             }
+                            width={'32'}
+                            height={'32'}
                           />
                         </span>
                       </a>

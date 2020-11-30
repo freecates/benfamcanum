@@ -106,6 +106,8 @@ const MapByLocalidad = props => {
                             nationalmarker.marca.slug +
                             '-familias-numerosas.png'
                           }
+                          width={'32'}
+                          height={'32'}
                         />
                       </span>
                     </a>
@@ -126,6 +128,8 @@ const MapByLocalidad = props => {
                             marker.categoria_de_la_prestacion.slug +
                             '-familias-numerosas.png'
                           }
+                          width={'32'}
+                          height={'32'}
                         />
                       </span>
                     </a>

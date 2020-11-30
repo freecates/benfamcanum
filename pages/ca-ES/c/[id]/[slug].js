@@ -62,14 +62,22 @@ const PostsByCategory = props => {
                   <p className="align-center promo dk">
                     <Link href={banner.acf.url_de_destino_del_banner}>
                       <a target="_blank">
-                        <img src={banner.acf.banner_grande_728x90.sizes.large} />
+                        <img
+                          src={banner.acf.banner_grande_728x90.sizes.large}
+                          width={'728'}
+                          height={'90'}
+                        />
                       </a>
                     </Link>
                   </p>
                   <p className="align-center promo mb">
                     <Link href={banner.acf.url_de_destino_del_banner}>
                       <a target="_blank">
-                        <img src={banner.acf.baner_movil_320x100.sizes.large} />
+                        <img
+                          src={banner.acf.baner_movil_320x100.sizes.large}
+                          width={'320'}
+                          height={'100'}
+                        />
                       </a>
                     </Link>
                   </p>
@@ -87,6 +95,8 @@ const PostsByCategory = props => {
               props.posts[0].categoria_de_la_prestacion.slug +
               '-familias-numerosas.png'
             }
+            width={'96'}
+            height={'96'}
           />
           <br />
           {props.posts[0].categoria_de_la_prestacion.name}
@@ -109,7 +119,6 @@ const PostsByCategory = props => {
 
             <SelectCity
               inputClass="comunidad"
-             
               inputValue="Cercar el millor descompte"
               options={[
                 {
@@ -194,6 +203,8 @@ const PostsByCategory = props => {
                                 marcasoferta.marca.slug +
                                 '-familias-numerosas.png'
                               }
+                              width={'96'}
+                              height={'96'}
                             />
                             <br />{' '}
                             <span

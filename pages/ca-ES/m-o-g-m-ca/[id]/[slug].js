@@ -51,6 +51,8 @@ const OfertasGrandesMarcasCaByMarca = props => {
                           props.granmarcaofertas.slug +
                           '-familias-numerosas.png'
                         }
+                        width={'96'}
+                        height={'96'}
                       />
                     </p>
                   </td>

@@ -67,6 +67,8 @@ const OfertasOnLineByCategory = props => {
                             ofertasonline.categoria_de_la_oferta.slug +
                             '-familias-numerosas.png'
                           }
+                          width={'32'}
+                          height={'32'}
                         />
                       </td>
                       <td width="200">{ofertasonline.categoria_de_la_oferta.name}</td>

@@ -120,6 +120,8 @@ const OfertaOnLine = props => {
                 props.ofertaonline._embedded['wp:term'][0][0].slug +
                 '-familias-numerosas.png'
               }
+              width={'96'}
+              height={'96'}
             />
             <br />
             <span

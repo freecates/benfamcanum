@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import LayoutHome from '../../components/LayoutHome.js';
 
 const HomeCA = () => {
@@ -17,6 +16,8 @@ const HomeCA = () => {
           <img
             alt="Icona aconseguir beneficis famílies nombroses"
             src="/static/icona-conseguir-beneficios-familias-numerosas.png"
+            width={'122'}
+            height={'126'}
           />
         </h1>
         <p>

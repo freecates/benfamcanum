@@ -95,6 +95,8 @@ const OfertaGranMarca = props => {
                 props.ofertagranmarca._embedded['wp:term'][3][0].slug +
                 '-familias-numerosas.png'
               }
+              width={'96'}
+              height={'96'}
             />
             <br />
             <span

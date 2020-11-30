@@ -67,6 +67,8 @@ const MapByCategoryLocalidad = props => {
               props.markers[0].categoria_de_la_prestacion.slug +
               '-familias-numerosas.png'
             }
+            width={'96'}
+            height={'96'}
           />
           <br />
           {props.markers[0].categoria_de_la_prestacion.name} -{' '}
@@ -121,6 +123,8 @@ const MapByCategoryLocalidad = props => {
                             props.markers[0].categoria_de_la_prestacion.slug +
                             '-familias-numerosas.png'
                           }
+                          width={'32'}
+                          height={'32'}
                         />
                       </span>
                     </a>

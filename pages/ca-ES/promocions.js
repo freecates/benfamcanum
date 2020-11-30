@@ -65,6 +65,8 @@ const Promocions = props => {
                               promocione.acf.categoria_de_la_promocion.slug +
                               '-familias-numerosas.png'
                             }
+                            width={'32'}
+                            height={'32'}
                           />
                         </td>
                         <td width="200">{promocione.acf.categoria_de_la_promocion.name}</td>
@@ -124,8 +126,10 @@ const Promocions = props => {
         h3 {
           color: #cb5599;
         }
-        table thead {
+        table thead, 
+        table tbody {
           background: none;
+          border: none;
         }
         table tbody tr td {
           border-top: 1px solid #000000;
