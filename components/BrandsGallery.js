@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 
 const BrandsGallery = ({ data, type }) => {
     const { pathname } = useRouter();
-    const caURL = pathname.includes('/ca-ES/') ? `/ca-ES/` : '';
-    const esURL = !pathname.includes('/ca-ES/') ? `/` : '';
+    const langURL = !pathname.includes('/ca-ES/') ? `/` : '/ca-ES/';
     const typeURL = type && type.length ? `-${type}` : '';
+    console.log('pathname ', pathname);
   return (
     <ul className="gallery national-gallery">
       {data.reduce((brands, d) => {
@@ -15,7 +15,7 @@ const BrandsGallery = ({ data, type }) => {
         brands[d.marca.term_id] = (
           <span key={d.marca.term_id}>
             <li className="benefit align-center">
-              <Link href={`${caURL || esURL}m-o-g-m${typeURL}/${d.marca.term_id}/${d.marca.slug}`}>
+              <Link href={`${langURL}m-o-g-m${typeURL}/${d.marca.term_id}/${d.marca.slug}`}>
                 <a title={'Ver todas las ofertas de ' + d.marca.name}>
                   <img
                     src={

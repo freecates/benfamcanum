@@ -160,7 +160,7 @@ const PostByComunidad = props => {
                   <BrandsGallery data={props.marcasofertas} />
                 ) : null}
                 {props.marcascaofertas.length >= 1 ? (
-                  <BrandsGallery data={props.marcascaofertas} />
+                  <BrandsGallery data={props.marcascaofertas} type={'ca'} />
                 ) : null}
 
                 <p className="align-center">

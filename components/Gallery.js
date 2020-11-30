@@ -4,8 +4,7 @@ import { useRouter } from 'next/router';
 
 const Gallery = ({ data }) => {
   const { pathname } = useRouter();
-  const caURL = pathname.includes('/ca-ES/') ? `/ca-ES/` : '';
-  const esURL = !pathname.includes('/ca-ES/') ? `/` : '';
+  const langURL = !pathname.includes('/ca-ES/') ? `/` : '/ca-ES/';
   return (
     <ul className="gallery">
       {data.map((d, index) => (
@@ -16,7 +15,7 @@ const Gallery = ({ data }) => {
               triggerOnce={true}
               render={() => (
                 <p className="fade-in">
-                  <Link href={`${caURL || esURL}p/${d.ID}/${d.slug}`}>
+                  <Link href={`${langURL}p/${d.ID}/${d.slug}`}>
                     <a title={'Ver la ficha de ' + d.name}>
                       <img
                         width="250"
@@ -37,7 +36,7 @@ const Gallery = ({ data }) => {
               triggerOnce={true}
               render={() => (
                 <p className="fade-in">
-                  <Link href={`/p/${d.ID}/${d.slug}`}>
+                  <Link href={`${langURL}p/${d.ID}/${d.slug}`}>
                     <a title={'Ver la ficha de ' + d.name}>
                       <img
                         width="250"
