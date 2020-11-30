@@ -638,10 +638,7 @@ class IsSearch extends React.Component {
                         {ruta.includes('/ca-ES') && (
                           <Link
                             
-                            as={`/ca-ES/ogm/${OfertasGrandeMarcasResult.ID}/${
-                              OfertasGrandeMarcasResult.slug
-                            }`}
-                            href={`/ca-ES/oferta-gran-marca?id=${OfertasGrandeMarcasResult.ID}`}
+                            href={`/ca-ES/ogm/${OfertasGrandeMarcasResult.ID}`}
                           >
                             <a
                               title={'Veure la fitxa de ' + OfertasGrandeMarcasResult.name}
@@ -652,10 +649,7 @@ class IsSearch extends React.Component {
                         {ruta.indexOf('/ca-ES') == -1 && (
                           <Link
                             
-                            as={`/ogm/${OfertasGrandeMarcasResult.ID}/${
-                              OfertasGrandeMarcasResult.slug
-                            }`}
-                            href={`/oferta-gran-marca?id=${OfertasGrandeMarcasResult.ID}`}
+                            href={`/ogm/${OfertasGrandeMarcasResult.ID}`}
                           >
                             <a
                               title={'Ver la ficha de ' + OfertasGrandeMarcasResult.name}
@@ -710,11 +704,8 @@ class IsSearch extends React.Component {
                           {ruta.includes('/ca-ES') && (
                             <Link
                               
-                              as={`/ca-ES/ogmca/${OfertasGrandeMarcasCAResult.ID}/${
+                              href={`/ca-ES/ogmca/${OfertasGrandeMarcasCAResult.ID}/${
                                 OfertasGrandeMarcasCAResult.slug
-                              }`}
-                              href={`/ca-ES/oferta-gran-marca-ca?id=${
-                                OfertasGrandeMarcasCAResult.ID
                               }`}
                             >
                               <a

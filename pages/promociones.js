@@ -8,7 +8,7 @@ const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
 const Promociones = props => (
-  <Layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Promociones para familias numerosas</title>
     </Head>
@@ -87,8 +87,7 @@ const Promociones = props => (
                       <td width="150">
                         <Link
                           
-                          as={`/pro/${promocione.id}/${promocione.slug}`}
-                          href={`/promocion?id=${promocione.id}`}
+                          href={`/pro/${promocione.id}/${promocione.slug}`}
                         >
                           <a
                             title={'Acceder a la ficha de ' + promocione.acf.nombre_de_la_empresa}
@@ -155,18 +154,11 @@ const Promociones = props => (
   </Layout>
 );
 
-Promociones.getInitialProps = async function(context) {
+export async function getStaticProps() {
   const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`);
   const promociones = await res.json();
 
-  console.log(`Promociones data fetched. Count: ${promociones.length}`);
-  console.log(
-    `La data de la promoció és ${
-      promociones[0].acf.fecha_de_finalizaciion_de_la_promocion
-    } i la data d'avui és ${todayISO}`
-  );
-
-  return { promociones };
+  return { props: {promociones} };
 };
 
 export default Promociones;

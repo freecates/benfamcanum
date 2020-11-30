@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/ca-ES/c-ca/(?<sid>[^/]+)/(?<slug>[^/]+)/(?<comunidad>[^/]+)/(?<caid>[^/]+)$",
+      "dest": "/ca-ES/category-comunidad?sid=$sid&comunidad=$comunidad&caid=$caid"
+    },
+    {
+      "src": "/c-ca/(?<sid>[^/]+)/(?<slug>[^/]+)/(?<comunidad>[^/]+)/(?<caid>[^/]+)$",
+      "dest": "/category-comunidad?sid=$sid&comunidad=$comunidad&caid=$caid"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/static/manifest.json"
+    },
+    {
+      "src": "/google614be494af9bad15.html",
+      "dest": "/static/google614be494af9bad15.html"
+    },
+    {
+      "src": "^/service-worker.js$",
+      "dest": "/_next/static/service-worker.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "Service-Worker-Allowed": "/"
+      }
+    },
+    {
+      "src": "/sitemap.xml",
+      "dest": "/static/sitemap.xml"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/static/robots.txt"
+    }
+  ]
+}

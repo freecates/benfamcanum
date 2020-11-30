@@ -5,7 +5,7 @@ import { IntlProvider } from 'react-intl';
 import Layout from '../components/MyLayout.js';
 
 const OfertasOnLine = props => (
-  <Layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Ofertas On Line para familias numerosas</title>
     </Head>
@@ -26,8 +26,7 @@ const OfertasOnLine = props => (
                 <span key={ofertasonline.categoria_de_la_oferta.term_id}>
                   <li className="item align-center">
                     <Link
-                      as={`/c-o-o/${ofertasonline.categoria_de_la_oferta.term_id}/${ofertasonline.categoria_de_la_oferta.slug}`}
-                      href={`/category-ofertas-on-line?id=${ofertasonline.categoria_de_la_oferta.term_id}`}
+                      href={`/c-o-o/${ofertasonline.categoria_de_la_oferta.term_id}/${ofertasonline.categoria_de_la_oferta.slug}`}
                     >
                       <a
                         title={
@@ -126,15 +125,14 @@ const OfertasOnLine = props => (
   </Layout>
 );
 
-OfertasOnLine.getInitialProps = async function() {
+export async function getStaticProps() {
   const res = await fetch(
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?sim-model=categoria'
   );
   const ofertasonlines = await res.json();
-
-  console.log(`Ofertas On Line data fetched. Count: ${ofertasonlines.length}`);
-
-  return { ofertasonlines };
-};
+  return {
+    props: { ofertasonlines }
+  };
+}
 
 export default OfertasOnLine;

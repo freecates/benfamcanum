@@ -31,7 +31,12 @@ export default class NavBarBenFamNum extends React.Component {
               className="ml-auto"
               href="https://fanoc.org/"
             >
-              <img src="/static/logo-families-nombroses.png" alt="Web Corporatiu FANOC" />
+              <img
+                src="/static/logo-families-nombroses.png"
+                alt="Web Corporatiu FANOC"
+                width="158"
+                height="103"
+              />
             </NavbarBrand>
           )}
           {ruta.indexOf('/ca-ES') == -1 && (
@@ -40,7 +45,12 @@ export default class NavBarBenFamNum extends React.Component {
               className="ml-auto"
               href="https://fanoc.org/"
             >
-              <img src="/static/logo-families-nombroses.png" alt="Web Corporativa FANOC" />
+              <img
+                src="/static/logo-families-nombroses.png"
+                alt="Web Corporativa FANOC"
+                width="158"
+                height="103"
+              />
             </NavbarBrand>
           )}
           <Collapse isOpen={this.state.isOpen} navbar>

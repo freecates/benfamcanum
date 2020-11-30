@@ -2,8 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/MyLayout.js';
 
-export default props => (
-  <Layout layout ruta={props.ruta}>
+const Prestaciones = props => (
+  <Layout>
     <Head>
       <title>Prestaciones Familias Numerosas</title>
     </Head>
@@ -26,7 +26,7 @@ export default props => (
             <img src="/static/icona-prestacions-municipals-familias-numerosas.png" />
           </a>
         </Link>
-        <Link href="/prestaciones-comunidad?comunidad=8143" as="/p-c/8143/cataluna">
+        <Link href="/prestaciones-comunidad">
           <a>
             <img src="/static/icona-prestacions-autonomiques-familias-numerosas.png" />
           </a>
@@ -76,3 +76,5 @@ export default props => (
     `}</style>
   </Layout>
 );
+
+export default Prestaciones;

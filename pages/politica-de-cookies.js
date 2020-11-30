@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Layout from '../components/MyLayout.js';
 
 export default props => (
-  <Layout ruta={props.ruta}>
+  <Layout>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>

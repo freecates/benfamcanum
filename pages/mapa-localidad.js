@@ -25,19 +25,19 @@ const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 const ZOOM = 12;
 
 const MapByLocalidad = props => (
-  <Layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Beneficios Familias Numerosas - {props.markers[0].localidad_del_beneficio.name}</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link  href="/">
+          <Link href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link  href="/beneficios">
+          <Link href="/beneficios">
             <a>Ofertas para familias</a>
           </Link>
         </li>
@@ -52,11 +52,7 @@ const MapByLocalidad = props => (
       <p className="align-center">
         <small>
           <Link
-            
-            as={`/l/${props.markers[0].localidad_del_beneficio.term_id}/${
-              props.markers[0].localidad_del_beneficio.slug
-            }`}
-            href={`/localidad?localidad=${props.markers[0].localidad_del_beneficio.term_id}`}
+            href={`/l/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`}
           >
             <a
               title={'Ver todos los beneficios de ' + props.markers[0].localidad_del_beneficio.name}
@@ -96,21 +92,18 @@ const MapByLocalidad = props => (
                     : nationalmarker.lon
                 }
                 text={
-                  <Link
-                    
-                    as={`/ogm/${nationalmarker.ID}/${nationalmarker.slug}`}
-                    href={`/oferta-gran-marca?id=${nationalmarker.ID}`}
-                  >
-                    <a title={nationalmarker.name}>
+                    <a 
+                    href={`/ogm/${nationalmarker.ID}`} title={nationalmarker.name}>
                       <span>
                         <img
                           src={
-                            'https://benfamcanumpics.famnum.now.sh/static/32/' + nationalmarker.marca.slug + '-familias-numerosas.png'
+                            'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                            nationalmarker.marca.slug +
+                            '-familias-numerosas.png'
                           }
                         />
                       </span>
                     </a>
-                  </Link>
                 }
               />
             ))}
@@ -120,23 +113,17 @@ const MapByLocalidad = props => (
                 lat={marker.lat.includes(',') || marker.lat.includes('!') ? '' : marker.lat}
                 lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
                 text={
-                  <Link
-                    
-                    as={`/p/${marker.ID}/${marker.slug}`}
-                    href={`/post?id=${marker.ID}`}
-                  >
-                    <a title={marker.name}>
-                      <span>
-                        <img
-                          src={
-                            'https://benfamcanumpics.famnum.now.sh/static/32/' +
-                            marker.categoria_de_la_prestacion.slug +
-                            '-familias-numerosas.png'
-                          }
-                        />
-                      </span>
-                    </a>
-                  </Link>
+                  <a href={`/p/${marker.ID}/${marker.slug}`} title={marker.name}>
+                    <span>
+                      <img
+                        src={
+                          'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                          marker.categoria_de_la_prestacion.slug +
+                          '-familias-numerosas.png'
+                        }
+                      />
+                    </span>
+                  </a>
                 }
               />
             ))}
@@ -238,10 +225,9 @@ MapByLocalidad.getInitialProps = async function(context) {
   const markers = await res.json();
   const res2 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&localidad=${localidad}`
-  );
-  const nationalmarkers = await res2.json();
-
-  console.log(`Markers data fetched. Count: ${markers.length}, ${nationalmarkers.length}`);
+  ); 
+  const almosnationalmarkers = await res2.json();
+  const nationalmarkers = almosnationalmarkers.filter((x) => x.marca != null);
 
   return { markers, nationalmarkers };
 };

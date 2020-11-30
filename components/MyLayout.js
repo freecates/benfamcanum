@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { initGA, logPageView } from '../utils/analytics';
 import Footer from './Footer';
 import Header from './Header';
+import { useRouter } from 'next/router';
 import Styles from './Styles';
 
 const layoutStyle = {
@@ -16,6 +17,7 @@ const mainStyle = {
 };
 
 export default function Layout(props) {
+  const { pathname } = useRouter();
   useEffect(() => {
     if (!window.GA_INITIALIZED) {
       initGA();
@@ -30,7 +32,7 @@ export default function Layout(props) {
         {props.layout ||
           (props.bgmapa !== true && (
             <div style={layoutStyle} className="fade-in">
-              <Header withbg ruta={props.ruta} />
+              <Header withbg ruta={pathname} />
               <main style={mainStyle}>{props.children}</main>
               <style jsx>{`
                 .fade-in {
@@ -52,7 +54,7 @@ export default function Layout(props) {
           ))}
         {props.layout && (
           <div style={layoutStyle} className={'layout' in props && 'layout'}>
-            <Header ruta={props.ruta} />
+            <Header ruta={pathname} />
             <main style={mainStyle}>{props.children}</main>
             <style jsx>{`
               .layout {
@@ -77,11 +79,11 @@ export default function Layout(props) {
         )}
         {props.bgmapa && (
           <div style={layoutStyle} className={'bgmapa' in props && 'bgmapa'}>
-            <Header withbg ruta={props.ruta} />
+            <Header withbg ruta={pathname} />
             <main style={mainStyle}>{props.children}</main>
           </div>
         )}
-        <Footer ruta={props.ruta} />
+        <Footer ruta={pathname} />
       </React.Fragment>
       <React.Fragment>
         <Styles />

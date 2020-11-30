@@ -6,7 +6,7 @@ import { IntlProvider } from 'react-intl';
 import Layout from '../components/MyLayout.js';
 
 const PrestacionesEstatales = props => (
-  <Layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Prestaciones Familias Numerosas - Estatales</title>
     </Head>
@@ -178,8 +178,6 @@ export async function getStaticProps() {
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Estatal`
   );
   const prestaciones = await res.json();
-
-  console.log(`Prestaciones data fetched. Count: ${prestaciones.length}`);
 
   return { props: {prestaciones} };
 };

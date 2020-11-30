@@ -10,7 +10,7 @@ const SelectCity = dynamic(import('../components/SelectCity'), {
 });
 
 const MunicipiosPrestaciones = props => (
-  <Layout layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Prestaciones Familias Numerosas - Municipios</title>
     </Head>
@@ -37,7 +37,7 @@ const MunicipiosPrestaciones = props => (
         <SelectCity
           inputClass="benefit"
           inputValue="Buscar la prestación"
-          ruta={props.ruta}
+         
           localBenefit={true}
           options={props.municipios
             .reduce((ciutats, municipio) => {
@@ -48,7 +48,7 @@ const MunicipiosPrestaciones = props => (
                 slug: municipio.localidad.slug,
                 key: municipio.localidad.term_id,
                 value: municipio.localidad.term_id
-                  ? `/prestaciones-municipio?localidad=${municipio.localidad.term_id}`
+                  ? `/pm/${municipio.localidad.term_id}/${municipio.localidad.slug}`
                   : '',
                 label: municipio.localidad.term_id ? `${municipio.localidad.name}` : ''
               };
@@ -138,15 +138,14 @@ const MunicipiosPrestaciones = props => (
   </Layout>
 );
 
-MunicipiosPrestaciones.getInitialProps = async function() {
+export async function getStaticProps() {
   const res = await fetch(
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Municipal&comunidad=8143'
   );
   const municipios = await res.json();
-
-  console.log(`MunicipiosPrestaciones data fetched. Count: ${municipios.length}`);
-
-  return { municipios };
-};
+  return {
+    props: { municipios }
+  };
+}
 
 export default MunicipiosPrestaciones;

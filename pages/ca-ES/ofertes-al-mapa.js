@@ -2,6 +2,7 @@ import fetch from 'isomorphic-unfetch';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../components/MyLayout.js';
 
@@ -9,73 +10,74 @@ const SelectCity = dynamic(import('../../components/SelectCity'), {
   loading: () => <p>carregant ...</p>
 });
 
-const Localidades = props => (
-  <Layout bgmapa ruta={props.ruta}>
-    <Head>
-      <title>Ofertes geolocalitzades per a famílies nombroses</title>
-    </Head>
-    <nav aria-label="Ets aquí:" role="navigation">
-      <ul className="breadcrumbs">
-        <li>
-          <Link href="/ca-ES">
-            <a>Inici</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/ca-ES/beneficis">
-            <a>Ofertes per a famílies nombroses</a>
-          </Link>
-        </li>
-        <li>
-          <span className="show-for-sr">Actual: </span> Al mapa
-        </li>
-      </ul>
-    </nav>
-    <IntlProvider defaultLocale="ca">
-      <main className="bgmapa">
-        <section className="padding-4x">
-          <div className="wrapper wrapper-top">
-            <div className="left">
-              <p className="align-center no-margin-bottom padding">
-                <Link as="/ca-ES/m-p" href="/ca-ES/mapa-proximidad">
-                  <a className="button button-blue">Buscar a prop teu</a>
-                </Link>
-              </p>
-            </div>
-            <div className="right">
-              <div className="form-component form-component-full">
-                <SelectCity
-                  inputClass="map"
-                  options={props.beneficios
-                    .reduce((ciutats, beneficio) => {
-                      if (beneficio.localidad_del_beneficio == false) {
+const Localidades = props => {
+  return (
+    <Layout bgmapa>
+      <Head>
+        <title>Ofertes geolocalitzades per a famílies nombroses</title>
+      </Head>
+      <nav aria-label="Ets aquí:" role="navigation">
+        <ul className="breadcrumbs">
+          <li>
+            <Link href="/ca-ES">
+              <a>Inici</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/ca-ES/beneficis">
+              <a>Ofertes per a famílies nombroses</a>
+            </Link>
+          </li>
+          <li>
+            <span className="show-for-sr">Actual: </span> Al mapa
+          </li>
+        </ul>
+      </nav>
+      <IntlProvider defaultLocale="ca">
+        <main className="bgmapa">
+          <section className="padding-4x">
+            <div className="wrapper wrapper-top">
+              <div className="left">
+                <p className="align-center no-margin-bottom padding">
+                  <Link href="/ca-ES/mapa-proximitat">
+                    <a className="button button-blue">Buscar a prop teu</a>
+                  </Link>
+                </p>
+              </div>
+              <div className="right">
+                <div className="form-component form-component-full">
+                  <SelectCity
+                    inputClass="map"
+                    options={props.beneficios
+                      .reduce((ciutats, beneficio) => {
+                        if (beneficio.localidad_del_beneficio == false) {
+                          return ciutats;
+                        }
+                        ciutats[beneficio.localidad_del_beneficio.term_id] = {
+                          slug: beneficio.localidad_del_beneficio.slug,
+                          key: beneficio.localidad_del_beneficio.term_id,
+                          value: beneficio.localidad_del_beneficio
+                            ? `/ca-ES/mapa-localidad?localidad=${beneficio.localidad_del_beneficio.term_id}`
+                            : '',
+                          label: beneficio.localidad_del_beneficio
+                            ? `${beneficio.localidad_del_beneficio.name}`
+                            : ''
+                        };
                         return ciutats;
-                      }
-                      ciutats[beneficio.localidad_del_beneficio.term_id] = {
-                        slug: beneficio.localidad_del_beneficio.slug,
-                        key: beneficio.localidad_del_beneficio.term_id,
-                        value: beneficio.localidad_del_beneficio
-                          ? `/ca-ES/mapa-localidad?localidad=${beneficio.localidad_del_beneficio.term_id}`
-                          : '',
-                        label: beneficio.localidad_del_beneficio
-                          ? `${beneficio.localidad_del_beneficio.name}`
-                          : ''
-                      };
-                      return ciutats;
-                    }, [])
-                    .sort((a, b) => {
-                      if (a.slug < b.slug) return -1;
-                      if (a.slug > b.slug) return 1;
-                      return 0;
-                    })}
-                />
+                      }, [])
+                      .sort((a, b) => {
+                        if (a.slug < b.slug) return -1;
+                        if (a.slug > b.slug) return 1;
+                        return 0;
+                      })}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </main>
-    </IntlProvider>
-    <style jsx>{`
+          </section>
+        </main>
+      </IntlProvider>
+      <style jsx>{`
           .bgmapa {
             background: url(/static/bg-mapa.jpg) no-repeat center center;
             background-size: contain;
@@ -225,18 +227,17 @@ const Localidades = props => (
             }
           }
         `}</style>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
-Localidades.getInitialProps = async function() {
+export async function getStaticProps() {
   const res = await fetch(
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?comunidad=Catalu%C3%B1a&sim-model=localidad'
   );
   const beneficios = await res.json();
 
-  console.log(`Ofertes data fetched. Count: ${beneficios.length}`);
-
-  return { beneficios };
-};
+  return { props: { beneficios } };
+}
 
 export default Localidades;

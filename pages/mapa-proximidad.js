@@ -59,7 +59,7 @@ const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 const ZOOM = 14;
 
 const MapByCategory = props => (
-  <Layout ruta={props.ruta}>
+  <Layout>
     <Head>
       <title>Beneficios para familias numerosas cerca de tí</title>
     </Head>
@@ -112,19 +112,17 @@ const MapByCategory = props => (
                         : marker.lon
                     }
                     text={
-                      <Link as={`/p/${marker.ID}/${marker.slug}`} href={`/post?id=${marker.ID}`}>
-                        <a title={marker.name}>
-                          <span>
-                            <img
-                              src={
-                                'https://benfamcanumpics.famnum.now.sh/static/32/' +
-                                marker.categoria_de_la_prestacion.slug +
-                                '-familias-numerosas.png'
-                              }
-                            />
-                          </span>
-                        </a>
-                      </Link>
+                      <a href={`/p/${marker.ID}/${marker.slug}`} title={marker.name}>
+                        <span>
+                          <img
+                            src={
+                              'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                              marker.categoria_de_la_prestacion.slug +
+                              '-familias-numerosas.png'
+                            }
+                          />
+                        </span>
+                      </a>
                     }
                   />
                 ))}
@@ -134,7 +132,7 @@ const MapByCategory = props => (
               Si no tienes Beneficios cerca de tí,
               <strong>prueba de hacer menos zoom en el mapa</strong> hasta encontarlos. O vuelve a
               probar haciendo clic{' '}
-              <Link as="/m-p" href="/mapa-proximidad">
+              <Link href="/mapa-proximidad">
                 <a className="blue-underline">
                   <strong>aquí</strong>
                 </a>
@@ -144,7 +142,7 @@ const MapByCategory = props => (
         ) : (
           <section>
             <p className="text-center">
-              <Link as="/m-p" href="/mapa-proximidad">
+              <Link href="/mapa-proximidad">
                 <a className="button">Localízate</a>
               </Link>
             </p>
@@ -260,6 +258,7 @@ MapByCategory.getInitialProps = async function() {
   );
   const markers = await res.json();
   const CENTER = await centerLatLng;
+  console.log('CENTER ', CENTER);
 
   console.log(`Markers data fetched. Count: ${markers.length}`, `${CENTER}`);
 

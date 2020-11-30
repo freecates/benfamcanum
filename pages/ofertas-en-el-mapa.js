@@ -10,7 +10,7 @@ const SelectCity = dynamic(import('../components/SelectCity'), {
 });
 
 const Localidades = props => (
-  <Layout bgmapa ruta={props.ruta}>
+  <Layout bgmapa>
     <Head>
       <title>Ofertas geolocalizadas para familias numerosas</title>
     </Head>
@@ -37,7 +37,7 @@ const Localidades = props => (
           <div className="wrapper wrapper-top">
             <div className="left">
               <p className="align-center no-margin-bottom padding">
-                <Link  as="/m-p" href="/mapa-proximidad">
+                <Link href="/mapa-proximidad">
                   <a className="button button-blue">Buscar cerca de tí</a>
                 </Link>
               </p>
@@ -228,15 +228,14 @@ const Localidades = props => (
   </Layout>
 );
 
-Localidades.getInitialProps = async function() {
+export async function getStaticProps() {
   const res = await fetch(
     'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?comunidad=Catalu%C3%B1a&sim-model=localidad'
   );
   const beneficios = await res.json();
-
-  console.log(`Ofertas data fetched. Count: ${beneficios.length}`);
-
-  return { beneficios };
-};
+  return {
+    props: { beneficios }
+  };
+}
 
 export default Localidades;

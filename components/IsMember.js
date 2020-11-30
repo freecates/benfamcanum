@@ -67,7 +67,6 @@ class IsMember extends React.Component {
 
   render() {
     const ruta = this.props.ruta;
-    console.log(`Hola: ${this.state.isRegistered}`);
     if (typeof window != 'undefined') {
       if (this.state.isRegistered == true || sessionStorage.getItem('isMember') == 'MTV0cnVlNDU=') {
         return (
@@ -159,7 +158,7 @@ class IsMember extends React.Component {
                   <a
                     target="_blank"
                     className="button button-pink"
-                    href="http://www.familiasnumerosas.org/hazte-socio/"
+                    href="https://fanoc.org/inscriu-te/"
                   >
                     {ruta.includes('/ca-ES') && <>Sí, vull fer-me soci</>}
                     {ruta.indexOf('/ca-ES') == -1 && <>Sí, quiero hacerme socio</>}
@@ -324,7 +323,7 @@ class IsMember extends React.Component {
                   <a
                     target="_blank"
                     className="button button-pink"
-                    href="http://www.familiasnumerosas.org/hazte-socio/"
+                    href="https://fanoc.org/inscriu-te/"
                   >
                     Sí, quiero hacerme socio
                   </a>
