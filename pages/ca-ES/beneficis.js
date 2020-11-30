@@ -2,9 +2,8 @@ import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/MyLayout.js';
-
-const today = Date.now();
-const todayISO = new Date(today).toISOString();
+import Banners from '../../components/Banners.js';
+import Promotions from '../../components/Promotions.js';
 
 const Beneficis = props => {
   return (
@@ -26,6 +25,7 @@ const Beneficis = props => {
           </ul>
         </nav>
         <section className="call-to-action">
+          <Banners data={props.banners} />
           <div className="icones-prestacions">
             <div className="icona">
               <Link href="/ca-ES/ofertes-per-sectors">
@@ -76,23 +76,7 @@ const Beneficis = props => {
               </Link>
             </div>
             <br className="clear" />
-            {props.promociones[0].acf.fecha_de_finalizaciion_de_la_promocion > todayISO ? (
-              <div className="promo">
-                <h4 className="align-center">
-                  <span className="label alert file-label">
-                    <Link href="/ca-ES/promocions">
-                      <a>
-                        Mira aquí promocions que et
-                        <br />
-                        puguin interessar
-                      </a>
-                    </Link>
-                  </span>
-                </h4>
-              </div>
-            ) : (
-              ''
-            )}
+            <Promotions data={props.promociones} />
           </div>
         </section>
       </div>
@@ -155,6 +139,9 @@ const Beneficis = props => {
           top: 35px;
           font-size: 0.9em;
         }
+        .dk {
+          display: none;
+        }
         @media screen and (min-width: 320px) {
           .call-to-action {
             width: 69%;
@@ -186,6 +173,12 @@ const Beneficis = props => {
           .icones-prestacions img {
             margin: 2em;
           }
+          .dk {
+            display: block;
+          }
+          .mb {
+            display: none;
+          }
         }
         @media screen and (min-width: 1024px) {
           .call-to-action {
@@ -203,10 +196,13 @@ const Beneficis = props => {
 };
 
 export async function getStaticProps() {
-  const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`);
-  const promociones = await res2.json();
+  const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`);
+  const promociones = await res.json();
 
-  return { props: { promociones } };
+  const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners?per_page=100`);
+  const banners = await res2.json();
+
+  return { props: { promociones, banners } };
 }
 
 export default Beneficis;
