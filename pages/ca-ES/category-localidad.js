@@ -108,7 +108,7 @@ const PostsByCategoryLocalidad = props => {
         <IntlProvider defaultLocale="ca">
           <section>
             {props.uniquemarcas.length >= 1 ? <BrandsGallery data={props.marcasofertas} /> : null}
-            {props.marcacasofertas.length >= 1 ? (
+            {props.uniquecamarcas.length >= 1 ? (
               <BrandsGallery data={props.marcacasofertas} type={'ca'} />
             ) : null}
             <Gallery data={props.posts} />
@@ -373,14 +373,14 @@ PostsByCategoryLocalidad.getInitialProps = async function(context) {
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&localidad=${localidad}&sim-model=id-marca`
   );
   const almostuniquemarcas = await res2.json();
-  const marcasofertas = almostuniquemarcas.filter(x => x.marca != null);
+  const marcasofertas = almostuniquemarcas.filter(x => x.marca != null && x.marca != '');
 
   const res3 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_of_gr_m_ca=${sid}&localidad=${localidad}&sim-model=id-marca`
   );
 
   const almostuniquecamarcas = await res3.json();
-  const marcacasofertas = almostuniquecamarcas.filter(x => x.marca != null);
+  const marcacasofertas = almostuniquecamarcas.filter(x => x.marca != null && x.marca != '');
 
   const res4 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales?per_page=100`

@@ -4,7 +4,6 @@ import slug from 'limax';
 import Layout from './MyLayout';
 
 const Fallback = ({ notFound, breadCrumb }) => {
-
   const { pathname } = useRouter();
   const slugFromBreadCrumb = slug(breadCrumb);
   return (
@@ -26,9 +25,14 @@ const Fallback = ({ notFound, breadCrumb }) => {
             </ul>
           </nav>
           <section>
-            <div className={'file'}>
+            <div className={`file${notFound ? '' : ' loading'}`}>
               <h1>{notFound ? 'Oferta no trobada' : '... Loading'}</h1>
             </div>
+            <style jsx>{`
+              .loading {
+                height: 100vh;
+              }
+            `}</style>
           </section>
         </Layout>
       )}
@@ -49,9 +53,14 @@ const Fallback = ({ notFound, breadCrumb }) => {
             </ul>
           </nav>
           <section>
-            <div className={'file'}>
+            <div className={`file${notFound ? '' : ' loading'}`}>
               <h1>{notFound ? 'Oferta no encontrada' : '... Loading'}</h1>
             </div>
+            <style jsx>{`
+              .loading {
+                height: 100vh;
+              }
+            `}</style>
           </section>
         </Layout>
       )}
