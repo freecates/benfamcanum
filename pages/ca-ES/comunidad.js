@@ -6,7 +6,6 @@ import { IntlProvider } from 'react-intl';
 import Layout from '../../components/MyLayout.js';
 import BrandsGallery from '../../components/BrandsGallery';
 import Gallery from '../../components/Gallery';
-import Banners from '../../components/Banners.js';
 
 const SelectCity = dynamic(import('../../components/SelectCity'), {
   loading: () => (
@@ -95,7 +94,6 @@ const PostByComunidad = props => {
             </ul>
           </nav>
           <section>
-            <Banners data={props.banners} section={'2'} />
             <h1>{props.posts[0].comunidad_autonoma}</h1>
 
             <section id="select-city">
@@ -289,9 +287,6 @@ export async function getStaticProps() {
   const almostuniquecamarcas = await res3.json();
   const marcascaofertas = almostuniquecamarcas.filter(x => x.marca != null);
 
-  const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners?per_page=100`);
-  const banners = await res4.json();
-
   const uniquemarcasnotfiltered = [
     ...new Set(marcasofertas.map(({ marca }) => (marca != null ? marca.name : '')))
   ];
@@ -303,7 +298,7 @@ export async function getStaticProps() {
   const uniquecamarcas = uniquecamarcasnotfiltered.filter(Boolean);
 
   return {
-    props: { posts, banners, marcasofertas, marcascaofertas, caid, uniquemarcas, uniquecamarcas },
+    props: { posts, marcasofertas, marcascaofertas, caid, uniquemarcas, uniquecamarcas },
     revalidate: 1
   };
 }

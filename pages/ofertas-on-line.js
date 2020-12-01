@@ -5,6 +5,9 @@ import { IntlProvider } from 'react-intl';
 import Layout from '../components/MyLayout.js';
 import Banners from '../components/Banners.js';
 
+const today = Date.now();
+const todayISO = new Date(today).toISOString();
+
 const OfertasOnLine = props => (
   <Layout>
     <Head>
@@ -12,7 +15,7 @@ const OfertasOnLine = props => (
     </Head>
     <IntlProvider defaultLocale="ca">
       <main>
-        <Banners data={props.banners} section={'3'} />
+        <Banners data={props.banners} />
         <h1>Ofertas On Line</h1>
         <section>
           <h2 className="align-center">Selecciona la categoría de tu interés</h2>
@@ -134,7 +137,14 @@ export async function getStaticProps() {
   const ofertasonlines = await res.json();
 
   const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners?per_page=100`);
-  const banners = await res2.json();
+  const AlmostBanners = await res2.json();
+
+  const banners = AlmostBanners.filter(
+    d =>
+      d.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
+      d.acf.la_publicidad_es_de_ca == true &&
+      d.acf.seccion_principal == '3'
+  );
 
   return {
     props: { ofertasonlines, banners },

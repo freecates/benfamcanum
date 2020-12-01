@@ -6,6 +6,9 @@ import { IntlProvider } from 'react-intl';
 import Layout from '../../components/MyLayout.js';
 import Banners from '../../components/Banners.js';
 
+const today = Date.now();
+const todayISO = new Date(today).toISOString();
+
 const SelectCity = dynamic(import('../../components/SelectCity'), {
   loading: () => <p>carregant ...</p>
 });
@@ -35,7 +38,7 @@ const Localidades = props => {
       </nav>
       <IntlProvider defaultLocale="ca">
         <main className="bgmapa">
-          <Banners data={props.banners} section={'4'} />
+          <Banners data={props.banners} />
           <section className="padding-4x">
             <div className="wrapper wrapper-top">
               <div className="left">
@@ -239,7 +242,14 @@ export async function getStaticProps() {
   const beneficios = await res.json();
 
   const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners?per_page=100`);
-  const banners = await res2.json();
+  const AlmostBanners = await res2.json();
+
+  const banners = AlmostBanners.filter(
+    d =>
+      d.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
+      d.acf.la_publicidad_es_de_ca == true &&
+      d.acf.seccion_principal == '4'
+  );
 
   return { props: { beneficios, banners }, revalidate: 1 };
 }

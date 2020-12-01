@@ -1,10 +1,10 @@
 import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../../../components/MyLayout.js';
+import Banners from '../../../../components/Banners.js';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
@@ -39,34 +39,7 @@ const PostsByLocalidad = props => {
         </ul>
       </nav>
       <section>
-        <div>
-          {props.banners.map((banner, index) => (
-            <React.Fragment key={index}>
-              {banner.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
-              banner.acf.la_publicidad_es_de_ca == true &&
-              banner.acf.comunidad_autonoma.name == props.posts[0].comunidad_autonoma ? (
-                <React.Fragment>
-                  <p className="align-center promo dk">
-                    <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                      <img
-                        src={banner.acf.banner_grande_728x90.sizes.large}
-                        width={'728'}
-                        height={'90'}
-                      />
-                    </a>
-                  </p>
-                  <p className="align-center promo mb">
-                    <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                      <img src={banner.acf.baner_movil.sizes.large} width={'320'} height={'100'} />
-                    </a>
-                  </p>
-                </React.Fragment>
-              ) : (
-                ''
-              )}
-            </React.Fragment>
-          ))}
-        </div>
+        <Banners data={props.banner} />
         <h1>Beneficis a {props.posts[0].localidad_del_beneficio.name}</h1>
         <p className="align-center">
           <small>
@@ -414,7 +387,15 @@ export async function getStaticProps({ params }) {
   const marcasofertas = almostuniquemarcas.filter(x => x.marca != null);
 
   const res3 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners?per_page=100`);
-  const banners = await res3.json();
+  const AlmostBanners = await res3.json();
+
+  const banners = AlmostBanners.filter(
+    d =>
+      d.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
+      d.acf.la_publicidad_es_de_ca == true
+  );
+  const [firstBanner] = banners;
+  const banner = [firstBanner];
 
   const res4 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&localidad=${id}`
@@ -422,7 +403,7 @@ export async function getStaticProps({ params }) {
   const almostuniquecamarcas = await res4.json();
   const marcascaofertas = almostuniquecamarcas.filter(x => x.marca != null);
 
-  return { props: { posts, marcasofertas, banners, marcascaofertas } };
+  return { props: { posts, marcasofertas, banner, marcascaofertas } };
 }
 
 export default PostsByLocalidad;

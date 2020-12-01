@@ -1,11 +1,11 @@
 import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
-import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../components/MyLayout.js';
 import Gallery from '../../components/Gallery.js';
 import BrandsGallery from '../../components/BrandsGallery.js';
+import Banners from '../../components/Banners';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
@@ -65,41 +65,7 @@ const PostsByCategoryLocalidad = props => {
         </ul>
       </nav>
       <section>
-        <div>
-          {props.banners.map((banner, index) => (
-            <React.Fragment key={index}>
-              {banner.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
-              banner.acf.la_publicidad_es_de_ca == true &&
-              banner.acf.comunidad_autonoma.name == props.posts[0].comunidad_autonoma &&
-              banner.acf.sector_del_banner.term_id == props.sid ? (
-                <React.Fragment>
-                  <p className="align-center promo dk">
-                    <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                      <img
-                        src={banner.acf.banner_grande_728x90.sizes.large}
-                        width={728}
-                        height={90}
-                        loading={'lazy'}
-                      />
-                    </a>
-                  </p>
-                  <p className="align-center promo mb">
-                    <a href={banner.acf.url_de_destino_del_banner} target="_blank">
-                      <img
-                        src={banner.acf.baner_movil_320x100.sizes.large}
-                        width={728}
-                        height={90}
-                        loading={'lazy'}
-                      />
-                    </a>
-                  </p>
-                </React.Fragment>
-              ) : (
-                ''
-              )}
-            </React.Fragment>
-          ))}
-        </div>
+        <Banners data={props.banners} />
         <h1>
           Beneficis de {props.posts[0].categoria_de_la_prestacion.name} a{' '}
           {props.posts[0].localidad_del_beneficio.name}
@@ -395,7 +361,15 @@ PostsByCategoryLocalidad.getInitialProps = async function(context) {
   const res4 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales?per_page=100`
   );
-  const banners = await res4.json();
+  const AlmostBanners = await res4.json();
+
+  const banners = AlmostBanners.filter(
+    x =>
+      x.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
+      x.acf.la_publicidad_es_de_ca == true &&
+      x.acf.comunidad_autonoma.name == posts[0].comunidad_autonoma &&
+      x.acf.sector_del_banner.term_id == sid
+  );
   const uniquemarcas = [
     ...new Set(marcasofertas.map(({ marca }) => (marca != null ? marca.name : '')))
   ];
