@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Observer from 'react-intersection-observer';
 import { useRouter } from 'next/router';
 
 const Gallery = ({ data }) => {
@@ -10,14 +9,11 @@ const Gallery = ({ data }) => {
       {data.map((d, index) => (
         <li className="benefit" key={index}>
           {d.imagen_destacada_de_la_oferta_general_thumb ? (
-            <Observer
-              threshold={1}
-              triggerOnce={true}
-              render={() => (
                 <p className="fade-in">
                   <Link href={`${langURL}p/${d.ID}/${d.slug}`}>
                     <a title={'Ver la ficha de ' + d.name}>
                       <img
+                        loading={'lazy'}
                         width="250"
                         height="250"
                         src={d.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail}
@@ -26,19 +22,14 @@ const Gallery = ({ data }) => {
                     </a>
                   </Link>
                 </p>
-              )}
-            />
           ) : null}
 
           {d.imagen_destacada_de_la_oferta_socios_thumb ? (
-            <Observer
-              threshold={1}
-              triggerOnce={true}
-              render={() => (
                 <p className="fade-in">
                   <Link href={`${langURL}p/${d.ID}/${d.slug}`}>
                     <a title={'Ver la ficha de ' + d.name}>
                       <img
+                        loading={'lazy'}
                         width="250"
                         height="250"
                         src={d.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail}
@@ -53,8 +44,6 @@ const Gallery = ({ data }) => {
                     </a>
                   </Link>
                 </p>
-              )}
-            />
           ) : null}
 
           <p>

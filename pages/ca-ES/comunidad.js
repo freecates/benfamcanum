@@ -6,6 +6,10 @@ import { IntlProvider } from 'react-intl';
 import Layout from '../../components/MyLayout.js';
 import BrandsGallery from '../../components/BrandsGallery';
 import Gallery from '../../components/Gallery';
+import Banners from '../../components/Banners.js';
+
+const today = Date.now();
+const todayISO = new Date(today).toISOString();
 
 const SelectCity = dynamic(import('../../components/SelectCity'), {
   loading: () => (
@@ -94,6 +98,7 @@ const PostByComunidad = props => {
             </ul>
           </nav>
           <section>
+          <Banners data={props.banners} />
             <h1>{props.posts[0].comunidad_autonoma}</h1>
 
             <section id="select-city">
@@ -297,8 +302,18 @@ export async function getStaticProps() {
   const uniquemarcas = uniquemarcasnotfiltered.filter(Boolean);
   const uniquecamarcas = uniquecamarcasnotfiltered.filter(Boolean);
 
+  const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners?per_page=100`);
+  const AlmostBanners = await res4.json();
+
+  const banners = AlmostBanners.filter(
+    d =>
+      d.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
+      d.acf.la_publicidad_es_de_ca == true &&
+      d.acf.seccion_principal == '2'
+  );
+
   return {
-    props: { posts, marcasofertas, marcascaofertas, caid, uniquemarcas, uniquecamarcas },
+    props: { posts, marcasofertas, marcascaofertas, caid, uniquemarcas, uniquecamarcas, banners },
     revalidate: 1
   };
 }
