@@ -7,6 +7,10 @@ import { IntlProvider } from 'react-intl';
 import Layout from '../../components/MyLayout.js';
 import Gallery from '../../components/Gallery.js';
 import BrandsGallery from '../../components/BrandsGallery.js';
+import Banners from '../../components/Banners';
+
+const today = Date.now();
+const todayISO = new Date(today).toISOString();
 
 const SelectCity = dynamic(import('../../components/SelectCity'), {
   loading: () => (
@@ -17,9 +21,6 @@ const SelectCity = dynamic(import('../../components/SelectCity'), {
     </div>
   )
 });
-
-const today = Date.now();
-const todayISO = new Date(today).toISOString();
 
 const PostsByCategoryComunidad = props => {
   return (
@@ -210,43 +211,7 @@ const PostsByCategoryComunidad = props => {
             </ul>
           </nav>
           <section>
-            <div>
-              {props.banners.map((banner, index) => (
-                <React.Fragment key={index}>
-                  {banner.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
-                  banner.acf.la_publicidad_es_de_ca == true &&
-                  banner.acf.sector_del_banner.term_id == props.sid &&
-                  banner.comunidad == props.caid ? (
-                    <React.Fragment>
-                      <p className="align-center promo dk">
-                        <Link href={banner.acf.url_de_destino_del_banner}>
-                          <a target="_blank">
-                            <img
-                              src={banner.acf.banner_grande_728x90.sizes.large}
-                              width={728}
-                              height={90}
-                              loading={'lazy'}
-                            />
-                          </a>
-                        </Link>
-                      </p>
-                      <p className="align-center promo mb">
-                        <Link href={banner.acf.url_de_destino_del_banner}>
-                          <a target="_blank">
-                            <img
-                              src={banner.acf.baner_movil_320x100.sizes.large}
-                              width={328}
-                              height={100}
-                              loading={'lazy'}
-                            />
-                          </a>
-                        </Link>
-                      </p>
-                    </React.Fragment>
-                  ) : null}
-                </React.Fragment>
-              ))}
-            </div>
+            <Banners data={props.banners} />
             <h1>
               <img
                 src={
@@ -683,7 +648,15 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   const res4 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales?per_page=100`
   );
-  const banners = await res4.json();
+  const AlmostBanners = await res4.json();
+
+  const banners = AlmostBanners.filter(
+    x =>
+      x.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
+      x.acf.la_publicidad_es_de_ca == true &&
+      x.acf.comunidad_autonoma.name == posts[0].comunidad_autonoma &&
+      x.acf.sector_del_banner.term_id == sid
+  );
 
   const res5 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${sid}`
