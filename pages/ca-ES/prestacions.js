@@ -29,6 +29,7 @@ const Prestacions = () => {
                 src="/static/icona-prestacions-municipals-familias-numerosas.png"
                 width={'193'}
                 height={'192'}
+                loading={'lazy'}
               />
             </a>
           </Link>
@@ -38,6 +39,7 @@ const Prestacions = () => {
                 src="/static/icona-prestacions-autonomiques-familias-numerosas.png"
                 width={'194'}
                 height={'192'}
+                loading={'lazy'}
               />
             </a>
           </Link>
@@ -47,6 +49,7 @@ const Prestacions = () => {
                 src="/static/icona-prestacions-estatals-familias-numerosas.png"
                 width={'192'}
                 height={'192'}
+                loading={'lazy'}
               />
             </a>
           </Link>

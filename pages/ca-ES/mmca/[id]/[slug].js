@@ -83,6 +83,7 @@ const MapByMarcaCa = props => {
               }
               width={'96'}
               height={'96'}
+              loading={'lazy'}
             />
             <br />
             {props.camarkers[0].marca.name}
@@ -134,6 +135,7 @@ const MapByMarcaCa = props => {
                             }
                             width={'32'}
                             height={'32'}
+                            loading={'lazy'}
                           />
                         </span>
                       </a>

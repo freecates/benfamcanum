@@ -1,6 +1,5 @@
 import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
-import Observer from 'react-intersection-observer';
 
 const B = props => (
   <div>
@@ -119,9 +118,7 @@ class IsSearch extends React.Component {
   render() {
     const ruta = this.props.ruta;
     console.log(
-      `Post count: ${this.state.PostResults.length}, ${this.state.OfertasResults.length}, ${
-        this.state.OfertasGrandeMarcasResults.length
-      }, ${this.state.OfertasGrandeMarcasCAResults.length}`
+      `Post count: ${this.state.PostResults.length}, ${this.state.OfertasResults.length}, ${this.state.OfertasGrandeMarcasResults.length}, ${this.state.OfertasGrandeMarcasCAResults.length}`
     );
     if (
       (this.state.PostResults.length >= 1) |
@@ -151,123 +148,110 @@ class IsSearch extends React.Component {
                   {this.state.PostResults.map((PostResult, index) => (
                     <li className="benefit" key={index}>
                       {PostResult.imagen_destacada_de_la_oferta_general_thumb ? (
-                        <Observer
-                          threshold={1}
-                          triggerOnce={true}
-                          render={() => (
-                            <p className="fade-in">
-                              {ruta.includes('/ca-ES') && (
-                                <Link
-                                  
-                                  as={`/ca-ES/p/${PostResult.ID}/${PostResult.slug}`}
-                                  href={`/ca-ES/post?id=${PostResult.ID}`}
-                                >
-                                  <a title={'Veure la fitxa de ' + PostResult.name}>
-                                    <img
-                                      className="fade-in"
-                                      width="250"
-                                      src={
-                                        PostResult.imagen_destacada_de_la_oferta_general_thumb.sizes
-                                          .thumbnail
-                                      }
-                                      alt={PostResult.titulo_de_la_oferta_oferta_general}
-                                    />
-                                  </a>
-                                </Link>
-                              )}
-                              {ruta.indexOf('/ca-ES') == -1 && (
-                                <Link
-                                  
-                                  as={`/p/${PostResult.ID}/${PostResult.slug}`}
-                                  href={`/post?id=${PostResult.ID}`}
-                                >
-                                  <a title={'Ver la ficha de ' + PostResult.name}>
-                                    <img
-                                      className="fade-in"
-                                      width="250"
-                                      src={
-                                        PostResult.imagen_destacada_de_la_oferta_general_thumb.sizes
-                                          .thumbnail
-                                      }
-                                      alt={PostResult.titulo_de_la_oferta_oferta_general}
-                                    />
-                                  </a>
-                                </Link>
-                              )}
-                            </p>
+                        <p className="fade-in">
+                          {ruta.includes('/ca-ES') && (
+                            <Link
+                              as={`/ca-ES/p/${PostResult.ID}/${PostResult.slug}`}
+                              href={`/ca-ES/post?id=${PostResult.ID}`}
+                            >
+                              <a title={'Veure la fitxa de ' + PostResult.name}>
+                                <img
+                                  className="fade-in"
+                                  width={'250'}
+                                  height={'250'}
+                                  loading={'lazy'}
+                                  src={
+                                    PostResult.imagen_destacada_de_la_oferta_general_thumb.sizes
+                                      .thumbnail
+                                  }
+                                  alt={PostResult.titulo_de_la_oferta_oferta_general}
+                                />
+                              </a>
+                            </Link>
                           )}
-                        />
-                      ) : (
-                        ''
-                      )}
+                          {ruta.indexOf('/ca-ES') == -1 && (
+                            <Link
+                              as={`/p/${PostResult.ID}/${PostResult.slug}`}
+                              href={`/post?id=${PostResult.ID}`}
+                            >
+                              <a title={'Ver la ficha de ' + PostResult.name}>
+                                <img
+                                  className="fade-in"
+                                  width={'250'}
+                                  height={'250'}
+                                  loading={'lazy'}
+                                  src={
+                                    PostResult.imagen_destacada_de_la_oferta_general_thumb.sizes
+                                      .thumbnail
+                                  }
+                                  alt={PostResult.titulo_de_la_oferta_oferta_general}
+                                />
+                              </a>
+                            </Link>
+                          )}
+                        </p>
+                      ) : null}
 
                       {PostResult.imagen_destacada_de_la_oferta_socios_thumb ? (
-                        <Observer
-                          threshold={1}
-                          triggerOnce={true}
-                          render={() => (
-                            <p className="fade-in">
-                              {ruta.includes('/ca-ES') && (
-                                <Link
-                                  
-                                  as={`/ca-ES/p/${PostResult.ID}/${PostResult.slug}`}
-                                  href={`/ca-ES/post?id=${PostResult.ID}`}
-                                >
-                                  <a title={'Veure la fitxa de ' + PostResult.name}>
-                                    <img
-                                      className="fade-in"
-                                      width="250"
-                                      src={
-                                        PostResult.imagen_destacada_de_la_oferta_socios_thumb.sizes
-                                          .thumbnail
-                                      }
-                                      alt={PostResult.titulo_de_la_oferta_oferta_socios}
-                                    />
-                                    <span className="label alert gallery-label">
-                                      <small>
-                                        EXCLUSIU
-                                        <br /> SOCIS
-                                      </small>
-                                    </span>
-                                  </a>
-                                </Link>
-                              )}
-                              {ruta.indexOf('/ca-ES') == -1 && (
-                                <Link
-                                  
-                                  as={`/p/${PostResult.ID}/${PostResult.slug}`}
-                                  href={`/post?id=${PostResult.ID}`}
-                                >
-                                  <a title={'Ver la ficha de ' + PostResult.name}>
-                                    <img
-                                      className="fade-in"
-                                      width="250"
-                                      src={
-                                        PostResult.imagen_destacada_de_la_oferta_socios_thumb.sizes
-                                          .thumbnail
-                                      }
-                                      alt={PostResult.titulo_de_la_oferta_oferta_socios}
-                                    />
-                                    <span className="label alert gallery-label">
-                                      <small>
-                                        EXCLUSIVO
-                                        <br /> SOCIOS
-                                      </small>
-                                    </span>
-                                  </a>
-                                </Link>
-                              )}
-                            </p>
+                        <p className="fade-in">
+                          {ruta.includes('/ca-ES') && (
+                            <Link
+                              as={`/ca-ES/p/${PostResult.ID}/${PostResult.slug}`}
+                              href={`/ca-ES/post?id=${PostResult.ID}`}
+                            >
+                              <a title={'Veure la fitxa de ' + PostResult.name}>
+                                <img
+                                  className="fade-in"
+                                  width={'250'}
+                                  height={'250'}
+                                  loading={'lazy'}
+                                  src={
+                                    PostResult.imagen_destacada_de_la_oferta_socios_thumb.sizes
+                                      .thumbnail
+                                  }
+                                  alt={PostResult.titulo_de_la_oferta_oferta_socios}
+                                />
+                                <span className="label alert gallery-label">
+                                  <small>
+                                    EXCLUSIU
+                                    <br /> SOCIS
+                                  </small>
+                                </span>
+                              </a>
+                            </Link>
                           )}
-                        />
-                      ) : (
-                        ''
-                      )}
+                          {ruta.indexOf('/ca-ES') == -1 && (
+                            <Link
+                              as={`/p/${PostResult.ID}/${PostResult.slug}`}
+                              href={`/post?id=${PostResult.ID}`}
+                            >
+                              <a title={'Ver la ficha de ' + PostResult.name}>
+                                <img
+                                  className="fade-in"
+                                  width={'250'}
+                                  height={'250'}
+                                  loading={'lazy'}
+                                  src={
+                                    PostResult.imagen_destacada_de_la_oferta_socios_thumb.sizes
+                                      .thumbnail
+                                  }
+                                  alt={PostResult.titulo_de_la_oferta_oferta_socios}
+                                />
+                                <span className="label alert gallery-label">
+                                  <small>
+                                    EXCLUSIVO
+                                    <br /> SOCIOS
+                                  </small>
+                                </span>
+                              </a>
+                            </Link>
+                          )}
+                        </p>
+                      ) : null}
 
                       <p>
                         {ruta.includes('/ca-ES') && (
                           <Link
-                            
                             as={`/ca-ES/p/${PostResult.ID}/${PostResult.slug}`}
                             href={`/ca-ES/post?id=${PostResult.ID}`}
                           >
@@ -279,7 +263,6 @@ class IsSearch extends React.Component {
                         )}
                         {ruta.indexOf('/ca-ES') == -1 && (
                           <Link
-                            
                             as={`/p/${PostResult.ID}/${PostResult.slug}`}
                             href={`/post?id=${PostResult.ID}`}
                           >
@@ -294,15 +277,8 @@ class IsSearch extends React.Component {
                           <small>
                             {ruta.includes('/ca-ES') && (
                               <Link
-                                
-                                as={`/ca-ES/c-l/${PostResult.categoria_de_la_prestacion.term_id}/${
-                                  PostResult.categoria_de_la_prestacion.slug
-                                }/${PostResult.localidad_del_beneficio.term_id}/${
-                                  PostResult.localidad_del_beneficio.slug
-                                }`}
-                                href={`/ca-ES/category-localidad?id=${
-                                  PostResult.categoria_de_la_prestacion.term_id
-                                }&localidad=${PostResult.localidad_del_beneficio.term_id}`}
+                                as={`/ca-ES/c-l/${PostResult.categoria_de_la_prestacion.term_id}/${PostResult.categoria_de_la_prestacion.slug}/${PostResult.localidad_del_beneficio.term_id}/${PostResult.localidad_del_beneficio.slug}`}
+                                href={`/ca-ES/category-localidad?id=${PostResult.categoria_de_la_prestacion.term_id}&localidad=${PostResult.localidad_del_beneficio.term_id}`}
                               >
                                 <a
                                   title={
@@ -322,15 +298,8 @@ class IsSearch extends React.Component {
                             )}
                             {ruta.indexOf('/ca-ES') == -1 && (
                               <Link
-                                
-                                as={`/c-l/${PostResult.categoria_de_la_prestacion.term_id}/${
-                                  PostResult.categoria_de_la_prestacion.slug
-                                }/${PostResult.localidad_del_beneficio.term_id}/${
-                                  PostResult.localidad_del_beneficio.slug
-                                }`}
-                                href={`/category-localidad?id=${
-                                  PostResult.categoria_de_la_prestacion.term_id
-                                }&localidad=${PostResult.localidad_del_beneficio.term_id}`}
+                                as={`/c-l/${PostResult.categoria_de_la_prestacion.term_id}/${PostResult.categoria_de_la_prestacion.slug}/${PostResult.localidad_del_beneficio.term_id}/${PostResult.localidad_del_beneficio.slug}`}
+                                href={`/category-localidad?id=${PostResult.categoria_de_la_prestacion.term_id}&localidad=${PostResult.localidad_del_beneficio.term_id}`}
                               >
                                 <a
                                   title={
@@ -397,123 +366,106 @@ class IsSearch extends React.Component {
                   {this.state.OfertasResults.map((OfertasResult, index) => (
                     <li className="benefit" key={index}>
                       {OfertasResult.imagen_destacada_de_la_oferta_general ? (
-                        <Observer
-                          threshold={1}
-                          triggerOnce={true}
-                          render={() => (
-                            <p className="fade-in">
-                              {ruta.includes('/ca-ES') && (
-                                <Link
-                                  
-                                  as={`/ca-ES/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
-                                  href={`/ca-ES/oferta-on-line?id=${OfertasResult.ID}`}
-                                >
-                                  <a title={'Veure la fitxa de ' + OfertasResult.name}>
-                                    <img
-                                      className="fade-in"
-                                      width="250"
-                                      src={
-                                        OfertasResult.imagen_destacada_de_la_oferta_general.sizes
-                                          .medium
-                                      }
-                                      alt={OfertasResult.titulo_de_la_oferta_oferta_general}
-                                    />
-                                  </a>
-                                </Link>
-                              )}
-                              {ruta.indexOf('/ca-ES') == -1 && (
-                                <Link
-                                  
-                                  as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
-                                  href={`/oferta-on-line?id=${OfertasResult.ID}`}
-                                >
-                                  <a title={'Ver la ficha de ' + OfertasResult.name}>
-                                    <img
-                                      className="fade-in"
-                                      width="250"
-                                      src={
-                                        OfertasResult.imagen_destacada_de_la_oferta_general.sizes
-                                          .medium
-                                      }
-                                      alt={OfertasResult.titulo_de_la_oferta_oferta_general}
-                                    />
-                                  </a>
-                                </Link>
-                              )}
-                            </p>
+                        <p className="fade-in">
+                          {ruta.includes('/ca-ES') && (
+                            <Link
+                              as={`/ca-ES/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
+                              href={`/ca-ES/oferta-on-line?id=${OfertasResult.ID}`}
+                            >
+                              <a title={'Veure la fitxa de ' + OfertasResult.name}>
+                                <img
+                                  className="fade-in"
+                                  width={'250'}
+                                  height={'250'}
+                                  loading={'lazy'}
+                                  src={
+                                    OfertasResult.imagen_destacada_de_la_oferta_general.sizes.medium
+                                  }
+                                  alt={OfertasResult.titulo_de_la_oferta_oferta_general}
+                                />
+                              </a>
+                            </Link>
                           )}
-                        />
-                      ) : (
-                        ''
-                      )}
+                          {ruta.indexOf('/ca-ES') == -1 && (
+                            <Link
+                              as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
+                              href={`/oferta-on-line?id=${OfertasResult.ID}`}
+                            >
+                              <a title={'Ver la ficha de ' + OfertasResult.name}>
+                                <img
+                                  className="fade-in"
+                                  width={'250'}
+                                  height={'250'}
+                                  loading={'lazy'}
+                                  src={
+                                    OfertasResult.imagen_destacada_de_la_oferta_general.sizes.medium
+                                  }
+                                  alt={OfertasResult.titulo_de_la_oferta_oferta_general}
+                                />
+                              </a>
+                            </Link>
+                          )}
+                        </p>
+                      ) : null}
 
                       {OfertasResult.imagen_destacada_de_la_oferta_socios ? (
-                        <Observer
-                          threshold={1}
-                          triggerOnce={true}
-                          render={() => (
-                            <p className="fade-in">
-                              {ruta.includes('/ca-ES') && (
-                                <Link
-                                  
-                                  as={`/ca-ES/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
-                                  href={`/ca-ES/oferta-on-line?id=${OfertasResult.ID}`}
-                                >
-                                  <a title={'Veure la fitxa de ' + OfertasResult.name}>
-                                    <img
-                                      className="fade-in"
-                                      width="250"
-                                      src={
-                                        OfertasResult.imagen_destacada_de_la_oferta_socios.sizes
-                                          .medium
-                                      }
-                                      alt={OfertasResult.titulo_de_la_oferta_oferta_socios}
-                                    />
-                                    <span className="label alert gallery-label">
-                                      <small>
-                                        EXCLUSIU
-                                        <br /> SOCIS
-                                      </small>
-                                    </span>
-                                  </a>
-                                </Link>
-                              )}
-                              {ruta.indexOf('/ca-ES') == -1 && (
-                                <Link
-                                  
-                                  as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
-                                  href={`/oferta-on-line?id=${OfertasResult.ID}`}
-                                >
-                                  <a title={'Ver la ficha de ' + OfertasResult.name}>
-                                    <img
-                                      className="fade-in"
-                                      width="250"
-                                      src={
-                                        OfertasResult.imagen_destacada_de_la_oferta_socios.sizes
-                                          .medium
-                                      }
-                                      alt={OfertasResult.titulo_de_la_oferta_oferta_socios}
-                                    />
-                                    <span className="label alert gallery-label">
-                                      <small>
-                                        EXCLUSIVO
-                                        <br /> SOCIOS
-                                      </small>
-                                    </span>
-                                  </a>
-                                </Link>
-                              )}
-                            </p>
+                        <p className="fade-in">
+                          {ruta.includes('/ca-ES') && (
+                            <Link
+                              as={`/ca-ES/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
+                              href={`/ca-ES/oferta-on-line?id=${OfertasResult.ID}`}
+                            >
+                              <a title={'Veure la fitxa de ' + OfertasResult.name}>
+                                <img
+                                  className="fade-in"
+                                  width={'250'}
+                                  height={'250'}
+                                  loading={'lazy'}
+                                  src={
+                                    OfertasResult.imagen_destacada_de_la_oferta_socios.sizes.medium
+                                  }
+                                  alt={OfertasResult.titulo_de_la_oferta_oferta_socios}
+                                />
+                                <span className="label alert gallery-label">
+                                  <small>
+                                    EXCLUSIU
+                                    <br /> SOCIS
+                                  </small>
+                                </span>
+                              </a>
+                            </Link>
                           )}
-                        />
-                      ) : (
-                        ''
-                      )}
+                          {ruta.indexOf('/ca-ES') == -1 && (
+                            <Link
+                              as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
+                              href={`/oferta-on-line?id=${OfertasResult.ID}`}
+                            >
+                              <a title={'Ver la ficha de ' + OfertasResult.name}>
+                                <img
+                                  className="fade-in"
+                                  width={'250'}
+                                  height={'250'}
+                                  loading={'lazy'}
+                                  src={
+                                    OfertasResult.imagen_destacada_de_la_oferta_socios.sizes.medium
+                                  }
+                                  alt={OfertasResult.titulo_de_la_oferta_oferta_socios}
+                                />
+                                <span className="label alert gallery-label">
+                                  <small>
+                                    EXCLUSIVO
+                                    <br /> SOCIOS
+                                  </small>
+                                </span>
+                              </a>
+                            </Link>
+                          )}
+                        </p>
+                      ) : null}
 
                       <p>
                         {ruta.includes('/ca-ES') && (
                           <Link
-                            
                             as={`/ca-ES/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
                             href={`/ca-ES/oferta-on-line?id=${OfertasResult.ID}`}
                           >
@@ -525,7 +477,6 @@ class IsSearch extends React.Component {
                         )}
                         {ruta.indexOf('/ca-ES') == -1 && (
                           <Link
-                            
                             as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
                             href={`/oferta-on-line?id=${OfertasResult.ID}`}
                           >
@@ -540,13 +491,8 @@ class IsSearch extends React.Component {
                           <small>
                             {ruta.includes('/ca-ES') && (
                               <Link
-                                
-                                as={`/ca-ES/c-o-o/${OfertasResult.categoria_de_la_oferta.term_id}/${
-                                  OfertasResult.categoria_de_la_oferta.slug
-                                }`}
-                                href={`/ca-ES/category-ofertas-on-line?id=${
-                                  OfertasResult.categoria_de_la_oferta.term_id
-                                }`}
+                                as={`/ca-ES/c-o-o/${OfertasResult.categoria_de_la_oferta.term_id}/${OfertasResult.categoria_de_la_oferta.slug}`}
+                                href={`/ca-ES/category-ofertas-on-line?id=${OfertasResult.categoria_de_la_oferta.term_id}`}
                               >
                                 <a
                                   title={
@@ -564,13 +510,8 @@ class IsSearch extends React.Component {
                             )}
                             {ruta.indexOf('/ca-ES') == -1 && (
                               <Link
-                                
-                                as={`/c-o-o/${OfertasResult.categoria_de_la_oferta.term_id}/${
-                                  OfertasResult.categoria_de_la_oferta.slug
-                                }`}
-                                href={`/category-ofertas-on-line?id=${
-                                  OfertasResult.categoria_de_la_oferta.term_id
-                                }`}
+                                as={`/c-o-o/${OfertasResult.categoria_de_la_oferta.term_id}/${OfertasResult.categoria_de_la_oferta.slug}`}
+                                href={`/category-ofertas-on-line?id=${OfertasResult.categoria_de_la_oferta.term_id}`}
                               >
                                 <a
                                   title={
@@ -595,25 +536,19 @@ class IsSearch extends React.Component {
                           <span className="titulo-oferta">
                             {OfertasResult.titulo_de_la_oferta_oferta_general}
                           </span>
-                        ) : (
-                          ''
-                        )}
+                        ) : null}
                         {OfertasResult.titulo_de_la_oferta_online_exclusiva_socios ? (
                           <span className="titulo-oferta">
                             {OfertasResult.titulo_de_la_oferta_online_exclusiva_socios}
                           </span>
-                        ) : (
-                          ''
-                        )}
+                        ) : null}
                       </p>
                     </li>
                   ))}
                 </ul>
               </div>
             </section>
-          ) : (
-            ''
-          )}
+          ) : null}
 
           {this.state.OfertasGrandeMarcasResults.length >= 1 ? (
             <section className="section-padding">
@@ -636,10 +571,7 @@ class IsSearch extends React.Component {
                     <li className="benefit-simple" key={index}>
                       <p className="align-left">
                         {ruta.includes('/ca-ES') && (
-                          <Link
-                            
-                            href={`/ca-ES/ogm/${OfertasGrandeMarcasResult.ID}`}
-                          >
+                          <Link href={`/ca-ES/ogm/${OfertasGrandeMarcasResult.ID}`}>
                             <a
                               title={'Veure la fitxa de ' + OfertasGrandeMarcasResult.name}
                               dangerouslySetInnerHTML={{ __html: OfertasGrandeMarcasResult.name }}
@@ -647,10 +579,7 @@ class IsSearch extends React.Component {
                           </Link>
                         )}
                         {ruta.indexOf('/ca-ES') == -1 && (
-                          <Link
-                            
-                            href={`/ogm/${OfertasGrandeMarcasResult.ID}`}
-                          >
+                          <Link href={`/ogm/${OfertasGrandeMarcasResult.ID}`}>
                             <a
                               title={'Ver la ficha de ' + OfertasGrandeMarcasResult.name}
                               dangerouslySetInnerHTML={{ __html: OfertasGrandeMarcasResult.name }}
@@ -703,10 +632,7 @@ class IsSearch extends React.Component {
                         <p className="align-left">
                           {ruta.includes('/ca-ES') && (
                             <Link
-                              
-                              href={`/ca-ES/ogmca/${OfertasGrandeMarcasCAResult.ID}/${
-                                OfertasGrandeMarcasCAResult.slug
-                              }`}
+                              href={`/ca-ES/ogmca/${OfertasGrandeMarcasCAResult.ID}/${OfertasGrandeMarcasCAResult.slug}`}
                             >
                               <a
                                 title={'Veure la fitxa de ' + OfertasGrandeMarcasCAResult.name}
@@ -718,10 +644,7 @@ class IsSearch extends React.Component {
                           )}
                           {ruta.indexOf('/ca-ES') == -1 && (
                             <Link
-                              
-                              as={`/ogmca/${OfertasGrandeMarcasCAResult.ID}/${
-                                OfertasGrandeMarcasCAResult.slug
-                              }`}
+                              as={`/ogmca/${OfertasGrandeMarcasCAResult.ID}/${OfertasGrandeMarcasCAResult.slug}`}
                               href={`/oferta-gran-marca-ca?id=${OfertasGrandeMarcasCAResult.ID}`}
                             >
                               <a

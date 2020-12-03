@@ -53,6 +53,7 @@ const OfertasGrandesMarcasByMarca = props => {
                         }
                         width={'96'}
                         height={'96'}
+                        loading={'lazy'}
                       />
                     </p>
                   </td>

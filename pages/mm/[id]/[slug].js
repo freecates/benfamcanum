@@ -82,6 +82,9 @@ const MapByMarca = props => {
                   props.markers[0].marca.slug +
                   '-familias-numerosas.png'
                 }
+                width={'96'}
+                height={'96'}
+                loading={'lazy'}
               />
               <br />
               {props.markers[0].marca.name}
@@ -108,6 +111,9 @@ const MapByMarca = props => {
                   props.camarkers[0].marca.slug +
                   '-familias-numerosas.png'
                 }
+                width={'96'}
+                height={'96'}
+                loading={'lazy'}
               />
               <br />
               {props.camarkers[0].marca.name}
@@ -157,6 +163,9 @@ const MapByMarca = props => {
                                 props.markers[0].marca.slug +
                                 '-familias-numerosas.png'
                               }
+                              width={'32'}
+                              height={'32'}
+                              loading={'lazy'}
                             />
                           </span>
                         </a>
@@ -188,6 +197,9 @@ const MapByMarca = props => {
                                 props.camarkers[0].marca.slug +
                                 '-familias-numerosas.png'
                               }
+                              width={'32'}
+                              height={'32'}
+                              loading={'lazy'}
                             />
                           </span>
                         </a>

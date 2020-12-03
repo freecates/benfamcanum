@@ -27,6 +27,7 @@ const HazteSocio = () => {
             height="324"
             alt="Imagen hazte socio Familias Numerosas"
             title="Imagen hazte socio Familias Numerosas"
+            loading={'lazy'}
           />
         </figure>
 
@@ -39,7 +40,7 @@ const HazteSocio = () => {
         <h2>¡Si te asocias, ser más te costará menos!</h2>
 
         <figure>
-          <img src="/static/a.png" width="111" height="111" alt="" />
+          <img src="/static/a.png" width="111" height="111" alt="" loading={'lazy'} />
         </figure>
 
         <h2>Cómo asociarte</h2>
@@ -86,7 +87,7 @@ const HazteSocio = () => {
         </p>
 
         <figure>
-          <img src="/static/c.png" width="111" height="111" alt="" />
+          <img src="/static/c.png" width="111" height="111" alt="" loading={'lazy'} />
         </figure>
 
         <p>Aqui encontrarás los datos de todas las Asociaciones.</p>

@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import FontAwesome from 'react-fontawesome';
-import Observer from 'react-intersection-observer';
 import { generateShareIcon, ShareButtons } from 'react-share';
 import Layout from '../../../../components/MyLayout.js';
 import SeoHead from '../../../../components/SeoHead';
@@ -93,6 +92,7 @@ const Post = props => {
               }
               width={'96'}
               height={'96'}
+              loading={'lazy'}
             />
             <br />
             <span
@@ -229,41 +229,33 @@ const Post = props => {
           <div className="file-data">
             <div className="file-img">
               {props.post.acf.imagen_destacada_de_la_oferta_socios_large ? (
-                <Observer
-                  threshold={1}
-                  triggerOnce={true}
-                  render={() => (
                     <p className="fade-in">
                       <img
                         className="img-file"
-                        width="1024"
+                        width={'1024'}
+                        height={'1024'}
+                        loading={'lazy'}
                         src={props.post.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large}
                         alt={props.post.acf.titulo_de_la_oferta_oferta_socios}
                       />
                     </p>
-                  )}
-                />
               ) : (
-                ''
+                null
               )}
 
               {props.post.acf.imagen_destacada_de_la_oferta_general_large ? (
-                <Observer
-                  threshold={1}
-                  triggerOnce={true}
-                  render={() => (
                     <p className="fade-in">
                       <img
                         className="img-file"
-                        width="1024"
+                        width={'1024'}
+                        height={'1024'}
+                        loading={'lazy'}
                         src={props.post.acf.imagen_destacada_de_la_oferta_general_large.sizes.large}
                         alt={props.post.acf.titulo_de_la_oferta_general}
                       />
                     </p>
-                  )}
-                />
               ) : (
-                ''
+                null
               )}
             </div>
 

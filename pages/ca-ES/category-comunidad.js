@@ -2,7 +2,6 @@ import fetch from 'isomorphic-unfetch';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
-import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../components/MyLayout.js';
 import Gallery from '../../components/Gallery.js';
@@ -219,6 +218,9 @@ const PostsByCategoryComunidad = props => {
                   props.posts[0].categoria_de_la_prestacion.slug +
                   '-familias-numerosas.png'
                 }
+                width={'96'}
+                height={'96'}
+                loading={'lazy'}
               />
               <br />
               Beneficis de {props.posts[0].categoria_de_la_prestacion.name} a{' '}
@@ -263,48 +265,36 @@ const PostsByCategoryComunidad = props => {
                 {props.posts[0].categoria_de_la_prestacion.term_id === 6 ? (
                   <ul className="gallery national-gallery">
                     <li>
-                      <Observer
-                        threshold={1}
-                        triggerOnce={true}
-                        render={() => (
-                          <p className="fade-in align-center">
-                            <Link href="https://www.colectivosubica.com/familiamassegura/">
-                              <a
-                                title="Federación Española Famílies Nombroses / Ubica, correduría de seguros"
-                                target="_blank"
-                              >
-                                <img
-                                  className="fade-in"
-                                  src="/static/01-seguros-nacionales.png"
-                                  alt="Logos marcas de seguros"
-                                />
-                              </a>
-                            </Link>
-                          </p>
-                        )}
-                      />
+                      <p className="fade-in align-center">
+                        <Link href="https://www.colectivosubica.com/familiamassegura/">
+                          <a
+                            title="Federación Española Famílies Nombroses / Ubica, correduría de seguros"
+                            target="_blank"
+                          >
+                            <img
+                              className="fade-in"
+                              src="/static/01-seguros-nacionales.png"
+                              alt="Logos marcas de seguros"
+                            />
+                          </a>
+                        </Link>
+                      </p>
                     </li>
                     <li>
-                      <Observer
-                        threshold={1}
-                        triggerOnce={true}
-                        render={() => (
-                          <p className="fade-in align-center">
-                            <Link href="https://www.colectivosubica.com/familiamassegura/">
-                              <a
-                                title="Federación Española Famílies Nombroses / Ubica, correduría de seguros"
-                                target="_blank"
-                              >
-                                <img
-                                  className="fade-in"
-                                  src="/static/02-seguros-nacionales.png"
-                                  alt="Logos marcas de seguros"
-                                />
-                              </a>
-                            </Link>
-                          </p>
-                        )}
-                      />
+                      <p className="fade-in align-center">
+                        <Link href="https://www.colectivosubica.com/familiamassegura/">
+                          <a
+                            title="Federación Española Famílies Nombroses / Ubica, correduría de seguros"
+                            target="_blank"
+                          >
+                            <img
+                              className="fade-in"
+                              src="/static/02-seguros-nacionales.png"
+                              alt="Logos marcas de seguros"
+                            />
+                          </a>
+                        </Link>
+                      </p>
                     </li>
                   </ul>
                 ) : null}

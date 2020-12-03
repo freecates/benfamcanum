@@ -1,7 +1,6 @@
 import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
-import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../../../components/MyLayout.js';
 import Banners from '../../../../components/Banners.js';
@@ -48,7 +47,13 @@ const PostsByLocalidad = props => {
               href={`/ca-ES/mapa-localidad?localidad=${props.posts[0].localidad_del_beneficio.term_id}`}
             >
               <a>
-                <img src="/static/icona-mapa-familias-numerosas.png" /> veure al mapa
+                <img
+                  src="/static/icona-mapa-familias-numerosas.png"
+                  width={'30'}
+                  height={'33'}
+                  loading={'lazy'}
+                />{' '}
+                veure al mapa
               </a>
             </Link>
           </small>
@@ -64,35 +69,30 @@ const PostsByLocalidad = props => {
                   marcas[marcasoferta.marca.term_id] = (
                     <span key={marcasoferta.marca.term_id}>
                       <li className="benefit align-center">
-                        <Observer
-                          threshold={1}
-                          triggerOnce={true}
-                          render={() => (
-                            <p className="fade-in">
-                              <Link
-                                href={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
-                              >
-                                <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
-                                  <img
-                                    src={
-                                      'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                                      marcasoferta.marca.slug +
-                                      '-familias-numerosas.png'
-                                    }
-                                    width={'96'}
-                                    height={'96'}
-                                  />
-                                  <br />{' '}
-                                  <span
-                                    dangerouslySetInnerHTML={{
-                                      __html: marcasoferta.marca.name
-                                    }}
-                                  />
-                                </a>
-                              </Link>
-                            </p>
-                          )}
-                        />
+                        <p className="fade-in">
+                          <Link
+                            href={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
+                          >
+                            <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
+                              <img
+                                src={
+                                  'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                                  marcasoferta.marca.slug +
+                                  '-familias-numerosas.png'
+                                }
+                                width={'96'}
+                                height={'96'}
+                                loading={'lazy'}
+                              />
+                              <br />{' '}
+                              <span
+                                dangerouslySetInnerHTML={{
+                                  __html: marcasoferta.marca.name
+                                }}
+                              />
+                            </a>
+                          </Link>
+                        </p>
                       </li>
                     </span>
                   );
@@ -111,37 +111,30 @@ const PostsByLocalidad = props => {
                   marcas[marcascaoferta.marca.term_id] = (
                     <span key={marcascaoferta.marca.term_id}>
                       <li className="benefit align-center">
-                        <Observer
-                          threshold={1}
-                          triggerOnce={true}
-                          render={() => (
-                            <p className="fade-in">
-                              <Link
-                                href={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
-                              >
-                                <a
-                                  title={'Veure totes les ofertes de ' + marcascaoferta.marca.name}
-                                >
-                                  <img
-                                    src={
-                                      'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                                      marcascaoferta.marca.slug +
-                                      '-familias-numerosas.png'
-                                    }
-                                    width={'96'}
-                                    height={'96'}
-                                  />
-                                  <br />{' '}
-                                  <span
-                                    dangerouslySetInnerHTML={{
-                                      __html: marcascaoferta.marca.name
-                                    }}
-                                  />
-                                </a>
-                              </Link>
-                            </p>
-                          )}
-                        />
+                        <p className="fade-in">
+                          <Link
+                            href={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
+                          >
+                            <a title={'Veure totes les ofertes de ' + marcascaoferta.marca.name}>
+                              <img
+                                src={
+                                  'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                                  marcascaoferta.marca.slug +
+                                  '-familias-numerosas.png'
+                                }
+                                width={'96'}
+                                height={'96'}
+                                loading={'lazy'}
+                              />
+                              <br />{' '}
+                              <span
+                                dangerouslySetInnerHTML={{
+                                  __html: marcascaoferta.marca.name
+                                }}
+                              />
+                            </a>
+                          </Link>
+                        </p>
                       </li>
                     </span>
                   );
@@ -155,57 +148,41 @@ const PostsByLocalidad = props => {
               {props.posts.map((post, index) => (
                 <li className="benefit" key={index}>
                   {post.imagen_destacada_de_la_oferta_general_thumb ? (
-                    <Observer
-                      threshold={1}
-                      triggerOnce={true}
-                      render={() => (
-                        <p className="fade-in">
-                          <Link href={`/ca-ES/p/${post.ID}/${post.slug}`}>
-                            <a>
-                              <img
-                                width="250"
-                                src={
-                                  post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail
-                                }
-                                alt={post.titulo_de_la_oferta_oferta_general}
-                              />
-                            </a>
-                          </Link>
-                        </p>
-                      )}
-                    />
-                  ) : (
-                    ''
-                  )}
+                    <p className="fade-in">
+                      <Link href={`/ca-ES/p/${post.ID}/${post.slug}`}>
+                        <a>
+                          <img
+                            width={'250'}
+                            height={'250'}
+                            loading={'lazy'}
+                            src={post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail}
+                            alt={post.titulo_de_la_oferta_oferta_general}
+                          />
+                        </a>
+                      </Link>
+                    </p>
+                  ) : null}
 
                   {post.imagen_destacada_de_la_oferta_socios_thumb ? (
-                    <Observer
-                      threshold={1}
-                      triggerOnce={true}
-                      render={() => (
-                        <p className="fade-in">
-                          <Link href={`/ca-ES/p/${post.ID}/${post.slug}`}>
-                            <a>
-                              <img
-                                width="250"
-                                src={
-                                  post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail
-                                }
-                                alt={post.titulo_de_la_oferta_oferta_socios}
-                              />
-                              <span className="label alert gallery-label">
-                                <small>
-                                  EXCLUSIU <br /> SOCIS
-                                </small>
-                              </span>
-                            </a>
-                          </Link>
-                        </p>
-                      )}
-                    />
-                  ) : (
-                    ''
-                  )}
+                    <p className="fade-in">
+                      <Link href={`/ca-ES/p/${post.ID}/${post.slug}`}>
+                        <a>
+                          <img
+                            width={'250'}
+                            height={'250'}
+                            loading={'lazy'}
+                            src={post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail}
+                            alt={post.titulo_de_la_oferta_oferta_socios}
+                          />
+                          <span className="label alert gallery-label">
+                            <small>
+                              EXCLUSIU <br /> SOCIS
+                            </small>
+                          </span>
+                        </a>
+                      </Link>
+                    </p>
+                  ) : null}
 
                   <p>
                     <Link href={`/ca-ES/p/${post.ID}/${post.slug}`}>

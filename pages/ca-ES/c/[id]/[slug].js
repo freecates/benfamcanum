@@ -2,7 +2,6 @@ import fetch from 'isomorphic-unfetch';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
-import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../../../components/MyLayout.js';
 import BrandsGallery from '../../../../components/BrandsGallery';
@@ -66,6 +65,7 @@ const PostsByCategory = props => {
                           src={banner.acf.banner_grande_728x90.sizes.large}
                           width={'728'}
                           height={'90'}
+                          loading={'lazy'}
                         />
                       </a>
                     </Link>
@@ -77,6 +77,7 @@ const PostsByCategory = props => {
                           src={banner.acf.baner_movil_320x100.sizes.large}
                           width={'320'}
                           height={'100'}
+                          loading={'lazy'}
                         />
                       </a>
                     </Link>
@@ -107,7 +108,13 @@ const PostsByCategory = props => {
               href={`/ca-ES/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`}
             >
               <a>
-                <img src="/static/icona-mapa-familias-numerosas.png" /> veure al mapa
+                <img
+                  src="/static/icona-mapa-familias-numerosas.png"
+                  width={'30'}
+                  height={'33'}
+                  loading={'lazy'}
+                />{' '}
+                veure al mapa
               </a>
             </Link>
           </small>
@@ -137,10 +144,6 @@ const PostsByCategory = props => {
             {props.posts[0].categoria_de_la_prestacion.term_id === 6 ? (
               <ul className="gallery national-gallery">
                 <li>
-                  <Observer
-                    threshold={1}
-                    triggerOnce={true}
-                    render={() => (
                       <p className="fade-in align-center">
                         <Link href="https://www.colectivosubica.com/familiamassegura/">
                           <a
@@ -155,14 +158,8 @@ const PostsByCategory = props => {
                           </a>
                         </Link>
                       </p>
-                    )}
-                  />
                 </li>
                 <li>
-                  <Observer
-                    threshold={1}
-                    triggerOnce={true}
-                    render={() => (
                       <p className="fade-in align-center">
                         <Link href="https://www.colectivosubica.com/familiamassegura/">
                           <a
@@ -177,8 +174,6 @@ const PostsByCategory = props => {
                           </a>
                         </Link>
                       </p>
-                    )}
-                  />
                 </li>
               </ul>
             ) : (

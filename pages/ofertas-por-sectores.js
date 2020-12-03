@@ -48,7 +48,9 @@ const OfertasPorSectores = props => (
                         ofertasporsectore.slug +
                         '-familias-numerosas.png'
                       }
-                      width="96"
+                      height={'96'}
+                      width={'96'}
+                      loading={'lazy'}
                     />
                     <br />
                     <span dangerouslySetInnerHTML={{ __html: ofertasporsectore.name }} />

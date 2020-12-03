@@ -120,6 +120,9 @@ const MapByCategory = props => (
                               marker.categoria_de_la_prestacion.slug +
                               '-familias-numerosas.png'
                             }
+                            height={'32'}
+                            width={'32'}
+                            loading={'lazy'}
                           />
                         </span>
                       </a>

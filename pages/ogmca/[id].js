@@ -155,6 +155,9 @@ const OfertaGranMarca = props => {
                 props.ofertagranmarca._embedded['wp:term'][3][0].slug +
                 '-familias-numerosas.png'
               }
+              width={'96'}
+              height={'96'}
+              loading={'lazy'}
             />
             <br />
             <span
@@ -305,14 +308,18 @@ const OfertaGranMarca = props => {
                 }
               >
                 {' '}
-                <img src="/static/icona-mapa-familias-numerosas.png" />
+                <img
+                  src="/static/icona-mapa-familias-numerosas.png"
+                  width={'30'}
+                  height={'33'}
+                  loading={'lazy'}
+                />
               </a>
             </Link>
           </p>
 
           {props.ofertagranmarca.acf.lat ? (
             <MapaDeGoogle
-             
               lat={
                 props.ofertagranmarca.acf.lat.includes(',') ||
                 props.ofertagranmarca.acf.lat.includes('!')
@@ -333,14 +340,12 @@ const OfertaGranMarca = props => {
           <div className="file-data">
             <div className="file-img">
               {props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_socios_large ? (
-                <Observer
-                  threshold={1}
-                  triggerOnce={true}
-                  render={() => (
                     <p className="fade-in">
                       <img
                         className="img-file"
-                        width="1024"
+                        width={'1024'}
+                        height={'1024'}
+                        loading={'lazy'}
                         src={
                           props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_socios_large.sizes
                             .large
@@ -348,21 +353,17 @@ const OfertaGranMarca = props => {
                         alt={props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios}
                       />
                     </p>
-                  )}
-                />
               ) : (
-                ''
+                null
               )}
 
               {props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_general_large ? (
-                <Observer
-                  threshold={1}
-                  triggerOnce={true}
-                  render={() => (
                     <p className="fade-in">
                       <img
                         className="img-file"
-                        width="1024"
+                        width={'1024'}
+                        height={'1024'}
+                        loading={'lazy'}
                         src={
                           props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_general_large
                             .sizes.large
@@ -370,10 +371,8 @@ const OfertaGranMarca = props => {
                         alt={props.ofertagranmarca.acf.titulo_de_la_oferta_general}
                       />
                     </p>
-                  )}
-                />
               ) : (
-                ''
+                null
               )}
             </div>
 
@@ -381,17 +380,17 @@ const OfertaGranMarca = props => {
               {props.ofertagranmarca.acf.oferta_exclusiva_socios == true ? (
                 <h1 className="align-none">
                   <a href="#how-to-get-it">
-                      <span className="label alert file-label">
-                        EXCLUSIU SOCIS.
-                        <br /> Introdueix el teu usuari i contrasenya d'associat per saber com
-                        obtenir aquesta oferta
-                        <br />
-                        <FontAwesome
-                          name="check-circle-o"
-                          size="2x"
-                          style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-                        />
-                      </span>
+                    <span className="label alert file-label">
+                      EXCLUSIU SOCIS.
+                      <br /> Introdueix el teu usuari i contrasenya d'associat per saber com obtenir
+                      aquesta oferta
+                      <br />
+                      <FontAwesome
+                        name="check-circle-o"
+                        size="2x"
+                        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+                      />
+                    </span>
                   </a>
                 </h1>
               ) : (
@@ -517,7 +516,7 @@ const OfertaGranMarca = props => {
               {props.ofertagranmarca.acf.oferta_exclusiva_socios == true ? (
                 <div id="how-to-get-it">
                   <IsMember
-                  ruta={pathname}
+                    ruta={pathname}
                     dataOK={
                       <div
                         dangerouslySetInnerHTML={{

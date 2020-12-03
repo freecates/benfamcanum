@@ -18,6 +18,7 @@ const HomeCA = () => {
             src="/static/icona-conseguir-beneficios-familias-numerosas.png"
             width={'122'}
             height={'126'}
+            loading={'lazy'}
           />
         </h1>
         <p>

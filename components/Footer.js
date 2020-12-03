@@ -25,6 +25,7 @@ const Footer = props => (
               alt="Logotip de FAmilies NOmbroses de Catalunya"
               height={'115'}
               width={'172'}
+              loading={'lazy'}
             />
           </p>
         </div>

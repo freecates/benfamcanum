@@ -28,6 +28,7 @@ const GRandesMarcas = props => {
                         }
                         width={'96'}
                         height={'96'}
+                        loading={'lazy'}
                       />
                       <br />
                       <span dangerouslySetInnerHTML={{ __html: grandesmarca.name }} />

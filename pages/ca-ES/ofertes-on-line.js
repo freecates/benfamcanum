@@ -48,6 +48,7 @@ const OfertasOnLine = props => {
                             }
                             width={'96'}
                             height={'96'}
+                            loading={'lazy'}
                           />
                           <br />
                           <span

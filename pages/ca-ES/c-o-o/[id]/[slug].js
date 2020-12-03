@@ -69,6 +69,7 @@ const OfertasOnLineByCategory = props => {
                           }
                           width={'32'}
                           height={'32'}
+                          loading={'lazy'}
                         />
                       </td>
                       <td width="200">{ofertasonline.categoria_de_la_oferta.name}</td>

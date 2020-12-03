@@ -108,6 +108,9 @@ const Prestacion = props => {
                 props.prestacion._embedded['wp:term'][0][0].slug +
                 '-prestaciones-familias-numerosas.png'
               }
+              width={'96'}
+              height={'96'}
+              loading={'lazy'}
             />
             <br />
             <span
@@ -172,7 +175,9 @@ const Prestacion = props => {
                 <p>
                   <img
                     className="img-file"
-                    width="1024"
+                    width={'1024'}
+                    height={'1024'}
+                    loading={'lazy'}
                     src={props.prestacion.acf.logo_de_la_localidad.sizes.large}
                     alt={props.prestacion.acf.titulo_de_la_oferta_general}
                   />

@@ -2,7 +2,6 @@ import Head from 'next/head';
 import LayoutHome from '../components/LayoutHome.js';
 
 const Home = () => {
-  
   return (
     <LayoutHome>
       <Head>
@@ -17,6 +16,9 @@ const Home = () => {
           <img
             alt="Icono conseguir beneficios familias numerosas"
             src="/static/icona-conseguir-beneficios-familias-numerosas.png"
+            width={'122'}
+            height={'126'}
+            loading={'lazy'}
           />
         </h1>
         <p>

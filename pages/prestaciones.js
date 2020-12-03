@@ -23,17 +23,32 @@ const Prestaciones = props => (
       <p className="icones-prestacions">
         <Link href="/municipios-prestaciones">
           <a>
-            <img src="/static/icona-prestacions-municipals-familias-numerosas.png" />
+            <img
+              src="/static/icona-prestacions-municipals-familias-numerosas.png"
+              width={'193'}
+              height={'192'}
+              loading={'lazy'}
+            />
           </a>
         </Link>
         <Link href="/prestaciones-comunidad">
           <a>
-            <img src="/static/icona-prestacions-autonomiques-familias-numerosas.png" />
+            <img
+              src="/static/icona-prestacions-autonomiques-familias-numerosas.png"
+              width={'194'}
+              height={'192'}
+              loading={'lazy'}
+            />
           </a>
         </Link>
         <Link href="/prestaciones-estatales">
           <a>
-            <img src="/static/icona-prestacions-estatals-familias-numerosas.png" />
+            <img
+              src="/static/icona-prestacions-estatals-familias-numerosas.png"
+              width={'192'}
+              height={'192'}
+              loading={'lazy'}
+            />
           </a>
         </Link>
       </p>

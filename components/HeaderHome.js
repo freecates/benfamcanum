@@ -39,7 +39,7 @@ const HeaderHome = props => (
               srcSet="/static/02-bg-body-familias-numerosas.webp"
               media="(min-width: 568px)"
             />
-            <img src="/static/02-bg-body-familias-numerosas.jpg" alt="més és més" width='100%' />
+            <img src="/static/02-bg-body-familias-numerosas.jpg" alt="més és més" width={'1917'} height={'487'} loading={'lazy'} />
           </picture>
         </div>
         {props.ruta.includes('/ca-ES') && (
@@ -51,6 +51,9 @@ const HeaderHome = props => (
                     <img
                       src="/static/icono-menu-fanoc-oferta.png"
                       alt="Icona Ofertes comercials per a famílies nombroses"
+                      width={'33'}
+                      height={'33'}
+                      loading={'lazy'}
                     />
                     <br />
                     <strong>Ofertes i descomptes</strong>
@@ -65,6 +68,9 @@ const HeaderHome = props => (
                     <img
                       src="/static/icono-menu-fanoc-prestaciones.png"
                       alt="Icona Prestacions per a famílies nombroses"
+                      width={'33'}
+                      height={'33'}
+                      loading={'lazy'}
                     />
                     <br />
                     <strong>Ajudes públiques</strong>
@@ -84,6 +90,9 @@ const HeaderHome = props => (
                     <img
                       src="/static/icono-menu-fanoc-oferta.png"
                       alt="Icono Ofertas comerciales para familias numerosas"
+                      width={'33'}
+                      height={'33'}
+                      loading={'lazy'}
                     />
                     <br />
                     <strong>Ofertas y descuentos</strong>
@@ -98,6 +107,9 @@ const HeaderHome = props => (
                     <img
                       src="/static/icono-menu-fanoc-prestaciones.png"
                       alt="Icono Prestaciones para familias numerosas"
+                      width={'33'}
+                      height={'33'}
+                      loading={'lazy'}
                     />
                     <br />
                     <strong>Ayudas públicas</strong>

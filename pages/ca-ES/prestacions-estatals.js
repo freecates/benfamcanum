@@ -1,8 +1,6 @@
 import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../components/MyLayout.js';
 
@@ -68,6 +66,9 @@ const PrestacionesEstatales = props => {
                             prestacion.categoria_de_la_prestacion_publica.slug +
                             '-prestaciones-familias-numerosas.png'
                           }
+                          width={'32'}
+                          height={'32'}
+                          loading={'lazy'}
                         />
                       </td>
                       <td width="200">{prestacion.categoria_de_la_prestacion_publica.name}</td>
@@ -99,21 +100,16 @@ const PrestacionesEstatales = props => {
           </div>
         </IntlProvider>
         <section>
-          <Observer
-            threshold={1}
-            triggerOnce={true}
-            render={() => (
-              <figure className="fade-in">
-                <img
-                  src="/static/girl-516341_1920.jpg"
-                  width="100%"
-                  height="324"
-                  alt="Imagen prestaciones estatales Famílies Nombroses"
-                  title="Imagen prestaciones estatales Famílies Nombroses"
-                />
-              </figure>
-            )}
-          />
+          <figure className="fade-in">
+            <img
+              src="/static/girl-516341_1920.jpg"
+              width="100%"
+              height="324"
+              alt="Imagen prestaciones estatales Famílies Nombroses"
+              title="Imagen prestaciones estatales Famílies Nombroses"
+              loading={'lazy'}
+            />
+          </figure>
         </section>
       </section>
       <style jsx>{`

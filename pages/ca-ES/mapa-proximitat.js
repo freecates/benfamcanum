@@ -124,6 +124,7 @@ const MapByCategory = props => {
                               }
                               width={'32'}
                               height={'32'}
+                              loading={'lazy'}
                             />
                           </span>
                         </a>

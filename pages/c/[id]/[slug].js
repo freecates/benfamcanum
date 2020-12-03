@@ -2,7 +2,6 @@ import fetch from 'isomorphic-unfetch';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
-import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../../components/MyLayout.js';
 
@@ -22,7 +21,9 @@ const todayISO = new Date(today).toISOString();
 const PostsByCategory = props => (
   <Layout>
     <Head>
-      <title>Beneficios Familias Numerosas - {props.posts[0].categoria_de_la_prestacion.name}</title>
+      <title>
+        Beneficios Familias Numerosas - {props.posts[0].categoria_de_la_prestacion.name}
+      </title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
@@ -58,14 +59,24 @@ const PostsByCategory = props => (
                 <p className="align-center promo dk">
                   <Link href={banner.acf.url_de_destino_del_banner}>
                     <a target="_blank">
-                      <img src={banner.acf.banner_grande_728x90.sizes.large} />
+                      <img
+                        src={banner.acf.banner_grande_728x90.sizes.large}
+                        width={'728'}
+                        height={'90'}
+                        loading={'lazy'}
+                      />
                     </a>
                   </Link>
                 </p>
                 <p className="align-center promo mb">
                   <Link href={banner.acf.url_de_destino_del_banner}>
                     <a target="_blank">
-                      <img src={banner.acf.baner_movil_320x100.sizes.large} />
+                      <img
+                        src={banner.acf.baner_movil_320x100.sizes.large}
+                        width={'320'}
+                        height={'100'}
+                        loading={'lazy'}
+                      />
                     </a>
                   </Link>
                 </p>
@@ -83,6 +94,9 @@ const PostsByCategory = props => (
             props.posts[0].categoria_de_la_prestacion.slug +
             '-familias-numerosas.png'
           }
+          width={'96'}
+          height={'96'}
+          loading={'lazy'}
         />
         <br />
         {props.posts[0].categoria_de_la_prestacion.name}
@@ -93,7 +107,13 @@ const PostsByCategory = props => (
             href={`/ca-ES/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`}
           >
             <a>
-              <img src="/static/icona-mapa-familias-numerosas.png" /> veure al mapa
+              <img
+                src="/static/icona-mapa-familias-numerosas.png"
+                width={'30'}
+                height={'33'}
+                loading={'lazy'}
+              />{' '}
+              veure al mapa
             </a>
           </Link>
         </small>
@@ -105,7 +125,6 @@ const PostsByCategory = props => (
 
           <SelectCity
             inputClass="comunidad"
-           
             inputValue="Buscar el mejor descuento"
             options={[
               {
@@ -124,48 +143,36 @@ const PostsByCategory = props => (
           {props.posts[0].categoria_de_la_prestacion.term_id === 6 ? (
             <ul className="gallery national-gallery">
               <li>
-                <Observer
-                  threshold={1}
-                  triggerOnce={true}
-                  render={() => (
-                    <p className="fade-in align-center">
-                      <Link href="https://www.colectivosubica.com/familiamassegura/">
-                        <a
-                          title="Federación Española Famílies Nombroses / Ubica, correduría de seguros"
-                          target="_blank"
-                        >
-                          <img
-                            className="fade-in"
-                            src="/static/01-seguros-nacionales.png"
-                            alt="Logos marcas de seguros"
-                          />
-                        </a>
-                      </Link>
-                    </p>
-                  )}
-                />
+                <p className="fade-in align-center">
+                  <Link href="https://www.colectivosubica.com/familiamassegura/">
+                    <a
+                      title="Federación Española Famílies Nombroses / Ubica, correduría de seguros"
+                      target="_blank"
+                    >
+                      <img
+                        className="fade-in"
+                        src="/static/01-seguros-nacionales.png"
+                        alt="Logos marcas de seguros"
+                      />
+                    </a>
+                  </Link>
+                </p>
               </li>
               <li>
-                <Observer
-                  threshold={1}
-                  triggerOnce={true}
-                  render={() => (
-                    <p className="fade-in align-center">
-                      <Link href="https://www.colectivosubica.com/familiamassegura/">
-                        <a
-                          title="Federación Española Famílies Nombroses / Ubica, correduría de seguros"
-                          target="_blank"
-                        >
-                          <img
-                            className="fade-in"
-                            src="/static/02-seguros-nacionales.png"
-                            alt="Logos marcas de seguros"
-                          />
-                        </a>
-                      </Link>
-                    </p>
-                  )}
-                />
+                <p className="fade-in align-center">
+                  <Link href="https://www.colectivosubica.com/familiamassegura/">
+                    <a
+                      title="Federación Española Famílies Nombroses / Ubica, correduría de seguros"
+                      target="_blank"
+                    >
+                      <img
+                        className="fade-in"
+                        src="/static/02-seguros-nacionales.png"
+                        alt="Logos marcas de seguros"
+                      />
+                    </a>
+                  </Link>
+                </p>
               </li>
             </ul>
           ) : (
@@ -190,6 +197,9 @@ const PostsByCategory = props => (
                               marcasoferta.marca.slug +
                               '-familias-numerosas.png'
                             }
+                            width={'96'}
+                            height={'96'}
+                            loading={'lazy'}
                           />
                           <br />{' '}
                           <span
@@ -383,16 +393,17 @@ const PostsByCategory = props => (
 );
 
 export async function getStaticPaths() {
-  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/categoria_del_beneficio');
+  const res = await fetch(
+    'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/categoria_del_beneficio'
+  );
   const categories = await res.json();
 
-  const paths = categories.map((c) => `/c/${c.term_id}/${c.slug}`);
+  const paths = categories.map(c => `/c/${c.term_id}/${c.slug}`);
 
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-
   const id = params.id;
 
   const res = await fetch(
@@ -411,14 +422,20 @@ export async function getStaticProps({ params }) {
   );
   const ofertasonlines = await res3.json();
 
-  const res4 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales?per_page=100`);
+  const res4 = await fetch(
+    `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales?per_page=100`
+  );
   const banners = await res4.json();
 
   const uniquemarcas = [
-    ...new Set(marcasofertas.map(({ marca }) => (marca !== null && marca.name !== undefined ? marca.name : '')))
+    ...new Set(
+      marcasofertas.map(({ marca }) =>
+        marca !== null && marca.name !== undefined ? marca.name : ''
+      )
+    )
   ];
 
   return { props: { posts, marcasofertas, uniquemarcas, ofertasonlines, banners, id } };
-};
+}
 
 export default PostsByCategory;

@@ -122,6 +122,7 @@ const OfertaOnLine = props => {
               }
               width={'96'}
               height={'96'}
+              loading={'lazy'}
             />
             <br />
             <span
@@ -179,7 +180,9 @@ const OfertaOnLine = props => {
                 <p>
                   <img
                     className="img-file"
-                    width="1024"
+                    width={'1024'}
+                    height={'1024'}
+                    loading={'lazy'}
                     src={
                       props.ofertaonline.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large
                     }
@@ -194,7 +197,9 @@ const OfertaOnLine = props => {
                 <p>
                   <img
                     className="img-file"
-                    width="1024"
+                    width={'1024'}
+                    height={'1024'}
+                    loading={'lazy'}
                     src={
                       props.ofertaonline.acf.imagen_destacada_de_la_oferta_general_large.sizes.large
                     }

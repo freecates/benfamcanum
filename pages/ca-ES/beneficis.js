@@ -32,6 +32,7 @@ const Beneficis = props => {
                     src="/static/icona-ofertas-por-sectores-familias-numerosas.png"
                     width="192"
                     height="192"
+                    loading={'lazy'}
                   />
                   <div className="text-icona">Ofertes per sectors</div>
                 </a>
@@ -44,6 +45,7 @@ const Beneficis = props => {
                     src="/static/icona-ofertas-por-poblacion-familias-numerosas.png"
                     width="192"
                     height="192"
+                    loading={'lazy'}
                   />
                   <div className="text-icona">Ofertes per població</div>
                 </a>
@@ -56,6 +58,7 @@ const Beneficis = props => {
                     src="/static/icona-ofertas-online-familias-numerosas.png"
                     width="192"
                     height="192"
+                    loading={'lazy'}
                   />
                   <div className="text-icona">Ofertes online</div>
                 </a>
@@ -68,6 +71,7 @@ const Beneficis = props => {
                     src="/static/icona-ofertas-en-el-mapa-familias-numerosas.png"
                     width="192"
                     height="192"
+                    loading={'lazy'}
                   />
                   <div className="text-icona">Ofertes al mapa</div>
                 </a>

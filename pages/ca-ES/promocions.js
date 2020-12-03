@@ -67,6 +67,7 @@ const Promocions = props => {
                             }
                             width={'32'}
                             height={'32'}
+                            loading={'lazy'}
                           />
                         </td>
                         <td width="200">{promocione.acf.categoria_de_la_promocion.name}</td>

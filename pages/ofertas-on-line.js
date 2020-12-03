@@ -45,6 +45,9 @@ const OfertasOnLine = props => (
                             ofertasonline.categoria_de_la_oferta.slug +
                             '-familias-numerosas.png'
                           }
+                          height={'96'}
+                          width={'96'}
+                          loading={'lazy'}
                         />
                         <br />
                         <span

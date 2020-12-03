@@ -83,6 +83,7 @@ const PrestacionesByMunicipio = props => {
                           }
                           width={'32'}
                           height={'32'}
+                          loading={'lazy'}
                         />
                       </td>
                       <td width="200">{prestacion.categoria_de_la_prestacion_publica.name}</td>

@@ -76,7 +76,13 @@ const PostsByCategoryLocalidad = props => {
               href={`/m-c-l/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`}
             >
               <a>
-                <img src="/static/icona-mapa-familias-numerosas.png" /> ver en el mapa
+                <img
+                  src="/static/icona-mapa-familias-numerosas.png"
+                  height={'30'}
+                  width={'33'}
+                  loading={'lazy'}
+                />{' '}
+                ver en el mapa
               </a>
             </Link>
           </small>

@@ -36,6 +36,7 @@ export default class NavBarBenFamNum extends React.Component {
                 alt="Web Corporatiu FANOC"
                 width="158"
                 height="103"
+                loading={'lazy'}
               />
             </NavbarBrand>
           )}
@@ -50,6 +51,7 @@ export default class NavBarBenFamNum extends React.Component {
                 alt="Web Corporativa FANOC"
                 width="158"
                 height="103"
+                loading={'lazy'}
               />
             </NavbarBrand>
           )}

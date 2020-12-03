@@ -26,6 +26,9 @@ const GRandesMarcas = props => {
                           grandesmarca.slug +
                           '-familias-numerosas.png'
                         }
+                        height={'96'}
+                        width={'96'}
+                        loading={'lazy'}
                       />
                       <br />
                       <span dangerouslySetInnerHTML={{ __html: grandesmarca.name }} />
