@@ -23,6 +23,8 @@ const Footer = props => (
             <img
               src="/static/fanoc-logo-footer.png"
               alt="Logotip de FAmilies NOmbroses de Catalunya"
+              height={'115'}
+              width={'172'}
             />
           </p>
         </div>
