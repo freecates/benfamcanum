@@ -15,7 +15,6 @@ const GlobalHead = () => (
     <link rel="apple-touch-icon" href="/static/icons/android-chrome-192x192.png" />
     <meta name="msapplication-TileImage" content="/static/icons/android-chrome-192x192.png" />
     <meta name="msapplication-TileColor" content="#f1ca00" />
-    <script async defer src="/static/intersection-observer.js" type="text/javascript" />
   </Head>
 );
 
