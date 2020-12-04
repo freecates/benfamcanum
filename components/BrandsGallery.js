@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const BrandsGallery = ({ data, type }) => {
-    const { pathname } = useRouter();
-    const langURL = !pathname.includes('/ca-ES/') ? `/` : '/ca-ES/';
-    const typeURL = type && type.length ? `-${type}` : '';
+  const { pathname } = useRouter();
+  const langURL = !pathname.includes('/ca-ES/') ? `/` : '/ca-ES/';
+  const typeURL = type && type.length ? `-${type}` : '';
   return (
     <ul className="gallery national-gallery">
       {data.reduce((brands, d) => {
@@ -17,6 +17,7 @@ const BrandsGallery = ({ data, type }) => {
               <Link href={`${langURL}m-o-g-m${typeURL}/${d.marca.term_id}/${d.marca.slug}`}>
                 <a title={'Ver todas las ofertas de ' + d.marca.name}>
                   <img
+                    className="fade-in"
                     src={
                       'https://benfamcanumpics.famnum.now.sh/static/96/' +
                       d.marca.slug +

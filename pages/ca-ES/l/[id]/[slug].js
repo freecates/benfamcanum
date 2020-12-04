@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
 import Layout from '../../../../components/MyLayout.js';
 import Banners from '../../../../components/Banners.js';
+import BrandsGallery from '../../../../components/BrandsGallery';
+import Gallery from '../../../../components/Gallery';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
@@ -60,280 +62,131 @@ const PostsByLocalidad = props => {
         </p>
         <IntlProvider defaultLocale="ca">
           <section>
-            {props.marcasofertas.length >= 1 ? (
-              <ul className="gallery national-gallery">
-                {props.marcasofertas.reduce((marcas, marcasoferta) => {
-                  if (marcasoferta.marca == false) {
-                    return marcas;
-                  }
-                  marcas[marcasoferta.marca.term_id] = (
-                    <span key={marcasoferta.marca.term_id}>
-                      <li className="benefit align-center">
-                        <p className="fade-in">
-                          <Link
-                            href={`/ca-ES/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
-                          >
-                            <a title={'Veure totes les ofertes de ' + marcasoferta.marca.name}>
-                              <img
-                                src={
-                                  'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                                  marcasoferta.marca.slug +
-                                  '-familias-numerosas.png'
-                                }
-                                width={'96'}
-                                height={'96'}
-                                loading={'lazy'}
-                              />
-                              <br />{' '}
-                              <span
-                                dangerouslySetInnerHTML={{
-                                  __html: marcasoferta.marca.name
-                                }}
-                              />
-                            </a>
-                          </Link>
-                        </p>
-                      </li>
-                    </span>
-                  );
-                  return marcas;
-                }, [])}
-              </ul>
-            ) : (
-              ''
-            )}
-            {props.marcascaofertas.length >= 1 ? (
-              <ul className="gallery national-gallery">
-                {props.marcascaofertas.reduce((marcas, marcascaoferta) => {
-                  if (marcascaoferta.marca == false) {
-                    return marcas;
-                  }
-                  marcas[marcascaoferta.marca.term_id] = (
-                    <span key={marcascaoferta.marca.term_id}>
-                      <li className="benefit align-center">
-                        <p className="fade-in">
-                          <Link
-                            href={`/ca-ES/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
-                          >
-                            <a title={'Veure totes les ofertes de ' + marcascaoferta.marca.name}>
-                              <img
-                                src={
-                                  'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                                  marcascaoferta.marca.slug +
-                                  '-familias-numerosas.png'
-                                }
-                                width={'96'}
-                                height={'96'}
-                                loading={'lazy'}
-                              />
-                              <br />{' '}
-                              <span
-                                dangerouslySetInnerHTML={{
-                                  __html: marcascaoferta.marca.name
-                                }}
-                              />
-                            </a>
-                          </Link>
-                        </p>
-                      </li>
-                    </span>
-                  );
-                  return marcas;
-                }, [])}
-              </ul>
-            ) : (
-              ''
-            )}
-            <ul className="gallery">
-              {props.posts.map((post, index) => (
-                <li className="benefit" key={index}>
-                  {post.imagen_destacada_de_la_oferta_general_thumb ? (
-                    <p className="fade-in">
-                      <Link href={`/ca-ES/p/${post.ID}/${post.slug}`}>
-                        <a>
-                          <img
-                            width={'250'}
-                            height={'250'}
-                            loading={'lazy'}
-                            src={post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail}
-                            alt={post.titulo_de_la_oferta_oferta_general}
-                          />
-                        </a>
-                      </Link>
-                    </p>
-                  ) : null}
-
-                  {post.imagen_destacada_de_la_oferta_socios_thumb ? (
-                    <p className="fade-in">
-                      <Link href={`/ca-ES/p/${post.ID}/${post.slug}`}>
-                        <a>
-                          <img
-                            width={'250'}
-                            height={'250'}
-                            loading={'lazy'}
-                            src={post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail}
-                            alt={post.titulo_de_la_oferta_oferta_socios}
-                          />
-                          <span className="label alert gallery-label">
-                            <small>
-                              EXCLUSIU <br /> SOCIS
-                            </small>
-                          </span>
-                        </a>
-                      </Link>
-                    </p>
-                  ) : null}
-
-                  <p>
-                    <Link href={`/ca-ES/p/${post.ID}/${post.slug}`}>
-                      <a dangerouslySetInnerHTML={{ __html: post.name }} />
-                    </Link>
-                    <br />
-                    <small>{post.localidad_del_beneficio.name}</small>
-                    <br />
-
-                    {post.titulo_de_la_oferta_oferta_general ? (
-                      <span className="titulo-oferta">
-                        {post.titulo_de_la_oferta_oferta_general}
-                      </span>
-                    ) : (
-                      ''
-                    )}
-
-                    {post.titulo_de_la_oferta_oferta_socios ? (
-                      <span className="titulo-oferta">
-                        {post.titulo_de_la_oferta_oferta_socios}
-                      </span>
-                    ) : (
-                      ''
-                    )}
-                  </p>
-                </li>
-              ))}
-            </ul>
+            {props.uniquemarcas.length >= 1 ? <BrandsGallery data={props.marcasofertas} /> : null}
+            {props.uniquecamarcas.length >= 1 ? (
+              <BrandsGallery data={props.marcascaofertas} />
+            ) : null}
+            <Gallery data={props.posts} />
           </section>
         </IntlProvider>
       </section>
-      <style jsx>{`
-        .national-gallery {
-          background: #eeeeee;
-          margin-top: 1em !important;
-          margin-bottom: 1em !important;
-          padding-top: 0.75em !important;
-        }
-        .breadcrumbs {
-          margin-bottom: 1em;
-        }
-        h1,
-        .align-center {
-          text-align: center;
-        }
-        h1 {
-          color: #cb5599;
-        }
-        .dk {
-          display: none;
-        }
-        .promo {
-          margin-top: 1em;
-        }
-        .gallery {
-          display: -ms-flexbox;
-          display: flex;
-          -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-          padding: 5px;
-        }
-        ul {
-          list-style-type: none !important;
-          margin-left: 0;
-          margin: 0 auto !important;
-        }
-        a {
-          color: inherit !important;
-        }
-        a:hover {
-          text-decoration: underline;
-        }
-        nav a {
-          color: #00add9;
-        }
-        .benefit {
-          width: 150px;
-        }
-        .gallery-label {
-          position: relative;
-          margin-top: -40px;
-          margin-right: 5px;
-          float: right;
-          text-align: center;
-          background: #f18903 !important;
-        }
-        .titulo-oferta {
-          color: #ff0000;
-        }
-        @media screen and (min-width: 320px) {
-          .gallery {
-            width: 100%;
+
+      {props.posts.length && (
+        <style jsx>{`
+          .national-gallery {
+            background: #eeeeee;
+            margin-top: 1em !important;
+            padding-top: 0.75em !important;
           }
-          .benefit {
-            margin: 5px;
+          .national-gallery:last-child {
+            margin-bottom: 1em !important;
           }
-        }
-        @media screen and (max-width: 375px) {
-          .benefit {
-            width: 124px;
+          .breadcrumbs {
+            margin-bottom: 1em;
           }
-        }
-        @media screen and (min-width: 360px) {
-          .gallery {
-            width: 90%;
+          h1,
+          .align-center {
+            text-align: center;
           }
-        }
-        @media screen and (min-width: 768px) {
-          .gallery {
-            width: 90%;
-          }
-          .benefit {
-            width: 200px;
-            margin: 7.5px;
+          h1 {
+            color: #cb5599;
           }
           .dk {
-            display: block;
-          }
-          .mb {
             display: none;
           }
-        }
-        @media screen and (min-width: 1024px) {
+          .promo {
+            margin-top: 1em;
+          }
           .gallery {
-            width: 100%;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            padding: 5px;
+          }
+          ul {
+            list-style-type: none !important;
+            margin-left: 0;
+            margin: 0 auto !important;
+          }
+          a {
+            color: inherit !important;
+          }
+          a:hover {
+            text-decoration: underline;
+          }
+          nav a {
+            color: #00add9;
           }
           .benefit {
-            width: 220px;
-            margin: 0 10px;
+            width: 150px;
           }
-        }
-        @media screen and (min-width: 1160px) {
-          .benefit {
-            width: 245px;
+          .gallery-label {
+            position: relative;
+            margin-top: -40px;
+            margin-right: 5px;
+            float: right;
+            text-align: center;
+            background: #f18903 !important;
           }
-        }
-        .fade-in {
-          animation-name: fadeIn;
-          animation-duration: 1.3s;
-          animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-          animation-fill-mode: forwards;
-        }
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
+          .titulo-oferta {
+            color: #ff0000;
           }
-          to {
-            opacity: 1;
+          @media screen and (min-width: 320px) {
+            .gallery {
+              width: 100%;
+            }
+            .benefit {
+              margin: 5px;
+            }
           }
-        }
-      `}</style>
+          @media screen and (max-width: 375px) {
+            .benefit {
+              width: 124px;
+            }
+          }
+          @media screen and (min-width: 360px) {
+            .gallery {
+              width: 90%;
+            }
+          }
+          @media screen and (min-width: 768px) {
+            .gallery {
+              width: 90%;
+            }
+            .benefit {
+              width: 200px;
+              margin: 7.5px;
+            }
+            .dk {
+              display: block;
+            }
+            .mb {
+              display: none;
+            }
+          }
+          @media screen and (min-width: 1024px) {
+            .gallery {
+              width: 100%;
+            }
+            .benefit {
+              width: 220px;
+              margin: 0 10px;
+            }
+          }
+          @media screen and (min-width: 1160px) {
+            .benefit {
+              width: 245px;
+            }
+          }
+          .fade-in {
+            animation-name: fadeIn;
+            animation-duration: 1.3s;
+            animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+            animation-fill-mode: forwards;
+          }
+        `}</style>
+      )}
     </Layout>
   );
 };
@@ -380,7 +233,17 @@ export async function getStaticProps({ params }) {
   const almostuniquecamarcas = await res4.json();
   const marcascaofertas = almostuniquecamarcas.filter(x => x.marca != null);
 
-  return { props: { posts, marcasofertas, banner, marcascaofertas } };
+  const uniquemarcasnotfiltered = [
+    ...new Set(marcasofertas.map(({ marca }) => (marca != null ? marca.name : '')))
+  ];
+  const uniquecamarcasnotfiltered = [
+    ...new Set(marcascaofertas.map(({ marca }) => marca && marca.name))
+  ];
+
+  const uniquemarcas = uniquemarcasnotfiltered.filter(Boolean);
+  const uniquecamarcas = uniquecamarcasnotfiltered.filter(Boolean);
+
+  return { props: { posts, marcasofertas, banner, marcascaofertas, uniquemarcas, uniquecamarcas } };
 }
 
 export default PostsByLocalidad;

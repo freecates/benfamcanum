@@ -150,7 +150,7 @@ const PostByComunidad = props => {
               </section>
             </IntlProvider>
           </section>
-          {props.uniquemarcas.length >= 2 && props.uniquecamarcas.length >= 1 && (
+          {props.posts.length && (
             <style jsx>{`
               .national-gallery {
                 background: #eeeeee;
