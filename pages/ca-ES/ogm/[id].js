@@ -238,15 +238,10 @@ const OfertaGranMarca = props => {
 
           <p className="category">
             <Link
-              as={`/ca-ES/c/${props.ofertagranmarca.categoria_del_beneficio}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
-              href={`/ca-ES/mapa-de-la-marca?id=${props.ofertagranmarca.marca}`}
+              href={`/ca-ES/mm/${props.ofertagranmarca.marca}/${props.ofertagranmarca.acf.marca.slug}`}
             >
               <a
-                title={
-                  'Ver todas las ofertas ' +
-                  props.ofertagranmarca._embedded['wp:term'][3][0].name +
-                  ' en el mapa'
-                }
+                title={`Veure totes les ofertes de ${props.ofertagranmarca._embedded['wp:term'][3][0].name} al mapa`}
               >
                 {' '}
                 <img
@@ -281,40 +276,36 @@ const OfertaGranMarca = props => {
           <div className="file-data">
             <div className="file-img">
               {props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_socios_large ? (
-                    <p className="fade-in">
-                      <img
-                        className="img-file"
-                        width={'1024'}
-                        height={'1024'}
-                        loading={'lazy'}
-                        src={
-                          props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_socios_large.sizes
-                            .large
-                        }
-                        alt={props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios}
-                      />
-                    </p>
-              ) : (
-                null
-              )}
+                <p className="fade-in">
+                  <img
+                    className="img-file"
+                    width={'1024'}
+                    height={'1024'}
+                    loading={'lazy'}
+                    src={
+                      props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_socios_large.sizes
+                        .large
+                    }
+                    alt={props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios}
+                  />
+                </p>
+              ) : null}
 
               {props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_general_large ? (
-                    <p className="fade-in">
-                      <img
-                        className="img-file"
-                        width={'1024'}
-                        height={'1024'}
-                        loading={'lazy'}
-                        src={
-                          props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_general_large
-                            .sizes.large
-                        }
-                        alt={props.ofertagranmarca.acf.titulo_de_la_oferta_general}
-                      />
-                    </p>
-              ) : (
-                null
-              )}
+                <p className="fade-in">
+                  <img
+                    className="img-file"
+                    width={'1024'}
+                    height={'1024'}
+                    loading={'lazy'}
+                    src={
+                      props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_general_large.sizes
+                        .large
+                    }
+                    alt={props.ofertagranmarca.acf.titulo_de_la_oferta_general}
+                  />
+                </p>
+              ) : null}
             </div>
 
             <div className="file-content">

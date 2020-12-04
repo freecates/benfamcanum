@@ -298,7 +298,7 @@ const OfertaGranMarca = props => {
 
           <p className="category">
             <Link
-              href={`/mmca/${props.ofertagranmarca.categoria_del_beneficio}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`}
+              href={`/mmca/${props.ofertagranmarca.marca}/${props.ofertagranmarca.acf.marca.slug}`}
             >
               <a
                 title={
