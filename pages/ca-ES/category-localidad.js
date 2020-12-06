@@ -41,7 +41,7 @@ const PostsByCategoryLocalidad = props => {
           {props.marcacasofertas >= 1 ? (
             <li>
               <Link
-                href={`/ca-ES/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.marcasofertas[0].comunidad_autonoma.slug}}/${props.marcasofertas[0].comunidad_autonoma.term_id}`}
+                href={`/ca-ES/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.marcacasofertas[0].comunidad_autonoma.slug}}/${props.marcacasofertas[0].comunidad_autonoma.term_id}`}
               >
                 <a>{props.posts[0].comunidad_autonoma}</a>
               </Link>
