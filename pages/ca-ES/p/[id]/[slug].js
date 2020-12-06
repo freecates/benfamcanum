@@ -68,8 +68,7 @@ const Post = props => {
           </li>
           <li>
             <Link
-              as={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`}
-              href={`/ca-ES/category-comunidad?sid=${props.post.categoria_del_beneficio}&comunidad=${props.post.acf.comunidad_autonoma}&caid=8143`}
+              href={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`}
             >
               <a>{props.post._embedded['wp:term'][0][0].name}</a>
             </Link>
@@ -206,8 +205,7 @@ const Post = props => {
           <p className="category">
             <strong>Categoria</strong>:{' '}
             <Link
-              as={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`}
-              href={`/ca-ES/category-comunidad?sid=${props.post.categoria_del_beneficio}&comunidad=${props.post.acf.comunidad_autonoma}&caid=8143`}
+              href={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`}
             >
               <a
                 title={

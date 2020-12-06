@@ -39,8 +39,7 @@ const OfertasPorSectores = props => {
               {props.ofertasporsectores.map((ofertasporsectore, index) => (
                 <li className="item align-center" key={index}>
                   <Link
-                    as={`/ca-ES/c-ca/${ofertasporsectore.term_id}/${ofertasporsectore.slug}/Catalu/8143`}
-                    href={`/ca-ES/category-comunidad?sid=${ofertasporsectore.term_id}&comunidad=Catalu&caid=8143`}
+                    href={`/ca-ES/c-ca/${ofertasporsectore.term_id}/${ofertasporsectore.slug}/cataluna/8143`}
                   >
                     <a title={'Clica aquí para ver todas las ofertas de ' + ofertasporsectore.name}>
                       <img

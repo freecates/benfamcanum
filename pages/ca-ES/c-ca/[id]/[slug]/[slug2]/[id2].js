@@ -1,17 +1,20 @@
 import fetch from 'isomorphic-unfetch';
+import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../../components/MyLayout.js';
-import Gallery from '../../components/Gallery.js';
-import BrandsGallery from '../../components/BrandsGallery.js';
-import Banners from '../../components/Banners';
+import Layout from '../../../../../../components/MyLayout.js';
+import Gallery from '../../../../../../components/Gallery.js';
+import BrandsGallery from '../../../../../../components/BrandsGallery.js';
+import Banners from '../../../../../../components/Banners';
+import Fallback from '../../../../../../components/Fallback.js';
+import Custom404 from '../../../../../404';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
-const SelectCity = dynamic(import('../../components/SelectCity'), {
+const SelectCity = dynamic(import('../../../../../../components/SelectCity'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -22,6 +25,16 @@ const SelectCity = dynamic(import('../../components/SelectCity'), {
 });
 
 const PostsByCategoryComunidad = props => {
+  const { isFallback } = useRouter();
+  if (!isFallback && !props.posts) {
+    return <Custom404 />;
+  }
+  if (isFallback) {
+    return <Fallback breadCrumb={'Beneficis'} />;
+  }
+  if (props.post === '404') {
+    return <Fallback breadCrumb={'Beneficis'}notFound />;
+  }
   return (
     <section>
       {props.posts.length == 0 ? (
@@ -614,13 +627,26 @@ const PostsByCategoryComunidad = props => {
   );
 };
 
-PostsByCategoryComunidad.getInitialProps = async function(context) {
-  const { sid } = context.query;
-  const { comunidad } = context.query;
-  const comunidadEncoded = encodeURI(comunidad);
-  const { caid } = context.query;
+export async function getStaticPaths() {
+  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed');
+  const ids = await res.json();
+
+  const paths = ids.map(
+    i =>
+      `/ca-ES/c-ca/${i.categoria_del_beneficio.term_id}/${i.categoria_del_beneficio.slug}/${i.comunidad_autonoma.term_id}/${i.comunidad_autonoma.slug}`
+  );
+
+  return { paths, fallback: true };
+}
+
+export async function getStaticProps({ params }) {
+  
+  const sid = params.id;
+  const comunidad = params.slug2;
+  const caid = params.id2;
+
   const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&comunidad=${comunidadEncoded}`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&comunidad=${comunidad}`
   );
   const posts = await res.json();
   const res2 = await fetch(
@@ -658,17 +684,24 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   ];
   const uniquecamarcas = [...new Set(marcascaofertas.map(({ marca }) => marca && marca.name))];
 
-  return {
-    posts,
-    marcasofertas,
-    marcascaofertas,
-    uniquemarcas,
-    uniquecamarcas,
-    banners,
-    caid,
-    sid,
-    ofertasonlines
-  };
-};
+  if (!posts.data) {
+    return {
+      props: {
+        posts,
+        marcasofertas,
+        marcascaofertas,
+        uniquemarcas,
+        uniquecamarcas,
+        banners,
+        caid,
+        sid,
+        ofertasonlines
+      },
+      revalidate: 1
+    };
+  } else {
+    return { props: { posts: '404' } };
+  }
+}
 
 export default PostsByCategoryComunidad;
