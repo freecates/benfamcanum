@@ -32,7 +32,7 @@ const PostsByCategoryComunidad = props => {
     return <Fallback breadCrumb={'Beneficis'} />;
   }
   if (props.post === '404') {
-    return <Fallback breadCrumb={'Beneficis'}notFound />;
+    return <Fallback breadCrumb={'Beneficis'} notFound />;
   }
   return (
     <section>
@@ -627,19 +627,31 @@ const PostsByCategoryComunidad = props => {
 };
 
 export async function getStaticPaths() {
-  const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed');
-  const ids = await res.json();
+  const slug2 = 'cataluna';
+  const id2 = '8143';
 
-  const paths = ids.map(
-    i =>
-      `/ca-ES/c-ca/${i.categoria_del_beneficio.term_id}/${i.categoria_del_beneficio.slug}/${i.comunidad_autonoma.slug}/${i.comunidad_autonoma.term_id}`
-  );
+  const paths = [
+    { params: { id: '4', slug: 'alimentacion', slug2: slug2, id2: id2 } },
+    { params: { id: '5', slug: 'alojamiento', slug2: slug2, id2: id2 } },
+    { params: { id: '7', slug: 'banca', slug2: slug2, id2: id2 } },
+    { params: { id: '17', slug: 'carburantes', slug2: slug2, id2: id2 } },
+    { params: { id: '2', slug: 'educacion', slug2: slug2, id2: id2 } },
+    { params: { id: '3', slug: 'hogar', slug2: slug2, id2: id2 } },
+    { params: { id: '16', slug: 'idiomas', slug2: slug2, id2: id2 } },
+    { params: { id: '26', slug: 'libros', slug2: slug2, id2: id2 } },
+    { params: { id: '8', slug: 'moda', slug2: slug2, id2: id2 } },
+    { params: { id: '9', slug: 'ocio-y-turismo', slug2: slug2, id2: id2 } },
+    { params: { id: '14', slug: 'otros', slug2: slug2, id2: id2 } },
+    { params: { id: '10', slug: 'salud', slug2: slug2, id2: id2 } },
+    { params: { id: '6', slug: 'seguros', slug2: slug2, id2: id2 } },
+    { params: { id: '11', slug: 'servicios', slug2: slug2, id2: id2 } },
+    { params: { id: '12', slug: 'vehiculos', slug2: slug2, id2: id2 } }
+  ];
 
   return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {
-  
   const sid = params.id;
   const comunidad = params.slug2;
   const caid = params.id2;

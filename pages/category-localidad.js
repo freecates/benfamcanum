@@ -38,25 +38,13 @@ const PostsByCategoryLocalidad = props => {
               <a>{props.posts[0].categoria_de_la_prestacion.name}</a>
             </Link>
           </li>
-          {props.marcacasofertas >= 1 ? (
-            <li>
-              <Link
-                as={`/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].comunidad_autonoma}/${props.marcasofertas[0].comunidad_autonoma.term_id}`}
-                href={`/category-comunidad?sid=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=${props.posts[0].comunidad_autonoma}&caid=${props.marcasofertas[0].comunidad_autonoma.term_id}`}
-              >
-                <a>{props.posts[0].comunidad_autonoma}</a>
-              </Link>
-            </li>
-          ) : (
-            <li>
-              <Link
-                as={`/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].comunidad_autonoma}/8143`}
-                href={`/category-comunidad?sid=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=${props.posts[0].comunidad_autonoma}&caid=8143`}
-              >
-                <a>{props.posts[0].comunidad_autonoma}</a>
-              </Link>
-            </li>
-          )}
+          <li>
+            <Link
+              href={`/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/cataluna/8143`}
+            >
+              <a>{props.posts[0].comunidad_autonoma}</a>
+            </Link>
+          </li>
 
           <li>
             <span className="show-for-sr">Actual: </span>{' '}

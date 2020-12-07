@@ -1,17 +1,19 @@
-import fetch from 'isomorphic-unfetch';
+import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../components/MyLayout.js';
-import Gallery from '../components/Gallery.js';
-import BrandsGallery from '../components/BrandsGallery.js';
-import Banners from '../components/Banners';
+import Layout from '../../../../../components/MyLayout.js';
+import Gallery from '../../../../../components/Gallery.js';
+import BrandsGallery from '../../../../../components/BrandsGallery.js';
+import Banners from '../../../../../components/Banners';
+import Fallback from '../../../../../components/Fallback.js';
+import Custom404 from '../../../../404';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
-const SelectCity = dynamic(import('../components/SelectCity'), {
+const SelectCity = dynamic(import('../../../../../components/SelectCity'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -22,6 +24,16 @@ const SelectCity = dynamic(import('../components/SelectCity'), {
 });
 
 const PostsByCategoryComunidad = props => {
+  const { isFallback } = useRouter();
+  if (!isFallback && !props.posts) {
+    return <Custom404 />;
+  }
+  if (isFallback) {
+    return <Fallback breadCrumb={'Beneficios'} />;
+  }
+  if (props.post === '404') {
+    return <Fallback breadCrumb={'Beneficios'} notFound />;
+  }
   return (
     <section>
       {props.posts.length == 0 ? (
@@ -616,15 +628,41 @@ const PostsByCategoryComunidad = props => {
   );
 };
 
-PostsByCategoryComunidad.getInitialProps = async function(context) {
-  const { sid } = context.query;
-  const { comunidad } = context.query;
-  const comunidadEncoded = encodeURI(comunidad);
-  const { caid } = context.query;
+export async function getStaticPaths() {
+  const slug2 = 'cataluna';
+  const id2 = '8143';
+
+  const paths = [
+    { params: { id: '4', slug: 'alimentacion', slug2: slug2, id2: id2 } },
+    { params: { id: '5', slug: 'alojamiento', slug2: slug2, id2: id2 } },
+    { params: { id: '7', slug: 'banca', slug2: slug2, id2: id2 } },
+    { params: { id: '17', slug: 'carburantes', slug2: slug2, id2: id2 } },
+    { params: { id: '2', slug: 'educacion', slug2: slug2, id2: id2 } },
+    { params: { id: '3', slug: 'hogar', slug2: slug2, id2: id2 } },
+    { params: { id: '16', slug: 'idiomas', slug2: slug2, id2: id2 } },
+    { params: { id: '26', slug: 'libros', slug2: slug2, id2: id2 } },
+    { params: { id: '8', slug: 'moda', slug2: slug2, id2: id2 } },
+    { params: { id: '9', slug: 'ocio-y-turismo', slug2: slug2, id2: id2 } },
+    { params: { id: '14', slug: 'otros', slug2: slug2, id2: id2 } },
+    { params: { id: '10', slug: 'salud', slug2: slug2, id2: id2 } },
+    { params: { id: '6', slug: 'seguros', slug2: slug2, id2: id2 } },
+    { params: { id: '11', slug: 'servicios', slug2: slug2, id2: id2 } },
+    { params: { id: '12', slug: 'vehiculos', slug2: slug2, id2: id2 } }
+  ];
+
+  return { paths, fallback: true };
+}
+
+export async function getStaticProps({ params }) {
+  const sid = params.id;
+  const comunidad = params.slug2;
+  const caid = params.id2;
+
   const res = await fetch(
-    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&comunidad=${comunidadEncoded}`
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&comunidad=${comunidad}`
   );
   const posts = await res.json();
+
   const res2 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&comunidad=${caid}&sim-model=id-marca`
   );
@@ -634,7 +672,6 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   const res3 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_of_gr_m_ca=${sid}&comunidad=${caid}&sim-model=id-marca-comunidad`
   );
-
   const almostuniquecamarcas = await res3.json();
   const marcascaofertas = almostuniquecamarcas.filter(x => x.marca != null && x.marca != '');
 
@@ -656,27 +693,29 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   );
   const ofertasonlines = await res5.json();
 
-  const uniquemarcasnotfiltered = [
+  const uniquemarcas = [
     ...new Set(marcasofertas.map(({ marca }) => (marca != null ? marca.name : '')))
   ];
-  const uniquecamarcasnotfiltered = [
-    ...new Set(marcascaofertas.map(({ marca }) => marca && marca.name))
-  ];
+  const uniquecamarcas = [...new Set(marcascaofertas.map(({ marca }) => marca && marca.name))];
 
-  const uniquemarcas = uniquemarcasnotfiltered.filter(Boolean);
-  const uniquecamarcas = uniquecamarcasnotfiltered.filter(Boolean);
-
-  return {
-    posts,
-    marcasofertas,
-    marcascaofertas,
-    uniquemarcas,
-    uniquecamarcas,
-    banners,
-    caid,
-    sid,
-    ofertasonlines
-  };
-};
+  if (!posts.data) {
+    return {
+      props: {
+        posts,
+        marcasofertas,
+        marcascaofertas,
+        uniquemarcas,
+        uniquecamarcas,
+        banners,
+        caid,
+        sid,
+        ofertasonlines
+      },
+      revalidate: 1
+    };
+  } else {
+    return { props: { posts: '404' } };
+  }
+}
 
 export default PostsByCategoryComunidad;
