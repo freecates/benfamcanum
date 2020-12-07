@@ -159,7 +159,7 @@ const MapByCategory = props => {
           color: #00add9;
         }
         .benefit {
-          /c-l/8/moda/talavera%20de%20la%20reinawidth: 150px;
+          width: 150px;
         }
         .gallery-label {
           position: relative;

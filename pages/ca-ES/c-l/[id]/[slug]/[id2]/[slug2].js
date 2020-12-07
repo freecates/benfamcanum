@@ -351,13 +351,14 @@ export async function getStaticPaths() {
 
   const paths = categoriesLocalidad.map(
     cl =>
-      `/ca-ES/c-l/${cl.localidad_del_beneficio.term_id}/${cl.localidad_del_beneficio.slug}/${cl.categoria_de_la_prestacion.term_id}/${cl.categoria_de_la_prestacion.slug}`
+      `/ca-ES/c-l/${cl.categoria_de_la_prestacion.term_id}/${cl.categoria_de_la_prestacion.slug}/${cl.localidad_del_beneficio.term_id}/${cl.localidad_del_beneficio.slug}`
   );
 
   return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {
+    console.log('params ', params);
   const sid = params.id;
   const localidad = params.id2;
 
