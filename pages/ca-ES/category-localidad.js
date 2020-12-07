@@ -38,23 +38,13 @@ const PostsByCategoryLocalidad = props => {
               <a>{props.posts[0].categoria_de_la_prestacion.name}</a>
             </Link>
           </li>
-          {props.marcacasofertas >= 1 ? (
-            <li>
-              <Link
-                href={`/ca-ES/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.marcacasofertas[0].comunidad_autonoma.slug}}/${props.marcacasofertas[0].comunidad_autonoma.term_id}`}
-              >
-                <a>{props.posts[0].comunidad_autonoma}</a>
-              </Link>
-            </li>
-          ) : (
-            <li>
-              <Link
-                href={`/ca-ES/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/cataluna/8143`}
-              >
-                <a>{props.posts[0].comunidad_autonoma}</a>
-              </Link>
-            </li>
-          )}
+          <li>
+            <Link
+              href={`/ca-ES/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/cataluna/8143`}
+            >
+              <a>{props.posts[0].comunidad_autonoma}</a>
+            </Link>
+          </li>
 
           <li>
             <span className="show-for-sr">Actual: </span>{' '}
