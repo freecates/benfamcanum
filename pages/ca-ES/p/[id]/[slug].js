@@ -580,8 +580,6 @@ export async function getStaticProps({ params }) {
 
   const post = await res.json();
 
-  console.log('posts ', post.acf);
-
   if (!post.data) {
     return { props: { post }, revalidate: 1 };
   } else {
