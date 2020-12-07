@@ -68,7 +68,7 @@ const Post = props => {
           </li>
           <li>
             <Link
-              href={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`}
+              href={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/cataluna/8143`}
             >
               <a>{props.post._embedded['wp:term'][0][0].name}</a>
             </Link>
@@ -205,7 +205,7 @@ const Post = props => {
           <p className="category">
             <strong>Categoria</strong>:{' '}
             <Link
-              href={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/${props.post.acf.comunidad_autonoma}/8143`}
+              href={`/ca-ES/c-ca/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}/cataluna/8143`}
             >
               <a
                 title={
@@ -579,6 +579,8 @@ export async function getStaticProps({ params }) {
   );
 
   const post = await res.json();
+
+  console.log('posts ', post.acf);
 
   if (!post.data) {
     return { props: { post }, revalidate: 1 };

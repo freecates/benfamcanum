@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-unfetch';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
@@ -633,7 +632,7 @@ export async function getStaticPaths() {
 
   const paths = ids.map(
     i =>
-      `/ca-ES/c-ca/${i.categoria_del_beneficio.term_id}/${i.categoria_del_beneficio.slug}/${i.comunidad_autonoma.term_id}/${i.comunidad_autonoma.slug}`
+      `/ca-ES/c-ca/${i.categoria_del_beneficio.term_id}/${i.categoria_del_beneficio.slug}/${i.comunidad_autonoma.slug}/${i.comunidad_autonoma.term_id}`
   );
 
   return { paths, fallback: true };
@@ -649,6 +648,7 @@ export async function getStaticProps({ params }) {
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&comunidad=${comunidad}`
   );
   const posts = await res.json();
+
   const res2 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&comunidad=${caid}&sim-model=id-marca`
   );
