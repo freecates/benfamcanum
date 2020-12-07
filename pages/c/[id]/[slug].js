@@ -130,7 +130,7 @@ const PostsByCategory = props => (
               {
                 slug: 'catalunya',
                 key: 8143,
-                value: `/ca-ES/category-comunidad?sid=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Catalu&caid=8143`,
+                value: `/ca-ES/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/cataluna/8143`,
                 label: 'Catalunya'
               }
             ]}

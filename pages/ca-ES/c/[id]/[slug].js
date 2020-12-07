@@ -131,7 +131,7 @@ const PostsByCategory = props => {
                 {
                   slug: 'catalunya',
                   key: 8143,
-                  value: `/ca-ES/${props.posts[0].categoria_de_la_prestacion.term_id}/Catalu/8143`,
+                  value: `/ca-ES/${props.posts[0].categoria_de_la_prestacion.term_id}/cataluna/8143`,
                   label: 'Catalunya'
                 }
               ]}

@@ -256,7 +256,7 @@ const PostsByCategoryComunidad = props => {
                         slug: post.localidad_del_beneficio.slug,
                         key: post.localidad_del_beneficio.term_id,
                         value: post.categoria_de_la_prestacion
-                          ? `/category-localidad?sid=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}`
+                          ? `/c-l/${post.categoria_de_la_prestacion.term_id}/${post.categoria_de_la_prestacion.slug}/${post.localidad_del_beneficio.term_id}/${post.localidad_del_beneficio.slug}`
                           : '',
                         label: post.categoria_de_la_prestacion
                           ? `${post.localidad_del_beneficio.name}`
