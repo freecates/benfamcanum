@@ -1,16 +1,27 @@
-import fetch from 'isomorphic-unfetch';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../../components/MyLayout.js';
-import Gallery from '../../components/Gallery.js';
-import BrandsGallery from '../../components/BrandsGallery.js';
-import Banners from '../../components/Banners';
+import Layout from '@components/MyLayout.js';
+import Gallery from '@components/Gallery.js';
+import BrandsGallery from '@components/BrandsGallery.js';
+import Banners from '@components/Banners';
+import Fallback from '@components/Fallback.js';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
 const PostsByCategoryLocalidad = props => {
+  const { isFallback } = useRouter();
+  if (!isFallback && !props.posts) {
+    return <Custom404 />;
+  }
+  if (isFallback) {
+    return <Fallback breadCrumb={'Beneficis'} />;
+  }
+  if (props.post === '404') {
+    return <Fallback breadCrumb={'Beneficis'} notFound />;
+  }
   return (
     <Layout>
       <Head>
@@ -332,9 +343,24 @@ const PostsByCategoryLocalidad = props => {
   );
 };
 
-PostsByCategoryLocalidad.getInitialProps = async function(context) {
-  const { sid } = context.query;
-  const { localidad } = context.query;
+export async function getStaticPaths() {
+  const res = await fetch(
+    'https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&per_page=100'
+  );
+  const categoriesLocalidad = await res.json();
+
+  const paths = categoriesLocalidad.map(
+    cl =>
+      `/ca-ES/c-l/${cl.localidad_del_beneficio.term_id}/${cl.localidad_del_beneficio.slug}/${cl.categoria_de_la_prestacion.term_id}/${cl.categoria_de_la_prestacion.slug}`
+  );
+
+  return { paths, fallback: true };
+}
+
+export async function getStaticProps({ params }) {
+  const sid = params.id;
+  const localidad = params.id2;
+
   const res = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&localidad=${localidad}`
   );
@@ -371,15 +397,22 @@ PostsByCategoryLocalidad.getInitialProps = async function(context) {
     ...new Set(marcacasofertas.map(({ marca }) => (marca != null ? marca.name : '')))
   ];
 
-  return {
-    posts,
-    marcasofertas,
-    marcacasofertas,
-    uniquemarcas,
-    uniquecamarcas,
-    banners,
-    sid
-  };
-};
+  if (!posts.data) {
+    return {
+      props: {
+        posts,
+        marcasofertas,
+        marcacasofertas,
+        uniquemarcas,
+        uniquecamarcas,
+        banners,
+        sid
+      },
+      revalidate: 1
+    };
+  } else {
+    return { props: { posts: '404' } };
+  }
+}
 
 export default PostsByCategoryLocalidad;

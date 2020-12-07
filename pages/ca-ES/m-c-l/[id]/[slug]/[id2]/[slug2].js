@@ -78,8 +78,7 @@ const MapByCategoryLocalidad = props => {
         <p className="align-center">
           <small>
             <Link
-              as={`/ca-ES/c-l/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`}
-              href={`/ca-ES/category-localidad?sid=${props.markers[0].categoria_de_la_prestacion.term_id}&localidad=${props.markers[0].localidad_del_beneficio.term_id}`}
+              href={`/ca-ES/c-l/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`}
             >
               <a
                 title={

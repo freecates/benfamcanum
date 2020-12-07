@@ -3,17 +3,17 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../../../../../../components/MyLayout.js';
-import Gallery from '../../../../../../components/Gallery.js';
-import BrandsGallery from '../../../../../../components/BrandsGallery.js';
-import Banners from '../../../../../../components/Banners';
-import Fallback from '../../../../../../components/Fallback.js';
+import Layout from '@components/MyLayout.js';
+import Gallery from '@components/Gallery.js';
+import BrandsGallery from '@components/BrandsGallery.js';
+import Banners from '@components/Banners';
+import Fallback from '@components/Fallback.js';
 import Custom404 from '../../../../../404';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
-const SelectCity = dynamic(import('../../../../../../components/SelectCity'), {
+const SelectCity = dynamic(import('@components/SelectCity'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -255,7 +255,7 @@ const PostsByCategoryComunidad = props => {
                         slug: post.localidad_del_beneficio.slug,
                         key: post.localidad_del_beneficio.term_id,
                         value: post.categoria_de_la_prestacion
-                          ? `/ca-ES/category-localidad?sid=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}`
+                          ? `/ca-ES/c-l/${post.categoria_de_la_prestacion.term_id}/${post.categoria_de_la_prestacion.slug}/${post.localidad_del_beneficio.term_id}/${post.localidad_del_beneficio.slug}`
                           : '',
                         label: post.categoria_de_la_prestacion
                           ? `${post.localidad_del_beneficio.name}`
