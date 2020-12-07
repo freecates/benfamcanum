@@ -358,7 +358,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    console.log('params ', params);
   const sid = params.id;
   const localidad = params.id2;
 
