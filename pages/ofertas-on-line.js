@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
 import Layout from '@components/MyLayout.js';
-import Banners from '@components/Banners.js';
+import Banners from '@components/banners/index.js';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();

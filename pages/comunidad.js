@@ -6,7 +6,7 @@ import { IntlProvider } from 'react-intl';
 import Layout from '@components/MyLayout.js';
 import BrandsGallery from '@components/BrandsGallery';
 import Gallery from '@components/Gallery';
-import Banners from '@components/Banners.js';
+import Banners from '@components/banners/index.js';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();

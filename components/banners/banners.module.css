@@ -1,0 +1,18 @@
+.banner {
+  text-align: center;
+  margin-top: 2em;
+}
+.mb {
+  display: block;
+}
+.dk {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .dk {
+    display: block;
+  }
+  .mb {
+    display: none;
+  }
+}

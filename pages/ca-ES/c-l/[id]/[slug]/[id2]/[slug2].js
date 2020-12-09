@@ -5,7 +5,7 @@ import { IntlProvider } from 'react-intl';
 import Layout from '@components/MyLayout.js';
 import Gallery from '@components/Gallery.js';
 import BrandsGallery from '@components/BrandsGallery.js';
-import Banners from '@components/Banners';
+import Banners from '@components/banners';
 import Fallback from '@components/Fallback.js';
 
 const today = Date.now();

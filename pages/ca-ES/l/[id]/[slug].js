@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
 import Layout from '@components/MyLayout.js';
-import Banners from '@components/Banners.js';
+import Banners from '@components/banners/index.js';
 import BrandsGallery from '@components/BrandsGallery';
 import Gallery from '@components/Gallery';
 

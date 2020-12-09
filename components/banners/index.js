@@ -1,10 +1,12 @@
+import styles from './banners.module.css';
+
 const Banners = ({ data }) => {
   return (
     <>
       {data.map((d, index) => (
         <React.Fragment key={index}>
           {d.acf.banner_grande_728x90 ? (
-            <p className="align-center promo dk">
+            <p className={`${styles.banner} ${styles.dk}`}>
               <a href={d.acf.url_de_destino_del_banner} target="_blank">
                 <img
                   src={d.acf.banner_grande_728x90.sizes.large}
@@ -16,7 +18,7 @@ const Banners = ({ data }) => {
             </p>
           ) : null}
           {d.acf.baner_movil ? (
-            <p className="align-center promo mb">
+            <p className={`${styles.banner} ${styles.mb}`}>
               <a href={d.acf.url_de_destino_del_banner} target="_blank">
                 <img
                   src={d.acf.baner_movil.sizes.large}
@@ -28,7 +30,7 @@ const Banners = ({ data }) => {
             </p>
           ) : null}
           {d.acf.baner_movil_320x100 ? (
-            <p className="align-center promo mb">
+            <p className={`${styles.banner} ${styles.mb}`}>
               <a href={d.acf.url_de_destino_del_banner} target="_blank">
                 <img
                   src={d.acf.baner_movil_320x100.sizes.large}
@@ -41,31 +43,6 @@ const Banners = ({ data }) => {
           ) : null}
         </React.Fragment>
       ))}
-      <style jsx>{`
-        .align-center {
-          text-align: center;
-        }
-        a {
-          color: #ffffff !important;
-        }
-        .promo {
-          margin-top: 2em;
-        }
-        .mb {
-          display: block;
-        }
-        .dk {
-          display: none;
-        }
-        @media screen and (min-width: 768px) {
-          .dk {
-            display: block;
-          }
-          .mb {
-            display: none;
-          }
-        }
-      `}</style>
     </>
   );
 };
