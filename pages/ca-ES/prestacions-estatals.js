@@ -2,7 +2,7 @@ import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../../components/MyLayout.js';
+import Layout from '@components/MyLayout.js';
 
 const PrestacionesEstatales = props => {
   return (

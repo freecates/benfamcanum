@@ -5,11 +5,11 @@ import Head from 'next/head';
 import Link from 'next/link';
 import FontAwesome from 'react-fontawesome';
 import { generateShareIcon, ShareButtons } from 'react-share';
-import Layout from '../../components/MyLayout.js';
-import Fallback from '../../components/Fallback';
+import Layout from '@components/MyLayout.js';
+import Fallback from '@components/Fallback';
 import Custom404 from '../404';
 
-const MapaDeGoogle = dynamic(import('../../components/MapaDeGoogle'), {
+const MapaDeGoogle = dynamic(import('@components/MapaDeGoogle'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -19,7 +19,7 @@ const MapaDeGoogle = dynamic(import('../../components/MapaDeGoogle'), {
   )
 });
 
-const IsMember = dynamic(import('../../components/IsMember'), {
+const IsMember = dynamic(import('@components/IsMember'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>

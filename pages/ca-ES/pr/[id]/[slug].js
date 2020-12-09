@@ -1,10 +1,10 @@
 import fetch from 'isomorphic-unfetch';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Layout from '../../../../components/MyLayout.js';
-import Fallback from '../../../../components/Fallback';
+import Layout from '@components/MyLayout.js';
+import Fallback from '@components/Fallback';
 import Custom404 from '../../../404';
-import SeoHead from '../../../../components/SeoHead.js';
+import SeoHead from '@components/SeoHead.js';
 
 const Prestacion = props => {
   const { isFallback } = useRouter();

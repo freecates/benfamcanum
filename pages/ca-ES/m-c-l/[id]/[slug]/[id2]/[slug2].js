@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { IntlProvider } from 'react-intl';
-import Layout from '../../../../../../components/MyLayout.js';
+import Layout from '@components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => <p>carregant ...</p>

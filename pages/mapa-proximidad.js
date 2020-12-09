@@ -1,9 +1,8 @@
-import fetch from 'isomorphic-unfetch';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../components/MyLayout.js';
+import Layout from '@components/MyLayout.js';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {
   loading: () => <p>cargando ...</p>
@@ -162,7 +161,7 @@ const MapByCategory = props => (
         text-align: center;
       }
       h1 {
-        color: #cb5599;
+        color: #391f92;
       }
       .gallery {
         display: -ms-flexbox;
@@ -172,12 +171,12 @@ const MapByCategory = props => (
         padding: 5px;
       }
       ul {
-        list-style-type: none !important;
+        list-style-type: none;
         margin-left: 0;
         margin: 0 auto !important;
       }
       a {
-        color: inherit !important;
+        color: inherit;
       }
       a:hover {
         text-decoration: underline;
@@ -191,7 +190,7 @@ const MapByCategory = props => (
       }
       .button {
         background: #0066ff;
-        color: #ffffff !important;
+        color: #ffffff;
         text-deocration: none;
       }
       .button:hover {
@@ -199,7 +198,7 @@ const MapByCategory = props => (
         text-decoration: none;
       }
       nav a {
-        color: #00add9;
+        color: #3f3fff;
       }
       .benefit {
         width: 150px;
@@ -210,7 +209,7 @@ const MapByCategory = props => (
         margin-right: 10px;
         float: right;
         text-align: center;
-        background: #f18903 !important;
+        background: #cc0033 !important;
       }
       .titulo-oferta {
         color: #ff0000;

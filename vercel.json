@@ -2,14 +2,6 @@
   "version": 2,
   "routes": [
     {
-      "src": "/ca-ES/c-ca/(?<sid>[^/]+)/(?<slug>[^/]+)/(?<comunidad>[^/]+)/(?<caid>[^/]+)$",
-      "dest": "/ca-ES/category-comunidad?sid=$sid&comunidad=$comunidad&caid=$caid"
-    },
-    {
-      "src": "/c-ca/(?<sid>[^/]+)/(?<slug>[^/]+)/(?<comunidad>[^/]+)/(?<caid>[^/]+)$",
-      "dest": "/category-comunidad?sid=$sid&comunidad=$comunidad&caid=$caid"
-    },
-    {
       "src": "/manifest.json",
       "dest": "/static/manifest.json"
     },

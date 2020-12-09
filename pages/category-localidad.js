@@ -2,10 +2,10 @@ import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../components/MyLayout.js';
-import BrandsGallery from '../components/BrandsGallery';
-import Gallery from '../components/Gallery';
-import Banners from '../components/Banners';
+import Layout from '@components/MyLayout.js';
+import BrandsGallery from '@components/BrandsGallery';
+import Gallery from '@components/Gallery';
+import Banners from '@components/Banners';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();

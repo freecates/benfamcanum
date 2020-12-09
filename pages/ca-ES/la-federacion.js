@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Layout from '../../components/MyLayout.js';
+import Layout from '@components/MyLayout.js';
 
 const LaFederacion = () => {
   return (

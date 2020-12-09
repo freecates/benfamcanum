@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Layout from '../../components/MyLayout.js';
+import Layout from '@components/MyLayout.js';
 
-const MapaDeGoogle = dynamic(import('../../components/MapaDeGoogle'), {
+const MapaDeGoogle = dynamic(import('@components/MapaDeGoogle'), {
   loading: () => <p>carregant ...</p>
 });
 

@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import LayoutHome from '../components/LayoutHome.js';
+import LayoutHome from '@components/LayoutHome.js';
 
 const Home = () => {
   return (

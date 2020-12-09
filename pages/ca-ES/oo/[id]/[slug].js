@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import FontAwesome from 'react-fontawesome';
 import { generateShareIcon, ShareButtons } from 'react-share';
-import IsMember from '../../../../components/IsMember.js';
-import Layout from '../../../../components/MyLayout.js';
+import IsMember from '@components/IsMember.js';
+import Layout from '@components/MyLayout.js';
 
 const {
   FacebookShareButton,

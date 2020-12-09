@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
-import Layout from '../../../components/MyLayout.js';
-import Fallback from '../../../components/Fallback';
+import Layout from '@components/MyLayout.js';
+import Fallback from '@components/Fallback';
 import Custom404 from '../../404';
 
 const GoogleMapReact = dynamic(import('google-map-react'), {

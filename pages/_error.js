@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Layout from '../components/MyLayout.js';
+import Layout from '@components/MyLayout.js';
 
 function Error({ statusCode }) {
   return (
