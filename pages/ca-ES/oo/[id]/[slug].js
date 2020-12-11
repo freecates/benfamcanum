@@ -501,7 +501,7 @@ export async function getStaticProps({ params }) {
 
   const ofertaonline = await res.json();
 
-  return { props: { ofertaonline } };
+  return { props: { ofertaonline }, revalidate: 1 };
 }
 
 export default OfertaOnLine;
