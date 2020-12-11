@@ -6,6 +6,8 @@ import FontAwesome from 'react-fontawesome';
 import { generateShareIcon, ShareButtons } from 'react-share';
 import IsMember from '@components/IsMember.js';
 import Layout from '@components/MyLayout.js';
+import Fallback from '@components/Fallback';
+import Custom404 from '../../../404';
 
 const {
   FacebookShareButton,
@@ -20,7 +22,17 @@ const LinkedinIcon = generateShareIcon('linkedin');
 const EmailIcon = generateShareIcon('email');
 
 const OfertaOnLine = props => {
-  const { pathname } = useRouter();
+  const { pathname, isFallback } = useRouter();
+
+  if (!isFallback && !props.ofertaonline) {
+    return <Custom404 />;
+  }
+  if (isFallback) {
+    return <Fallback breadCrumb={'Ofertes On Line'} />;
+  }
+  if (props.ofertaonline === '404') {
+    return <Fallback notFound breadCrumb={'Ofertas On Line'} />;
+  }
   return (
     <Layout>
       <Head>
@@ -491,7 +503,7 @@ export async function getStaticPaths() {
 
   const paths = ofertes.map(o => `/ca-ES/oo/${o.ID}/${o.slug}`);
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {
@@ -501,7 +513,11 @@ export async function getStaticProps({ params }) {
 
   const ofertaonline = await res.json();
 
-  return { props: { ofertaonline }, revalidate: 1 };
+  if (!ofertaonline.data) {
+    return { props: { ofertaonline }, revalidate: 1 };
+  } else {
+    return { props: { ofertaonline: '404' } };
+  }
 }
 
 export default OfertaOnLine;
