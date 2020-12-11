@@ -4,7 +4,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
 import Layout from '@components/MyLayout.js';
-import BrandsGallery from '@components/BrandsGallery';
+import BrandsGallery from '@components/brandsgallery';
+import Banners from '@components/banners/index.js';
+import BrandsGalleryInsurances from '@components/brandsgalleryinsurances';
 
 const SelectCity = dynamic(import('@components/SelectCity'), {
   loading: () => (
@@ -52,42 +54,7 @@ const PostsByCategory = props => {
       </nav>
       <section>
         <div>
-          {props.banners.map((banner, index) => (
-            <React.Fragment key={index}>
-              {banner.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
-              banner.acf.la_publicidad_es_de_ca != true &&
-              banner.acf.sector_del_banner.term_id == props.id ? (
-                <React.Fragment>
-                  <p className="align-center promo dk">
-                    <Link href={banner.acf.url_de_destino_del_banner}>
-                      <a target="_blank">
-                        <img
-                          src={banner.acf.banner_grande_728x90.sizes.large}
-                          width={'728'}
-                          height={'90'}
-                          loading={'lazy'}
-                        />
-                      </a>
-                    </Link>
-                  </p>
-                  <p className="align-center promo mb">
-                    <Link href={banner.acf.url_de_destino_del_banner}>
-                      <a target="_blank">
-                        <img
-                          src={banner.acf.baner_movil_320x100.sizes.large}
-                          width={'320'}
-                          height={'100'}
-                          loading={'lazy'}
-                        />
-                      </a>
-                    </Link>
-                  </p>
-                </React.Fragment>
-              ) : (
-                ''
-              )}
-            </React.Fragment>
-          ))}
+          <Banners data={props.banners} />
         </div>
         <h1>
           <img
@@ -142,46 +109,15 @@ const PostsByCategory = props => {
         <IntlProvider defaultLocale="ca">
           <section>
             {props.posts[0].categoria_de_la_prestacion.term_id === 6 ? (
-              <ul className="gallery national-gallery">
-                <li>
-                      <p className="fade-in align-center">
-                        <Link href="https://www.colectivosubica.com/familiamassegura/">
-                          <a
-                            title="Federación Española Famílies Nombroses / Ubica, correduría de seguros"
-                            target="_blank"
-                          >
-                            <img
-                              className="fade-in"
-                              src="/static/01-seguros-nacionales.png"
-                              alt="Logos marcas de seguros"
-                            />
-                          </a>
-                        </Link>
-                      </p>
-                </li>
-                <li>
-                      <p className="fade-in align-center">
-                        <Link href="https://www.colectivosubica.com/familiamassegura/">
-                          <a
-                            title="Federación Española Famílies Nombroses / Ubica, correduría de seguros"
-                            target="_blank"
-                          >
-                            <img
-                              className="fade-in"
-                              src="/static/02-seguros-nacionales.png"
-                              alt="Logos marcas de seguros"
-                            />
-                          </a>
-                        </Link>
-                      </p>
-                </li>
-              </ul>
-            ) : (
-              ''
-            )}
-            {props.uniquemarcas.length >= 1 ? (
-              <BrandsGallery data={props.marcasofertas} type={'ca'} />
+              <div className={'brands-gallery-wrapper'}>
+                <BrandsGalleryInsurances />
+              </div>
             ) : null}
+            <div className={'brands-gallery-wrapper'}>
+              {props.uniquemarcas.length >= 1 ? (
+                <BrandsGallery data={props.marcasofertas} type={'ca'} />
+              ) : null}
+            </div>
           </section>
         </IntlProvider>
         <section>
@@ -208,151 +144,54 @@ const PostsByCategory = props => {
           ) : null}
         </section>
       </section>
-      {props.posts.length >= 2 && (
-        <style jsx>{`
-          .national-gallery {
-            background: #eeeeee;
-            margin-top: 1em !important;
-            margin-bottom: 1em !important;
-            padding-top: 0.75em !important;
-          }
+      <style jsx>{`
+        .clear {
+          clear: both;
+        }
+        .file-label {
+          background: #f18903 !important;
+          color: #ffffff !important;
+          font-weight: 400;
+          font-size: 0.9rem;
+          white-space: normal;
+        }
+        .file-label:hover {
+          background: #b66502 !important;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        .breadcrumbs {
+          margin-bottom: 1em;
+        }
+        h1,
+        .align-center {
+          text-align: center;
+        }
+        .dk {
+          display: none;
+        }
+        .promo {
+          margin-top: 1em;
+        }
+        h1 {
+          color: #cb5599;
+        }
+        nav a {
+          color: #00add9;
+        }
+        @media screen and (min-width: 768px) {
           .dk {
+            display: block;
+          }
+          .mb {
             display: none;
           }
-          @media screen and (min-width: 768px) {
-            .wrapper {
-              width: 80%;
-              margin: 0 auto;
-            }
-            .dk {
-              display: block;
-            }
-            .mb {
-              display: none;
-            }
-          }
-          @media screen and (min-width: 1024px) {
-            .wrapper {
-              width: 50%;
-            }
-          }
-          .promo {
-            margin-top: 1em;
-          }
-          .file-label {
-            background: #f18903 !important;
-            color: #ffffff;
-            font-weight: 400;
-            font-size: 0.9rem;
-            white-space: normal;
-          }
-          .file-label:hover {
-            background: #960025 !important;
-            text-decoration: none;
-            cursor: pointer;
-          }
-          .breadcrumbs {
-            margin-bottom: 1em;
-          }
-          h1,
-          .align-center {
-            text-align: center;
-          }
-          h1 {
-            color: #cb5599;
-          }
-          .gallery {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            padding: 5px;
-          }
-          ul {
-            list-style-type: none !important;
-            margin-left: 0;
-            margin: 0 auto !important;
-          }
-          a {
-            color: inherit !important;
-          }
-          a:hover {
-            text-decoration: underline;
-          }
-          nav a {
-            color: #00add9;
-          }
-          .benefit {
-            width: 150px;
-          }
-          .gallery-label {
-            position: relative;
-            margin-top: -40px;
-            margin-right: 5px;
-            float: right;
-            text-align: center;
-            background: #f18903 !important;
-          }
-          .titulo-oferta {
-            color: #ff0000;
-          }
-          @media screen and (min-width: 320px) {
-            .gallery {
-              width: 100%;
-            }
-            .benefit {
-              margin: 5px;
-            }
-          }
-          @media screen and (max-width: 375px) {
-            .benefit {
-              width: 124px;
-            }
-          }
-          @media screen and (min-width: 360px) {
-            .gallery {
-              width: 90%;
-            }
-          }
-          @media screen and (min-width: 768px) {
-            .gallery {
-              width: 90%;
-            }
-            .benefit {
-              width: 200px;
-              margin: 7.5px;
-            }
-          }
-          @media screen and (min-width: 1024px) {
-            .gallery {
-              width: 100%;
-            }
-            .benefit {
-              width: 220px;
-              margin: 0 10px;
-            }
-          }
-          @media screen and (min-width: 1160px) {
-            .benefit {
-              width: 245px;
-            }
-          }
-          .fade-in {
-            animation-name: fadeIn;
-            animation-duration: 1.3s;
-            animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-            animation-fill-mode: forwards;
-          }
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-        `}</style>
-      )}
+        }
+        .brands-gallery-wrapper {
+          margin-top: 1em !important;
+          margin-bottom: 1em !important;
+        }
+      `}</style>
     </Layout>
   );
 };
@@ -390,7 +229,15 @@ export async function getStaticProps({ params }) {
   const res4 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales?per_page=100`
   );
-  const banners = await res4.json();
+  const AlmostBanners = await res4.json();
+
+  const banners = AlmostBanners.filter(
+    x =>
+      x.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
+      x.acf.la_publicidad_es_de_ca == true &&
+      x.acf.comunidad_autonoma.name == posts[0].comunidad_autonoma &&
+      x.acf.sector_del_banner.term_id == id
+  );
 
   const uniquemarcas = [
     ...new Set(

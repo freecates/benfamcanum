@@ -4,10 +4,11 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
 import Layout from '@components/MyLayout.js';
-import Gallery from '@components/Gallery.js';
-import BrandsGallery from '@components/BrandsGallery.js';
+import Gallery from '@components/gallery/index.js';
+import BrandsGallery from '@components/brandsgallery/index.js';
 import Banners from '@components/banners';
 import Fallback from '@components/Fallback.js';
+import BrandsGalleryInsurances from '@components/brandsgalleryinsurances';
 import Custom404 from '../../../../404';
 
 const today = Date.now();
@@ -86,105 +87,51 @@ const PostsByCategoryComunidad = props => {
             ) : null}
           </section>
           <style jsx>{`
+            .clear {
+              clear: both;
+            }
+            .file-label {
+              background: #f18903 !important;
+              color: #ffffff !important;
+              font-weight: 400;
+              font-size: 0.9rem;
+              white-space: normal;
+            }
+            .file-label:hover {
+              background: #b66502 !important;
+              text-decoration: none;
+              cursor: pointer;
+            }
             .breadcrumbs {
               margin-bottom: 1em;
-            }
-            .national-gallery {
-              background: #eeeeee;
-              margin-top: 1em !important;
-              padding-top: 0.75em !important;
-            }
-            .national-gallery:last-child {
-              margin-bottom: 1em !important;
             }
             h1,
             .align-center {
               text-align: center;
             }
+            .dk {
+              display: none;
+            }
+            .promo {
+              margin-top: 1em;
+            }
             h1 {
               color: #cb5599;
             }
-            a:hover {
-              text-decoration: underline;
-            }
             nav a {
               color: #00add9;
-            }
-            .gallery {
-              display: -ms-flexbox;
-              display: flex;
-              -ms-flex-wrap: wrap;
-              flex-wrap: wrap;
-              padding: 5px;
-            }
-            ul {
-              list-style-type: none !important;
-              margin-left: 0;
-              margin: 0 auto !important;
-            }
-            nav a {
-              color: #00add9;
-            }
-            .benefit {
-              width: 150px;
-            }
-            .gallery-label {
-              position: relative;
-              margin-top: -40px;
-              margin-right: 5px;
-              float: right;
-              text-align: center;
-              background: #f18903 !important;
-            }
-            .titulo-oferta {
-              color: #ff0000;
-            }
-            @media screen and (min-width: 320px) {
-              .gallery {
-                width: 100%;
-              }
-              .benefit {
-                margin: 5px;
-              }
-            }
-            @media screen and (max-width: 375px) {
-              .benefit {
-                width: 124px;
-              }
-            }
-            @media screen and (min-width: 360px) {
-              .gallery {
-                width: 90%;
-              }
             }
             @media screen and (min-width: 768px) {
-              .gallery {
-                width: 90%;
+              .dk {
+                display: block;
               }
-              .benefit {
-                width: 200px;
-                margin: 7.5px;
-              }
-            }
-            @media screen and (min-width: 1024px) {
-              .gallery {
-                width: 100%;
-              }
-              .benefit {
-                width: 220px;
-                margin: 0 10px;
+              .mb {
+                display: none;
               }
             }
-            @media screen and (min-width: 1160px) {
-              .benefit {
-                width: 245px;
-              }
-            }
-            .fade-in {
-              animation-name: fadeIn;
-              animation-duration: 1.3s;
-              animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-              animation-fill-mode: forwards;
+            .brands-gallery-wrapper {
+              margin-top: 1em !important;
+              margin-bottom: 1em !important;
             }
           `}</style>
         </Layout>
@@ -276,49 +223,18 @@ const PostsByCategoryComunidad = props => {
             <IntlProvider defaultLocale="es">
               <section>
                 {props.posts[0].categoria_de_la_prestacion.term_id === 6 ? (
-                  <ul className="gallery national-gallery">
-                    <li>
-                      <p className="fade-in align-center">
-                        <Link href="https://www.colectivosubica.com/familiamassegura/">
-                          <a
-                            title="Federación Española Familias Numerosas / Ubica, correduría de seguros"
-                            target="_blank"
-                          >
-                            <img
-                              className="fade-in"
-                              src="/static/01-seguros-nacionales.png"
-                              alt="Logos marcas de seguros"
-                              loading={'lazy'}
-                            />
-                          </a>
-                        </Link>
-                      </p>
-                    </li>
-                    <li>
-                      <p className="fade-in align-center">
-                        <Link href="https://www.colectivosubica.com/familiamassegura/">
-                          <a
-                            title="Federación Española Familias Numerosas / Ubica, correduría de seguros"
-                            target="_blank"
-                          >
-                            <img
-                              className="fade-in"
-                              src="/static/02-seguros-nacionales.png"
-                              alt="Logos marcas de seguros"
-                              loading={'lazy'}
-                            />
-                          </a>
-                        </Link>
-                      </p>
-                    </li>
-                  </ul>
+                  <div className={'brands-gallery-wrapper'}>
+                    <BrandsGalleryInsurances />
+                  </div>
                 ) : null}
-                {props.uniquemarcas.length >= 1 ? (
-                  <BrandsGallery data={props.marcasofertas} />
-                ) : null}
-                {props.marcascaofertas.length >= 1 ? (
-                  <BrandsGallery data={props.marcascaofertas} type={'ca'} />
-                ) : null}
+                <div className={'brands-gallery-wrapper'}>
+                  {props.uniquemarcas.length >= 1 ? (
+                    <BrandsGallery data={props.marcasofertas} />
+                  ) : null}
+                  {props.marcascaofertas.length >= 1 ? (
+                    <BrandsGallery data={props.marcascaofertas} type={'ca'} />
+                  ) : null}
+                </div>
 
                 <section>
                   <hr />
@@ -352,276 +268,54 @@ const PostsByCategoryComunidad = props => {
               </section>
             </IntlProvider>
           </section>
-          {props.uniquemarcas.length >= 2 && props.uniquecamarcas.length >= 1 ? (
-            <style jsx>{`
-              .clear {
-                clear: both;
-              }
-              .national-gallery {
-                background: #eeeeee;
-                margin-top: 1em !important;
-                margin-bottom: 1em !important;
-                padding-top: 0.75em !important;
-              }
-              .file-label {
-                background: #f18903 !important;
-                color: #ffffff !important;
-                font-weight: 400;
-                font-size: 0.9rem;
-                white-space: normal;
-              }
-              .file-label:hover {
-                background: #b66502 !important;
-                text-decoration: none;
-                cursor: pointer;
-              }
-              @media screen and (max-width: 1023px) {
-                .national-gallery {
-                  margin-top: 1em !important;
-                  margin-bottom: 0 !important;
-                }
-                section ul.national-gallery:nth-child(2) {
-                  margin-bottom: 1em !important;
-                  margin-top: 0 !important;
-                }
-              }
-              .breadcrumbs {
-                margin-bottom: 1em;
-              }
-              h1,
-              .align-center {
-                text-align: center;
-              }
+          <style jsx>{`
+            .clear {
+              clear: both;
+            }
+            .file-label {
+              background: #f18903 !important;
+              color: #ffffff !important;
+              font-weight: 400;
+              font-size: 0.9rem;
+              white-space: normal;
+            }
+            .file-label:hover {
+              background: #b66502 !important;
+              text-decoration: none;
+              cursor: pointer;
+            }
+            .breadcrumbs {
+              margin-bottom: 1em;
+            }
+            h1,
+            .align-center {
+              text-align: center;
+            }
+            .dk {
+              display: none;
+            }
+            .promo {
+              margin-top: 1em;
+            }
+            h1 {
+              color: #cb5599;
+            }
+            nav a {
+              color: #00add9;
+            }
+            @media screen and (min-width: 768px) {
               .dk {
+                display: block;
+              }
+              .mb {
                 display: none;
               }
-              .promo {
-                margin-top: 1em;
-              }
-              h1 {
-                color: #cb5599;
-              }
-              .gallery {
-                display: -ms-flexbox;
-                display: flex;
-                -ms-flex-wrap: wrap;
-                flex-wrap: wrap;
-                padding: 5px;
-              }
-              ul {
-                list-style-type: none !important;
-                margin-left: 0;
-                margin: 0 auto !important;
-              }
-              a {
-                color: inherit !important;
-              }
-              a:hover {
-                text-decoration: underline;
-              }
-              nav a {
-                color: #00add9;
-              }
-              .benefit {
-                width: 150px;
-              }
-              .gallery-label {
-                position: relative;
-                margin-top: -40px;
-                margin-right: 5px;
-                float: right;
-                text-align: center;
-                background: #f18903 !important;
-              }
-              .titulo-oferta {
-                color: #ff0000;
-              }
-              @media screen and (min-width: 320px) {
-                .gallery {
-                  width: 100%;
-                }
-                .benefit {
-                  margin: 5px;
-                }
-              }
-              @media screen and (max-width: 375px) {
-                .benefit {
-                  width: 124px;
-                }
-              }
-              @media screen and (min-width: 360px) {
-                .gallery {
-                  width: 90%;
-                }
-              }
-              @media screen and (min-width: 768px) {
-                .gallery {
-                  width: 90%;
-                }
-                .benefit {
-                  width: 200px;
-                  margin: 7.5px;
-                }
-                .dk {
-                  display: block;
-                }
-                .mb {
-                  display: none;
-                }
-              }
-              @media screen and (min-width: 1024px) {
-                .gallery {
-                  width: 100%;
-                }
-                .national-gallery.gallery {
-                  width: 50%;
-                  float: left;
-                }
-                .benefit {
-                  width: 220px;
-                  margin: 0 10px;
-                }
-              }
-              @media screen and (min-width: 1160px) {
-                .benefit {
-                  width: 245px;
-                }
-              }
-              .fade-in {
-                animation-name: fadeIn;
-                animation-duration: 1.3s;
-                animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-                animation-fill-mode: forwards;
-              }
-            `}</style>
-          ) : (
-            <style jsx>{`
-              .national-gallery {
-                background: #eeeeee;
-                margin-top: 1em !important;
-                padding-top: 0.75em !important;
-              }
-              .national-gallery:last-child {
-                margin-bottom: 1em !important;
-              }
-              .breadcrumbs {
-                margin-bottom: 1em;
-              }
-              .dk {
-                display: none;
-              }
-              .promo {
-                margin-top: 1em;
-              }
-              h1,
-              .align-center {
-                text-align: center;
-              }
-              h1 {
-                color: #cb5599;
-              }
-              .gallery {
-                display: -ms-flexbox;
-                display: flex;
-                -ms-flex-wrap: wrap;
-                flex-wrap: wrap;
-                padding: 5px;
-              }
-              ul {
-                list-style-type: none !important;
-                margin-left: 0;
-                margin: 0 auto !important;
-              }
-              a {
-                color: inherit !important;
-              }
-              a:hover {
-                text-decoration: underline;
-              }
-              nav a {
-                color: #00add9;
-              }
-              .benefit {
-                width: 150px;
-              }
-              .gallery-label {
-                position: relative;
-                margin-top: -40px;
-                margin-right: 5px;
-                float: right;
-                text-align: center;
-                background: #f18903 !important;
-              }
-              .titulo-oferta {
-                color: #ff0000;
-              }
-              .file-label {
-                background: #f18903 !important;
-                color: #ffffff !important;
-                font-weight: 400;
-                font-size: 0.9rem;
-                white-space: normal;
-              }
-              .file-label:hover {
-                background: #b66502 !important;
-                text-decoration: none;
-                cursor: pointer;
-              }
-              @media screen and (min-width: 320px) {
-                .gallery {
-                  width: 100%;
-                }
-                .benefit {
-                  margin: 5px;
-                }
-              }
-              @media screen and (max-width: 375px) {
-                .benefit {
-                  width: 124px;
-                }
-              }
-              @media screen and (min-width: 360px) {
-                .gallery {
-                  width: 90%;
-                }
-              }
-              @media screen and (min-width: 768px) {
-                .gallery {
-                  width: 90%;
-                }
-                .benefit {
-                  width: 200px;
-                  margin: 7.5px;
-                }
-                .dk {
-                  display: block;
-                }
-                .mb {
-                  display: none;
-                }
-              }
-              @media screen and (min-width: 1024px) {
-                .gallery {
-                  width: 100%;
-                }
-                .benefit {
-                  width: 220px;
-                  margin: 0 10px;
-                }
-              }
-              @media screen and (min-width: 1160px) {
-                .benefit {
-                  width: 245px;
-                }
-              }
-              .fade-in {
-                animation-name: fadeIn;
-                animation-duration: 1.3s;
-                animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-                animation-fill-mode: forwards;
-              }
-            `}</style>
-          )}
+            }
+            .brands-gallery-wrapper {
+              margin-top: 1em !important;
+              margin-bottom: 1em !important;
+            }
+          `}</style>
         </Layout>
       )}
     </section>

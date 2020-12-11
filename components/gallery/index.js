@@ -1,19 +1,20 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import styles from './gallery.module.css'
 
 const Gallery = ({ data }) => {
   const { pathname } = useRouter();
   const langURL = !pathname.includes('/ca-ES/') ? `/` : '/ca-ES/';
   return (
-    <ul className="gallery">
+    <ul className={styles.gallery}>
       {data.map((d, index) => (
-        <li className="benefit" key={index}>
+        <li className={styles.benefit} key={index}>
           {d.imagen_destacada_de_la_oferta_general_thumb ? (
-            <p className="fade-in">
+            <p className={styles.fadeIn}>
               <Link href={`${langURL}p/${d.ID}/${d.slug}`}>
                 <a title={'Ver la ficha de ' + d.name}>
                   <img
-                    className="fade-in"
+                    className={styles.fadeIn}
                     loading={'lazy'}
                     width="250"
                     height="250"
@@ -26,18 +27,18 @@ const Gallery = ({ data }) => {
           ) : null}
 
           {d.imagen_destacada_de_la_oferta_socios_thumb ? (
-            <p className="fade-in">
+            <p className={styles.fadeIn}>
               <Link href={`${langURL}p/${d.ID}/${d.slug}`}>
                 <a title={'Ver la ficha de ' + d.name}>
                   <img
-                    className="fade-in"
+                    className={styles.fadeIn}
                     loading={'lazy'}
                     width="250"
                     height="250"
                     src={d.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail}
                     alt={d.titulo_de_la_oferta_oferta_socios}
                   />
-                  <span className="label alert gallery-label">
+                  <span className={styles.galleryLabel}>
                     <small>
                       EXCLUSIVO
                       <br /> SOCIOS
@@ -58,11 +59,11 @@ const Gallery = ({ data }) => {
             <br />
 
             {d.titulo_de_la_oferta_oferta_general ? (
-              <span className="titulo-oferta">{d.titulo_de_la_oferta_oferta_general}</span>
+              <span className={styles.tituloOferta}>{d.titulo_de_la_oferta_oferta_general}</span>
             ) : null}
 
             {d.titulo_de_la_oferta_oferta_socios ? (
-              <span className="titulo-oferta">{d.titulo_de_la_oferta_oferta_socios}</span>
+              <span className={styles.tituloOferta}>{d.titulo_de_la_oferta_oferta_socios}</span>
             ) : null}
           </p>
         </li>

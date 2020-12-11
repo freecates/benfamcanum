@@ -4,8 +4,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
 import Layout from '@components/MyLayout.js';
-import BrandsGallery from '@components/BrandsGallery';
-import Gallery from '@components/Gallery';
+import BrandsGallery from '@components/brandsgallery';
+import Gallery from '@components/gallery';
 import Banners from '@components/banners/index.js';
 
 const today = Date.now();
@@ -98,7 +98,7 @@ const PostByComunidad = props => {
             </ul>
           </nav>
           <section>
-          <Banners data={props.banners} />
+            <Banners data={props.banners} />
             <h1>{props.posts[0].comunidad_autonoma}</h1>
 
             <section id="select-city">
@@ -136,12 +136,14 @@ const PostByComunidad = props => {
 
             <IntlProvider defaultLocale="ca">
               <section>
-                {props.marcasofertas.length >= 1 ? (
-                  <BrandsGallery data={props.marcasofertas} />
-                ) : null}
-                {props.marcascaofertas.length >= 1 ? (
-                  <BrandsGallery data={props.marcascaofertas} type={'ca'} />
-                ) : null}
+                <div className={'brands-gallery-wrapper'}>
+                  {props.uniquemarcas.length >= 1 ? (
+                    <BrandsGallery data={props.marcasofertas} />
+                  ) : null}
+                  {props.marcascaofertas.length >= 1 ? (
+                    <BrandsGallery data={props.marcascaofertas} type={'ca'} />
+                  ) : null}
+                </div>
 
                 <p className="align-center">
                   ... O si t'ho estimes més accedeix directament a qualsevol de les fitxes
@@ -150,122 +152,54 @@ const PostByComunidad = props => {
               </section>
             </IntlProvider>
           </section>
-          {props.posts.length && (
-            <style jsx>{`
-              .national-gallery {
-                background: #eeeeee;
-                margin-top: 1em !important;
-                padding-top: 0.75em !important;
-              }
-              .national-gallery:last-child {
-                margin-bottom: 1em !important;
-              }
-              .breadcrumbs {
-                margin-bottom: 1em;
-              }
-              h1,
-              .align-center {
-                text-align: center;
-              }
-              h1 {
-                color: #cb5599;
-              }
+          <style jsx>{`
+            .clear {
+              clear: both;
+            }
+            .file-label {
+              background: #f18903 !important;
+              color: #ffffff !important;
+              font-weight: 400;
+              font-size: 0.9rem;
+              white-space: normal;
+            }
+            .file-label:hover {
+              background: #b66502 !important;
+              text-decoration: none;
+              cursor: pointer;
+            }
+            .breadcrumbs {
+              margin-bottom: 1em;
+            }
+            h1,
+            .align-center {
+              text-align: center;
+            }
+            .dk {
+              display: none;
+            }
+            .promo {
+              margin-top: 1em;
+            }
+            h1 {
+              color: #cb5599;
+            }
+            nav a {
+              color: #00add9;
+            }
+            @media screen and (min-width: 768px) {
               .dk {
+                display: block;
+              }
+              .mb {
                 display: none;
               }
-              .promo {
-                margin-top: 1em;
-              }
-              .gallery {
-                display: -ms-flexbox;
-                display: flex;
-                -ms-flex-wrap: wrap;
-                flex-wrap: wrap;
-                padding: 5px;
-              }
-              ul {
-                list-style-type: none !important;
-                margin-left: 0;
-                margin: 0 auto !important;
-              }
-              a {
-                color: inherit !important;
-              }
-              a:hover {
-                text-decoration: underline;
-              }
-              nav a {
-                color: #00add9;
-              }
-              .benefit {
-                width: 150px;
-              }
-              .gallery-label {
-                position: relative;
-                margin-top: -40px;
-                margin-right: 5px;
-                float: right;
-                text-align: center;
-                background: #f18903 !important;
-              }
-              .titulo-oferta {
-                color: #ff0000;
-              }
-              @media screen and (min-width: 320px) {
-                .gallery {
-                  width: 100%;
-                }
-                .benefit {
-                  margin: 5px;
-                }
-              }
-              @media screen and (max-width: 375px) {
-                .benefit {
-                  width: 124px;
-                }
-              }
-              @media screen and (min-width: 360px) {
-                .gallery {
-                  width: 90%;
-                }
-              }
-              @media screen and (min-width: 768px) {
-                .gallery {
-                  width: 90%;
-                }
-                .benefit {
-                  width: 200px;
-                  margin: 7.5px;
-                }
-                .dk {
-                  display: block;
-                }
-                .mb {
-                  display: none;
-                }
-              }
-              @media screen and (min-width: 1024px) {
-                .gallery {
-                  width: 100%;
-                }
-                .benefit {
-                  width: 220px;
-                  margin: 10px;
-                }
-              }
-              @media screen and (min-width: 1160px) {
-                .benefit {
-                  width: 245px;
-                }
-              }
-              .fade-in {
-                animation-name: fadeIn;
-                animation-duration: 1.3s;
-                animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-                animation-fill-mode: forwards;
-              }
-            `}</style>
-          )}
+            }
+            .brands-gallery-wrapper {
+              margin-top: 1em !important;
+              margin-bottom: 1em !important;
+            }
+          `}</style>
         </Layout>
       )}
     </section>

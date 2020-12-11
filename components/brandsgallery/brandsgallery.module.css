@@ -1,0 +1,54 @@
+.nationalGallery {
+  background: #eeeeee;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.75em 5px 5px 5px;
+  margin: 0;
+  width: 100%;
+}
+
+.benefit {
+  list-style-type: none !important;
+  width: 170px;
+  text-align: center;
+}
+.benefit a {
+  color: inherit !important;
+}
+.benefit a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 320px) {
+  .benefit {
+    margin: 5px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .benefit {
+    width: 125px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .benefit {
+    width: 200px;
+    margin: 7.5px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .benefit {
+    width: 220px;
+    margin: 0 10px;
+  }
+}
+@media screen and (min-width: 1160px) {
+  .benefit {
+    width: 245px;
+  }
+}
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 1.3s;
+  animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+  animation-fill-mode: forwards;
+}

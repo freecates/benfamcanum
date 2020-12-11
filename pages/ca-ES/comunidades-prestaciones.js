@@ -2,7 +2,6 @@ import fetch from 'isomorphic-unfetch';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { IntlProvider } from 'react-intl';
 import Layout from '@components/MyLayout.js';
 

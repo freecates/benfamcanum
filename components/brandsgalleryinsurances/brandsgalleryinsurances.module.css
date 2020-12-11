@@ -1,0 +1,20 @@
+.insurances {
+  background: #eeeeee;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.75em 5px 5px 5px;
+  margin: 0;
+  width: 100%;
+  list-style-type: none !important;
+}
+
+.insurances p {
+  text-align: center;
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 1.3s;
+  animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+  animation-fill-mode: forwards;
+}
