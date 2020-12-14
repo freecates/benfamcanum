@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "redirects": [
+  "rewrites": [
     {
       "source": "/manifest.json",
       "destination": "/static/manifest.json"
