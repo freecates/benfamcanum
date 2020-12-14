@@ -1,29 +1,40 @@
 {
   "version": 2,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/manifest.json",
-      "dest": "/static/manifest.json"
+      "source": "/manifest.json",
+      "destination": "/static/manifest.json"
     },
     {
-      "src": "/google614be494af9bad15.html",
-      "dest": "/static/google614be494af9bad15.html"
+      "source": "/google614be494af9bad15.html",
+      "destination": "/static/google614be494af9bad15.html"
     },
     {
-      "src": "^/service-worker.js$",
-      "dest": "/_next/static/service-worker.js",
-      "headers": {
-        "cache-control": "public, max-age=43200, immutable",
-        "Service-Worker-Allowed": "/"
-      }
+      "source": "/service-worker.js",
+      "destination": "/_next/static/service-worker.js"
     },
     {
-      "src": "/sitemap.xml",
-      "dest": "/static/sitemap.xml"
+      "source": "/sitemap.xml",
+      "destination": "/static/sitemap.xml"
     },
     {
-      "src": "/robots.txt",
-      "dest": "/static/robots.txt"
+      "source": "/robots.txt",
+      "destination": "/static/robots.txt"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/service-worker.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=43200, immutable"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
     }
   ]
 }
