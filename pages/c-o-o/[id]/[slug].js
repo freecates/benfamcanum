@@ -159,7 +159,7 @@ export async function getStaticProps({ params }) {
 
   const ofertasonlines = await res.json();
 
-  return { props: { ofertasonlines } };
+  return { props: { ofertasonlines }, revalidate: 1 };
 }
 
 export default OfertasOnLineByCategory;
