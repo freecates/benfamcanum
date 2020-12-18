@@ -11,6 +11,7 @@ const SeoHead = ({ seo }) => {
   const pURL = pathname.includes('/p/') ? `p/${seo.id}/${seo.slug}` : '';
   const ogmURL = pathname.includes('/ogm/') ? `ogm/${seo.id}/${seo.slug}` : '';
   const proURL = pathname.includes('/pro/') ? `pro/${seo.id}/${seo.slug}` : '';
+  const ooURL = pathname.includes('/oo/') ? `oo/${seo.id}/${seo.slug}` : '';
 
   return (
     <Head>
@@ -25,7 +26,10 @@ const SeoHead = ({ seo }) => {
       ) : null}
       {seo.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : null}
 
-      <meta property="og:url" content={(caURL || esURL) + (prURL || pURL || ogmURL || proURL)} />
+      <meta
+        property="og:url"
+        content={(caURL || esURL) + (prURL || pURL || ogmURL || proURL || ooURL)}
+      />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={seo.acf.nombre_del_establecimiento} />
       {seo.acf.descripcion_de_la_promocion ? (
@@ -50,6 +54,30 @@ const SeoHead = ({ seo }) => {
             content={seo.acf.descripcion_de_la_oferta_oferta_general}
           />
           <meta name="description" content={seo.acf.descripcion_de_la_oferta_oferta_general} />
+        </>
+      ) : null}
+      {seo.acf.descripcion_de_la_oferta_online_exclusiva_socios ? (
+        <>
+          <meta
+            property="og:description"
+            content={seo.acf.descripcion_de_la_oferta_online_exclusiva_socios}
+          />
+          <meta
+            name="description"
+            content={seo.acf.descripcion_de_la_oferta_online_exclusiva_socios}
+          />
+        </>
+      ) : null}
+      {seo.acf.descripcion_de_la_oferta_online_oferta_general ? (
+        <>
+          <meta
+            property="og:description"
+            content={seo.acf.descripcion_de_la_oferta_online_oferta_general}
+          />
+          <meta
+            name="description"
+            content={seo.acf.ddescripcion_de_la_oferta_online_oferta_general}
+          />
         </>
       ) : null}
       {seo.acf.imagen_destacada_de_la_oferta_socios_large ? (

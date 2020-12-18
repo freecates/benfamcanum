@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch';
-import Head from 'next/head';
+import SeoHead from '@components/SeoHead';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import FontAwesome from 'react-fontawesome';
@@ -35,59 +35,7 @@ const OfertaOnLine = props => {
   }
   return (
     <Layout>
-      <Head>
-        {props.ofertaonline.acf.nombre_del_establecimiento ? (
-          <title
-            dangerouslySetInnerHTML={{
-              __html: props.ofertaonline.acf.nombre_del_establecimiento + ' - Familias Numerosas'
-            }}
-          />
-        ) : (
-          ''
-        )}
-        {props.ofertaonline.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : ''}
-
-        <meta
-          property="og:url"
-          content={`/oo/${props.ofertaonline.id}/${props.ofertaonline.slug}`}
-        />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={props.ofertaonline.acf.nombre_del_establecimiento} />
-        {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? (
-          <meta
-            property="og:description"
-            content={props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios}
-          />
-        ) : (
-          ''
-        )}
-        {props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general ? (
-          <meta
-            property="og:description"
-            content={props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general}
-          />
-        ) : (
-          ''
-        )}
-        {props.ofertaonline.acf.imagen_destacada_de_la_oferta_socios_large ? (
-          <meta
-            property="og:image"
-            content={props.ofertaonline.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large}
-          />
-        ) : (
-          ''
-        )}
-        {props.ofertaonline.acf.imagen_destacada_de_la_oferta_general_large ? (
-          <meta
-            property="og:image"
-            content={props.ofertaonline.acf.imagen_destacada_de_la_oferta_general_large.sizes.large}
-          />
-        ) : (
-          ''
-        )}
-        <meta property="og:image:width" content="1024" />
-        <meta property="og:image:height" content="1024" />
-      </Head>
+      <SeoHead seo={props.ofertaonline} />
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>
