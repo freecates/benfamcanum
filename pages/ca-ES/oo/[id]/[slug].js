@@ -22,7 +22,6 @@ const LinkedinIcon = generateShareIcon('linkedin');
 const EmailIcon = generateShareIcon('email');
 
 const OfertaOnLine = props => {
-  console.log('props ', props);
   const { pathname, isFallback } = useRouter();
 
   if (!isFallback && !props.ofertaonline) {
@@ -150,9 +149,7 @@ const OfertaOnLine = props => {
                     alt={props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios}
                   />
                 </p>
-              ) : (
-                ''
-              )}
+              ) : null}
 
               {props.ofertaonline.acf.imagen_destacada_de_la_oferta_general_large ? (
                 <p>
@@ -167,9 +164,7 @@ const OfertaOnLine = props => {
                     alt={props.ofertaonline.acf.titulo_de_la_oferta_general}
                   />
                 </p>
-              ) : (
-                ''
-              )}
+              ) : null}
             </div>
 
             <div className="file-content">
@@ -189,15 +184,11 @@ const OfertaOnLine = props => {
                     />
                   </span>
                 </h1>
-              ) : (
-                ''
-              )}
+              ) : null}
 
               {props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios ? (
                 <h4>{props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios}</h4>
-              ) : (
-                ''
-              )}
+              ) : null}
 
               {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? (
                 <p
@@ -206,15 +197,11 @@ const OfertaOnLine = props => {
                     __html: props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios
                   }}
                 />
-              ) : (
-                ''
-              )}
+              ) : null}
 
               {props.ofertaonline.acf.titulo_de_la_oferta_general_online ? (
                 <h4>{props.ofertaonline.acf.titulo_de_la_oferta_general_online}</h4>
-              ) : (
-                ''
-              )}
+              ) : null}
 
               {props.ofertaonline.acf.descripcion_de_la_oferta_general_online ? (
                 <p
@@ -223,9 +210,15 @@ const OfertaOnLine = props => {
                     __html: props.ofertaonline.acf.descripcion_de_la_oferta_general_online
                   }}
                 />
-              ) : (
-                ''
-              )}
+              ) : null}
+
+              {props.ofertaonline.acf.texto_descriptivo_adicional_con_enlace ? (
+                <p>
+                  <a href={props.ofertaonline.acf.enlace_con_informacion_adicional_de_la_oferta}>
+                    {props.ofertaonline.acf.texto_descriptivo_adicional_con_enlace}
+                  </a>
+                </p>
+              ) : null}
 
               <div className="social-share-icons">
                 <div className="Post__some-network">

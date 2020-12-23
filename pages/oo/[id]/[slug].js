@@ -150,7 +150,7 @@ const OfertaOnLine = props => {
                   />
                 </p>
               ) : (
-                ''
+                null
               )}
 
               {props.ofertaonline.acf.imagen_destacada_de_la_oferta_general_large ? (
@@ -167,7 +167,7 @@ const OfertaOnLine = props => {
                   />
                 </p>
               ) : (
-                ''
+                null
               )}
             </div>
 
@@ -189,13 +189,13 @@ const OfertaOnLine = props => {
                   </span>
                 </h1>
               ) : (
-                ''
+                null
               )}
 
               {props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios ? (
                 <h4>{props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios}</h4>
               ) : (
-                ''
+                null
               )}
 
               {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? (
@@ -206,13 +206,13 @@ const OfertaOnLine = props => {
                   }}
                 />
               ) : (
-                ''
+                null
               )}
 
               {props.ofertaonline.acf.titulo_de_la_oferta_general_online ? (
                 <h4>{props.ofertaonline.acf.titulo_de_la_oferta_general_online}</h4>
               ) : (
-                ''
+                null
               )}
 
               {props.ofertaonline.acf.descripcion_de_la_oferta_general_online ? (
@@ -223,8 +223,16 @@ const OfertaOnLine = props => {
                   }}
                 />
               ) : (
-                ''
+                null
               )}
+
+              {props.ofertaonline.acf.texto_descriptivo_adicional_con_enlace ? (
+                <p>
+                  <a href={props.ofertaonline.acf.enlace_con_informacion_adicional_de_la_oferta}>
+                    {props.ofertaonline.acf.texto_descriptivo_adicional_con_enlace}
+                  </a>
+                </p>
+              ) : null}
 
               <div className="social-share-icons">
                 <div className="Post__some-network">
