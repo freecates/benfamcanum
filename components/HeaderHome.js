@@ -27,8 +27,8 @@ const HeaderHome = props => (
             <NavBarBenFamNum ruta={props.ruta} />
           </section>
         </div>
-        <div style={{maxWidth: '100%', width: '1917px', margin: '0 auto'}}>
-          <picture>
+        <div style={{maxWidth: '1917px', width: '100%', margin: '0 auto'}} className={'aspect-ratio-box'}>
+          <picture className={'aspect-ratio-box-inside'}>
             <source
               type="image/webp"
               srcSet="/static/02-bg-body-familias-numerosas-480w.webp"
@@ -202,6 +202,28 @@ const HeaderHome = props => (
           .section-b {
             padding: 2rem 5rem;
           }
+        }
+        .aspect-ratio-box {
+          height: 0;
+          overflow: hidden;
+          position: relative;
+        }
+        .aspect-ratio-box-inside {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+        @media screen and (max-width: 420px) {
+          .aspect-ratio-box {
+            padding-top: calc(358 / 480 * 100%);
+          } 
+        }
+        @media screen and (min-width: 568px) {
+          .aspect-ratio-box {
+            padding-top: calc(487 / 1917 * 100%);
+          } 
         }
       `}</style>
     </div>
