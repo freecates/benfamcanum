@@ -149,9 +149,7 @@ const OfertaOnLine = props => {
                     alt={props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios}
                   />
                 </p>
-              ) : (
-                null
-              )}
+              ) : null}
 
               {props.ofertaonline.acf.imagen_destacada_de_la_oferta_general_large ? (
                 <p>
@@ -166,9 +164,7 @@ const OfertaOnLine = props => {
                     alt={props.ofertaonline.acf.titulo_de_la_oferta_general}
                   />
                 </p>
-              ) : (
-                null
-              )}
+              ) : null}
             </div>
 
             <div className="file-content">
@@ -188,15 +184,11 @@ const OfertaOnLine = props => {
                     />
                   </span>
                 </h1>
-              ) : (
-                null
-              )}
+              ) : null}
 
               {props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios ? (
                 <h4>{props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios}</h4>
-              ) : (
-                null
-              )}
+              ) : null}
 
               {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? (
                 <p
@@ -205,15 +197,11 @@ const OfertaOnLine = props => {
                     __html: props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios
                   }}
                 />
-              ) : (
-                null
-              )}
+              ) : null}
 
               {props.ofertaonline.acf.titulo_de_la_oferta_general_online ? (
                 <h4>{props.ofertaonline.acf.titulo_de_la_oferta_general_online}</h4>
-              ) : (
-                null
-              )}
+              ) : null}
 
               {props.ofertaonline.acf.descripcion_de_la_oferta_general_online ? (
                 <p
@@ -222,14 +210,19 @@ const OfertaOnLine = props => {
                     __html: props.ofertaonline.acf.descripcion_de_la_oferta_general_online
                   }}
                 />
-              ) : (
-                null
-              )}
+              ) : null}
 
               {props.ofertaonline.acf.texto_descriptivo_adicional_con_enlace ? (
                 <p>
-                  <a href={props.ofertaonline.acf.enlace_con_informacion_adicional_de_la_oferta}>
-                    {props.ofertaonline.acf.texto_descriptivo_adicional_con_enlace}
+                  <a
+                    target={'_blank'}
+                    rel={'nofollow noopener'}
+                    title={props.ofertaonline.acf.texto_descriptivo_adicional_con_enlace}
+                    href={props.ofertaonline.acf.enlace_con_informacion_adicional_de_la_oferta}
+                  >
+                    <span className="label alert file-label-additional">
+                      {props.ofertaonline.acf.texto_descriptivo_adicional_con_enlace}
+                    </span>
                   </a>
                 </p>
               ) : null}
@@ -362,18 +355,29 @@ const OfertaOnLine = props => {
         }
         a {
           color: #00add9 !important;
-        }
-        .file-label {
+        }.file-label,
+        .file-label-additional {
           background: #f18903 !important;
           color: #ffffff;
           font-weight: bold;
           font-size: 1rem;
+          white-space: normal;
         }
-        .file-label a {
+        .file-label-additional {
+          background: #e0e4e8 !important;
+          color: #000000 !important;
+        }
+        a .file-label,
+        a .file-label-additional {
           color: #ffffff !important;
+          cursor: pointer;
         }
-        .file-label a:hover {
+        a:hover .file-label,
+        a:hover .file-label-additional {
           text-decoration: none;
+        }
+        a .file-label-additional {
+          color: #000000 !important;
         }
         .button.button-green {
           color: #ffffff !important;
