@@ -137,17 +137,13 @@ const Post = props => {
                 <span>
                   <a href={'tel:' + props.post.acf.telefono}>{props.post.acf.telefono}</a>
                 </span>
-              ) : (
-                ''
-              )}
+              ) : null}
               {props.post.acf.telefono_m ? (
                 <span>
                   {' '}
                   | <a href={'tel:' + props.post.acf.telefono_}>{props.post.acf.telefono_m}</a>
                 </span>
-              ) : (
-                ''
-              )}
+              ) : null}
               {props.post.acf.correo_electronico_del_establecimiento ? (
                 <span>
                   .{' '}
@@ -158,9 +154,7 @@ const Post = props => {
                     />
                   </a>{' '}
                 </span>
-              ) : (
-                ''
-              )}
+              ) : null}
               {props.post.acf.twitter_del_establecimiento ? (
                 <span>
                   |{' '}
@@ -171,9 +165,7 @@ const Post = props => {
                     />
                   </a>
                 </span>
-              ) : (
-                ''
-              )}{' '}
+              ) : null}{' '}
               {props.post.acf.facebook_del_establecimiento ? (
                 <span>
                   |{' '}
@@ -184,9 +176,7 @@ const Post = props => {
                     />
                   </a>
                 </span>
-              ) : (
-                ''
-              )}{' '}
+              ) : null}{' '}
               {props.post.acf.sitio_web_del_establecimiento ? (
                 <span>
                   |{' '}
@@ -197,9 +187,7 @@ const Post = props => {
                     />
                   </a>
                 </span>
-              ) : (
-                ''
-              )}
+              ) : null}
             </span>
           </h4>
 
@@ -271,15 +259,11 @@ const Post = props => {
                     </span>
                   </a>
                 </h1>
-              ) : (
-                ''
-              )}
+              ) : null}
 
               {props.post.acf.titulo_de_la_oferta_oferta_socios ? (
                 <h4>{props.post.acf.titulo_de_la_oferta_oferta_socios}</h4>
-              ) : (
-                ''
-              )}
+              ) : null}
 
               {props.post.acf.descripcion_de_la_oferta_oferta_socios ? (
                 <p
@@ -288,15 +272,11 @@ const Post = props => {
                     __html: props.post.acf.descripcion_de_la_oferta_oferta_socios
                   }}
                 />
-              ) : (
-                ''
-              )}
+              ) : null}
 
               {props.post.acf.titulo_de_la_oferta_oferta_general ? (
                 <h4>{props.post.acf.titulo_de_la_oferta_oferta_general}</h4>
-              ) : (
-                ''
-              )}
+              ) : null}
 
               {props.post.acf.descripcion_de_la_oferta_oferta_general ? (
                 <p
@@ -305,9 +285,7 @@ const Post = props => {
                     __html: props.post.acf.descripcion_de_la_oferta_oferta_general
                   }}
                 />
-              ) : (
-                ''
-              )}
+              ) : null}
 
               {props.post.acf.texto_descriptivo_adicional_con_enlace ? (
                 <p>
@@ -323,9 +301,23 @@ const Post = props => {
                     </a>
                   </Link>
                 </p>
-              ) : (
-                ''
-              )}
+              ) : null}
+
+              {props.post.acf.texto_descriptivo_adicional_con_enlace_2 ? (
+                <p>
+                  {' '}
+                  <Link href={props.post.acf.enlace_con_informacion_adicional_de_la_oferta_2}>
+                    <a
+                      title={props.post.acf.texto_descriptivo_adicional_con_enlace_2}
+                      target="_blank"
+                    >
+                      <span className="label alert file-label-additional">
+                        {props.post.acf.texto_descriptivo_adicional_con_enlace_2}
+                      </span>
+                    </a>
+                  </Link>
+                </p>
+              ) : null}
 
               <div className="social-share-icons">
                 <div className="Post__some-network">
@@ -419,9 +411,7 @@ const Post = props => {
                     URL={'p/' + props.post.id + '/' + props.post.slug}
                   />
                 </div>
-              ) : (
-                ''
-              )}
+              ) : null}
             </div>
           </div>
         </div>
