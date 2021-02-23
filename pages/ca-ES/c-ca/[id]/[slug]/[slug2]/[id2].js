@@ -228,10 +228,14 @@ const PostsByCategoryComunidad = props => {
                 ) : null}
                 <div className={'brands-gallery-wrapper'}>
                   {props.uniquemarcas.length >= 1 ? (
-                    <BrandsGallery data={props.marcasofertas} />
+                    <BrandsGallery data={props.marcasofertas} logos={props.marcasWithLogo} />
                   ) : null}
                   {props.marcascaofertas.length >= 1 ? (
-                    <BrandsGallery data={props.marcascaofertas} type={'ca'} />
+                    <BrandsGallery
+                      data={props.marcascaofertas}
+                      type={'ca'}
+                      logos={props.marcasCaWithLogo}
+                    />
                   ) : null}
                 </div>
 
@@ -362,12 +366,19 @@ export async function getStaticProps({ params }) {
   );
   const almostuniquemarcas = await res2.json();
   const marcasofertas = almostuniquemarcas.filter(x => x.marca != null && x.marca != '');
+  const marcasOfertasId = marcasofertas.map(a => a.marca.term_id);
 
   const res3 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_of_gr_m_ca=${sid}&comunidad=${caid}&sim-model=id-marca-comunidad`
   );
   const almostuniquecamarcas = await res3.json();
   const marcascaofertas = almostuniquecamarcas.filter(x => x.marca != null && x.marca != '');
+  const marcasCaOfertasId = marcascaofertas.map(a => a.marca.term_id);
+
+  const res6 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/acf/v3/marca?per_page=100`);
+  const marcasAcf = await res6.json();
+  const marcasWithLogo = marcasAcf.filter(x => marcasOfertasId.includes(x.id));
+  const marcasCaWithLogo = marcasAcf.filter(x => marcasCaOfertasId.includes(x.id));
 
   const res4 = await fetch(
     `https://gestorbeneficis.fanoc.org/wp-json/wp/v2/banners_sectoriales?per_page=100`
@@ -403,7 +414,9 @@ export async function getStaticProps({ params }) {
         banners,
         caid,
         sid,
-        ofertasonlines
+        ofertasonlines,
+        marcasWithLogo,
+        marcasCaWithLogo
       },
       revalidate: 1
     };
