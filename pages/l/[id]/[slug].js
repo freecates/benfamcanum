@@ -62,9 +62,11 @@ const PostsByLocalidad = props => (
       <IntlProvider defaultLocale="es">
         <section>
           <div className={'brands-gallery-wrapper'}>
-            {props.uniquemarcas.length >= 1 ? <BrandsGallery data={props.marcasofertas} /> : null}
+            {props.uniquemarcas.length >= 1 ? (
+              <BrandsGallery data={props.marcasofertas} logos={props.marcasWithLogo} />
+            ) : null}
             {props.uniquecamarcas.length >= 1 ? (
-              <BrandsGallery data={props.marcascaofertas} />
+              <BrandsGallery data={props.marcascaofertas} logos={props.marcasCaWithLogo} />
             ) : null}
           </div>
           <Gallery data={props.posts} />
@@ -173,8 +175,26 @@ export async function getStaticProps({ params }) {
 
   const uniquemarcas = uniquemarcasnotfiltered.filter(Boolean);
   const uniquecamarcas = uniquecamarcasnotfiltered.filter(Boolean);
+  const marcasOfertasId = marcasofertas.map(a => a.marca.term_id);
+  const marcasCaOfertasId = marcascaofertas.map(a => a.marca.term_id);
 
-  return { props: { posts, marcasofertas, banner, marcascaofertas, uniquemarcas, uniquecamarcas } };
+  const res5 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/acf/v3/marca?per_page=100`);
+  const marcasAcf = await res5.json();
+  const marcasWithLogo = marcasAcf.filter(x => marcasOfertasId.includes(x.id));
+  const marcasCaWithLogo = marcasAcf.filter(x => marcasCaOfertasId.includes(x.id));
+
+  return {
+    props: {
+      posts,
+      marcasofertas,
+      banner,
+      marcascaofertas,
+      uniquemarcas,
+      marcasWithLogo,
+      marcasCaWithLogo,
+      uniquecamarcas
+    }
+  };
 }
 
 export default PostsByLocalidad;

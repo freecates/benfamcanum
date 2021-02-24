@@ -16,22 +16,36 @@ const GRandesMarcas = props => {
           <h1>Ofertes grans marques</h1>
           <section>
             <ul className="gallery">
-              {props.grandesmarcas.map((grandesmarca, index) => (
+              {props.marcas.map((g, index) => (
                 <li className="item align-center" key={index}>
-                  <Link href={`/ca-ES/m-o-g-m/${grandesmarca.id}/${grandesmarca.slug}`}>
-                    <a title={'Clica aquí per veure les ofertes de ' + grandesmarca.name}>
-                      <img
-                        src={
-                          'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                          grandesmarca.slug +
-                          '-familias-numerosas.png'
-                        }
-                        width={'96'}
-                        height={'96'}
-                        loading={'lazy'}
-                      />
+                  <Link href={`/ca-ES/m-o-g-m/${g.id}/${g.slug}`}>
+                    <a title={'Clica aquí per veure les ofertes de ' + g.name}>
+                      {props.marcasAcf && props.marcasAcf.length ? (
+                        props.marcasAcf
+                          .filter(x => x.id === g.term_id)
+                          .map(l => (
+                            <img
+                              key={l.id}
+                              src={l.acf.logo_de_la_marca.url}
+                              width={l.acf.logo_de_la_marca.width}
+                              height={l.acf.logo_de_la_marca.height}
+                              loading={'lazy'}
+                            />
+                          ))
+                      ) : (
+                        <img
+                          src={
+                            'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                            g.slug +
+                            '-familias-numerosas.png'
+                          }
+                          height={'96'}
+                          width={'96'}
+                          loading={'lazy'}
+                        />
+                      )}
                       <br />
-                      <span dangerouslySetInnerHTML={{ __html: grandesmarca.name }} />
+                      <span dangerouslySetInnerHTML={{ __html: g.name }} />
                     </a>
                   </Link>
                 </li>
@@ -121,9 +135,14 @@ const GRandesMarcas = props => {
 
 export async function getStaticProps() {
   const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca');
-  const grandesmarcas = await res.json();
+  const marcas = await res.json();
 
-  return { props: { grandesmarcas } };
+  const res6 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/acf/v3/marca?per_page=100`);
+  const marcasAcf = await res6.json();
+
+  return {
+    props: { marcas, marcasAcf }
+  };
 }
 
 export default GRandesMarcas;

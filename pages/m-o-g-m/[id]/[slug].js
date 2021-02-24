@@ -7,7 +7,7 @@ import Layout from '@components/MyLayout.js';
 const OfertasGrandesMarcasByMarca = props => (
   <Layout>
     <Head>
-      <title>Ofertas de la Marca {props.granmarcaofertas.name} para familias numerosas</title>
+      <title>Ofertas de la Marca {props.marca.name} para familias numerosas</title>
     </Head>
     <nav aria-label="Ets aquí:" role="navigation">
       <ul className="breadcrumbs">
@@ -22,12 +22,12 @@ const OfertasGrandesMarcasByMarca = props => (
           </Link>
         </li>
         <li>
-          <span className="show-for-sr">Actual: </span> {props.granmarcaofertas.name}
+          <span className="show-for-sr">Actual: </span> {props.marca.name}
         </li>
       </ul>
     </nav>
     <section>
-      <h1>Ofertas de {props.granmarcaofertas.name}</h1>
+      <h1>Ofertas de {props.marca.name}</h1>
       <IntlProvider defaultLocale="ca">
         <div className="table-scroll">
           <table>
@@ -43,24 +43,33 @@ const OfertasGrandesMarcasByMarca = props => (
               <tr>
                 <td>
                   <p className="align-center">
-                    <img
-                      src={
-                        'https://benfamcanumpics.famnum.now.sh/static/96/' +
-                        props.granmarcaofertas.slug +
-                        '-familias-numerosas.png'
-                      }
-                      width={'96'}
-                      height={'96'}
-                      loading={'lazy'}
-                    />
+                    {props.marcaAcf ? (
+                      <img
+                        src={props.marcaAcf.acf.logo_de_la_marca.url}
+                        width={props.marcaAcf.acf.logo_de_la_marca.width}
+                        height={props.marcaAcf.acf.logo_de_la_marca.height}
+                        loading={'lazy'}
+                      />
+                    ) : (
+                      <img
+                        src={
+                          'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                          props.marca.slug +
+                          '-familias-numerosas.png'
+                        }
+                        width={'96'}
+                        height={'96'}
+                        loading={'lazy'}
+                      />
+                    )}
                   </p>
                 </td>
                 <td>
-                  <p className="align-center">{props.granmarcaofertas.name}</p>
+                  <p className="align-center">{props.marca.name}</p>
                 </td>
                 <td>
                   <div>
-                    {props.granmarcaofertas.description.split('\n').map((item, key) => {
+                    {props.marca.description.split('\n').map((item, key) => {
                       return (
                         <p key={key}>
                           <span dangerouslySetInnerHTML={{ __html: item }} />
@@ -71,14 +80,9 @@ const OfertasGrandesMarcasByMarca = props => (
                 </td>
                 <td>
                   <p className="align-center">
-                    <Link
-                      href={`/mm/${props.granmarcaofertas.term_id}/${props.granmarcaofertas.slug}`}
-                    >
-                      <a
-                        title={'Ver ' + props.granmarcaofertas.name + ' en el mapa'}
-                        className="button small"
-                      >
-                        {'Ver ' + props.granmarcaofertas.name + ' en el mapa'}
+                    <Link href={`/mm/${props.marca.term_id}/${props.marca.slug}`}>
+                      <a title={'Ver ' + props.marca.name + ' en el mapa'} className="button small">
+                        {'Ver ' + props.marca.name + ' en el mapa'}
                       </a>
                     </Link>
                   </p>
@@ -183,17 +187,21 @@ export async function getStaticPaths() {
   const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca');
   const marques = await res.json();
 
-  const paths = marques.map((m) => `/m-o-g-m/${m.id}/${m.slug}`);
+  const paths = marques.map(m => `/m-o-g-m/${m.id}/${m.slug}`);
 
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca/${params.id}`);
+  const res = await fetch(
+    `https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca/${params.id}`
+  );
+  const marca = await res.json();
 
-  const granmarcaofertas = await res.json();
+  const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/acf/v3/marca/${params.id}`);
+  const marcaAcf = await res2.json();
 
-  return { props: { granmarcaofertas } };
+  return { props: { marca, marcaAcf } };
 }
 
 export default OfertasGrandesMarcasByMarca;
