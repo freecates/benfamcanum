@@ -37,9 +37,9 @@ const Localidades = props => {
         </ul>
       </nav>
       <IntlProvider defaultLocale="ca">
-        <main className="bgmapa">
+        <main>
           <Banners data={props.banners} />
-          <section className="padding-4x">
+          <section className="bgmapa">
             <div className="wrapper wrapper-top">
               <div className="left">
                 <p className="align-center no-margin-bottom padding">
@@ -188,7 +188,10 @@ const Localidades = props => {
               width: 200px;
             }
           }
-          @media screen and (min-width: 1024px) {                          
+          @media screen and (min-width: 1024px) {
+            .bgmapa {
+              padding: 12em 6em;
+            }                              
             .wrapper {
               display: -ms-flexbox;
               display: flex;
