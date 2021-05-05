@@ -207,7 +207,7 @@ export async function getStaticProps({ params }) {
   const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/acf/v3/marca/${params.id}`);
   const marcaAcf = await res2.json();
 
-  return { props: { marca, marcaAcf } };
+  return { props: { marca, marcaAcf }, revalidate: 1 };
 }
 
 export default OfertasGrandesMarcasCaByMarca;
