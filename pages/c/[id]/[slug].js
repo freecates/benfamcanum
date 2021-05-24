@@ -58,7 +58,7 @@ const PostsByCategory = props => (
       <h1>
         <img
           src={
-            'https://benfamcanumpics.famnum.now.sh/static/96/' +
+            'https://benfamcanumpics-famnum.vercel.app/static/96/' +
             props.posts[0].categoria_de_la_prestacion.slug +
             '-familias-numerosas.png'
           }

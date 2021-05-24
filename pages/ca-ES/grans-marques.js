@@ -35,7 +35,7 @@ const GRandesMarcas = props => {
                       ) : (
                         <img
                           src={
-                            'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                            'https://benfamcanumpics-famnum.vercel.app/static/96/' +
                             g.slug +
                             '-familias-numerosas.png'
                           }

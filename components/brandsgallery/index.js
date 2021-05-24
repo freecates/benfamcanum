@@ -33,7 +33,7 @@ const BrandsGallery = ({ data, type, logos }) => {
                   <img
                     className={styles.fadeIn}
                     src={
-                      'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                      'https://benfamcanumpics-famnum.vercel.app/static/96/' +
                       d.marca.slug +
                       '-familias-numerosas.png'
                     }

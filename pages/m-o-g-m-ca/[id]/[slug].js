@@ -53,7 +53,7 @@ const OfertasGrandesMarcasCaByMarca = props => (
                     ) : (
                       <img
                         src={
-                          'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                          'https://benfamcanumpics-famnum.vercel.app/static/96/' +
                           props.marca.slug +
                           '-familias-numerosas.png'
                         }

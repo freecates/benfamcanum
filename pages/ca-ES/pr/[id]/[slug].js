@@ -110,7 +110,7 @@ const Prestacion = props => {
           <h1>
             <img
               src={
-                'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                'https://benfamcanumpics-famnum.vercel.app/static/96/' +
                 props.prestacion._embedded['wp:term'][0][0].slug +
                 '-prestaciones-familias-numerosas.png'
               }

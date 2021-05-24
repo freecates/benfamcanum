@@ -42,7 +42,7 @@ const OfertasOnLine = props => {
                         >
                           <img
                             src={
-                              'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                              'https://benfamcanumpics-famnum.vercel.app/static/96/' +
                               ofertasonline.categoria_de_la_oferta.slug +
                               '-familias-numerosas.png'
                             }

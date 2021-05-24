@@ -63,7 +63,7 @@ const MapByCategoryLocalidad = props => {
         <h1>
           <img
             src={
-              'https://benfamcanumpics.famnum.now.sh/static/96/' +
+              'https://benfamcanumpics-famnum.vercel.app/static/96/' +
               props.markers[0].categoria_de_la_prestacion.slug +
               '-familias-numerosas.png'
             }
@@ -119,7 +119,7 @@ const MapByCategoryLocalidad = props => {
                       <span>
                         <img
                           src={
-                            'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                            'https://benfamcanumpics-famnum.vercel.app/static/32/' +
                             props.markers[0].categoria_de_la_prestacion.slug +
                             '-familias-numerosas.png'
                           }

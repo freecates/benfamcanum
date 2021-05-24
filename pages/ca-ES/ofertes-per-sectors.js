@@ -44,7 +44,7 @@ const OfertasPorSectores = props => {
                     <a title={'Clica aquí para ver todas las ofertas de ' + ofertasporsectore.name}>
                       <img
                         src={
-                          'https://benfamcanumpics.famnum.now.sh/static/96/' +
+                          'https://benfamcanumpics-famnum.vercel.app/static/96/' +
                           ofertasporsectore.slug +
                           '-familias-numerosas.png'
                         }

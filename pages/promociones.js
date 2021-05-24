@@ -59,7 +59,7 @@ const Promociones = props => (
                       <td width="64">
                         <img
                           src={
-                            'https://benfamcanumpics.famnum.now.sh/static/32/' +
+                            'https://benfamcanumpics-famnum.vercel.app/static/32/' +
                             promocione.acf.categoria_de_la_promocion.slug +
                             '-familias-numerosas.png'
                           }
