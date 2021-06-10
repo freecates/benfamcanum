@@ -148,7 +148,7 @@ const Post = props => {
                 <span>
                   .{' '}
                   <a href={'mailto:' + props.post.acf.correo_electronico_del_establecimiento}>
-                    <FontAwesome
+                  Correo-e <FontAwesome
                       name="envelope"
                       style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#666666' }}
                     />
