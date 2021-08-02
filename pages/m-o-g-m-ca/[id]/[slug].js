@@ -3,8 +3,20 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { IntlProvider } from 'react-intl';
 import Layout from '@components/MyLayout.js';
+import Custom404 from 'pages/404';
+import Fallback from '@components/Fallback';
 
-const OfertasGrandesMarcasCaByMarca = props => (
+const OfertasGrandesMarcasCaByMarca = props => {
+  if (!isFallback && !props.marca) {
+    return <Custom404 />;
+  }
+  if (isFallback) {
+    return <Fallback breadCrumb={'Ofertas Grandes Marcas'} />;
+  }
+  if (props.marca === '404') {
+    return <Fallback notFound breadCrumb={'Ofertas Grandes Marcas'} />;
+  }
+  return (
   <Layout>
     <Head>
       <title>Ofertas de la Marca {props.marca.name} para familias numerosas</title>
@@ -181,7 +193,7 @@ const OfertasGrandesMarcasCaByMarca = props => (
       }
     `}</style>
   </Layout>
-);
+)};
 
 export async function getStaticPaths() {
   const res = await fetch('https://gestorbeneficis.fanoc.org/wp-json/lanauva/v1/marca');
@@ -189,7 +201,7 @@ export async function getStaticPaths() {
 
   const paths = marques.map(m => `/m-o-g-m-ca/${m.id}/${m.slug}`);
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {
@@ -199,9 +211,13 @@ export async function getStaticProps({ params }) {
   const marca = await res.json();
 
   const res2 = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/acf/v3/marca/${params.id}`);
-  const marcaAcf = await res2.json();
+  const marcaAcf = await res2.json();  
 
-  return { props: { marca, marcaAcf }, revalidate: 1 };
+  if (!marca.data) {
+    return { props: { marca, marcaAcf }, revalidate: 1 };
+  } else {
+    return { props: { marca: '404' } };
+  }
 }
 
 export default OfertasGrandesMarcasCaByMarca;
