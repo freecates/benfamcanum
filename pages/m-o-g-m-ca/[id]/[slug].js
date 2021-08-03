@@ -1,12 +1,14 @@
 import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { IntlProvider } from 'react-intl';
 import Layout from '@components/MyLayout.js';
 import Custom404 from 'pages/404';
 import Fallback from '@components/Fallback';
 
 const OfertasGrandesMarcasCaByMarca = props => {
+  const { isFallback } = useRouter();
   if (!isFallback && !props.marca) {
     return <Custom404 />;
   }
