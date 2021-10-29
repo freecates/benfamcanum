@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './banners.module.css';
 
 const Banners = ({ data }) => {
