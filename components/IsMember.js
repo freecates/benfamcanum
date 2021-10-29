@@ -1,3 +1,4 @@
+import React from "react";
 import btoa from 'btoa';
 import fetch from 'isomorphic-unfetch';
 import ReactDisqusComments from 'react-disqus-comments';
