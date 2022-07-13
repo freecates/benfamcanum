@@ -178,7 +178,7 @@ export async function getStaticProps() {
   );
   const prestaciones = await res.json();
 
-  return { props: { prestaciones } };
+  return { props: { prestaciones } , revalidate: 1 };
 }
 
 export default PrestacionesEstatales;
