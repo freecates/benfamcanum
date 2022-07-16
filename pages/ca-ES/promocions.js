@@ -1,14 +1,13 @@
 import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { FormattedDate, IntlProvider } from 'react-intl';
 import Layout from '@components/MyLayout.js';
 
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
-const Promocions = props => {
+const Promocions = ({ promociones }) => {
   return (
     <Layout>
       <Head>
@@ -34,7 +33,7 @@ const Promocions = props => {
       <section>
         <h1>Promocions</h1>
         <IntlProvider defaultLocale="ca">
-          {props.promociones[0].acf.fecha_de_finalizaciion_de_la_promocion > todayISO ? (
+          {promociones[0].acf.fecha_de_finalizaciion_de_la_promocion > todayISO ? (
             <div className="table-scroll">
               <table>
                 <thead>
@@ -45,7 +44,7 @@ const Promocions = props => {
                     <td />
                   </tr>
                 </thead>
-                {props.promociones
+                {promociones
                   .sort((a, b) => {
                     if (a.slug < b.slug) {
                       return -1;
@@ -166,7 +165,7 @@ export async function getStaticProps() {
   const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`);
   const promociones = await res.json();
 
-  return { props: { promociones } };
+  return { props: { promociones }, revalidate: 60 };
 }
 
 export default Promocions;

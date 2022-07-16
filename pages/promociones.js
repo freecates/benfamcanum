@@ -7,7 +7,8 @@ import Layout from '@components/MyLayout.js';
 const today = Date.now();
 const todayISO = new Date(today).toISOString();
 
-const Promociones = props => (
+const Promociones = ({ promociones }) => {
+  return (
   <Layout>
     <Head>
       <title>Promociones para familias numerosas</title>
@@ -32,7 +33,7 @@ const Promociones = props => (
     <section>
       <h1>Promociones</h1>
       <IntlProvider defaultLocale="es">
-        {props.promociones[0].acf.fecha_de_finalizaciion_de_la_promocion > todayISO ? (
+        {promociones[0].acf.fecha_de_finalizaciion_de_la_promocion > todayISO ? (
           <div className="table-scroll">
             <table>
               <thead>
@@ -43,7 +44,7 @@ const Promociones = props => (
                   <td />
                 </tr>
               </thead>
-              {props.promociones
+              {promociones
                 .sort((a, b) => {
                   if (a.slug < b.slug) {
                     return -1;
@@ -155,13 +156,13 @@ const Promociones = props => (
       }
     `}</style>
   </Layout>
-);
+)};
 
 export async function getStaticProps() {
   const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`);
   const promociones = await res.json();
 
-  return { props: {promociones} };
+  return { props: {promociones}, revalidate: 60 };
 };
 
 export default Promociones;
