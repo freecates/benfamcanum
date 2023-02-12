@@ -201,7 +201,8 @@ export async function getStaticProps() {
   const res = await fetch(`https://gestorbeneficis.fanoc.org/wp-json/wp/v2/promociones`);
   const promociones = await res.json();
 
-  return { props: { promociones } };
+  return { props: { promociones }, 
+  revalidate: 1 };
 }
 
 export default Beneficis;
