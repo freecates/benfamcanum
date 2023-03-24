@@ -144,7 +144,7 @@ export async function getStaticProps() {
   );
   const municipios = await res.json();
   return {
-    props: { municipios }
+    props: { municipios }, revalidate: 60
   };
 }
 
